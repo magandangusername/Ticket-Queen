@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('Queenticketeventinfo', function (Blueprint $table) {
             $table->id();
-            $table->string('ConcertName')->nullable();;
-            $table->datetime('ConcertDate')->nullable();;
+            $table->string('ConcertName')->nullable();
+            $table->datetime('ConcertDate')->nullable();
             $table->string('Location')->nullable();
-            $table->integer('Available Ticket')->nullable();
-            $table->integer('Ticket Sold')->nullable();
-            $table->integer('Pending Fulfillment')->nullable();
-            $table->date('EndBuyDate')->nullable();;
+            $table->integer('Available_Ticket')->nullable();
+            $table->integer('Ticket_Sold')->nullable();
+            $table->integer('Pending_Fulfillment')->nullable();
+            $table->date('StartBuyDate')->nullable();
+            $table->date('EndBuyDate')->nullable();
             $table->timestamps();
         });
     }
