@@ -25,6 +25,7 @@
         <script defer src="/js/app.js"></script>
     </head>
     <body class="antialiased">
+        <h1>Halloooo world!</h1>
             <div id="example"></div>
         <script src="{{mix('js/app.js')}}"></script>
     </body>
