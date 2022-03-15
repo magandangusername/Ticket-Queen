@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->id();
+            $table->id("ticket_ID")->autoIncrement();
+            $table->string("ticket_link");
+            $table->integer("Listing_ID");
             $table->timestamps();
         });
     }
