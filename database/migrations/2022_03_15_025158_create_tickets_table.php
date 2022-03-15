@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id("ticket_ID")->autoIncrement();
             $table->string("ticket_link");
             $table->integer("Listing_ID");
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('Section')->nullable();
             $table->string('Row')->nullable();
             $table->string('Seats')->nullable();
-            $table->string('Ticket_Type')->nullable(); 
+            $table->string('Ticket_Type')->nullable();
             $table->float('Price')->nullable();
             $table->integer('Available_Tickets')->default(0);
             $table->integer('Ticket_Sold')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
