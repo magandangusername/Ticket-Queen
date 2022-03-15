@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('Price')->nullable();
             $table->integer('Available_Tickets')->nullable();
             $table->integer('Ticket_Sold')->nullable();
+            $table->integer('Available_Tickets')->nullable();
             $table->timestamps();
         });
     }
