@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/sales', function () {
+    return view('sales');
+});
+
 Route::fallback(function() {
     return view('home');
 });
