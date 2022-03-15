@@ -1,77 +1,70 @@
 @extends('layouts.app')
 
-@section('content')
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-
+@section('head')
     <title>Dashboard | Inventory Manager</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
-</head>
 
-<style>
-    .contain {
-        background: #8CB743;
-        text-align: center;
-        color: white;
-        padding-top: 10px;
-        height: 35px;
-        width: 500px;
-    }
+    <style>
+        .contain {
+            background: #8CB743;
+            text-align: center;
+            color: white;
+            padding-top: 10px;
+            height: 35px;
+            width: 500px;
+        }
 
-    .green-box {
-        float: left;
-        margin-left: 200px;
+        .green-box {
+            float: left;
+            margin-left: 200px;
 
 
-    }
+        }
 
-    .warning {
-        float: left;
-        margin-left: 200px;
-        width: 500px;
-    }
+        .warning {
+            float: left;
+            margin-left: 200px;
+            width: 500px;
+        }
 
-    .news {
-        float: right;
-        margin-right: 350px;
-    }
+        .news {
+            float: right;
+            margin-right: 350px;
+        }
 
-    .button-box {
-        float: right;
-        margin-right: 650px;
-    }
+        .button-box {
+            float: right;
+            margin-right: 650px;
+        }
 
-    .align-items-end {
-        background: #c3d491;
-        text-align: center;
-        margin-left: 0px;
-        height: 140px;
-        width: 500px;
+        .align-items-end {
+            background: #c3d491;
+            text-align: center;
+            margin-left: 0px;
+            height: 140px;
+            width: 500px;
 
-    }
+        }
 
-    .under {
-        clear: both;
-    }
+        .under {
+            clear: both;
+        }
 
-    .rem {
-        background: red;
+        .rem {
+            background: red;
 
-    }
+        }
 
-    .warn {
-        background: pink;
-        color: red;
+        .warn {
+            background: pink;
+            color: red;
 
-    }
-</style>
+        }
 
-<body>
+    </style>
+@endsection
 
+
+@section('content')
     <div class="green-box">
         <div class="contain">
             <div class="row align-items-start">
@@ -161,7 +154,4 @@
         </p>
     </div>
     </div>
-</body>
-
-</html>
 @endsection
