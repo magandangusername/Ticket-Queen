@@ -33,40 +33,30 @@
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav" style="font-size: 120%;">
                     <li class="nav-item active">
-                        <a class="nav-link " href="$">Express Local Shipping</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            + New Listing
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#"></a>
-                            <a class="dropdown-item" href="#"></a>
-                        </div>
+                        <a class="nav-link " href="">Express Local Shipping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tools</a>
+                        <a class="nav-link" href="">+ New Listing</a>
                     </li>
-                    {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Reservation
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Booking</a>
-                            <a class="dropdown-item" href="/search">Modify/Cancel Booking</a>
-                        </div>
-                    </li> --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tools
+                          </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link " href="#">{{ __('Sign-In') }}</a>
+                            <a class="nav-link " href="#">{{ __('Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
                             <li class="nav-item">
                                 <a class="nav-link " href="#">Sign-Up</a>
                             </li>
-                        @endif
+                        @endif --}}
 
                     @else
                         <li class="nav-item">
@@ -74,12 +64,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="#"
+                            <a class="nav-link " href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
 
-                            <form id="logout-form" action="#" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                         </li>
@@ -88,6 +78,7 @@
                     @endguest
                 </ul>
             </div>
+
         </nav>
 
         <main class="py-4">

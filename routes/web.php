@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('home');
+    if (Auth::check()) {
+        return redirect('listing');
+    }
+    return view('auth/login');
 });
 
 Route::get('/sales', function () {
@@ -24,7 +27,7 @@ Route::get('/sales', function () {
 
 Route::get('/listing', function () {
     return view('listing');
-});
+})->name('listing');
 
 Route::fallback(function() {
     return view('home');
