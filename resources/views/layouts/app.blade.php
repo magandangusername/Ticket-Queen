@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-3">
-            <a class="navbar-brand fw-bold" href="#">Mondstadt Hotel <span class=""><img
+            <a class="navbar-brand fw-bold" href="#">Queen of Tickets <span class=""><img
                         src="$" alt="" width="30" height="24"></span></a>
 
 
