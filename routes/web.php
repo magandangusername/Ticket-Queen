@@ -22,6 +22,10 @@ Route::get('/sales', function () {
     return view('sales');
 });
 
+Route::get('/listing', function () {
+    return view('listing');
+});
+
 Route::fallback(function() {
     return view('home');
 });
