@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Queenticketeventinfo', function (Blueprint $table) {
-            $table->id();
+            $table->id('ConcertID');
             $table->string('ConcertName')->nullable();
             $table->datetime('ConcertDate')->nullable();
             $table->string('Location')->nullable();
