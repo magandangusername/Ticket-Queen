@@ -36,7 +36,9 @@
             </div>
         </div>
     </div>
-    
+        <div class="list">
+       
+      <!-- kay kent umpisa -->
     <div class="container-fluid">
         <table class="table align-middle mb-0 bg-white" data-bs-toggle="collapse" href="#rowcontent" role="button">
         <thead class="bg-light">
@@ -51,6 +53,7 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($queenticketeventinfo as $queenticketeventinfo)
         <tr>
             <td>
             <div class="d-flex align-items-center">
@@ -61,9 +64,10 @@
                     class="rounded-circle"
                     /> -->
                 <div class="ms-3 pe-5">
-                <p class="fw-bold mb-1">Artis [Ticket Number]</p> 
-                <p class="text-muted mb-0">Timestamp</p>
-                <p class="text-muted mb-0">Concert place</p>
+                <p class="fw-bold mb-1">{{$queenticketeventinfo['ConcertName']}}
+                     [{{$queenticketeventinfo['ConcertID']}}]</p> 
+                <p class="text-muted mb-0"> {{$queenticketeventinfo['ConcertDate']}}</p>
+                <p class="text-muted mb-0"> {{$queenticketeventinfo['Location']}}</p>
                 </div>
             </div>
             </td>
@@ -73,15 +77,14 @@
             </td>
             <td>
             <p class="fw-normal mb-1">Available Tickets</p>
-            <p class="text-muted mb-0">Number of Tickets</p>
+            <p class="text-muted mb-0">{{$queenticketeventinfo['Available_Ticket']}}</p>
             </td>
             <td>
             <p class="fw-normal mb-1">Ticket Sold</p>
-            <p class="text-muted mb-0">No. of Ticket Sold</p>
+            <p class="text-muted mb-0">{{$queenticketeventinfo['Ticket_Sold']}}</p>
             <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
-            <p class="fw-normal mb-1">No. of ticket</p>
             <p class="text-dark mb-0">Sold in the last</p>
-            <p class="fw-normal mb-1">No. of days</p>
+            <p class="fw-normal mb-1">0</p>
             </div>
             </td>
             <td>
@@ -92,11 +95,11 @@
             </td>
             <td>
             <p class="fw-normal mb-1">Pending fullfilment</p>
-            <p class="text-muted mb-0">No. of fulfilled</p>
+            <p class="text-muted mb-0">{{$queenticketeventinfo['Pending_Fulfillment']}}</p>
             </td>
             <td>
                 <p class="fw-normal mb-1">No. of Months</p>
-                <p class="text-muted mb-0">Months</p>
+                <p class="text-muted mb-0">{{$queenticketeventinfo['StartBuyDate']}}</p>
             </td>
             <td>
             <button type="button" class="btn btn-link btn-sm btn-rounded">
@@ -104,7 +107,7 @@
             </button>
             </td>
         </tr>
-        
+        @endforeach
         </tbody>
         </table>
         <table class="collapse table table-bordered border-primary" id="rowcontent">
@@ -123,7 +126,9 @@
                 <th></th>
             </tr>
             </thead>
+            
             <tbody>
+                
         <tr>
             <td>
             <div class="container-fluid">

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\joinEventDetails;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +40,9 @@ Route::fallback(function() {
     return view('home');
 });
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/listing', [App\Http\Controllers\ListingController::class, 'show'])->name('listing');
+Route::get('eventdetails',[joinEventDetails::class,'show']);
