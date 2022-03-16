@@ -1,157 +1,174 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>Dashboard | Inventory Manager</title>
+<title>Dashboard | Inventory Manager</title>
 
-    <style>
-        .contain {
-            background: #8CB743;
-            text-align: center;
-            color: white;
-            padding-top: 10px;
-            height: 35px;
-            width: 500px;
-        }
+<style>
+    .contain {
+        background: #8CB743;
+        text-align: center;
+        color: white;
+        padding-top: 10px;
+        height: 35px;
+        width: 500px;
+    }
 
-        .green-box {
-            float: left;
-            margin-left: 200px;
+    .green-box {
+        float: left;
+        margin-left: 200px;
 
 
-        }
+    }
 
-        .warning {
-            float: left;
-            margin-left: 200px;
-            width: 500px;
-        }
+    .warning {
+        float: left;
+        margin-left: 200px;
+        width: 500px;
+    }
 
-        .news {
-            float: right;
-            margin-right: 350px;
-        }
+    .news {
+        float: right;
+        margin-right: 350px;
+    }
 
-        .button-box {
-            float: right;
-            margin-right: 650px;
-        }
+    .button-box {
+        float: right;
+        margin-right: 650px;
+    }
 
-        .align-items-end {
-            background: #c3d491;
-            text-align: center;
-            margin-left: 0px;
-            height: 140px;
-            width: 500px;
+    .align-items-end {
+        background: #c3d491;
+        text-align: center;
+        margin-left: 0px;
+        height: 140px;
+        width: 500px;
 
-        }
+    }
 
-        .under {
-            clear: both;
-        }
+    .under {
+        clear: both;
+    }
 
-        .rem {
-            background: red;
+    .rem {
+        background: red;
 
-        }
+    }
 
-        .warn {
-            background: pink;
-            color: red;
+    .warn {
+        background: pink;
+        color: red;
 
-        }
+    }
 
-    </style>
+    h4 {
+        color: #FF007F;
+    }
+
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+</style>
 @endsection
 
 
 @section('content')
-    <div class="green-box">
-        <div class="contain">
-            <div class="row align-items-start">
-                <div class="col">
-                    <center><b>Your Account Benefits</b></center>
-                </div>
-            </div>
-        </div>
-
-        <div class="row align-items-end">
+<div class="green-box">
+    <div class="contain">
+        <div class="row align-items-start">
             <div class="col">
-                <b>As a reliable seller, you get access to a number of exclusive benefits</b>
-            </div>
-
-            <div class="row">
-
-                <div class="col">
-                    Listings stay active closer to the event
-
-                    <br>"I have shipped" function
-
-                    <br>Enhanced version of "Recently Added Events" (coming soon)
-                </div>
-
-                <div class="col">
-                    Ability to self-extend shipping deadlines
-
-                    <br>Dynamic pricing tools
-
-                    <br>Preffered supplier for corporate orders
-                </div>
-
+                <center><b>Your Account Benefits</b></center>
             </div>
         </div>
     </div>
 
+    <div class="row align-items-end">
+        <div class="col">
+            <b>As a reliable seller, you get access to a number of exclusive benefits</b>
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                Listings stay active closer to the event
+
+                <br>"I have shipped" function
+
+                <br>Enhanced version of "Recently Added Events" (coming soon)
+            </div>
+
+            <div class="col">
+                Ability to self-extend shipping deadlines
+
+                <br>Dynamic pricing tools
+
+                <br>Preffered supplier for corporate orders
+            </div>
+
+        </div>
     </div>
-    <div class="button-box">
-        <button type="button" class="btn btn-light">Listings</button>
-        <br>
-        <button type="button" class="btn btn-light">Sales</button>
-        <br>
-        <button type="button" class="btn btn-light">Last Minute Sales</button>
-        <br>
-        <button type="button" class="btn btn-light">Reports</button>
-        <br>
-        <button type="button" class="btn btn-light">Settings</button>
-        <br>
-        <button type="button" class="btn btn-light">Market Research</button>
-        <br>
-        <button type="button" class="btn btn-light">Messages</button>
-        <br>
-        <br>
+</div>
 
-        <button type="button" class="btn btn-light">Log Out</button>
-    </div>
-
-
+</div>
+<div class="button-box">
+    <button type="button" class="btn btn-light">Listings</button>
+    <br>
+    <button type="button" class="btn btn-light">Sales</button>
+    <br>
+    <button type="button" class="btn btn-light">Last Minute Sales</button>
+    <br>
+    <button type="button" class="btn btn-light">Reports</button>
+    <br>
+    <button type="button" class="btn btn-light">Settings</button>
+    <br>
+    <button type="button" class="btn btn-light">Market Research</button>
+    <br>
+    <button type="button" class="btn btn-light">Messages</button>
     <br>
     <br>
-    <br>
-    <div class="under">
-        <div class="warning">
-            <div class="row">
 
-                <div class="col warn">
-                    If your failure rate is above 1% this month you will face an additional charge per ticket, per
-                    failed order and
-                    additionally, lose account benefits. <a href="">Click here</a> for more details and your account
-                    performance
-                    data
-                </div>
-                <p>Recently Added Events has moved <a href="">here</a></p>
-                <div class="col">
-                </div>
+    <button type="button" class="btn btn-light">Log Out</button>
+</div>
+
+
+<br>
+<br>
+<br>
+<div class="under">
+    <div class="warning">
+        <div class="row">
+
+            <div class="col warn">
+                If your failure rate is above 1% this month you will face an additional charge per ticket, per
+                failed order and
+                additionally, lose account benefits. <a href="">Click here</a> for more details and your account
+                performance
+                data
+            </div>
+            <p>Recently Added Events has moved <a href="">here</a></p>
+            <div class="col">
             </div>
         </div>
     </div>
-    <div class="news">
-        <p>
-            <b>News</b>
-            <br>
-            If you need to call Seller Support and are prompted to enter a code, please enter: 4646.
-            <br>
-            <a href="">Click here</a> to view the viagogo Seller Tools Terms of Use.
+</div>
+<div class="news">
+    <p>
+        <b>News</b>
+        <br>
+        If you need to call Seller Support and are prompted to enter a code, please enter: 4646.
+        <br>
+        <a href="">Click here</a> to view the viagogo Seller Tools Terms of Use.
 
-        </p>
-    </div>
-    </div>
+    </p>
+</div>
+</div>
 @endsection

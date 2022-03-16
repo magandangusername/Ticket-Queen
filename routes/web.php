@@ -31,6 +31,11 @@ Route::get('/sales', function () {
     return view('sales');
 });
 
+Route::get('/testing', function () {
+    return view('testing');
+});
+
+
 Route::fallback(function() {
     return view('home');
 });
