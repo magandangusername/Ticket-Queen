@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Queenticketeventinfo', function (Blueprint $table) {
-            $table->id();
+            $table->id('ConcertID');
             $table->string('ConcertName')->nullable();
             $table->datetime('ConcertDate')->nullable();
             $table->string('Location')->nullable();
@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('Pending_Fulfillment')->nullable();
             $table->date('StartBuyDate')->nullable();
             $table->date('EndBuyDate')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('Queenticketeventinfo');
     }
 };

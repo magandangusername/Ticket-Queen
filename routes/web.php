@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/listing', function () {
+        return view('listing');
+    })->name('listing');
+});
+
 Route::get('/', function () {
     if (Auth::check()) {
         return redirect('listing');
@@ -24,10 +30,6 @@ Route::get('/', function () {
 Route::get('/sales', function () {
     return view('sales');
 });
-
-Route::get('/listing', function () {
-    return view('listing');
-})->name('listing');
 
 Route::fallback(function() {
     return view('home');
