@@ -11,6 +11,7 @@ class ListingController extends Controller
     public function show()
     {
         $data=queenticketeventinfo::all();
+        
         return view('listing',['queenticketeventinfo'=>$data]);
         
     }
