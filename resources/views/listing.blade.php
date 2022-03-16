@@ -33,82 +33,43 @@
         </div>
     </div>
         <div class="list">
-            <table >
+        <table >
+        <table >
+        @foreach($queenticketeventinfo as $queenticketeventinfo)
                 <tr>
-                    <td>
+                    <td>{{$queenticketeventinfo['ConcertID']}}
                         <i class="fa fa-drop"></i>
                     </td>
-                    <td>
+                    <td>{{$queenticketeventinfo['ConcertName']}}
+                        {{$queenticketeventinfo['ConcertDate']}}
+                        {{$queenticketeventinfo['Location']}}
                         <label for="">details</label>
                     </td>
                     <td>
                         <!-- space only -->
                     </td>
-                    <td>
+                    <td>{{$queenticketeventinfo['Available_Ticket']}}
                         <label for="">Available tickets</label>
                     </td>
-                    <td>
+                    <td>{{$queenticketeventinfo['Ticket_Sold']}}
                         <label for="">Ticket sold</label>
                     </td>
                     <td>
                         <!-- space only -->
                     </td>
-                    <td>
+                    <td>{{$queenticketeventinfo['Pending_Fulfillment']}}
                         <label for="">pending fullfilment</label>
                     </td>
-                    <td>
+                    <td>{{$queenticketeventinfo['StartBuyDate']}}
                         <label for="">date</label>
                     </td>
                     <td>
                         <i class="fa fa-drop"></i>
                     </td>
                 </tr>
+                @endforeach
             </table>
-        </div>
 
-        <div class="ticket-details">
-            <table >
-                <th></th>
-                <th>ticket details</th>
-                <th>ticket type</th>
-                <th>face value</th>
-                <th>price</th>
-                <th>avaible</th>
-                <th>sold</th>
-                <th>publish</th>
-                <th></th>
-                <tr>
-                    <td>
-                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                    </td>
-                    <td>
-                        <p>something</p>
-                    </td>
-                    <td>
-                       <a href="Upload"></a>
-                    </td>
-                    <td>
-                        <input type="text" name="" id="">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="">
-                    </td>
-                    <td>
-                        <input type="text" name="" id="">
-                    </td>
-                    <td>
-                        <label for="">0</label>
-                    </td>
-                    <td>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    </div>
-                    </td>
-                    <td>
-                        <i class="fa fa-pen"></i>
-                    </td>
-                </tr>
-            </table>
         </div>
 
     </div>
