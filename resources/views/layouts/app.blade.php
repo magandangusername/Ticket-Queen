@@ -21,9 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-3">
-            <a class="navbar-brand fw-bold" href="#">Queen of Tickets <span class=""><img
-                        src="$" alt="" width="30" height="24"></span></a>
+        <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-3 bg-dark">
+            <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img
+                        src="$" alt="" width="30" height="24"></span><h6>Inventory Manager | Listing</h6></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -31,15 +31,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav" style="font-size: 120%;">
+                <ul class="navbar-nav position-absolute top-50 end-0 translate-middle-y pe-4" style="font-size: 120%;">
                     <li class="nav-item active">
-                        <a class="nav-link " href="">Express Local Shipping</a>
+                        <a class="nav-link text-light" href="">Express Local Shipping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">+ New Listing</a>
+                        <a class="nav-link text-light" href="">+ New Listing</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             Tools
                           </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -50,11 +50,11 @@
                     </li>
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link " href="#">{{ __('Login') }}</a>
+                            <a class="nav-link text-light" href="#">{{ __('Login') }}</a>
                         </li>
                         {{-- @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link " href="#">Sign-Up</a>
+                                <a class="nav-link text-light" href="#">Sign-Up</a>
                             </li>
                         @endif --}}
 
@@ -64,7 +64,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('logout') }}"
+                            <a class="nav-link text-light" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
