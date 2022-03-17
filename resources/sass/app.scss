@@ -6,3 +6,11 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+a.tools{
+    color: lightcyan;
+}
+
+.tools:hover {
+    color: yellow;
+  }

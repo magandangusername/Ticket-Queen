@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,11 +20,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body style="background-color: #04293A">
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-3 bg-dark position-fixed w-100">
-            <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img
-                        src="$" alt="" width="30" height="24"></span><h6>Inventory Manager | Listing</h6></a>
+            <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img src="$"
+                        alt="" width="30" height="24"></span>
+                <h6>Inventory Manager | Listing</h6>
+            </a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -38,7 +42,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="">+ New Listing</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             Tools
                           </a>
@@ -47,7 +51,7 @@
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     @guest
                         <li class="nav-item">
                             <a class="nav-link text-light" href="#">{{ __('Login') }}</a>
@@ -57,7 +61,6 @@
                                 <a class="nav-link text-light" href="#">Sign-Up</a>
                             </li>
                         @endif --}}
-
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
@@ -81,12 +84,13 @@
 
         </nav>
         <br><br><br>
-  
+
         <main class="py-4">
             @yield('content')
         </main>
-     
+
     </div>
 
 </body>
+
 </html>
