@@ -340,13 +340,14 @@
                 </div>
             </div>
         </div>
+    </form>
 </div>
 
 <button type="button" class="btn btn-light">Clone</button>
 <button type="button" class="btn btn-danger">Delete</button>
 <button type="button" class="btn btn-success">Save</button>
 <button type="button" class="btn btn-secondary">Cancel</button>
-</form>
+
 <div class="form-check form-switch">
     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
     <label class="form-check-label" for="flexSwitchCheckDefault">Publish</label>

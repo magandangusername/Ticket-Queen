@@ -4,9 +4,9 @@
     <div class="container-fluid">
         <div class="container-fluid row no-gutters">
             <div class="input-group mb-3 col-12 col-sm-6 col-md-8 w-75 h-25">
-            <span class="input-group-text" id="basic-addon1"><img src="../../../public/images/Vector-Search.png" class="img-fluid" alt="..."></span>
-            <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
-            <button type="button" class="btn btn-light border">Clear</button>
+                <span class="input-group-text" id="basic-addon1"><img src="../../../public/images/Vector-Search.png" class="img-fluid" alt="..."></span>
+                <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
+                <button type="button" class="btn btn-light border">Clear</button>
             </div>
             <div class="checkboxes col-6 col-md-4 w-25">
                 <div class="form-check ms-5">
@@ -36,184 +36,185 @@
             </div>
         </div>
     </div>
-        <div class="list">
-       
-      <!-- kay kent umpisa -->
-    <div class="container-fluid">
-        <table class="table align-middle mb-0 bg-white" data-bs-toggle="collapse" href="#rowcontent" role="button">
-        <thead class="bg-light">
-        <tr>
-            <th>Ticker Details</th>
-            <th></th>
-            <th>Available Tickets</th>
-            <th>Ticket Sold</th>
-            <th></th>
-            <th>Pending fullfilment</th>
-            <th>Days</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($queenticketeventinfo as $queenticketeventinfo)
-        <tr>
-            <td>
-            <div class="d-flex align-items-center">
-                <!-- <img
+    <div class="list">
+
+        <!-- kay kent umpisa -->
+        <div class="container-fluid">
+            <table class="table align-middle mb-0 bg-white" data-bs-toggle="collapse" href="#rowcontent" role="button">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Ticker Details</th>
+                        <th></th>
+                        <th>Available Tickets</th>
+                        <th>Ticket Sold</th>
+                        <th></th>
+                        <th>Pending fullfilment</th>
+                        <th>Days</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($queenticketeventinfo as $queenticketeventinfo)
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <!-- <img
                     src="https://mdbootstrap.com/img/new/avatars/8.jpg"
                     alt=""
                     style="width: 45px; height: 45px"
                     class="rounded-circle"
                     /> -->
-                <div class="ms-3 pe-5">
-                <p class="fw-bold mb-1">{{$queenticketeventinfo['ConcertName']}}
-                     [{{$queenticketeventinfo['ConcertID']}}]</p> 
-                <p class="text-muted mb-0"> {{$queenticketeventinfo['ConcertDate']}}</p>
-                <p class="text-muted mb-0"> {{$queenticketeventinfo['Location']}}</p>
-                </div>
-            </div>
-            </td>
-            <td>
-            <!-- <p class="fw-normal mb-1">Software engineer</p> -->
-            <p class="text-muted mb-0">Last Minute Sales Event</p>
-            </td>
-            <td>
-            <p class="fw-normal mb-1">Available Tickets</p>
-            <p class="text-muted mb-0">{{$queenticketeventinfo['Available_Ticket']}}</p>
-            </td>
-            <td>
-            <p class="fw-normal mb-1">Ticket Sold</p>
-            <p class="text-muted mb-0">{{$queenticketeventinfo['Ticket_Sold']}}</p>
-            <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
-            <p class="text-dark mb-0">Sold in the last</p>
-            <p class="fw-normal mb-1">0</p>
-            </div>
-            </td>
-            <td>
-            <p class="fw-normal mb-1">Pending Confirmation</p>
-            <div class="border border-dark border-2 container-fluid h-auto bg-warning rounded">
-            <p class="text-dark mb-0">No. of Pending</p>   
-            </div>
-            </td>
-            <td>
-            <p class="fw-normal mb-1">Pending fullfilment</p>
-            <p class="text-muted mb-0">{{$queenticketeventinfo['Pending_Fulfillment']}}</p>
-            </td>
-            <td>
-                <p class="fw-normal mb-1">No. of Months</p>
-                <p class="text-muted mb-0">{{$queenticketeventinfo['StartBuyDate']}}</p>
-            </td>
-            <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-                Basta
-            </button>
-            </td>
-        </tr>
-        @endforeach
-        </tbody>
-        </table>
-        <table class="collapse table table-bordered border-primary" id="rowcontent">
-            <thead class="bg-light">
-            <tr>
-                <th></th>
-                <th>Ticket Details</th>
-                <th>Ticket Type</th>
-                <th>Visibility</th>
-                <th>Face Value</th>
-                <th>Price</th>
-                <th>Proceeds</th>
-                <th>Available</th>
-                <th>Sold</th>
-                <th>Publish</th>
-                <th></th>
-            </tr>
-            </thead>
-            
-            <tbody>
-                
-        <tr>
-            <td>
-            <div class="container-fluid">
-                <div class="form-check">
-                    <input class="form-check-input ms-3" type="checkbox" value="" id="ticketselection">
-                </div>
-            </div>
-            </td>
-            <td>
-            <div class="container-fluid">
-                <p>No. of Tickets</p>
-                <p>row no. Seat no.</p>
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            <td>
-            <div class="d-flex align-items-center">
-            </div>
-            </td>
-            
-            <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-                Basta
-            </button>
-            </td>
-        </tr>
-        
-        </tbody>
-        </table>
+                                <div class="ms-3 pe-5">
+                                    <p class="fw-bold mb-1">{{$queenticketeventinfo['ConcertName']}}
+                                        [{{$queenticketeventinfo['ConcertID']}}]</p>
+                                    <p class="text-muted mb-0"> {{$queenticketeventinfo['ConcertDate']}}</p>
+                                    <p class="text-muted mb-0"> {{$queenticketeventinfo['Location']}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- <p class="fw-normal mb-1">Software engineer</p> -->
+                            <p class="text-muted mb-0">Last Minute Sales Event</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">Available Tickets</p>
+                            <p class="text-muted mb-0">{{$queenticketeventinfo['Available_Ticket']}}</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">Ticket Sold</p>
+                            <p class="text-muted mb-0">{{$queenticketeventinfo['Ticket_Sold']}}</p>
+                            <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
+                                <p class="text-dark mb-0">Sold in the last</p>
+                                <p class="fw-normal mb-1">0</p>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">Pending Confirmation</p>
+                            <div class="border border-dark border-2 container-fluid h-auto bg-warning rounded">
+                                <p class="text-dark mb-0">No. of Pending</p>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">Pending fullfilment</p>
+                            <p class="text-muted mb-0">{{$queenticketeventinfo['Pending_Fulfillment']}}</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">No. of Months</p>
+                            <p class="text-muted mb-0">{{$queenticketeventinfo['StartBuyDate']}}</p>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                Basta
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <table class="collapse table table-bordered border-primary" id="rowcontent">
+                <thead class="bg-light">
+                    <tr>
+                        <th></th>
+                        <th>Ticket Details</th>
+                        <th>Ticket Type</th>
+                        <th>Visibility</th>
+                        <th>Face Value</th>
+                        <th>Price</th>
+                        <th>Proceeds</th>
+                        <th>Available</th>
+                        <th>Sold</th>
+                        <th>Publish</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <div class="container-fluid">
+                                <div class="form-check">
+                                    <input class="form-check-input ms-3" type="checkbox" value="" id="ticketselection">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="container-fluid">
+                                <p>No. of Tickets</p>
+                                <p>row no. Seat no.</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            </div>
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Open modal
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
     </div>
-   
-    
 
-</div>
+    <div class="modal w h-75" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-<div class="modal right fade" id="editList" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="background: #437fc7; color: #edf6ff">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    
                 <h4>Concert name</h4>
                 <p>
                     <b>Date</b>
                     <br>
                 <Address></Address>
-                <form action="{{route('listing')}}" method="post">
-                    @csrf
-                    </p>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid overflow-auto">
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                
                     <form>
+                    <div class="container-fluid overflow-auto">
                         <div class="row">
                             <div class="form-group col-3">
 
@@ -261,6 +262,8 @@
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="row">
                             <div class="col-sm-3 my-1">
@@ -537,19 +540,19 @@
                                 </div>
                             </div>
                         </div>
-                </div>
+                        </div>
+                    </form>
+                
 
+                <!-- Modal footer -->
+                <div class="modal-footer">
                 <button type="button" class="btn btn-light">Clone</button>
                 <button type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-success">Save</button>
-                <button type="button" class="btn btn-secondary">Cancel</button>
-                </form>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Publish</label>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </div>
+
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection
