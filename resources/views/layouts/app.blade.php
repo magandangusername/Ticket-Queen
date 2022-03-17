@@ -19,9 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #04293A">
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-3 bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-3 bg-dark position-fixed w-100">
             <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img
                         src="$" alt="" width="30" height="24"></span><h6>Inventory Manager | Listing</h6></a>
 
@@ -80,10 +80,12 @@
             </div>
 
         </nav>
-
+        <br><br><br>
+  
         <main class="py-4">
             @yield('content')
         </main>
+     
     </div>
 
 </body>
