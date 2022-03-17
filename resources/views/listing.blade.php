@@ -51,28 +51,22 @@
                 href="#rowcontent" role="button">
                 <thead class="bg-light">
                     <tr>
-                        <th>Ticket Details</th>
-                        <th></th>
-                        <th>Available Tickets</th>
-                        <th>Ticket Sold</th>
-                        <th></th>
-                        <th>Pending fullfilment</th>
-                        <th>Days</th>
+                        <th class="text-center">Ticket Details</th>
+                        <th class="text-center"></th>
+                        <th class="text-center">Available Tickets</th>
+                        <th class="text-center">Ticket Sold</th>
+                        <th class="text-center"></th>
+                        <th class="text-center">Pending fullfilment</th>
+                        <th class="text-center">Days</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabletickets">
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <!-- <img
-                                                                                                                                                                                                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                                                                                                                                                                                                                                alt=""
-                                                                                                                                                                                                                                                style="width: 45px; height: 45px"
-                                                                                                                                                                                                                                                class="rounded-circle"
-                                                                                                                                                                                                                                                /> -->
                                 <div class="ms-3 pe-5">
-                                    <p class="fw-bold mb-1">Artist [Ticket Number]</p>
+                                    <p class="fw-bold text-light mb-1">Artist [Ticket Number]</p>
                                     <p class="text-muted mb-0">Timestamp</p>
                                     <p class="text-muted mb-0">Concert place</p>
                                 </div>
@@ -83,11 +77,11 @@
                             <p class="text-muted mb-0">Last Minute Sales Event</p>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">Available Tickets</p>
+                            <p class="fw-normal text-light mb-1">Available Tickets</p>
                             <p class="text-muted mb-0">Number of Tickets</p>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">Ticket Sold</p>
+                            <p class="fw-normal text-light mb-1">Ticket Sold</p>
                             <p class="text-muted mb-0">No. of Ticket Sold</p>
                             <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
                                 <p class="fw-normal mb-1">No. of ticket</p>
@@ -96,17 +90,17 @@
                             </div>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">Pending Confirmation</p>
+                            <p class="fw-normal text-light mb-1">Pending Confirmation</p>
                             <div class="border border-dark border-2 container-fluid h-auto bg-warning rounded">
                                 <p class="text-dark mb-0">No. of Pending</p>
                             </div>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">Pending fullfilment</p>
+                            <p class="fw-normal text-light mb-1">Pending fullfilment</p>
                             <p class="text-muted mb-0">No. of fulfilled</p>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">No. of Months</p>
+                            <p class="fw-normal text-light mb-1">No. of Months</p>
                             <p class="text-muted mb-0">Months</p>
                         </td>
                         <td>
@@ -118,23 +112,23 @@
 
                 </tbody>
             </table>
-            <table class="collapse table table-bordered border-primary" id="rowcontent">
+            <table class="collapse table table-bordered" id="rowcontent">
                 <thead class="bg-light">
                     <tr>
-                        <th></th>
-                        <th>Ticket Details</th>
-                        <th>Ticket Type</th>
-                        <th>Visibility</th>
-                        <th>Face Value</th>
-                        <th>Price</th>
-                        <th>Proceeds</th>
-                        <th>Available</th>
-                        <th>Sold</th>
-                        <th>Publish</th>
-                        <th></th>
+                        <th class="text-center"></th>
+                        <th class="text-center">Ticket Details</th>
+                        <th class="text-center">Ticket Type</th>
+                        <th class="text-center">Visibility</th>
+                        <th class="text-center">Face Value</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Proceeds</th>
+                        <th class="text-center">Available</th>
+                        <th class="text-center">Sold</th>
+                        <th class="text-center">Publish</th>
+                        <th class="text-center"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="ticketinfotable">
                     <tr>
                         <td>
                             <div class="container-fluid">
@@ -145,15 +139,15 @@
                         </td>
                         <td>
                             <div class="container-fluid">
-                                <p>No. of Tickets</p>
-                                <p>row no. Seat no.</p>
+                                <p id="ticketinfocontent">No. of Tickets</p>
+                                <p id="ticketinfocontent">row no. Seat no.</p>
                             </div>
                         </td>
                         <td>
                             <div class="container-fluid">
-                                <p>E-Tickets</p>
+                                <p id="ticketinfocontent">E-Tickets</p>
                                 <a href="#" class="link-primary text-decoration-none">
-                                    <p>Upload Now</p>
+                                    <p id="ticketinfocontent">Upload Now</p>
                                 </a>
                             </div>
                         </td>
@@ -188,7 +182,7 @@
                         </td>
                         <td>
                             <div class="container-fluid">
-                                <p class="text-dark">No.</p>
+                                <p id="ticketinfocontent">No.</p>
                             </div>
                         </td>
                         <td>
