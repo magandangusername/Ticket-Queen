@@ -14,3 +14,17 @@ a.tools{
 .tools:hover {
     color: yellow;
   }
+
+#Search{
+width:480px;height:49px; border:2px solid black;
+padding-left:48px;
+padding-top:1px;
+font-size:18px;color:black;
+background-repeat:no-repeat;
+background-position:center;outline:0;
+}
+
+#Search::-webkit-search-cancel-button{
+    position:absolute;
+    right:20px;    
+}

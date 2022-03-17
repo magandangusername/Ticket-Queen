@@ -7,9 +7,9 @@
                 <div class="input-group mb-3 col-md-8">
                     <span class="input-group-text" id="basic-addon1"><img src="../././public/images/Vector-Search.png"
                             class="img-fluid" alt="..."></span>
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Username"
+                    <input type="Search" id="Search" class="form-control" placeholder="Search" aria-label="Username"
                         aria-describedby="basic-addon1">
-                    <button type="button" class="btn btn-light border">Clear</button>
+                    <button type="button" class="btn btn-light border">Search</button>
                 </div>
 
                 <div class="col checkboxes container-fluid row col-md-auto">
@@ -66,11 +66,11 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <!-- <img
-                                                                                                                                                                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                                                                                                                                                    alt=""
-                                                                                                                                                                    style="width: 45px; height: 45px"
-                                                                                                                                                                    class="rounded-circle"
-                                                                                                                                                                    /> -->
+                                                                                                                                                                                                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                                                                                                                                                                                                alt=""
+                                                                                                                                                                                                                                                style="width: 45px; height: 45px"
+                                                                                                                                                                                                                                                class="rounded-circle"
+                                                                                                                                                                                                                                                /> -->
                                 <div class="ms-3 pe-5">
                                     <p class="fw-bold mb-1">Artist [Ticket Number]</p>
                                     <p class="text-muted mb-0">Timestamp</p>
