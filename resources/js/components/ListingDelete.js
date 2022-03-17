@@ -1,18 +1,14 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "./Header";
+import React from "react";
+import { Link } from "react-router-dom";
 
-class ListingDelete extends Component {
-    render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <Header />
-                </div>
-            </BrowserRouter>
-        );
-    }
-}
+const ListingDelete = () => (
+    <nav className="navbar navbar-expand-md navbar-light navbar-laravel">
+        <div className="container">
+            <Link className="navbar-brand" to="/">
+                Tasksman
+            </Link>
+        </div>
+    </nav>
+);
 
-ReactDOM.render(<ListingDelete />, document.getElementById("listingDelete"));
+export default ListingDelete;
