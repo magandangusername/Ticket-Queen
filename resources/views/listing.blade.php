@@ -66,11 +66,11 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <!-- <img
-                                                                                                                                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                                                                                                                                                alt=""
-                                                                                                                                                                style="width: 45px; height: 45px"
-                                                                                                                                                                class="rounded-circle"
-                                                                                                                                                                /> -->
+                                                                                                                                                                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                                                                                                                                    alt=""
+                                                                                                                                                                    style="width: 45px; height: 45px"
+                                                                                                                                                                    class="rounded-circle"
+                                                                                                                                                                    /> -->
                                 <div class="ms-3 pe-5">
                                     <p class="fw-bold mb-1">Artist [Ticket Number]</p>
                                     <p class="text-muted mb-0">Timestamp</p>
@@ -213,7 +213,7 @@
 
 
 
-        <tbody>
+        {{-- <tbody>
 
             <tr>
                 <td>
@@ -273,7 +273,7 @@
                 </td>
             </tr>
 
-        </tbody>
+        </tbody> --}}
         </table>
     </div>
 
