@@ -1,5 +1,20 @@
 @extends('layouts.app')
 @section('content')
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
     <div class="container-fluid" style="background-color: #04293A">
         <div class="container-fluid d-flex justify-content-center">
             <div class="container-fluid bg-image position-fixed p-3"
@@ -62,6 +77,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($data as $row)
+                
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
@@ -72,9 +89,9 @@
                                                                                                                                                                                                                                                 class="rounded-circle"
                                                                                                                                                                                                                                                 /> -->
                                 <div class="ms-3 pe-5">
-                                    <p class="fw-bold mb-1">Artist [Ticket Number]</p>
-                                    <p class="text-muted mb-0">Timestamp</p>
-                                    <p class="text-muted mb-0">Concert place</p>
+                                    <p class="fw-bold mb-1">{{$row->ConcertName}} [{{$row->ConcertID}}]</p>
+                                    <p class="text-muted mb-0">{{$row->ConcertDate}}</p>
+                                    <p class="text-muted mb-0">{{$row->Location}}</p>
                                 </div>
                             </div>
                         </td>
@@ -84,11 +101,11 @@
                         </td>
                         <td>
                             <p class="fw-normal mb-1">Available Tickets</p>
-                            <p class="text-muted mb-0">Number of Tickets</p>
+                            <p class="text-muted mb-0">{{$row->Available_Tickets}}</p>
                         </td>
                         <td>
                             <p class="fw-normal mb-1">Ticket Sold</p>
-                            <p class="text-muted mb-0">No. of Ticket Sold</p>
+                            <p class="text-muted mb-0">{{$row->Ticket_Sold}}</p>
                             <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
                                 <p class="fw-normal mb-1">No. of ticket</p>
                                 <p class="text-dark mb-0">Sold in the last</p>
@@ -102,12 +119,8 @@
                             </div>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">Pending fullfilment</p>
-                            <p class="text-muted mb-0">No. of fulfilled</p>
-                        </td>
-                        <td>
                             <p class="fw-normal mb-1">No. of Months</p>
-                            <p class="text-muted mb-0">Months</p>
+                            <p class="text-muted mb-0">{{$row->Expiration}}</p>
                         </td>
                         <td>
                             <button type="button" class="btn btn-link btn-sm btn-rounded">
@@ -116,9 +129,12 @@
                         </td>
                     </tr>
 
-                </tbody>
-            </table>
-            <table class="collapse table table-bordered border-primary" id="rowcontent">
+                      <!-- Collapse Table -->
+                      <tr class="tabularinfo__subblock collapse">
+                    <td colspan="2">
+                    </td>
+                    <td colspan="8">
+                    <table class="collapse table table-bordered border-primary" id="rowcontent">
                 <thead class="bg-light">
                     <tr>
                         <th></th>
@@ -134,7 +150,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                            <tbody>
                     <tr>
                         <td>
                             <div class="container-fluid">
@@ -203,6 +219,29 @@
                             </button>
                         </td>
                     </tr>
+                        </table>
+                    </td>
+                </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <table class="collapse table table-bordered border-primary" id="rowcontent">
+                <thead class="bg-light">
+                    <tr>
+                        <th></th>
+                        <th>Ticket Details</th>
+                        <th>Ticket Type</th>
+                        <th>Visibility</th>
+                        <th>Face Value</th>
+                        <th>Price</th>
+                        <th>Proceeds</th>
+                        <th>Available</th>
+                        <th>Sold</th>
+                        <th>Publish</th>
+                        <th></th>
+                    </tr>
+                </thead>
+               
 
                 </tbody>
             </table>
@@ -210,7 +249,17 @@
         <br>
 
 
-
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 
 
         {{-- <tbody>
@@ -643,4 +692,15 @@
             </div>
         </div>
     </div>
+    <script>
+    $(document).ready(function() {
+        $('.link').click(function() {
+            event.preventDefault();
+        });
+        $('.js-tabularinfo').bootstrapTable({
+            escape: false,
+            showHeader: false
+        });
+    });
+</script>
 @endsection

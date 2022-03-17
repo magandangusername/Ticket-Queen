@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('Queenticketeventdetails', function (Blueprint $table) {
             $table->id('Listing_ID');
+            $table->integer('ConcertID')->default(0);
             $table->string('Section')->nullable();
             $table->string('Row')->nullable();
             $table->string('Seats')->nullable();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->float('Price')->nullable();
             $table->integer('Available_Tickets')->default(0);
             $table->integer('Ticket_Sold')->default(0);
+            $table->date('Expiration')->nullable();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
