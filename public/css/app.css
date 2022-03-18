@@ -11304,10 +11304,26 @@ a.tools {
   color: black;
   background-repeat: no-repeat;
   background-position: center;
-  outline: 0;
+  outline: 0git;
 }
 
 #Search::-webkit-search-cancel-button {
   position: absolute;
   right: 20px;
+}
+
+#ticketinfotable {
+  background-color: #495371;
+}
+
+#rowcontent {
+  border-color: #21325E;
+}
+
+#ticketinfocontent {
+  color: whitesmoke;
+}
+
+#tabletickets {
+  background-color: #424549;
 }

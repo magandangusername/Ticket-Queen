@@ -9,4 +9,5 @@ class ConcertListing extends Model
 {
     use HasFactory;
     protected $table = 'concert_listings';
+   
 }

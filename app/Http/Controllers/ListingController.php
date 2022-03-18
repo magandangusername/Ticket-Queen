@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\queenticketeventinfo;
 use App\Models\ConcertListing;
 use Exception;
+use App\Models\queenticketeventdetails;
 class ListingController extends Controller
 {
     //
@@ -50,22 +51,15 @@ class ListingController extends Controller
      */
     public function show()
     {
+       // $data=queenticketeventinfo::join('queenticketeventdetails','queenticketeventdetails.ConcertID','=','queenticketeventinfo.ConcertID')
+       // ->select('queenticketeventdetails.*','queenticketeventinfo.*')
+       // ->get();
         $data=queenticketeventinfo::all();
+        $data2=queenticketeventdetails::all();
 
-
-        return view('listing',['queenticketeventinfo'=>$data]);
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    //    return view('listing',['queenticketeventinfo'=>$data]);
+       // return view('listing',compact('data'));
+       return \view('listing',['data'=> $data,'data2' => $data2]);
     }
 
     /**
