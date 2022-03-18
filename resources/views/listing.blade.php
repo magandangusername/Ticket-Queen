@@ -1,5 +1,19 @@
 @extends('layouts.app')
 @section('content')
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <div class="container-fluid" style="background-color: #04293A">
         <div class="container-fluid d-flex justify-content-center">
             <div class="container-fluid bg-image position-fixed p-3"
@@ -47,24 +61,23 @@
         <div class="container-fluid">
             <br>
             <br>
-            <table class="border table align-middle mb-0 bg-white border-start-1 border-dark" data-bs-toggle="collapse"
-                href="#rowcontent" role="button">
-                <thead class="bg-light">
-                    <tr>
-                        <th class="text-center">Ticket Details</th>
+            <table class="table">
+        <thead class="thead-light">
+            <tr>
+                 <th class="text-center">Ticket Details</th>
                         <th class="text-center"></th>
                         <th class="text-center">Available Tickets</th>
                         <th class="text-center">Ticket Sold</th>
                         <th class="text-center"></th>
-                        <th class="text-center">Pending fullfilment</th>
                         <th class="text-center">Days</th>
                         <th></th>
-                    </tr>
-                </thead>
-                <tbody id="tabletickets">
-                @foreach($data as $row)
-                    <tr>
-                        <td>
+            </tr>
+        </thead>
+        <tbody id="tabletickets">
+            @foreach ($data as $row)
+                <tr class="clickable js-tabularinfo-toggle" data-toggle="collapse" id="row2"
+                    data-target=".a{{ $row->ConcertID}}">
+                     <td>
                         <div class="d-flex align-items-center">
                                 <div class="ms-3 pe-5">
                                     <p class="fw-bold mb-1">{{$row->ConcertName}} [{{$row->ConcertID}}]</p>
@@ -73,7 +86,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td>
+                   <td>
                             <!-- <p class="fw-normal mb-1">Software engineer</p> -->
                             <p class="text-muted mb-0">Last Minute Sales Event</p>
                         </td>
@@ -93,95 +106,74 @@
                             </div>
                         </td>
                         <td>
-                            <p class="fw-normal text-light mb-1">Pending Confirmation</p>
-                            <div class="border border-dark border-2 container-fluid h-auto bg-warning rounded">
-                                <p class="text-dark mb-0">No. of Pending</p>
-                            </div>
+                            <p class="text-muted mb-0">2 days</p>
                         </td>
                         <td>
-                            <p class="fw-normal mb-1">No. of Months</p>
-                            <p class="text-muted mb-0">{{$row->Expiration}}</p>
+                          
                         </td>
-                        <td>
-                            <button type="button" class="btn btn-link btn-sm btn-rounded">
-                                Basta
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-</tbody>
-            </table>
-            <table class="collapse table table-bordered" id="rowcontent">
-                <thead class="bg-light">
-                    <tr>
-                        <th class="text-center"></th>
+                </tr>
+
+                <tr class="tabularinfo__subblock collapse a{{ $row->ConcertID}}">
+                    <td colspan="8">
+                        <table class="table-active table table-bordered"id="rowcontent">
+                            <tr>
+                                <th class="text-center"></th>
                         <th class="text-center">Ticket Details</th>
                         <th class="text-center">Ticket Type</th>
                         <th class="text-center">Visibility</th>
-                        <th class="text-center">Face Value</th>
                         <th class="text-center">Price</th>
-                        <th class="text-center">Proceeds</th>
-                        <th class="text-center">Available</th>
-                        <th class="text-center">Sold</th>
+                        <th class="text-center">Available Tickets</th>
+                        <th class="text-center">Sold tickets</th>
                         <th class="text-center">Publish</th>
                         <th class="text-center"></th>
-                    </tr>
-                </thead>
-                <tbody id="ticketinfotable">
-                    <tr>
-                        <td>
+                            </tr>
+
+                            <tbody>
+                                 @foreach($data2 as $row2)
+                @if ($row->ConcertID == $row2->ConcertID)
+                                        <tr>
+                                          <td>
                             <div class="container-fluid">
                                 <div class="form-check">
                                     <input class="form-check-input ms-3" type="checkbox" value="" id="ticketselection">
                                 </div>
                             </div>
-                        </td>
-                        <td>
+                        </td> <td>
                             <div class="container-fluid">
-                                <p id="ticketinfocontent">No. of Tickets</p>
-                                <p id="ticketinfocontent">row no. Seat no.</p>
+                                <p>{{$row2->Section}}</p>
+                                <p>{{$row2->Row}} {{$row2->Seats}}</p>
                             </div>
                         </td>
                         <td>
                             <div class="container-fluid">
-                                <p id="ticketinfocontent">E-Tickets</p>
+                                <p>{{$row2->Ticket_Type}}</p>
                                 <a href="#" class="link-primary text-decoration-none">
-                                    <p id="ticketinfocontent">Upload Now</p>
+                                    <p>Upload Now</p>
                                 </a>
                             </div>
                         </td>
-                        <td>
+                                           <td>
                             <div class="container-fluid">
                                 <p class="text-warning">No. %</p>
                             </div>
                         </td>
+                        
                         <td>
                             <div class="container-fluid">
-                                <input type="text" class="form-control d-inline" style="width: 75px">
+                                <input type="text" class="form-control d-inline" style="width: 75px" value="{{$row2->Price}}">
+                                <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
+                            </div>
+                        </td>
+                       
+                        <td>
+                            <div class="container-fluid">
+                                <input type="text" class="form-control d-inline" style="width: 75px" value="{{$row2->Available_Tickets}}">
                                 <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
                             </div>
                         </td>
                         <td>
-                            <div class="container-fluid">
-                                <input type="text" class="form-control d-inline" style="width: 75px">
-                                <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container-fluid">
-                                <input type="text" class="form-control d-inline" style="width: 75px">
-                                <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container-fluid">
-                                <input type="text" class="form-control d-inline" style="width: 75px">
-                                <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="container-fluid">
-                                <p id="ticketinfocontent">No.</p>
+                            <div >
+                                <p>{{$row2->Ticket_Sold}}</p>
                             </div>
                         </td>
                         <td>
@@ -195,16 +187,20 @@
                                 Basta
                             </button>
                         </td>
-                    </tr>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
 
-                </tbody>
-            </table>
-        </div>
+            @endforeach
+
+
+        </tbody>
+    </table>
         <br>
-
-
-
-
 
         {{-- <tbody>
             <tr>
@@ -633,4 +629,26 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+        <script>
+    $(document).ready(function() {
+        $('.link').click(function() {
+            event.preventDefault();
+        });
+        $('.js-tabularinfo').bootstrapTable({
+            escape: false,
+            showHeader: false
+        });
+    });
+</script>
+
 @endsection
