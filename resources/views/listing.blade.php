@@ -97,11 +97,11 @@
                     </td>
                     <td>
                         <p class="fw-normal mb-1">Available Tickets</p>
-                        <p class="text-muted mb-0">{{$row->Available_Tickets}}</p>
+                        <p class="text-muted mb-0">{{$row->Total_Available}}</p>
                     </td>
                     <td>
                         <p class="fw-normal mb-1">Ticket Sold</p>
-                        <p class="text-muted mb-0">{{$row->Ticket_Sold}}</p>
+                        <p class="text-muted mb-0">{{$row->Total_Sold}}</p>
                     </td>
                     <td>
                         <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
@@ -117,7 +117,6 @@
 
                     </td>
                 </tr>
-
                 <tr class="tabularinfo__subblock collapse a{{ $row->ConcertID}}">
                     <td colspan="8">
                         <table class="table-active table table-bordered" id="rowcontent">
@@ -195,7 +194,7 @@
                                     </td>
                                 </tr>
                                 @endif
-                                
+
                                 @endforeach
                             </tbody>
                         </table>
@@ -203,8 +202,6 @@
                 </tr>
 
                 @endforeach
-
-
             </tbody>
         </table>
         <br>
