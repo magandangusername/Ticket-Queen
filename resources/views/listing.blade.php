@@ -15,10 +15,10 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="container-fluid bg-image position-fixed p-3" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
             <div class="input-group mb-3 col-md-8">
+            <form class="input-group mb-3 col-md-8" method="get" action="/search">
                 <span class="input-group-text" id="basic-addon1"><img src="../././public/images/Vector-Search.png" class="img-fluid" alt="..."></span>
-                <input type="Search" id="Search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
-                <button type="button" class="btn btn-light border">Search</button>
-            </div>
+                <input type="Search" id="Search" name="search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"></input>
+                <button type="button" class="btn btn-light border">Search</button></form></div>
 
             <div class="col checkboxes container-fluid row col-md-auto">
                 <div class="form-check form-check-inline text-light col ms-5">

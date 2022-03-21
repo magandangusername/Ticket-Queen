@@ -98,5 +98,11 @@ class ListingController extends Controller
         return response()->json($e->getMessage(), 500);
     }
     }
-
+    public function search(Request $request)
+    {
+        $search=$request->get('search');
+        $data= queenticketeventinfo::where('ConcertName','LIKE','%'.$search.'%')->paginate(5);
+        $data2=queenticketeventdetails::all();
+        return view('listing',['data'=> $data,'data2' => $data2]);
+    }
 }
