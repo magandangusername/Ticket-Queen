@@ -15,10 +15,12 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="container-fluid bg-image position-fixed p-3" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
             <div class="input-group mb-3 col-md-8">
-            <form class="input-group mb-3 col-md-8" method="get" action="/search">
-                <span class="input-group-text" id="basic-addon1"><img src="../././public/images/Vector-Search.png" class="img-fluid" alt="..."></span>
-                <input type="Search" id="Search" name="search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"></input>
-                <button type="button" class="btn btn-light border">Search</button></form></div>
+                <form class="input-group mb-3 col-md-8" method="get" action="/search">
+                    <span class="input-group-text" id="basic-addon1"><img src="../././public/images/Vector-Search.png" class="img-fluid" alt="..."></span>
+                    <input type="Search" id="Search" name="search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1"></input>
+                    <button type="button" class="btn btn-light border">Search</button>
+                </form>
+            </div>
 
             <div class="col checkboxes container-fluid row col-md-auto">
                 <div class="form-check form-check-inline text-light col ms-5">
@@ -205,7 +207,7 @@
         </table>
         <br>
 
-        {{-- <tbody>
+        <tbody>
             <tr>
                 <td>
                     <div class="container-fluid">
@@ -262,7 +264,7 @@
                     </button>
                 </td>
             </tr>
-        </tbody> --}}
+        </tbody>
         </table>
     </div>
 
@@ -270,7 +272,7 @@
 
 </div>
 
-<div class="modal w h-75" id="myModal">
+<div class="modal w-100" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -290,7 +292,7 @@
 
 
             <div class="row">
-                <div class="container-fluid text-white col m-2">
+                <div class="container-fluid col-7 sm">
                     <form>
                         <div class="row">
                             <div class="form-group col-2">
@@ -339,8 +341,6 @@
                                 </div>
                             </div>
                         </div>
-
-
 
                         <div class="row">
                             <div class="col-sm-2 my-1">
@@ -619,25 +619,25 @@
                         </div>
                     </form>
                 </div>
-                <div class="col  me-5">
-                    <div class="form-check form-switch text-white border">
+                <div class="col-4 m-2">
+                    <div class="form-check form-switch border">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Publish</label>
                     </div>
-                    <div class="form-check form-switch text-white border">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Sold Status</label>
+                    <div class="border">
+                        <label class="form-label" for="">Sold Status</label>
                         <br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">blah blah</label>
+                        <label class="form-label" for="">blah blah</label>
                     </div>
-                    <div class="form-check form-switch text-white border">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Listing ID</label>
+                    <div class="border">
+                        <label class="form-label" for="">Listing ID</label>
                         <br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">1232132131</label>
+                        <label class="form-label" for="">1232132131</label>
                     </div>
-                    <div class="form-check form-switch text-white border">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Ticket Type</label>
+                    <div class="border">
+                        <label class="form-label" for="">Ticket Type</label>
                         <br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">E-ticket</label>
+                        <label class="form-label" for="">E-ticket</label>
                     </div>
                 </div>
             </div>
@@ -654,6 +654,8 @@
         </div>
     </div>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
