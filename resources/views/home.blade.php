@@ -4,6 +4,11 @@
 <title>Dashboard | Inventory Manager</title>
 
 <style>
+
+    .modal-ku {
+    width: 750px;
+    margin: auto;
+    }
     .contain {
         background: #8CB743;
         text-align: center;
