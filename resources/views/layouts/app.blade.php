@@ -24,14 +24,12 @@
 <body style="background-color: #04293A">
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-1 bg-dark position-fixed w-100">
-            <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img src="$"
-                        alt="" width="30" height="24"></span>
+            <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img src="$" alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
 
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown">
@@ -40,7 +38,7 @@
                         <a class="nav-link text-light" href="">Express Local Shipping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="">+ New Listing</a>
+                        <a class="nav-link text-light btn" data-bs-toggle="modal" data-bs-target="#ListingModal" href="">+ New Listing</a>
                     </li>
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,29 +51,28 @@
                         </ul>
                     </li> --}}
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="#">{{ __('Login') }}</a>
-                        </li>
-                        {{-- @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">{{ __('Login') }}</a>
+                    </li>
+                    {{-- @if (Route::has('register'))
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="#">Sign-Up</a>
                             </li>
                         @endif --}}
                     @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
 
 
                     @endguest
@@ -90,6 +87,66 @@
             @yield('content')
         </main>
 
+    </div>
+    <div class="modal w-100" id="ListingModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header m-1 p-2">
+
+                    <h4>Create New Listing</h4>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="m-1 p-2">
+
+                    <div class="box">
+                        <input type="text" class="form-control" name="" placeholder="Search by Event, Venue, City">
+                    </div>
+                    <form action="" class="row">
+                        <div class="col">
+                            <label for="date">From</label><br>
+                            <input class="form-control" type="date" id="date" name="date">
+                        </div>
+
+                        <br>
+                        <div class="col">
+                            <label for="date">To</label><br>
+                            <input class="form-control" type="date" id="date" name="date">
+                        </div>
+                    </form>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Thu
+                                    <br>
+                                    17 Mar 2022
+                                    <br>
+                                    19:00
+                                </td>
+                                <td>
+                                    Genesis
+                                    <br>
+                                    Paris La Defense Arena
+                                    <br>
+                                    Nanterre
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer m-1 p-2">
+                    <button type="button" class="btn btn-primary">+ Request an event</button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </body>
