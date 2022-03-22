@@ -11327,3 +11327,8 @@ a.tools {
 #tabletickets {
   background-color: #424549;
 }
+
+img#search-icon {
+  height: 25px;
+  width: 25px;
+}
