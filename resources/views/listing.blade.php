@@ -14,12 +14,6 @@
 <div class="container-fluid" style="background-color: #04293A">
     <div class="container-fluid d-flex justify-content-center">
         <div class="container-fluid bg-image position-fixed" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
-            <div class="input-group col-md-14">
-            <form class="input-group col-md-14" method="get" action="/search">
-                <span class="input-group-text" id="basic-addon1"><img id="search-icon"src="{{ 'images/Vector-Search.png' }}" class="img-fluid" alt="..."></span>
-                <input type="search" id="Search" name="search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
-                <button type="button" class="btn btn-light border">Search</button></form></div>
-
             <div class="checkboxes container-fluid row">
                 <div class="form-check form-check-inline text-light col">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
