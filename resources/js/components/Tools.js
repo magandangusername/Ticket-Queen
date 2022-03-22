@@ -1,12 +1,15 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ListingDelete from "./ListingDelete";
 
-class Tools extends Component {
-    render() {
-        return (
-            <BrowserRouter>
+const Tools = () => {
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <>
+            {visible &&
+            <div>
                 <hr className="bg-information border-2 border-top border-information" />
                 <div className="container-fluid row col-md-auto">
                     <div className="d-inline col container-fluid">
@@ -49,9 +52,9 @@ class Tools extends Component {
                         </a>
                     </div>
                 </div>
-            </BrowserRouter>
-        );
-    }
-}
+            </div>}
+        </>
+    );
+};
 
 ReactDOM.render(<Tools />, document.getElementById("Tools"));
