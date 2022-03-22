@@ -28,12 +28,17 @@
                 <h6>Inventory Manager | Listing</h6>
             </a>
 
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav position-absolute top-50 end-0 translate-middle-y pe-4" style="font-size: 120%;">
+                    <li class="nav-item active">
+                        <form class="form-control" method="get" action="/search" style="margin:auto;width:500px">
+                            <input type="text" placeholder="Search.." name="search2" style="width:437px">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link text-light" href="">Express Local Shipping</a>
                     </li>
