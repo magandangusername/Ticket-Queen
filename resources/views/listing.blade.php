@@ -55,7 +55,13 @@
     <div class="container-fluid">
         <br>
         <br>
-        <table class="table">
+
+
+
+
+
+
+        {{-- <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th></th>
@@ -68,6 +74,7 @@
                     <th></th>
                 </tr>
             </thead>
+
             <tbody id="tabletickets">
                 @foreach ($data as $row)
                 <tr class="clickable js-tabularinfo-toggle" data-toggle="collapse" id="row2" data-target=".a{{ $row->ConcertID}}">
@@ -138,7 +145,7 @@
                                     <td>
                                         <div class="container-fluid">
                                             <div class="form-check">
-                                                <input class="form-check-input ms-3" type="checkbox" value="" id="ticketselection">
+                                                <input />
                                             </div>
                                         </div>
                                     </td>
@@ -164,15 +171,15 @@
 
                                     <td>
                                         <div class="container-fluid">
-                                            <input type="text" class="form-control d-inline" style="width: 75px" value="{{$row2->Price}}">
-                                            <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
+                                            <input />
+                                            <img />
                                         </div>
                                     </td>
 
                                     <td>
                                         <div class="container-fluid">
-                                            <input type="text" class="form-control d-inline" style="width: 75px" value="{{$row2->Available_Tickets}}">
-                                            <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
+                                            <input />
+                                            <img />
                                         </div>
                                     </td>
                                     <td>
@@ -182,8 +189,8 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                                            <img src="" alt="" style="width: 20px; height: 20px" class="rounded-circle d-inline" />
+                                            <input />
+                                            <img />
                                         </div>
                                     </td>
                                     <td>
@@ -202,7 +209,16 @@
 
                 @endforeach
             </tbody>
-        </table>
+        </table> --}}
+
+
+        <div id="ListingTable"></div>
+
+
+
+
+
+
         <br>
 
         <tbody>
@@ -652,6 +668,7 @@
         </div>
     </div>
 </div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

@@ -13,3 +13,4 @@
   */
 
  require('./components/Tools');
+ require('./components/ListingTable');

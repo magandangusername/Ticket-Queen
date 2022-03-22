@@ -19,7 +19,7 @@ class ListingController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -104,5 +104,20 @@ class ListingController extends Controller
         $data= queenticketeventinfo::where('ConcertName','LIKE','%'.$search.'%')->paginate(5);
         $data2=queenticketeventdetails::all();
         return view('listing',['data'=> $data,'data2' => $data2]);
+    }
+
+
+    public function concerts()
+    {
+        $concert_listing = queenticketeventinfo::all();
+
+        return $concert_listing->toJson();
+    }
+
+    public function tickets()
+    {
+        $ticket_listing = queenticketeventdetails::all();
+
+        return $ticket_listing->toJson();
     }
 }
