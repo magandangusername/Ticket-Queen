@@ -12,8 +12,8 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <div class="container-fluid" style="background-color: #04293A">
-    <div class="container-fluid d-flex justify-content-center">
-        <div class="container-fluid bg-image position-fixed" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
+    <div class="container-fluid d-flex justify-content-center" style="">
+        <div class="container-fluid bg-image position-fixed" style="z-index: 500; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
             <div class="checkboxes container-fluid row">
                 <div class="form-check form-check-inline text-light col">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -40,7 +40,7 @@
                     </label>
                 </div>
             </div>
-            {{-- <div id="Tools"></div> --}}
+            <div id="Tools" class="z-indexes"></div>
         </div>
     </div>
     <br><br><br><br><br><br><br>
@@ -50,7 +50,168 @@
         <br>
         <br>
 
+
+
+
+
+
+        {{-- <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th class="text-center">Ticket Details</th>
+                    <th class="text-center"></th>
+                    <th class="text-center">Available Tickets</th>
+                    <th class="text-center">Ticket Sold</th>
+                    <th class="text-center"></th>
+                    <th class="text-center">Days</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="tabletickets">
+                @foreach ($data as $row)
+                <tr class="clickable js-tabularinfo-toggle" data-toggle="collapse" id="row2" data-target=".a{{ $row->ConcertID}}">
+                    <td>
+                        <div class="col-sm-6">
+                            <div class="row mb-2">
+                                <a href="#" class="link">
+                                    <button type="button" name='edit' id='{{ $row->ConcertID}}' class="edit btn btn-xs btn-outline-danger btn-sm my-0">
+                                        <i class="fa fa-plus-circle"></i></button>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3 pe-5">
+                                <p class="fw-bold mb-1">{{$row->ConcertName}} [{{$row->ConcertID}}]</p>
+                                <p class="text-muted mb-0">{{$row->ConcertDate}}</p>
+                                <p class="text-muted mb-0">{{$row->Location}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- <p class="fw-normal mb-1">Software engineer</p> -->
+                        <p class="text-muted mb-0">Last Minute Sales Event</p>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">Available Tickets</p>
+                        <p class="text-muted mb-0">{{$row->Total_Available}}</p>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">Ticket Sold</p>
+                        <p class="text-muted mb-0">{{$row->Total_Sold}}</p>
+                    </td>
+                    <td>
+                        <div class="border border-dark border-2 container-fluid h-auto bg-danger rounded">
+                            <p class="fw-normal mb-1">No. of ticket</p>
+                            <p class="text-dark mb-0">Sold in the last</p>
+                            <p class="fw-normal mb-1">No. of days</p>
+                        </div>
+                    </td>
+                    <td>  
+                        <p class="text-muted mb-0">2 days</p>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr class="tabularinfo__subblock collapse a{{ $row->ConcertID}}">
+                    <td colspan="8">
+                        <table class="table-active table table-bordered" id="rowcontent">
+                            <tr>
+                                <th class="text-center"></th>
+                                <th class="text-center">Ticket Details</th>
+                                <th class="text-center">Ticket Type</th>
+                                <th class="text-center">Visibility</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Available Tickets</th>
+                                <th class="text-center">Sold tickets</th>
+                                <th class="text-center">Publish</th>
+                                <th class="text-center"></th>
+                            </tr>
+
+                            <tbody>
+                                @foreach($data2 as $row2)
+                                @if ($row->ConcertID == $row2->ConcertID)
+                                <tr>
+                                    <td>
+                                        <div class="container-fluid">
+                                            <div class="form-check">
+                                                <input />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="container-fluid">
+                                            <p>{{$row2->Section}}</p>
+                                            <p>{{$row2->Row}} {{$row2->Seats}}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="container-fluid">
+                                            <p>{{$row2->Ticket_Type}}</p>
+                                            <a href="#" class="link-primary text-decoration-none">
+                                                <p>Upload Now</p>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="container-fluid">
+                                            <p class="text-warning">No. %</p>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="container-fluid">
+                                            <input />
+                                            <img />
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="container-fluid">
+                                            <input />
+                                            <img />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p>{{$row2->Ticket_Sold}}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input />
+                                            <img />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                            Basta
+                                        </button>
+                                    </td>
+                                </tr>
+                                @endif
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                @endforeach
+            </tbody>
+        </table> --}}
+
+
         <div id="ListingTable"></div>
+
+
+
+
+
 
         <br>
 

@@ -11363,3 +11363,7 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+.navz-index {
+  z-index: 500;
+}
