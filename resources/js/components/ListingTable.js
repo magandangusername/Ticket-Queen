@@ -111,11 +111,10 @@ const ListingTable = () => {
     const handlePriceChange = async (id, val, key) => {
         const listTickets = tickets.map(
             (ticket) =>
-                ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket,
-            (key.key === "Enter") & (ticket.Listing_ID === id)
-                ? { ...ticket, isPriceSelected: !ticket.isPriceSelected }
-                : ticket
+                ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
         );
+
+        if(key.key === 'Enter') console.log('You pressed enter');
         setTickets(listTickets);
     };
 
@@ -163,6 +162,7 @@ const ListingTable = () => {
                             {concerts.length && (
                                 <>
                                     {concerts.map((concert) => (
+
                                         <ListingConcerts
                                             key={concert.ConcertID}
                                             concert={concert}

@@ -60,7 +60,7 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                     </div>
                 </td>
                 <td>
-                    <p className="text-muted mb-0">2 days</p>
+                    <p className="text-muted mb-0">{concert.remaining_days}</p>
                 </td>
                 <td></td>
             </tr>
@@ -91,7 +91,7 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                         {tickets.length ? (
                             <tbody>
                                 {tickets.map((ticket) =>
-                                    ticket.ConcertID === concert.ConcertID ? (
+                                    ticket.ConcertID === concert.ConcertID & ticket.status === "active" ? (
                                         <ListingTickets
                                             key={ticket.Listing_ID}
                                             ticket={ticket}

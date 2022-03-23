@@ -51,7 +51,7 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                         onDoubleClick={() => handlePriceSelect(ticket.Listing_ID)}
                         onBlur={() => handlePriceSelect(ticket.Listing_ID)}
                         onChange={(e) => handlePriceChange(ticket.Listing_ID, e.target.value, e)}
-                        // onKeyDown={e => e.key === 'Enter' && handlePriceChange(ticket.Listing_ID, e.target.value)}
+                        onKeyDown={e => e.key === 'Enter' && handlePriceSelect(ticket.Listing_ID)}
                     />
                     <img
                         // src=""

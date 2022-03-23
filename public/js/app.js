@@ -5536,7 +5536,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "text-muted mb-0",
-          children: "2 days"
+          children: concert.remaining_days
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {})]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
@@ -5577,7 +5577,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
             })
           }), tickets.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
             children: tickets.map(function (ticket) {
-              return ticket.ConcertID === concert.ConcertID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              return ticket.ConcertID === concert.ConcertID & ticket.status === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 ticket: ticket,
                 handleCheck: handleCheck,
                 handlePriceSelect: handlePriceSelect,
@@ -5903,12 +5903,11 @@ var ListingTable = function ListingTable() {
                 return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
                   Price: val
                 }) : ticket;
-              }, key.key === "Enter" & ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                isPriceSelected: !ticket.isPriceSelected
-              }) : ticket);
+              });
+              if (key.key === 'Enter') console.log('You pressed enter');
               setTickets(listTickets);
 
-            case 2:
+            case 3:
             case "end":
               return _context5.stop();
           }
@@ -6089,8 +6088,10 @@ var ListingTickets = function ListingTickets(_ref) {
           },
           onChange: function onChange(e) {
             return handlePriceChange(ticket.Listing_ID, e.target.value, e);
-          } // onKeyDown={e => e.key === 'Enter' && handlePriceChange(ticket.Listing_ID, e.target.value)}
-
+          },
+          onKeyDown: function onKeyDown(e) {
+            return e.key === 'Enter' && handlePriceSelect(ticket.Listing_ID);
+          }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
           // src=""
           alt: "???",
