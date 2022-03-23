@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceChange }) => {
+const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceChange, handleAvailableTicketSelect, handleAvailableTicketChange }) => {
     return (
         <tr>
             <td>
@@ -46,7 +46,6 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                         className="form-control d-inline"
                         style={{width: 75 + 'px'}}
                         value={ticket.Price}
-                        // onChange={(e) => handlePriceChange(e.target.value)}
                         readOnly = {!ticket.isPriceSelected}
                         onDoubleClick={() => handlePriceSelect(ticket.Listing_ID)}
                         onBlur={() => handlePriceSelect(ticket.Listing_ID)}
@@ -69,7 +68,11 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                         className="form-control d-inline"
                         style={{width: 75 + 'px'}}
                         value={ticket.Available_Tickets}
-                        readOnly
+                        readOnly = {!ticket.isAvailableTicketSelected}
+                        onDoubleClick={() => handleAvailableTicketSelect(ticket.Listing_ID)}
+                        onBlur={() => handleAvailableTicketSelect(ticket.Listing_ID)}
+                        onChange={(e) => handleAvailableTicketChange(ticket.Listing_ID, e.target.value, e)}
+                        onKeyDown={e => e.key === 'Enter' && handleAvailableTicketSelect(ticket.Listing_ID)}
                     />
                     <img
                         // src=""

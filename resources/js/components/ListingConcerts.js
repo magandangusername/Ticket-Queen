@@ -1,7 +1,7 @@
 import React from "react";
 import ListingTickets from "./ListingTickets";
 
-const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, handlePriceChange }) => {
+const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, handlePriceChange, handleAvailableTicketSelect, handleAvailableTicketChange }) => {
     return (
         <>
             <tr
@@ -98,6 +98,8 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                                             handleCheck={handleCheck}
                                             handlePriceSelect={handlePriceSelect}
                                             handlePriceChange={handlePriceChange}
+                                            handleAvailableTicketSelect={handleAvailableTicketSelect}
+                                            handleAvailableTicketChange={handleAvailableTicketChange}
                                         />
                                     ) : null
                                 )}
