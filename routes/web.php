@@ -36,9 +36,9 @@ Route::get('/testing', function () {
 });
 
 
-Route::fallback(function() {
-    return view('home');
-});
+// Route::fallback(function() {
+//     return view('home');
+// });
 
 //Route::get('/search','ListingController@search');
 

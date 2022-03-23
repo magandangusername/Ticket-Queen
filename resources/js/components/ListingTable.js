@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
+// import Tools from "./Tools";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -20,15 +21,13 @@ const ListingTable = () => {
 
                 var result = arrOfObj.map(function (el) {
                     var o = Object.assign({}, el);
-                    o.isActive = false;
+                    o.isSelected = false;
                     return o;
                 });
                 console.log(result);
                 setConcerts(result);
             } catch (error) {
                 setFetchError(err.message);
-            } finally {
-                setIsLoading(false);
             }
         };
         const fetchTicket = async () => {
@@ -40,7 +39,7 @@ const ListingTable = () => {
 
                 var result = arrOfObj.map(function (el) {
                     var o = Object.assign({}, el);
-                    o.isActive = false;
+                    o.isSelected = false;
                     return o;
                 });
                 console.log(result);
@@ -55,6 +54,33 @@ const ListingTable = () => {
         fetchConcert();
         fetchTicket();
     }, []);
+
+    //not finished, to be continued
+    const handleCheck = async (id) => {
+        //finds the set of data from the list and set its value
+        const listTickets = tickets.map((ticket) =>
+            ticket.Listing_ID === id
+                ? { ...ticket, isSelected: !ticket.isSelected }
+                : ticket
+        );
+        setTickets(listTickets);
+        console.log(tickets);
+
+        const selected = tickets.filter(ticket => ticket.isSelected === true)
+
+        // if (tickets.length > 0) setVisible(true);
+        // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
+        // const updateOptions = {
+        //     method: "PATCH",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({ checked: myItem[0].checked }),
+        // };
+        // const reqUrl = `api/ticket/${id}`;
+        // const result = await apiRequest(reqUrl, updateOptions);
+        // if (result) setFetchError(result);
+    };
 
     return (
         <>
@@ -101,6 +127,8 @@ const ListingTable = () => {
                                         key={concert.ConcertID}
                                         concert={concert}
                                         tickets={tickets}
+                                        setTickets={setTickets}
+                                        handleCheck={handleCheck}
                                     />
                                 ))}
                             </>
@@ -111,7 +139,7 @@ const ListingTable = () => {
         </>
     );
 };
-
+//by [w@r.fr{e}(97),k]
 export default ListingTable;
 
 if (document.getElementById("ListingTable")) {

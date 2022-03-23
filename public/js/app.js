@@ -5387,9 +5387,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Tools */ "./resources/js/components/Tools.js");
-
 __webpack_require__(/*! ./components/ListingTable */ "./resources/js/components/ListingTable.js");
+
+__webpack_require__(/*! ./components/Tools */ "./resources/js/components/Tools.js");
 
 /***/ }),
 
@@ -5451,7 +5451,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var ListingConcerts = function ListingConcerts(_ref) {
   var concert = _ref.concert,
-      tickets = _ref.tickets;
+      tickets = _ref.tickets,
+      handleCheck = _ref.handleCheck;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
       className: "clickable js-tabularinfo-toggle",
@@ -5572,23 +5573,14 @@ var ListingConcerts = function ListingConcerts(_ref) {
                 className: "text-center"
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          }), tickets.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
             children: tickets.map(function (ticket) {
               return ticket.ConcertID === concert.ConcertID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                ticket: ticket
+                ticket: ticket,
+                handleCheck: handleCheck
               }, ticket.Listing_ID) : null;
-            } // {
-            //     if (ticket.ConcertID === concert.ConcertID) {
-            //         return (
-            //             <ListingTickets
-            //                 key={ticket.Listing_ID}
-            //                 ticket={ticket}
-            //             />
-            //         );
-            //     }
-            // }
-            )
-          })]
+            })
+          }) : null]
         })
       })
     })]
@@ -5656,6 +5648,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _ListingConcerts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ListingConcerts */ "./resources/js/components/ListingConcerts.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5677,6 +5675,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+ // import Tools from "./Tools";
 
 
 
@@ -5722,7 +5721,7 @@ var ListingTable = function ListingTable() {
                 arrOfObj = response.data;
                 result = arrOfObj.map(function (el) {
                   var o = Object.assign({}, el);
-                  o.isActive = false;
+                  o.isSelected = false;
                   return o;
                 });
                 console.log(result);
@@ -5736,16 +5735,11 @@ var ListingTable = function ListingTable() {
                 setFetchError(err.message);
 
               case 14:
-                _context.prev = 14;
-                setIsLoading(false);
-                return _context.finish(14);
-
-              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11, 14, 17]]);
+        }, _callee, null, [[0, 11]]);
       }));
 
       return function fetchConcert() {
@@ -5770,7 +5764,7 @@ var ListingTable = function ListingTable() {
                 arrOfObj = response.data;
                 result = arrOfObj.map(function (el) {
                   var o = Object.assign({}, el);
-                  o.isActive = false;
+                  o.isSelected = false;
                   return o;
                 });
                 console.log(result);
@@ -5803,7 +5797,51 @@ var ListingTable = function ListingTable() {
 
     fetchConcert();
     fetchTicket();
-  }, []);
+  }, []); //not finished, to be continued
+
+  var handleCheck = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
+      var listTickets, selected;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              //finds the set of data from the list and set its value
+              listTickets = tickets.map(function (ticket) {
+                return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                  isSelected: !ticket.isSelected
+                }) : ticket;
+              });
+              setTickets(listTickets);
+              console.log(tickets);
+              selected = tickets.filter(function (ticket) {
+                return ticket.isSelected === true;
+              }); // if (tickets.length > 0) setVisible(true);
+              // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
+              // const updateOptions = {
+              //     method: "PATCH",
+              //     headers: {
+              //         "Content-Type": "application/json",
+              //     },
+              //     body: JSON.stringify({ checked: myItem[0].checked }),
+              // };
+              // const reqUrl = `api/ticket/${id}`;
+              // const result = await apiRequest(reqUrl, updateOptions);
+              // if (result) setFetchError(result);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function handleCheck(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("table", {
       className: "table",
@@ -5857,14 +5895,17 @@ var ListingTable = function ListingTable() {
           children: concerts.map(function (concert) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_4__["default"], {
               concert: concert,
-              tickets: tickets
+              tickets: tickets,
+              setTickets: setTickets,
+              handleCheck: handleCheck
             }, concert.ConcertID);
           })
         })
       })]
     })]
   });
-};
+}; //by [w@r.fr{e}(97),k]
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingTable);
 
@@ -5892,7 +5933,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ListingTickets = function ListingTickets(_ref) {
-  var ticket = _ref.ticket;
+  var ticket = _ref.ticket,
+      handleCheck = _ref.handleCheck;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -5900,11 +5942,13 @@ var ListingTickets = function ListingTickets(_ref) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "form-check",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "checkbox",
             className: "form-check-input ms-3",
-            type: "checkbox" // value=""
-            ,
             id: "ticketselection",
-            readOnly: true
+            onChange: function onChange() {
+              return handleCheck(ticket.Listing_ID);
+            },
+            checked: ticket.isSelected
           })
         })
       })
@@ -5941,12 +5985,45 @@ var ListingTickets = function ListingTickets(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "container-fluid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {})]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          type: "text",
+          className: "form-control d-inline",
+          style: {
+            width: 75 + 'px'
+          },
+          value: ticket.Price // onChange={(e) => handlePriceChange(e.target.value)}
+          ,
+          readOnly: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          // src=""
+          alt: "???",
+          style: {
+            width: 20 + 'px',
+            height: 20 + 'px'
+          },
+          className: "rounded-circle d-inline"
+        })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "container-fluid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {})]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          type: "text",
+          className: "form-control d-inline",
+          style: {
+            width: 75 + 'px'
+          },
+          value: ticket.Available_Tickets,
+          readOnly: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          // src=""
+          alt: "???",
+          style: {
+            width: 20 + 'px',
+            height: 20 + 'px'
+          },
+          className: "rounded-circle d-inline"
+        })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -5960,10 +6037,17 @@ var ListingTickets = function ListingTickets(_ref) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           className: "form-check-input",
           type: "checkbox",
-          id: "flexSwitchCheckChecked" // checked
-          ,
+          id: "flexSwitchCheckChecked",
           readOnly: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          // src=""
+          alt: "???",
+          style: {
+            width: 20 + 'px',
+            height: 20 + 'px'
+          },
+          className: "rounded-circle d-inline"
+        })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
@@ -5988,22 +6072,13 @@ var ListingTickets = function ListingTickets(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _ListingDelete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListingDelete */ "./resources/js/components/ListingDelete.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -6013,11 +6088,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Tools = function Tools() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      visible = _useState2[0],
-      setVisible = _useState2[1];
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: visible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {
@@ -6082,7 +6152,9 @@ var Tools = function Tools() {
   });
 };
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Tools, {}), document.getElementById("Tools"));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tools); // if (document.getElementById("Tools")) {
+//     ReactDOM.render(<Tools />, document.getElementById("Tools"));
+// }
 
 /***/ }),
 

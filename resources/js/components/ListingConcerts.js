@@ -1,7 +1,7 @@
 import React from "react";
 import ListingTickets from "./ListingTickets";
 
-const ListingConcerts = ({ concert, tickets }) => {
+const ListingConcerts = ({ concert, tickets, handleCheck }) => {
     return (
         <>
             <tr
@@ -87,29 +87,20 @@ const ListingConcerts = ({ concert, tickets }) => {
                                 <th className="text-center"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {/* loop for tickets with condition */}
-                            {tickets.map(
-                                (ticket) =>
+
+                        {tickets.length ? (
+                            <tbody>
+                                {tickets.map((ticket) =>
                                     ticket.ConcertID === concert.ConcertID ? (
                                         <ListingTickets
                                             key={ticket.Listing_ID}
                                             ticket={ticket}
+                                            handleCheck={handleCheck}
                                         />
                                     ) : null
-
-                                // {
-                                //     if (ticket.ConcertID === concert.ConcertID) {
-                                //         return (
-                                //             <ListingTickets
-                                //                 key={ticket.Listing_ID}
-                                //                 ticket={ticket}
-                                //             />
-                                //         );
-                                //     }
-                                // }
-                            )}
-                        </tbody>
+                                )}
+                            </tbody>
+                        ) : null}
                     </table>
                 </td>
             </tr>

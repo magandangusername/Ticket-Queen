@@ -1,17 +1,18 @@
 import React from "react";
 
-const ListingTickets = ({ ticket }) => {
+const ListingTickets = ({ ticket, handleCheck }) => {
     return (
         <tr>
             <td>
                 <div className="container-fluid">
                     <div className="form-check">
                         <input
-                            className="form-check-input ms-3"
                             type="checkbox"
-                            // value=""
+                            className="form-check-input ms-3"
                             id="ticketselection"
-                            readOnly
+                            onChange={() => handleCheck(ticket.Listing_ID)}
+                            checked={ticket.isSelected}
+
                         />
                     </div>
                 </div>
@@ -41,18 +42,18 @@ const ListingTickets = ({ ticket }) => {
             <td>
                 <div className="container-fluid">
                     <input
-                        // type="text"
-                        // className="form-control d-inline"
-                        // style="width: 75px"
-                        // value={ticket.Price}
-                        // // onChange={(e) => handlePriceChange(e.target.value)}
-                        // readOnly
+                        type="text"
+                        className="form-control d-inline"
+                        style={{width: 75 + 'px'}}
+                        value={ticket.Price}
+                        // onChange={(e) => handlePriceChange(e.target.value)}
+                        readOnly
                     />
                     <img
-                        // src="/images/default.png"
-                        // alt="no picture"
-                        // style="width: 20px; height: 20px"
-                        // className="rounded-circle d-inline"
+                        // src=""
+                        alt="???"
+                        style={{width: 20 + 'px', height: 20 + 'px'}}
+                        className="rounded-circle d-inline"
                     />
                 </div>
             </td>
@@ -60,17 +61,17 @@ const ListingTickets = ({ ticket }) => {
             <td>
                 <div className="container-fluid">
                     <input
-                        // type="text"
-                        // className="form-control d-inline"
-                        // style="width: 75px"
-                        // value={ticket.Available_Tickets}
-                        // readOnly
+                        type="text"
+                        className="form-control d-inline"
+                        style={{width: 75 + 'px'}}
+                        value={ticket.Available_Tickets}
+                        readOnly
                     />
                     <img
-                        // src="/images/default.png"
-                        // alt="no picture"
-                        // style="width: 20px; height: 20px"
-                        // className="rounded-circle d-inline"
+                        // src=""
+                        alt="???"
+                        style={{width: 20 + 'px', height: 20 + 'px'}}
+                        className="rounded-circle d-inline"
                     />
                 </div>
             </td>
@@ -85,14 +86,13 @@ const ListingTickets = ({ ticket }) => {
                         className="form-check-input"
                         type="checkbox"
                         id="flexSwitchCheckChecked"
-                        // checked
                         readOnly
                     />
                     <img
-                        // src="/images/default.png"
-                        // alt="no picture"
-                        // style="width: 20px; height: 20px"
-                        // className="rounded-circle d-inline"
+                        // src=""
+                        alt="???"
+                        style={{width: 20 + 'px', height: 20 + 'px'}}
+                        className="rounded-circle d-inline"
                     />
                 </div>
             </td>
