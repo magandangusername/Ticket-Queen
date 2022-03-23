@@ -71,6 +71,7 @@
 
             <tbody id="tabletickets">
                 @foreach ($data as $row)
+                @if($row->status =="active")
                 <tr class="clickable js-tabularinfo-toggle" data-toggle="collapse" id="row2" data-target=".a{{ $row->ConcertID}}">
                     <td>
                         <div class="col-sm-6">
@@ -111,7 +112,7 @@
                         </div>
                     </td>
                     <td>  
-                        <p class="text-muted mb-0">2 days</p>
+                        <p class="text-muted mb-0">{{$row->remaining_days}} Days</p>
                     </td>
                     <td>
 
@@ -135,6 +136,7 @@
                             <tbody>
                                 @foreach($data2 as $row2)
                                 @if ($row->ConcertID == $row2->ConcertID)
+                                @if($row2->status =="active")
                                 <tr>
                                     <td>
                                         <div class="container-fluid">
@@ -194,13 +196,13 @@
                                     </td>
                                 </tr>
                                 @endif
-
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
                     </td>
                 </tr>
-
+                @endif
                 @endforeach
             </tbody>
         </table> --}}

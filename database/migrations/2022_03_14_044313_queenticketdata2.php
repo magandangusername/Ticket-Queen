@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('Available_Tickets')->default(0);
             $table->integer('Ticket_Sold')->default(0);
             $table->date('Expiration')->nullable();
+            $table->enum('status', ['active', 'disabled']);  
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

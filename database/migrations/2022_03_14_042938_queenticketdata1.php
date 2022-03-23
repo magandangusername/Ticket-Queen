@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('Queenticketeventinfo', function (Blueprint $table) {
             $table->id('ConcertID');
             $table->string('ConcertName')->nullable();
-            $table->datetime('ConcertDate')->nullable();
+            $table->date('ConcertDate')->nullable();
             $table->string('Location')->nullable();
             $table->integer('Total_Available')->default(0);
             $table->integer('Total_Sold')->default(0);
+            $table->enum('status', ['expired', 'active', 'disabled']);  
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
