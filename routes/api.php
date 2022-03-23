@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('concerts', [ListingController::class, 'concerts']);
 Route::get('tickets', [ListingController::class, 'tickets']);
+Route::post('tickets', [ListingController::class, 'update']);

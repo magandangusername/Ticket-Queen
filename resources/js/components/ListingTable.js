@@ -82,8 +82,6 @@ const ListingTable = () => {
         );
         setTickets(listTickets);
 
-        // const selected = tickets.filter((ticket) => ticket.isSelected === true);
-
         // if (selected.length > 0) setVisible(true);
         // else setVisible(false);
         // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
@@ -109,12 +107,29 @@ const ListingTable = () => {
     };
 
     const handlePriceChange = async (id, val, key) => {
-        const listTickets = tickets.map(
-            (ticket) =>
-                ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
+        const listTickets = tickets.map((ticket) =>
+            ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
         );
 
-        if(key.key === 'Enter') console.log('You pressed enter');
+        if (key.key === "Enter") console.log("You pressed enter");
+        setTickets(listTickets);
+    };
+
+    const handleAvailableTicketSelect = async (id) => {
+        const listTickets = tickets.map((ticket) =>
+            ticket.Listing_ID === id
+                ? { ...ticket, isAvailableTicketSelected: !ticket.isAvailableTicketSelected }
+                : ticket
+        );
+        setTickets(listTickets);
+
+
+    };
+
+    const handleAvailableTicketChange = async (id, val, key) => {
+        const listTickets = tickets.map((ticket) =>
+            ticket.Listing_ID === id ? { ...ticket, Available_Tickets: val } : ticket
+        );
         setTickets(listTickets);
     };
 
@@ -162,7 +177,6 @@ const ListingTable = () => {
                             {concerts.length && (
                                 <>
                                     {concerts.map((concert) => (
-
                                         <ListingConcerts
                                             key={concert.ConcertID}
                                             concert={concert}
@@ -174,6 +188,12 @@ const ListingTable = () => {
                                             }
                                             handlePriceChange={
                                                 handlePriceChange
+                                            }
+                                            handleAvailableTicketSelect={
+                                                handleAvailableTicketSelect
+                                            }
+                                            handleAvailableTicketChange={
+                                                handleAvailableTicketChange
                                             }
                                         />
                                     ))}

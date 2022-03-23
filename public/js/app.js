@@ -5454,7 +5454,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
       tickets = _ref.tickets,
       handleCheck = _ref.handleCheck,
       handlePriceSelect = _ref.handlePriceSelect,
-      handlePriceChange = _ref.handlePriceChange;
+      handlePriceChange = _ref.handlePriceChange,
+      handleAvailableTicketSelect = _ref.handleAvailableTicketSelect,
+      handleAvailableTicketChange = _ref.handleAvailableTicketChange;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
       className: "clickable js-tabularinfo-toggle",
@@ -5582,7 +5584,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
                 ticket: ticket,
                 handleCheck: handleCheck,
                 handlePriceSelect: handlePriceSelect,
-                handlePriceChange: handlePriceChange
+                handlePriceChange: handlePriceChange,
+                handleAvailableTicketSelect: handleAvailableTicketSelect,
+                handleAvailableTicketChange: handleAvailableTicketChange
               }, ticket.Listing_ID) : null;
             })
           }) : null]
@@ -5838,8 +5842,7 @@ var ListingTable = function ListingTable() {
                   isSelected: !ticket.isSelected
                 }) : ticket;
               });
-              setTickets(listTickets); // const selected = tickets.filter((ticket) => ticket.isSelected === true);
-              // if (selected.length > 0) setVisible(true);
+              setTickets(listTickets); // if (selected.length > 0) setVisible(true);
               // else setVisible(false);
               // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
               // const updateOptions = {
@@ -5905,7 +5908,7 @@ var ListingTable = function ListingTable() {
                   Price: val
                 }) : ticket;
               });
-              if (key.key === 'Enter') console.log('You pressed enter');
+              if (key.key === "Enter") console.log("You pressed enter");
               setTickets(listTickets);
 
             case 3:
@@ -5918,6 +5921,60 @@ var ListingTable = function ListingTable() {
 
     return function handlePriceChange(_x3, _x4, _x5) {
       return _ref5.apply(this, arguments);
+    };
+  }();
+
+  var handleAvailableTicketSelect = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id) {
+      var listTickets;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              listTickets = tickets.map(function (ticket) {
+                return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                  isAvailableTicketSelected: !ticket.isAvailableTicketSelected
+                }) : ticket;
+              });
+              setTickets(listTickets);
+
+            case 2:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function handleAvailableTicketSelect(_x6) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+
+  var handleAvailableTicketChange = /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id, val, key) {
+      var listTickets;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              listTickets = tickets.map(function (ticket) {
+                return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                  Available_Tickets: val
+                }) : ticket;
+              });
+              setTickets(listTickets);
+
+            case 2:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7);
+    }));
+
+    return function handleAvailableTicketChange(_x7, _x8, _x9) {
+      return _ref7.apply(this, arguments);
     };
   }();
 
@@ -5979,7 +6036,9 @@ var ListingTable = function ListingTable() {
                 setTickets: setTickets,
                 handleCheck: handleCheck,
                 handlePriceSelect: handlePriceSelect,
-                handlePriceChange: handlePriceChange
+                handlePriceChange: handlePriceChange,
+                handleAvailableTicketSelect: handleAvailableTicketSelect,
+                handleAvailableTicketChange: handleAvailableTicketChange
               }, concert.ConcertID);
             })
           })
@@ -6021,7 +6080,9 @@ var ListingTickets = function ListingTickets(_ref) {
   var ticket = _ref.ticket,
       handleCheck = _ref.handleCheck,
       handlePriceSelect = _ref.handlePriceSelect,
-      handlePriceChange = _ref.handlePriceChange;
+      handlePriceChange = _ref.handlePriceChange,
+      handleAvailableTicketSelect = _ref.handleAvailableTicketSelect,
+      handleAvailableTicketChange = _ref.handleAvailableTicketChange;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6078,8 +6139,7 @@ var ListingTickets = function ListingTickets(_ref) {
           style: {
             width: 75 + 'px'
           },
-          value: ticket.Price // onChange={(e) => handlePriceChange(e.target.value)}
-          ,
+          value: ticket.Price,
           readOnly: !ticket.isPriceSelected,
           onDoubleClick: function onDoubleClick() {
             return handlePriceSelect(ticket.Listing_ID);
@@ -6113,7 +6173,19 @@ var ListingTickets = function ListingTickets(_ref) {
             width: 75 + 'px'
           },
           value: ticket.Available_Tickets,
-          readOnly: true
+          readOnly: !ticket.isAvailableTicketSelected,
+          onDoubleClick: function onDoubleClick() {
+            return handleAvailableTicketSelect(ticket.Listing_ID);
+          },
+          onBlur: function onBlur() {
+            return handleAvailableTicketSelect(ticket.Listing_ID);
+          },
+          onChange: function onChange(e) {
+            return handleAvailableTicketChange(ticket.Listing_ID, e.target.value, e);
+          },
+          onKeyDown: function onKeyDown(e) {
+            return e.key === 'Enter' && handleAvailableTicketSelect(ticket.Listing_ID);
+          }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
           // src=""
           alt: "???",
