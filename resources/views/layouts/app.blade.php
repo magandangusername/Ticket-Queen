@@ -33,9 +33,9 @@
             </button>
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav position-absolute top-50 end-0 translate-middle-y pe-4" style="font-size: 120%;">
-                    <li class="nav-item active">
-                        <form class="form-control" method="get" action="/search" style="margin:auto;width:500px">
-                            <input type="text" placeholder="Search.." name="search2" style="width:437px">
+                    <li class="nav-item active me-3 pe-3 justify-content-center">
+                        <form class="form-control w-100 m-auto justify-content-evenly" method="get" action="/search">
+                            <input class="w-75" type="text" placeholder="Search.." name="search2">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </li>

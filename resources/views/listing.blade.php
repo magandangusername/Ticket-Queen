@@ -673,15 +673,15 @@
 </script>
 
 <script>
-    $(document).ready(function() {
-        $('.link').click(function() {
-            event.preventDefault();
-        });
-        $('.js-tabularinfo').bootstrapTable({
-            escape: false,
-            showHeader: false
-        });
-    });
+    // $(document).ready(function() {
+    //     $('.link').click(function() {
+    //         event.preventDefault();
+    //     });
+    //     $('.js-tabularinfo').bootstrapTable({
+    //         escape: false,
+    //         showHeader: false
+    //     });
+    // });
 </script>
 
 @endsection

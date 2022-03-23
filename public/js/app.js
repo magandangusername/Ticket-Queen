@@ -5486,54 +5486,55 @@ var ListingConcerts = function ListingConcerts(_ref) {
             className: "ms-3 pe-5",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
               className: "fw-bold mb-1",
+              id: "ticketinfocontent",
               children: [concert.ConcertName, " [", concert.ConcertID, "]"]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              className: "text-muted mb-0",
+              className: "text-white-50 mb-0",
               children: concert.ConcertDate
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              className: "text-muted mb-0",
+              className: "text-white-50 mb-0",
               children: concert.Location
             })]
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "text-muted mb-0",
+          className: "text-white-50 mb-0",
           children: "Last Minute Sales Event"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "fw-normal mb-1",
+          className: "fw-normal mb-1 text-light",
           children: "Available Tickets"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "text-muted mb-0",
+          className: "text-white-50 mb-0",
           children: concert.Total_Available
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "fw-normal mb-1",
+          className: "fw-normal mb-1 text-light",
           children: "Ticket Sold"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "text-muted mb-0",
+          className: "text-white-50 mb-0",
           children: concert.Total_Sold
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "border border-dark border-2 container-fluid h-auto bg-danger rounded",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            className: "fw-normal mb-1",
+            className: "fw-normal-50 mb-1",
             children: "No. of ticket"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            className: "text-dark mb-0",
+            className: "text-white-50 mb-0",
             children: "Sold in the last"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            className: "fw-normal mb-1",
+            className: "text-black-50 mb-1",
             children: "No. of days"
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "text-muted mb-0",
+          className: "text-white-50 mb-0",
           children: "2 days"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {})]
