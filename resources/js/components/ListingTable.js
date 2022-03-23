@@ -1,4 +1,5 @@
 import axios from "axios";
+import { functionsIn } from "lodash";
 import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
@@ -10,7 +11,7 @@ const ListingTable = () => {
     const [tickets, setTickets] = useState([]);
     const [fetchError, setFetchError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false);
 
     // gets data when opening/refreshing the page
     useEffect(() => {
@@ -26,7 +27,6 @@ const ListingTable = () => {
                     o.isSelected = false;
                     return o;
                 });
-                console.log(result);
                 setConcerts(result);
             } catch (error) {
                 setFetchError(err.message);
@@ -42,9 +42,10 @@ const ListingTable = () => {
                 var result = arrOfObj.map(function (el) {
                     var o = Object.assign({}, el);
                     o.isSelected = false;
+                    o.isPriceSelected = false;
+                    o.isAvailableTicketSelected = false;
                     return o;
                 });
-                console.log(result);
                 setTickets(result);
             } catch (error) {
                 setFetchError(err.message);
@@ -63,8 +64,13 @@ const ListingTable = () => {
         if (selected.length > 0) setVisible(true);
         else setVisible(false);
 
-    }, [tickets])
+        console.log(tickets);
+    }, [tickets]);
 
+    //for logging purposes
+    useEffect(() => {
+        console.log(concerts);
+    }, [concerts]);
 
     //not finished, to be continued
     const handleCheck = async (id) => {
@@ -75,7 +81,6 @@ const ListingTable = () => {
                 : ticket
         );
         setTickets(listTickets);
-        console.log(tickets);
 
         // const selected = tickets.filter((ticket) => ticket.isSelected === true);
 
@@ -92,6 +97,26 @@ const ListingTable = () => {
         // const reqUrl = `api/ticket/${id}`;
         // const result = await apiRequest(reqUrl, updateOptions);
         // if (result) setFetchError(result);
+    };
+
+    const handlePriceSelect = async (id) => {
+        const listTickets = tickets.map((ticket) =>
+            ticket.Listing_ID === id
+                ? { ...ticket, isPriceSelected: !ticket.isPriceSelected }
+                : ticket
+        );
+        setTickets(listTickets);
+    };
+
+    const handlePriceChange = async (id, val, key) => {
+        const listTickets = tickets.map(
+            (ticket) =>
+                ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket,
+            (key.key === "Enter") & (ticket.Listing_ID === id)
+                ? { ...ticket, isPriceSelected: !ticket.isPriceSelected }
+                : ticket
+        );
+        setTickets(listTickets);
     };
 
     return (
@@ -144,13 +169,19 @@ const ListingTable = () => {
                                             tickets={tickets}
                                             setTickets={setTickets}
                                             handleCheck={handleCheck}
+                                            handlePriceSelect={
+                                                handlePriceSelect
+                                            }
+                                            handlePriceChange={
+                                                handlePriceChange
+                                            }
                                         />
                                     ))}
                                 </>
                             )}
                         </tbody>
                     </table>
-                    <Tools visible={visible}/>
+                    <Tools visible={visible} />
                 </>
             )}
         </>

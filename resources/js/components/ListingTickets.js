@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListingTickets = ({ ticket, handleCheck }) => {
+const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceChange }) => {
     return (
         <tr>
             <td>
@@ -47,7 +47,11 @@ const ListingTickets = ({ ticket, handleCheck }) => {
                         style={{width: 75 + 'px'}}
                         value={ticket.Price}
                         // onChange={(e) => handlePriceChange(e.target.value)}
-                        readOnly
+                        readOnly = {!ticket.isPriceSelected}
+                        onDoubleClick={() => handlePriceSelect(ticket.Listing_ID)}
+                        onBlur={() => handlePriceSelect(ticket.Listing_ID)}
+                        onChange={(e) => handlePriceChange(ticket.Listing_ID, e.target.value, e)}
+                        // onKeyDown={e => e.key === 'Enter' && handlePriceChange(ticket.Listing_ID, e.target.value)}
                     />
                     <img
                         // src=""

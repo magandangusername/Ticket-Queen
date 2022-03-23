@@ -5452,7 +5452,9 @@ __webpack_require__.r(__webpack_exports__);
 var ListingConcerts = function ListingConcerts(_ref) {
   var concert = _ref.concert,
       tickets = _ref.tickets,
-      handleCheck = _ref.handleCheck;
+      handleCheck = _ref.handleCheck,
+      handlePriceSelect = _ref.handlePriceSelect,
+      handlePriceChange = _ref.handlePriceChange;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
       className: "clickable js-tabularinfo-toggle",
@@ -5577,7 +5579,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
             children: tickets.map(function (ticket) {
               return ticket.ConcertID === concert.ConcertID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 ticket: ticket,
-                handleCheck: handleCheck
+                handleCheck: handleCheck,
+                handlePriceSelect: handlePriceSelect,
+                handlePriceChange: handlePriceChange
               }, ticket.Listing_ID) : null;
             })
           }) : null]
@@ -5644,11 +5648,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _ListingConcerts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ListingConcerts */ "./resources/js/components/ListingConcerts.js");
-/* harmony import */ var _Tools__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Tools */ "./resources/js/components/Tools.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _ListingConcerts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ListingConcerts */ "./resources/js/components/ListingConcerts.js");
+/* harmony import */ var _Tools__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Tools */ "./resources/js/components/Tools.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5677,6 +5683,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  // import Tools from "./Tools";
 
 
@@ -5684,33 +5691,33 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var ListingTable = function ListingTable() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       concerts = _useState2[0],
       setConcerts = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       tickets = _useState4[0],
       setTickets = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
       fetchError = _useState6[0],
       setFetchError = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
       _useState8 = _slicedToArray(_useState7, 2),
       isLoading = _useState8[0],
       setIsLoading = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
       _useState10 = _slicedToArray(_useState9, 2),
       visible = _useState10[0],
       setVisible = _useState10[1]; // gets data when opening/refreshing the page
 
 
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     var fetchConcert = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var response, arrOfObj, result;
@@ -5731,22 +5738,21 @@ var ListingTable = function ListingTable() {
                   o.isSelected = false;
                   return o;
                 });
-                console.log(result);
                 setConcerts(result);
-                _context.next = 14;
+                _context.next = 13;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
                 setFetchError(err.message);
 
-              case 14:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 10]]);
       }));
 
       return function fetchConcert() {
@@ -5772,29 +5778,30 @@ var ListingTable = function ListingTable() {
                 result = arrOfObj.map(function (el) {
                   var o = Object.assign({}, el);
                   o.isSelected = false;
+                  o.isPriceSelected = false;
+                  o.isAvailableTicketSelected = false;
                   return o;
                 });
-                console.log(result);
                 setTickets(result);
-                _context2.next = 14;
+                _context2.next = 13;
                 break;
 
-              case 11:
-                _context2.prev = 11;
+              case 10:
+                _context2.prev = 10;
                 _context2.t0 = _context2["catch"](0);
                 setFetchError(err.message);
 
-              case 14:
-                _context2.prev = 14;
+              case 13:
+                _context2.prev = 13;
                 setIsLoading(false);
-                return _context2.finish(14);
+                return _context2.finish(13);
 
-              case 17:
+              case 16:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 11, 14, 17]]);
+        }, _callee2, null, [[0, 10, 13, 16]]);
       }));
 
       return function fetchTicket() {
@@ -5805,12 +5812,17 @@ var ListingTable = function ListingTable() {
     fetchConcert();
     fetchTicket();
   }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     var selected = tickets.filter(function (ticket) {
       return ticket.isSelected === true;
     });
     if (selected.length > 0) setVisible(true);else setVisible(false);
-  }, [tickets]); //not finished, to be continued
+    console.log(tickets);
+  }, [tickets]); //for logging purposes
+
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    console.log(concerts);
+  }, [concerts]); //not finished, to be continued
 
   var handleCheck = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
@@ -5825,8 +5837,7 @@ var ListingTable = function ListingTable() {
                   isSelected: !ticket.isSelected
                 }) : ticket;
               });
-              setTickets(listTickets);
-              console.log(tickets); // const selected = tickets.filter((ticket) => ticket.isSelected === true);
+              setTickets(listTickets); // const selected = tickets.filter((ticket) => ticket.isSelected === true);
               // if (selected.length > 0) setVisible(true);
               // else setVisible(false);
               // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
@@ -5841,7 +5852,7 @@ var ListingTable = function ListingTable() {
               // const result = await apiRequest(reqUrl, updateOptions);
               // if (result) setFetchError(result);
 
-            case 3:
+            case 2:
             case "end":
               return _context3.stop();
           }
@@ -5854,23 +5865,79 @@ var ListingTable = function ListingTable() {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: [isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("table", {
+  var handlePriceSelect = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
+      var listTickets;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              listTickets = tickets.map(function (ticket) {
+                return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                  isPriceSelected: !ticket.isPriceSelected
+                }) : ticket;
+              });
+              setTickets(listTickets);
+
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function handlePriceSelect(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var handlePriceChange = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id, val, key) {
+      var listTickets;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              listTickets = tickets.map(function (ticket) {
+                return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                  Price: val
+                }) : ticket;
+              }, key.key === "Enter" & ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                isPriceSelected: !ticket.isPriceSelected
+              }) : ticket);
+              setTickets(listTickets);
+
+            case 2:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function handlePriceChange(_x3, _x4, _x5) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: [isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("table", {
       className: "table",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
         className: "thead-light",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tr", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
             children: "Loading Items..."
           })
         })
       })
-    }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("table", {
+    }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("table", {
       className: "table",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
         className: "thead-light",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
             style: {
               color: "red"
             },
@@ -5878,44 +5945,46 @@ var ListingTable = function ListingTable() {
           })
         })
       })
-    }), !fetchError && !isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
+    }), !fetchError && !isLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
         className: "table",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
           className: "thead-light",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center",
               children: "Ticket Details"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center",
               children: "Available Tickets"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center",
               children: "Ticket Sold"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center",
               children: "Days"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {})]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {})]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
           id: "tabletickets",
-          children: concerts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+          children: concerts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
             children: concerts.map(function (concert) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
                 concert: concert,
                 tickets: tickets,
                 setTickets: setTickets,
-                handleCheck: handleCheck
+                handleCheck: handleCheck,
+                handlePriceSelect: handlePriceSelect,
+                handlePriceChange: handlePriceChange
               }, concert.ConcertID);
             })
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
         visible: visible
       })]
     })]
@@ -5926,7 +5995,7 @@ var ListingTable = function ListingTable() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingTable);
 
 if (document.getElementById("ListingTable")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(ListingTable, {}), document.getElementById("ListingTable"));
+  react_dom__WEBPACK_IMPORTED_MODULE_4__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ListingTable, {}), document.getElementById("ListingTable"));
 }
 
 /***/ }),
@@ -5950,7 +6019,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var ListingTickets = function ListingTickets(_ref) {
   var ticket = _ref.ticket,
-      handleCheck = _ref.handleCheck;
+      handleCheck = _ref.handleCheck,
+      handlePriceSelect = _ref.handlePriceSelect,
+      handlePriceChange = _ref.handlePriceChange;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6009,7 +6080,17 @@ var ListingTickets = function ListingTickets(_ref) {
           },
           value: ticket.Price // onChange={(e) => handlePriceChange(e.target.value)}
           ,
-          readOnly: true
+          readOnly: !ticket.isPriceSelected,
+          onDoubleClick: function onDoubleClick() {
+            return handlePriceSelect(ticket.Listing_ID);
+          },
+          onBlur: function onBlur() {
+            return handlePriceSelect(ticket.Listing_ID);
+          },
+          onChange: function onChange(e) {
+            return handlePriceChange(ticket.Listing_ID, e.target.value, e);
+          } // onKeyDown={e => e.key === 'Enter' && handlePriceChange(ticket.Listing_ID, e.target.value)}
+
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
           // src=""
           alt: "???",
