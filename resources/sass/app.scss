@@ -14,6 +14,12 @@ a.tools{
 .tools:hover {
     color: yellow;
   }
+thead.thead-light{
+  border: solid 3px #1C1C1C;
+}
+.table{
+  border: solid 3px #1C1C1C;
+} 
 
 #Search{
 width:480px;height:49px; border:2px solid black;
@@ -41,7 +47,11 @@ background-position:center;outline:0;
     color: whitesmoke;
 }
 #tabletickets{
+    border: solid 2px #1C1C1C;
     background-color:#424549;
+}
+.text-center{
+  border: solid 2px #1C1C1C;
 }
 img#search-icon{
     height: 25px;

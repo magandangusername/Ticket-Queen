@@ -149,7 +149,7 @@ const ListingTable = () => {
                                 <th className="text-center">Ticket Details</th>
                                 <th className="text-center"></th>
                                 <th className="text-center">
-                                    Available Tickets
+                                    Available Ticket
                                 </th>
                                 <th className="text-center">Ticket Sold</th>
                                 <th className="text-center"></th>

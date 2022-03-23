@@ -11294,6 +11294,14 @@ a.tools {
   color: yellow;
 }
 
+thead.thead-light {
+  border: solid 3px #1C1C1C;
+}
+
+.table {
+  border: solid 3px #1C1C1C;
+}
+
 #Search {
   width: 480px;
   height: 49px;
@@ -11325,7 +11333,12 @@ a.tools {
 }
 
 #tabletickets {
+  border: solid 2px #1C1C1C;
   background-color: #424549;
+}
+
+.text-center {
+  border: solid 2px #1C1C1C;
 }
 
 img#search-icon {

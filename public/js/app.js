@@ -5958,7 +5958,7 @@ var ListingTable = function ListingTable() {
               className: "text-center"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center",
-              children: "Available Tickets"
+              children: "Available Ticket"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
               className: "text-center",
               children: "Ticket Sold"
