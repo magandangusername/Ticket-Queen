@@ -3,8 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ListingDelete from "./ListingDelete";
 
-const Tools = () => {
-
+const Tools = ({visible}) => {
 
     return (
         <>

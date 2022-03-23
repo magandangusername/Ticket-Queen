@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
+import Tools from "./Tools";
 // import Tools from "./Tools";
 
 const ListingTable = () => {
@@ -9,6 +10,7 @@ const ListingTable = () => {
     const [tickets, setTickets] = useState([]);
     const [fetchError, setFetchError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [visible, setVisible] = useState(false)
 
     // gets data when opening/refreshing the page
     useEffect(() => {
@@ -55,6 +57,15 @@ const ListingTable = () => {
         fetchTicket();
     }, []);
 
+    useEffect(() => {
+        const selected = tickets.filter((ticket) => ticket.isSelected === true);
+
+        if (selected.length > 0) setVisible(true);
+        else setVisible(false);
+
+    }, [tickets])
+
+
     //not finished, to be continued
     const handleCheck = async (id) => {
         //finds the set of data from the list and set its value
@@ -66,9 +77,10 @@ const ListingTable = () => {
         setTickets(listTickets);
         console.log(tickets);
 
-        const selected = tickets.filter(ticket => ticket.isSelected === true)
+        // const selected = tickets.filter((ticket) => ticket.isSelected === true);
 
-        // if (tickets.length > 0) setVisible(true);
+        // if (selected.length > 0) setVisible(true);
+        // else setVisible(false);
         // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
         // const updateOptions = {
         //     method: "PATCH",
@@ -105,36 +117,41 @@ const ListingTable = () => {
                 </table>
             )}
             {!fetchError && !isLoading && (
-                <table className="table">
-                    <thead className="thead-light">
-                        <tr>
-                            <th></th>
-                            <th className="text-center">Ticket Details</th>
-                            <th className="text-center"></th>
-                            <th className="text-center">Available Tickets</th>
-                            <th className="text-center">Ticket Sold</th>
-                            <th className="text-center"></th>
-                            <th className="text-center">Days</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                <>
+                    <table className="table">
+                        <thead className="thead-light">
+                            <tr>
+                                <th></th>
+                                <th className="text-center">Ticket Details</th>
+                                <th className="text-center"></th>
+                                <th className="text-center">
+                                    Available Tickets
+                                </th>
+                                <th className="text-center">Ticket Sold</th>
+                                <th className="text-center"></th>
+                                <th className="text-center">Days</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                    <tbody id="tabletickets">
-                        {concerts.length && (
-                            <>
-                                {concerts.map((concert) => (
-                                    <ListingConcerts
-                                        key={concert.ConcertID}
-                                        concert={concert}
-                                        tickets={tickets}
-                                        setTickets={setTickets}
-                                        handleCheck={handleCheck}
-                                    />
-                                ))}
-                            </>
-                        )}
-                    </tbody>
-                </table>
+                        <tbody id="tabletickets">
+                            {concerts.length && (
+                                <>
+                                    {concerts.map((concert) => (
+                                        <ListingConcerts
+                                            key={concert.ConcertID}
+                                            concert={concert}
+                                            tickets={tickets}
+                                            setTickets={setTickets}
+                                            handleCheck={handleCheck}
+                                        />
+                                    ))}
+                                </>
+                            )}
+                        </tbody>
+                    </table>
+                    <Tools visible={visible}/>
+                </>
             )}
         </>
     );
