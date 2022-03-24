@@ -191,18 +191,18 @@ const ListingTable = () => {
             )}
             {!fetchError && !isLoading && (
                 <>
-                    <table className="table">
+                    <table className="table border">
                         <thead className="thead-light">
                             <tr>
                                 <th></th>
-                                <th className="text-center">Ticket Details</th>
-                                <th className="text-center"></th>
-                                <th className="text-center">
+                                <th className="text-center border-dark border-4">Ticket Details</th>
+                                <th className="text-center border-dark border-4"></th>
+                                <th className="text-center border-dark border-4">
                                     Available Ticket
                                 </th>
-                                <th className="text-center">Ticket Sold</th>
-                                <th className="text-center"></th>
-                                <th className="text-center">Days</th>
+                                <th className="text-center border-dark border-4">Ticket Sold</th>
+                                <th className="text-center border-dark border-4"></th>
+                                <th className="text-center border-dark border-4">Days</th>
                                 <th></th>
                             </tr>
                         </thead>
