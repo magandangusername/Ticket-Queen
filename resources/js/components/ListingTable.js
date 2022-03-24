@@ -139,7 +139,7 @@ const ListingTable = () => {
 
         const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
 
-        if (ticket[0].isPriceSelected === false) {
+        if (ticket[0].isAvailableTicketSelected !== false) {
             const ticket_info = {
                 Listing_ID: ticket[0].Listing_ID,
                 ConcertID: ticket[0].ConcertID,
@@ -154,7 +154,13 @@ const ListingTable = () => {
             };
             axios
                 .post("/api/tickets/update", ticket_info)
-                .catch((error) => setFetchError(error.message));
+                // .catch((error) => setFetchError(error.message));
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error.response);
+                });
         }
     };
 
