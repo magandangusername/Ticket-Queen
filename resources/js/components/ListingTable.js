@@ -4,6 +4,7 @@ import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
 import Tools from "./Tools";
+import ListingSortBy from "./ListingSortBy";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -11,6 +12,10 @@ const ListingTable = () => {
     const [fetchError, setFetchError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [visible, setVisible] = useState(false);
+    const [sortAllListing, setSortAllListing] = useState(true);
+    const [sortEligibleLastMinuteSales, setSortEligibleLastMinuteSales] = useState(false);
+    const [sortActive, setSortActive] = useState(false);
+    const [sortInactive, setSortInactive] = useState(false);
 
     // gets data when opening/refreshing the page
     useEffect(() => {
@@ -181,57 +186,64 @@ const ListingTable = () => {
             )}
             {!fetchError && !isLoading && (
                 <>
-                    <table className="table border">
-                        <thead className="thead-light">
-                            <tr>
-                                <th></th>
-                                <th className="text-center border-dark border-4">
-                                    Ticket Details
-                                </th>
-                                <th className="text-center border-dark border-4"></th>
-                                <th className="text-center border-dark border-4">
-                                    Available Ticket
-                                </th>
-                                <th className="text-center border-dark border-4">
-                                    Ticket Sold
-                                </th>
-                                <th className="text-center border-dark border-4"></th>
-                                <th className="text-center border-dark border-4">
-                                    Days
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                    <ListingSortBy />
+                    <div className="container-fluid">
+                        <br />
+                        <br />
+                        <br />
 
-                        <tbody id="tabletickets">
-                            {concerts.length && (
-                                <>
-                                    {concerts.map((concert) => (
-                                        <ListingConcerts
-                                            key={concert.ConcertID}
-                                            concert={concert}
-                                            tickets={tickets}
-                                            setTickets={setTickets}
-                                            handleCheck={handleCheck}
-                                            handlePriceSelect={
-                                                handlePriceSelect
-                                            }
-                                            handlePriceChange={
-                                                handlePriceChange
-                                            }
-                                            handleAvailableTicketSelect={
-                                                handleAvailableTicketSelect
-                                            }
-                                            handleAvailableTicketChange={
-                                                handleAvailableTicketChange
-                                            }
-                                        />
-                                    ))}
-                                </>
-                            )}
-                        </tbody>
-                    </table>
-                    <Tools visible={visible} />
+                        <table className="table border">
+                            <thead className="thead-light">
+                                <tr>
+                                    <th></th>
+                                    <th className="text-center border-dark border-4">
+                                        Ticket Details
+                                    </th>
+                                    <th className="text-center border-dark border-4"></th>
+                                    <th className="text-center border-dark border-4">
+                                        Available Ticket
+                                    </th>
+                                    <th className="text-center border-dark border-4">
+                                        Ticket Sold
+                                    </th>
+                                    <th className="text-center border-dark border-4"></th>
+                                    <th className="text-center border-dark border-4">
+                                        Days
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabletickets">
+                                {concerts.length && (
+                                    <>
+                                        {concerts.map((concert) => (
+                                            <ListingConcerts
+                                                key={concert.ConcertID}
+                                                concert={concert}
+                                                tickets={tickets}
+                                                setTickets={setTickets}
+                                                handleCheck={handleCheck}
+                                                handlePriceSelect={
+                                                    handlePriceSelect
+                                                }
+                                                handlePriceChange={
+                                                    handlePriceChange
+                                                }
+                                                handleAvailableTicketSelect={
+                                                    handleAvailableTicketSelect
+                                                }
+                                                handleAvailableTicketChange={
+                                                    handleAvailableTicketChange
+                                                }
+                                            />
+                                        ))}
+                                    </>
+                                )}
+                            </tbody>
+                        </table>
+                        <Tools visible={visible} />
+                    </div>
                 </>
             )}
         </>

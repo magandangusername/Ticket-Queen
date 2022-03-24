@@ -1,6 +1,13 @@
 import React from "react";
 
-const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceChange, handleAvailableTicketSelect, handleAvailableTicketChange }) => {
+const ListingTickets = ({
+    ticket,
+    handleCheck,
+    handlePriceSelect,
+    handlePriceChange,
+    handleAvailableTicketSelect,
+    handleAvailableTicketChange,
+}) => {
     return (
         <tr>
             <td className="border-dark border-1 justify-content-center">
@@ -12,7 +19,6 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                             id="ticketselection"
                             onChange={() => handleCheck(ticket.Listing_ID)}
                             checked={ticket.isSelected}
-
                         />
                     </div>
                 </div>
@@ -44,19 +50,29 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                     <input
                         type="text"
                         className="form-control d-inline me-2"
-                        style={{width: 75 + 'px'}}
+                        style={{ width: 75 + "px" }}
                         value={ticket.Price}
-                        readOnly = {!ticket.isPriceSelected}
-                        onDoubleClick={() => handlePriceSelect(ticket.Listing_ID)}
-                        onBlur={() => ticket.isPriceSelected && handlePriceSelect(ticket.Listing_ID)}
-                        onChange={(e) => handlePriceChange(ticket.Listing_ID, e.target.value, e)}
-                        onKeyDown={e => e.key === 'Enter' && e.target.blur()}
-
+                        readOnly={!ticket.isPriceSelected}
+                        onDoubleClick={() =>
+                            handlePriceSelect(ticket.Listing_ID)
+                        }
+                        onBlur={() =>
+                            ticket.isPriceSelected &&
+                            handlePriceSelect(ticket.Listing_ID)
+                        }
+                        onChange={(e) =>
+                            handlePriceChange(
+                                ticket.Listing_ID,
+                                e.target.value,
+                                e
+                            )
+                        }
+                        onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
                     />
                     <img
                         // src=""
                         alt="???"
-                        style={{width: 20 + 'px', height: 20 + 'px'}}
+                        style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
                     />
                 </div>
@@ -67,18 +83,29 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                     <input
                         type="text"
                         className="form-control d-inline me-2"
-                        style={{width: 75 + 'px'}}
+                        style={{ width: 75 + "px" }}
                         value={ticket.Available_Tickets}
-                        readOnly = {!ticket.isAvailableTicketSelected}
-                        onDoubleClick={() => handleAvailableTicketSelect(ticket.Listing_ID)}
-                        onBlur={() => ticket.isAvailableTicketSelected && handleAvailableTicketSelect(ticket.Listing_ID)}
-                        onChange={(e) => handleAvailableTicketChange(ticket.Listing_ID, e.target.value, e)}
-                        onKeyDown={e => e.key === 'Enter' && e.target.blur()}
+                        readOnly={!ticket.isAvailableTicketSelected}
+                        onDoubleClick={() =>
+                            handleAvailableTicketSelect(ticket.Listing_ID)
+                        }
+                        onBlur={() =>
+                            ticket.isAvailableTicketSelected &&
+                            handleAvailableTicketSelect(ticket.Listing_ID)
+                        }
+                        onChange={(e) =>
+                            handleAvailableTicketChange(
+                                ticket.Listing_ID,
+                                e.target.value,
+                                e
+                            )
+                        }
+                        onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
                     />
                     <img
                         // src=""
                         alt="???"
-                        style={{width: 20 + 'px', height: 20 + 'px'}}
+                        style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
                     />
                 </div>
@@ -99,19 +126,18 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                     <img
                         // src=""
                         alt="???"
-                        style={{width: 20 + 'px', height: 20 + 'px'}}
+                        style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
                     />
                 </div>
             </td>
             <td className="border-dark border-1 justify-content-center ">
-                <button
-                    type="button"
-                    className="btn btn-link btn-sm btn-rounded"
-                    readOnly
-                >
-                    Basta
-                </button>
+                <a
+                    href=""
+                    className="fas fa-edit"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModal"
+                ></a>
             </td>
         </tr>
     );
