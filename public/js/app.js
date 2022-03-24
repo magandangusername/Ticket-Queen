@@ -5951,7 +5951,7 @@ var ListingTable = function ListingTable() {
                 return ticket.Listing_ID === id;
               });
 
-              if (ticket[0].isPriceSelected === false) {
+              if (ticket[0].isAvailableTicketSelected !== false) {
                 ticket_info = {
                   Listing_ID: ticket[0].Listing_ID,
                   ConcertID: ticket[0].ConcertID,
@@ -5964,8 +5964,11 @@ var ListingTable = function ListingTable() {
                   Expiration: ticket[0].Expiration,
                   status: ticket[0].status
                 };
-                axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info)["catch"](function (error) {
-                  return setFetchError(error.message);
+                axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info) // .catch((error) => setFetchError(error.message));
+                .then(function (response) {
+                  console.log(response);
+                })["catch"](function (error) {
+                  console.log(error.response);
                 });
               }
 
@@ -6183,7 +6186,7 @@ var ListingTickets = function ListingTickets(_ref) {
             return handlePriceSelect(ticket.Listing_ID);
           },
           onBlur: function onBlur() {
-            return handlePriceSelect(ticket.Listing_ID);
+            return ticket.isPriceSelected && handlePriceSelect(ticket.Listing_ID);
           },
           onChange: function onChange(e) {
             return handlePriceChange(ticket.Listing_ID, e.target.value, e);
@@ -6217,7 +6220,7 @@ var ListingTickets = function ListingTickets(_ref) {
             return handleAvailableTicketSelect(ticket.Listing_ID);
           },
           onBlur: function onBlur() {
-            return handleAvailableTicketSelect(ticket.Listing_ID);
+            return ticket.isAvailableTicketSelected && handleAvailableTicketSelect(ticket.Listing_ID);
           },
           onChange: function onChange(e) {
             return handleAvailableTicketChange(ticket.Listing_ID, e.target.value, e);

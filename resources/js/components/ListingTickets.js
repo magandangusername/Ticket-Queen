@@ -48,7 +48,7 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                         value={ticket.Price}
                         readOnly = {!ticket.isPriceSelected}
                         onDoubleClick={() => handlePriceSelect(ticket.Listing_ID)}
-                        onBlur={() => handlePriceSelect(ticket.Listing_ID)}
+                        onBlur={() => ticket.isPriceSelected && handlePriceSelect(ticket.Listing_ID)}
                         onChange={(e) => handlePriceChange(ticket.Listing_ID, e.target.value, e)}
                         onKeyDown={e => e.key === 'Enter' && e.target.blur()}
 
@@ -71,7 +71,7 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                         value={ticket.Available_Tickets}
                         readOnly = {!ticket.isAvailableTicketSelected}
                         onDoubleClick={() => handleAvailableTicketSelect(ticket.Listing_ID)}
-                        onBlur={() => handleAvailableTicketSelect(ticket.Listing_ID)}
+                        onBlur={() => ticket.isAvailableTicketSelected && handleAvailableTicketSelect(ticket.Listing_ID)}
                         onChange={(e) => handleAvailableTicketChange(ticket.Listing_ID, e.target.value, e)}
                         onKeyDown={e => e.key === 'Enter' && e.target.blur()}
                     />
