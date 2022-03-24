@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<div class="container-fluid" style="background-color: #04293A">
+<div class="container-fluid bg.transparent" style="">
     <div class="container-fluid d-flex justify-content-center" style="">
         <div class="container-fluid bg-image position-fixed" style="z-index: 500; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
             <div class="checkboxes container-fluid row">
