@@ -5465,9 +5465,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
       "data-target": ".a".concat(concert.ConcertID),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "col-sm-6",
+          className: "col-sm-6 justify-content-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "row mb-2",
+            className: "row justify-content-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
               href: "#",
               className: "link",
@@ -5475,7 +5475,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
                 type: "button",
                 name: "edit",
                 id: concert.ConcertID,
-                className: "edit btn btn-xs btn-outline-danger btn-sm my-0",
+                className: "edit btn btn-xl btn-outline-danger my-0 mt-3",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
                   className: "fa fa-plus-circle"
                 })
@@ -5551,31 +5551,32 @@ var ListingConcerts = function ListingConcerts(_ref) {
           id: "rowcontent",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "border-dark border-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark"
+                className: "text-center border-dark border-2"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Ticket Details"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Ticket Type"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Visibility"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Price"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Available Tickets"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Sold tickets"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark",
+                className: "text-center border-dark border-2",
                 children: "Publish"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                className: "text-center border-dark"
+                className: "text-center border-dark border-2"
               })]
             })
           }), tickets.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
@@ -6009,20 +6010,20 @@ var ListingTable = function ListingTable() {
           className: "thead-light",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-              className: "text-center border-dark",
+              className: "text-center border-dark border-4",
               children: "Ticket Details"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-              className: "text-center border-dark"
+              className: "text-center border-dark border-4"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-              className: "text-center border-dark",
+              className: "text-center border-dark border-4",
               children: "Available Ticket"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-              className: "text-center border-dark",
+              className: "text-center border-dark border-4",
               children: "Ticket Sold"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-              className: "text-center border-dark"
+              className: "text-center border-dark border-4"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-              className: "text-center border-dark",
+              className: "text-center border-dark border-4",
               children: "Days"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {})]
           })
@@ -6085,13 +6086,14 @@ var ListingTickets = function ListingTickets(_ref) {
       handleAvailableTicketChange = _ref.handleAvailableTicketChange;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "container-fluid",
+        className: "container-fluid d-flex justify-content-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "form-check",
+          className: "form-check d-flex justify-content-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             type: "checkbox",
-            className: "form-check-input ms-3",
+            className: "form-check-input",
             id: "ticketselection",
             onChange: function onChange() {
               return handleCheck(ticket.Listing_ID);
@@ -6101,18 +6103,22 @@ var ListingTickets = function ListingTickets(_ref) {
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "container-fluid",
+        className: "container-fluid d-flex justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "me-2",
           children: ticket.Section
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
           children: [ticket.Row, " ", ticket.Seats]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "container-fluid",
+        className: "container-fluid d-flex justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "me-2",
           children: ticket.Ticket_Type
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
           href: "#",
@@ -6123,19 +6129,21 @@ var ListingTickets = function ListingTickets(_ref) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "container-fluid",
+        className: "container-fluid d-flex justify-content-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "text-warning",
+          className: "text-success",
           children: "No. %"
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "container-fluid",
+        className: "container-fluid d-flex justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           type: "text",
-          className: "form-control d-inline",
+          className: "form-control d-inline me-2",
           style: {
             width: 75 + 'px'
           },
@@ -6164,11 +6172,12 @@ var ListingTickets = function ListingTickets(_ref) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "container-fluid",
+        className: "container-fluid d-flex justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           type: "text",
-          className: "form-control d-inline",
+          className: "form-control d-inline me-2",
           style: {
             width: 75 + 'px'
           },
@@ -6197,16 +6206,19 @@ var ListingTickets = function ListingTickets(_ref) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "d-flex justify-content-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
           children: ticket.Ticket_Sold
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "form-check form-switch",
+        className: "form-check form-switch d-flex justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          className: "form-check-input",
+          className: "form-check-input me-4",
           type: "checkbox",
           id: "flexSwitchCheckChecked",
           readOnly: true
@@ -6221,6 +6233,7 @@ var ListingTickets = function ListingTickets(_ref) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+      className: "border-dark border-1 justify-content-center ",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         type: "button",
         className: "btn btn-link btn-sm btn-rounded",

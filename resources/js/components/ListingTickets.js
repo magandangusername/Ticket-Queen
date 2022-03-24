@@ -3,12 +3,12 @@ import React from "react";
 const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceChange, handleAvailableTicketSelect, handleAvailableTicketChange }) => {
     return (
         <tr>
-            <td>
-                <div className="container-fluid">
-                    <div className="form-check">
+            <td className="border-dark border-1 justify-content-center">
+                <div className="container-fluid d-flex justify-content-center">
+                    <div className="form-check d-flex justify-content-center">
                         <input
                             type="checkbox"
-                            className="form-check-input ms-3"
+                            className="form-check-input"
                             id="ticketselection"
                             onChange={() => handleCheck(ticket.Listing_ID)}
                             checked={ticket.isSelected}
@@ -17,33 +17,33 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                     </div>
                 </div>
             </td>
-            <td>
-                <div className="container-fluid">
-                    <p>{ticket.Section}</p>
+            <td className="border-dark border-1 justify-content-center">
+                <div className="container-fluid d-flex justify-content-center">
+                    <p className="me-2">{ticket.Section}</p>
                     <p>
                         {ticket.Row} {ticket.Seats}
                     </p>
                 </div>
             </td>
-            <td>
-                <div className="container-fluid">
-                    <p>{ticket.Ticket_Type}</p>
+            <td className="border-dark border-1 justify-content-center">
+                <div className="container-fluid d-flex justify-content-center">
+                    <p className="me-2">{ticket.Ticket_Type}</p>
                     <a href="#" className="link-primary text-decoration-none">
                         <p>Upload Now</p>
                     </a>
                 </div>
             </td>
-            <td>
-                <div className="container-fluid">
-                    <p className="text-warning">No. %</p>
+            <td className="border-dark border-1 justify-content-center">
+                <div className="container-fluid d-flex justify-content-center">
+                    <p className="text-success">No. %</p>
                 </div>
             </td>
 
-            <td>
-                <div className="container-fluid">
+            <td className="border-dark border-1 justify-content-center">
+                <div className="container-fluid d-flex justify-content-center">
                     <input
                         type="text"
-                        className="form-control d-inline"
+                        className="form-control d-inline me-2"
                         style={{width: 75 + 'px'}}
                         value={ticket.Price}
                         readOnly = {!ticket.isPriceSelected}
@@ -61,11 +61,11 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                 </div>
             </td>
 
-            <td>
-                <div className="container-fluid">
+            <td className="border-dark border-1 justify-content-center">
+                <div className="container-fluid d-flex justify-content-center">
                     <input
                         type="text"
-                        className="form-control d-inline"
+                        className="form-control d-inline me-2"
                         style={{width: 75 + 'px'}}
                         value={ticket.Available_Tickets}
                         readOnly = {!ticket.isAvailableTicketSelected}
@@ -82,15 +82,15 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                     />
                 </div>
             </td>
-            <td>
-                <div>
+            <td className="border-dark border-1 justify-content-center">
+                <div className="d-flex justify-content-center">
                     <p>{ticket.Ticket_Sold}</p>
                 </div>
             </td>
-            <td>
-                <div className="form-check form-switch">
+            <td className="border-dark border-1 justify-content-center">
+                <div className="form-check form-switch d-flex justify-content-center">
                     <input
-                        className="form-check-input"
+                        className="form-check-input me-4"
                         type="checkbox"
                         id="flexSwitchCheckChecked"
                         readOnly
@@ -103,7 +103,7 @@ const ListingTickets = ({ ticket, handleCheck, handlePriceSelect, handlePriceCha
                     />
                 </div>
             </td>
-            <td>
+            <td className="border-dark border-1 justify-content-center ">
                 <button
                     type="button"
                     className="btn btn-link btn-sm btn-rounded"

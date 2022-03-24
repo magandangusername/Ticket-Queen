@@ -11,14 +11,14 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                 data-target={`.a${concert.ConcertID}`}
             >
                 <td>
-                    <div className="col-sm-6">
-                        <div className="row mb-2">
+                    <div className="col-sm-6 justify-content-center">
+                        <div className="row justify-content-center">
                             <a href="#" className="link">
                                 <button
                                     type="button"
                                     name="edit"
                                     id={concert.ConcertID}
-                                    className="edit btn btn-xs btn-outline-danger btn-sm my-0"
+                                    className="edit btn btn-xl btn-outline-danger my-0 mt-3"
                                 >
                                     <i className="fa fa-plus-circle"></i>
                                 </button>
@@ -73,18 +73,18 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                         id="rowcontent"
                     >
                         <thead>
-                            <tr>
-                                <th className="text-center border-dark"></th>
-                                <th className="text-center border-dark">Ticket Details</th>
-                                <th className="text-center border-dark">Ticket Type</th>
-                                <th className="text-center border-dark">Visibility</th>
-                                <th className="text-center border-dark">Price</th>
-                                <th className="text-center border-dark">
+                            <tr className="border-dark border-2">
+                                <th className="text-center border-dark border-2"></th>
+                                <th className="text-center border-dark border-2">Ticket Details</th>
+                                <th className="text-center border-dark border-2">Ticket Type</th>
+                                <th className="text-center border-dark border-2">Visibility</th>
+                                <th className="text-center border-dark border-2">Price</th>
+                                <th className="text-center border-dark border-2">
                                     Available Tickets
                                 </th>
-                                <th className="text-center border-dark">Sold tickets</th>
-                                <th className="text-center border-dark">Publish</th>
-                                <th className="text-center border-dark"></th>
+                                <th className="text-center border-dark border-2">Sold tickets</th>
+                                <th className="text-center border-dark border-2">Publish</th>
+                                <th className="text-center border-dark border-2"></th>
                             </tr>
                         </thead>
 

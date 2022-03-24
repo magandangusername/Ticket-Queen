@@ -161,14 +161,14 @@ const ListingTable = () => {
                         <thead className="thead-light">
                             <tr>
                                 <th></th>
-                                <th className="text-center border-dark">Ticket Details</th>
-                                <th className="text-center border-dark"></th>
-                                <th className="text-center border-dark">
+                                <th className="text-center border-dark border-4">Ticket Details</th>
+                                <th className="text-center border-dark border-4"></th>
+                                <th className="text-center border-dark border-4">
                                     Available Ticket
                                 </th>
-                                <th className="text-center border-dark">Ticket Sold</th>
-                                <th className="text-center border-dark"></th>
-                                <th className="text-center border-dark">Days</th>
+                                <th className="text-center border-dark border-4">Ticket Sold</th>
+                                <th className="text-center border-dark border-4"></th>
+                                <th className="text-center border-dark border-4">Days</th>
                                 <th></th>
                             </tr>
                         </thead>
