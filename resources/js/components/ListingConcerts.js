@@ -74,17 +74,17 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                     >
                         <thead>
                             <tr>
-                                <th className="text-center"></th>
-                                <th className="text-center">Ticket Details</th>
-                                <th className="text-center">Ticket Type</th>
-                                <th className="text-center">Visibility</th>
-                                <th className="text-center">Price</th>
-                                <th className="text-center">
+                                <th className="text-center border-dark"></th>
+                                <th className="text-center border-dark">Ticket Details</th>
+                                <th className="text-center border-dark">Ticket Type</th>
+                                <th className="text-center border-dark">Visibility</th>
+                                <th className="text-center border-dark">Price</th>
+                                <th className="text-center border-dark">
                                     Available Tickets
                                 </th>
-                                <th className="text-center">Sold tickets</th>
-                                <th className="text-center">Publish</th>
-                                <th className="text-center"></th>
+                                <th className="text-center border-dark">Sold tickets</th>
+                                <th className="text-center border-dark">Publish</th>
+                                <th className="text-center border-dark"></th>
                             </tr>
                         </thead>
 

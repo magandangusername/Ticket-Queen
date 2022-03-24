@@ -157,18 +157,18 @@ const ListingTable = () => {
             )}
             {!fetchError && !isLoading && (
                 <>
-                    <table className="table">
+                    <table className="table border">
                         <thead className="thead-light">
                             <tr>
                                 <th></th>
-                                <th className="text-center">Ticket Details</th>
-                                <th className="text-center"></th>
-                                <th className="text-center">
+                                <th className="text-center border-dark">Ticket Details</th>
+                                <th className="text-center border-dark"></th>
+                                <th className="text-center border-dark">
                                     Available Ticket
                                 </th>
-                                <th className="text-center">Ticket Sold</th>
-                                <th className="text-center"></th>
-                                <th className="text-center">Days</th>
+                                <th className="text-center border-dark">Ticket Sold</th>
+                                <th className="text-center border-dark"></th>
+                                <th className="text-center border-dark">Days</th>
                                 <th></th>
                             </tr>
                         </thead>
