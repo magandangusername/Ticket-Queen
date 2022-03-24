@@ -1,5 +1,5 @@
 import axios from "axios";
-import { functionsIn } from "lodash";
+import { constant, functionsIn } from "lodash";
 import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
@@ -93,27 +93,7 @@ const ListingTable = () => {
         const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
 
         if (ticket[0].isPriceSelected === true) {
-            const ticket_info = {
-                Listing_ID: ticket[0].Listing_ID,
-                ConcertID: ticket[0].ConcertID,
-                Section: ticket[0].Section,
-                Row: ticket[0].Row,
-                Seats: ticket[0].Seats,
-                Ticket_Type: ticket[0].Ticket_Type,
-                Price: ticket[0].Price,
-                Available_Tickets: ticket[0].Available_Tickets,
-                Expiration: ticket[0].Expiration,
-                status: ticket[0].status,
-            };
-            axios
-                .post("/api/tickets/update", ticket_info)
-                // .catch((error) => setFetchError(error.message));
-                .then((response) => {
-                    console.log(response);
-                })
-                .catch((error) => {
-                    console.log(error.response);
-                });
+            ticketUpdate(ticket);
         }
     };
 
@@ -140,27 +120,7 @@ const ListingTable = () => {
         const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
 
         if (ticket[0].isAvailableTicketSelected !== false) {
-            const ticket_info = {
-                Listing_ID: ticket[0].Listing_ID,
-                ConcertID: ticket[0].ConcertID,
-                Section: ticket[0].Section,
-                Row: ticket[0].Row,
-                Seats: ticket[0].Seats,
-                Ticket_Type: ticket[0].Ticket_Type,
-                Price: ticket[0].Price,
-                Available_Tickets: ticket[0].Available_Tickets,
-                Expiration: ticket[0].Expiration,
-                status: ticket[0].status,
-            };
-            axios
-                .post("/api/tickets/update", ticket_info)
-                // .catch((error) => setFetchError(error.message));
-                .then((response) => {
-                    console.log(response);
-                })
-                .catch((error) => {
-                    console.log(error.response);
-                });
+            ticketUpdate(ticket);
         }
     };
 
@@ -171,6 +131,30 @@ const ListingTable = () => {
                 : ticket
         );
         setTickets(listTickets);
+    };
+
+    const ticketUpdate = async (ticket) => {
+        const ticket_info = {
+            Listing_ID: ticket[0].Listing_ID,
+            ConcertID: ticket[0].ConcertID,
+            Section: ticket[0].Section,
+            Row: ticket[0].Row,
+            Seats: ticket[0].Seats,
+            Ticket_Type: ticket[0].Ticket_Type,
+            Price: ticket[0].Price,
+            Available_Tickets: ticket[0].Available_Tickets,
+            Expiration: ticket[0].Expiration,
+            status: ticket[0].status,
+        };
+        axios
+            .post("/api/tickets/update", ticket_info)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
     };
 
     return (
@@ -201,14 +185,20 @@ const ListingTable = () => {
                         <thead className="thead-light">
                             <tr>
                                 <th></th>
-                                <th className="text-center border-dark border-4">Ticket Details</th>
+                                <th className="text-center border-dark border-4">
+                                    Ticket Details
+                                </th>
                                 <th className="text-center border-dark border-4"></th>
                                 <th className="text-center border-dark border-4">
                                     Available Ticket
                                 </th>
-                                <th className="text-center border-dark border-4">Ticket Sold</th>
+                                <th className="text-center border-dark border-4">
+                                    Ticket Sold
+                                </th>
                                 <th className="text-center border-dark border-4"></th>
-                                <th className="text-center border-dark border-4">Days</th>
+                                <th className="text-center border-dark border-4">
+                                    Days
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>

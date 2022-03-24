@@ -78,8 +78,8 @@ class ListingController extends Controller
             'Row' => 'nullable',
             'Seats' => 'nullable',
             'Ticket_Type' => 'required',
-            'Price' => 'required',
-            'Available_Tickets' => 'required',
+            'Price' => 'required|numeric',
+            'Available_Tickets' => 'required|',
             'Expiration' => 'required',
             'status' => 'required'
         ]);

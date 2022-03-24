@@ -5858,7 +5858,7 @@ var ListingTable = function ListingTable() {
 
   var handlePriceSelect = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
-      var listTickets, ticket, ticket_info;
+      var listTickets, ticket;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
@@ -5874,24 +5874,7 @@ var ListingTable = function ListingTable() {
               });
 
               if (ticket[0].isPriceSelected === true) {
-                ticket_info = {
-                  Listing_ID: ticket[0].Listing_ID,
-                  ConcertID: ticket[0].ConcertID,
-                  Section: ticket[0].Section,
-                  Row: ticket[0].Row,
-                  Seats: ticket[0].Seats,
-                  Ticket_Type: ticket[0].Ticket_Type,
-                  Price: ticket[0].Price,
-                  Available_Tickets: ticket[0].Available_Tickets,
-                  Expiration: ticket[0].Expiration,
-                  status: ticket[0].status
-                };
-                axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info) // .catch((error) => setFetchError(error.message));
-                .then(function (response) {
-                  console.log(response);
-                })["catch"](function (error) {
-                  console.log(error.response);
-                });
+                ticketUpdate(ticket);
               }
 
             case 4:
@@ -5936,7 +5919,7 @@ var ListingTable = function ListingTable() {
 
   var handleAvailableTicketSelect = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id) {
-      var listTickets, ticket, ticket_info;
+      var listTickets, ticket;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
@@ -5952,24 +5935,7 @@ var ListingTable = function ListingTable() {
               });
 
               if (ticket[0].isAvailableTicketSelected !== false) {
-                ticket_info = {
-                  Listing_ID: ticket[0].Listing_ID,
-                  ConcertID: ticket[0].ConcertID,
-                  Section: ticket[0].Section,
-                  Row: ticket[0].Row,
-                  Seats: ticket[0].Seats,
-                  Ticket_Type: ticket[0].Ticket_Type,
-                  Price: ticket[0].Price,
-                  Available_Tickets: ticket[0].Available_Tickets,
-                  Expiration: ticket[0].Expiration,
-                  status: ticket[0].status
-                };
-                axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info) // .catch((error) => setFetchError(error.message));
-                .then(function (response) {
-                  console.log(response);
-                })["catch"](function (error) {
-                  console.log(error.response);
-                });
+                ticketUpdate(ticket);
               }
 
             case 4:
@@ -6009,6 +5975,45 @@ var ListingTable = function ListingTable() {
 
     return function handleAvailableTicketChange(_x7, _x8, _x9) {
       return _ref7.apply(this, arguments);
+    };
+  }();
+
+  var ticketUpdate = /*#__PURE__*/function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(ticket) {
+      var ticket_info;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              ticket_info = {
+                Listing_ID: ticket[0].Listing_ID,
+                ConcertID: ticket[0].ConcertID,
+                Section: ticket[0].Section,
+                Row: ticket[0].Row,
+                Seats: ticket[0].Seats,
+                Ticket_Type: ticket[0].Ticket_Type,
+                Price: ticket[0].Price,
+                Available_Tickets: ticket[0].Available_Tickets,
+                Expiration: ticket[0].Expiration,
+                status: ticket[0].status
+              };
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info).then(function (response) {
+                console.log(response);
+              })["catch"](function (error) {
+                console.log(error.response);
+                setFetchError(error.message);
+              });
+
+            case 2:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    return function ticketUpdate(_x10) {
+      return _ref8.apply(this, arguments);
     };
   }();
 
