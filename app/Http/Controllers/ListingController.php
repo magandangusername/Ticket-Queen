@@ -69,9 +69,34 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'Listing_ID' => 'required',
+            'ConcertID' => 'required',
+            'Section' => 'required',
+            'Row' => 'nullable',
+            'Seats' => 'nullable',
+            'Ticket_Type' => 'required',
+            'Price' => 'required',
+            'Available_Tickets' => 'required',
+            'Expiration' => 'required',
+            'status' => 'required'
+        ]);
+
+        $ticket = queenticketeventdetails::where('Listing_ID', $validatedData['Listing_ID'])->update([
+            'ConcertID' => $validatedData['ConcertID'],
+            'Section' => $validatedData['Section'],
+            'Row' => $validatedData['Row'],
+            'Seats' => $validatedData['Seats'],
+            'Ticket_Type' => $validatedData['Ticket_Type'],
+            'Price' => $validatedData['Price'],
+            'Available_Tickets' => $validatedData['Available_Tickets'],
+            'Expiration' => $validatedData['Expiration'],
+            'status' => $validatedData['status']
+        ]);
+
+        // return $ticket->toJson('Ticket Updated!');
     }
 
     /**

@@ -5689,7 +5689,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // import Tools from "./Tools";
 
 
 
@@ -5750,7 +5749,7 @@ var ListingTable = function ListingTable() {
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](0);
-                setFetchError(err.message);
+                setFetchError(_context.t0.message);
 
               case 13:
               case "end":
@@ -5794,7 +5793,7 @@ var ListingTable = function ListingTable() {
               case 10:
                 _context2.prev = 10;
                 _context2.t0 = _context2["catch"](0);
-                setFetchError(err.message);
+                setFetchError(_context2.t0.message);
 
               case 13:
                 _context2.prev = 13;
@@ -5821,13 +5820,12 @@ var ListingTable = function ListingTable() {
     var selected = tickets.filter(function (ticket) {
       return ticket.isSelected === true;
     });
-    if (selected.length > 0) setVisible(true);else setVisible(false);
-    console.log(tickets);
+    if (selected.length > 0) setVisible(true);else setVisible(false); // console.log(tickets);
   }, [tickets]); //for logging purposes
-
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
-    console.log(concerts);
-  }, [concerts]); //not finished, to be continued
+  // useEffect(() => {
+  //     console.log(concerts);
+  // }, [concerts]);
+  //not finished, to be continued
 
   var handleCheck = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
@@ -5842,19 +5840,7 @@ var ListingTable = function ListingTable() {
                   isSelected: !ticket.isSelected
                 }) : ticket;
               });
-              setTickets(listTickets); // if (selected.length > 0) setVisible(true);
-              // else setVisible(false);
-              // const myTicket = listTickets.filter((ticket) => ticket.Listing_ID === id);
-              // const updateOptions = {
-              //     method: "PATCH",
-              //     headers: {
-              //         "Content-Type": "application/json",
-              //     },
-              //     body: JSON.stringify({ checked: myItem[0].checked }),
-              // };
-              // const reqUrl = `api/ticket/${id}`;
-              // const result = await apiRequest(reqUrl, updateOptions);
-              // if (result) setFetchError(result);
+              setTickets(listTickets);
 
             case 2:
             case "end":
@@ -5871,7 +5857,7 @@ var ListingTable = function ListingTable() {
 
   var handlePriceSelect = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
-      var listTickets;
+      var listTickets, ticket, ticket_info;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
@@ -5882,8 +5868,32 @@ var ListingTable = function ListingTable() {
                 }) : ticket;
               });
               setTickets(listTickets);
+              ticket = tickets.filter(function (ticket) {
+                return ticket.Listing_ID === id;
+              });
 
-            case 2:
+              if (ticket[0].isPriceSelected === true) {
+                ticket_info = {
+                  Listing_ID: ticket[0].Listing_ID,
+                  ConcertID: ticket[0].ConcertID,
+                  Section: ticket[0].Section,
+                  Row: ticket[0].Row,
+                  Seats: ticket[0].Seats,
+                  Ticket_Type: ticket[0].Ticket_Type,
+                  Price: ticket[0].Price,
+                  Available_Tickets: ticket[0].Available_Tickets,
+                  Expiration: ticket[0].Expiration,
+                  status: ticket[0].status
+                };
+                axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info) // .catch((error) => setFetchError(error.message));
+                .then(function (response) {
+                  console.log(response);
+                })["catch"](function (error) {
+                  console.log(error.response);
+                });
+              }
+
+            case 4:
             case "end":
               return _context4.stop();
           }
@@ -5908,10 +5918,9 @@ var ListingTable = function ListingTable() {
                   Price: val
                 }) : ticket;
               });
-              if (key.key === "Enter") console.log("You pressed enter");
               setTickets(listTickets);
 
-            case 3:
+            case 2:
             case "end":
               return _context5.stop();
           }
@@ -5926,7 +5935,7 @@ var ListingTable = function ListingTable() {
 
   var handleAvailableTicketSelect = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id) {
-      var listTickets;
+      var listTickets, ticket, ticket_info;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
@@ -5937,8 +5946,29 @@ var ListingTable = function ListingTable() {
                 }) : ticket;
               });
               setTickets(listTickets);
+              ticket = tickets.filter(function (ticket) {
+                return ticket.Listing_ID === id;
+              });
 
-            case 2:
+              if (ticket[0].isPriceSelected === false) {
+                ticket_info = {
+                  Listing_ID: ticket[0].Listing_ID,
+                  ConcertID: ticket[0].ConcertID,
+                  Section: ticket[0].Section,
+                  Row: ticket[0].Row,
+                  Seats: ticket[0].Seats,
+                  Ticket_Type: ticket[0].Ticket_Type,
+                  Price: ticket[0].Price,
+                  Available_Tickets: ticket[0].Available_Tickets,
+                  Expiration: ticket[0].Expiration,
+                  status: ticket[0].status
+                };
+                axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/update", ticket_info)["catch"](function (error) {
+                  return setFetchError(error.message);
+                });
+              }
+
+            case 4:
             case "end":
               return _context6.stop();
           }
@@ -6151,7 +6181,7 @@ var ListingTickets = function ListingTickets(_ref) {
             return handlePriceChange(ticket.Listing_ID, e.target.value, e);
           },
           onKeyDown: function onKeyDown(e) {
-            return e.key === 'Enter' && handlePriceSelect(ticket.Listing_ID);
+            return e.key === 'Enter' && e.target.blur();
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
           // src=""
@@ -6184,7 +6214,7 @@ var ListingTickets = function ListingTickets(_ref) {
             return handleAvailableTicketChange(ticket.Listing_ID, e.target.value, e);
           },
           onKeyDown: function onKeyDown(e) {
-            return e.key === 'Enter' && handleAvailableTicketSelect(ticket.Listing_ID);
+            return e.key === 'Enter' && e.target.blur();
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
           // src=""
