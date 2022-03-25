@@ -1,9 +1,10 @@
 import axios from "axios";
-import { functionsIn } from "lodash";
+import { constant, functionsIn } from "lodash";
 import React, { Component, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
 import Tools from "./Tools";
+import ListingSortBy from "./ListingSortBy";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -11,6 +12,10 @@ const ListingTable = () => {
     const [fetchError, setFetchError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [visible, setVisible] = useState(false);
+    const [sortAllListing, setSortAllListing] = useState(true);
+    const [sortEligibleLastMinuteSales, setSortEligibleLastMinuteSales] = useState(false);
+    const [sortActive, setSortActive] = useState(false);
+    const [sortInactive, setSortInactive] = useState(false);
 
     // gets data when opening/refreshing the page
     useEffect(() => {
@@ -93,27 +98,7 @@ const ListingTable = () => {
         const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
 
         if (ticket[0].isPriceSelected === true) {
-            const ticket_info = {
-                Listing_ID: ticket[0].Listing_ID,
-                ConcertID: ticket[0].ConcertID,
-                Section: ticket[0].Section,
-                Row: ticket[0].Row,
-                Seats: ticket[0].Seats,
-                Ticket_Type: ticket[0].Ticket_Type,
-                Price: ticket[0].Price,
-                Available_Tickets: ticket[0].Available_Tickets,
-                Expiration: ticket[0].Expiration,
-                status: ticket[0].status,
-            };
-            axios
-                .post("/api/tickets/update", ticket_info)
-                // .catch((error) => setFetchError(error.message));
-                .then((response) => {
-                    console.log(response);
-                })
-                .catch((error) => {
-                    console.log(error.response);
-                });
+            ticketUpdate(ticket);
         }
     };
 
@@ -139,22 +124,8 @@ const ListingTable = () => {
 
         const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
 
-        if (ticket[0].isPriceSelected === false) {
-            const ticket_info = {
-                Listing_ID: ticket[0].Listing_ID,
-                ConcertID: ticket[0].ConcertID,
-                Section: ticket[0].Section,
-                Row: ticket[0].Row,
-                Seats: ticket[0].Seats,
-                Ticket_Type: ticket[0].Ticket_Type,
-                Price: ticket[0].Price,
-                Available_Tickets: ticket[0].Available_Tickets,
-                Expiration: ticket[0].Expiration,
-                status: ticket[0].status,
-            };
-            axios
-                .post("/api/tickets/update", ticket_info)
-                .catch((error) => setFetchError(error.message));
+        if (ticket[0].isAvailableTicketSelected !== false) {
+            ticketUpdate(ticket);
         }
     };
 
@@ -165,6 +136,30 @@ const ListingTable = () => {
                 : ticket
         );
         setTickets(listTickets);
+    };
+
+    const ticketUpdate = async (ticket) => {
+        const ticket_info = {
+            Listing_ID: ticket[0].Listing_ID,
+            ConcertID: ticket[0].ConcertID,
+            Section: ticket[0].Section,
+            Row: ticket[0].Row,
+            Seats: ticket[0].Seats,
+            Ticket_Type: ticket[0].Ticket_Type,
+            Price: ticket[0].Price,
+            Available_Tickets: ticket[0].Available_Tickets,
+            Expiration: ticket[0].Expiration,
+            status: ticket[0].status,
+        };
+        axios
+            .post("/api/tickets/update", ticket_info)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
     };
 
     return (
@@ -191,51 +186,64 @@ const ListingTable = () => {
             )}
             {!fetchError && !isLoading && (
                 <>
-                    <table className="table border">
-                        <thead className="thead-light">
-                            <tr>
-                                <th></th>
-                                <th className="text-center border-dark border-4">Ticket Details</th>
-                                <th className="text-center border-dark border-4"></th>
-                                <th className="text-center border-dark border-4">
-                                    Available Ticket
-                                </th>
-                                <th className="text-center border-dark border-4">Ticket Sold</th>
-                                <th className="text-center border-dark border-4"></th>
-                                <th className="text-center border-dark border-4">Days</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                    <ListingSortBy />
+                    <div className="container-fluid">
+                        <br />
+                        <br />
+                        <br />
 
-                        <tbody id="tabletickets">
-                            {concerts.length && (
-                                <>
-                                    {concerts.map((concert) => (
-                                        <ListingConcerts
-                                            key={concert.ConcertID}
-                                            concert={concert}
-                                            tickets={tickets}
-                                            setTickets={setTickets}
-                                            handleCheck={handleCheck}
-                                            handlePriceSelect={
-                                                handlePriceSelect
-                                            }
-                                            handlePriceChange={
-                                                handlePriceChange
-                                            }
-                                            handleAvailableTicketSelect={
-                                                handleAvailableTicketSelect
-                                            }
-                                            handleAvailableTicketChange={
-                                                handleAvailableTicketChange
-                                            }
-                                        />
-                                    ))}
-                                </>
-                            )}
-                        </tbody>
-                    </table>
-                    <Tools visible={visible} />
+                        <table className="table border">
+                            <thead className="thead-light">
+                                <tr>
+                                    <th></th>
+                                    <th className="text-center border-dark border-4">
+                                        Ticket Details
+                                    </th>
+                                    <th className="text-center border-dark border-4"></th>
+                                    <th className="text-center border-dark border-4">
+                                        Available Ticket
+                                    </th>
+                                    <th className="text-center border-dark border-4">
+                                        Ticket Sold
+                                    </th>
+                                    <th className="text-center border-dark border-4"></th>
+                                    <th className="text-center border-dark border-4">
+                                        Days
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabletickets">
+                                {concerts.length && (
+                                    <>
+                                        {concerts.map((concert) => (
+                                            <ListingConcerts
+                                                key={concert.ConcertID}
+                                                concert={concert}
+                                                tickets={tickets}
+                                                setTickets={setTickets}
+                                                handleCheck={handleCheck}
+                                                handlePriceSelect={
+                                                    handlePriceSelect
+                                                }
+                                                handlePriceChange={
+                                                    handlePriceChange
+                                                }
+                                                handleAvailableTicketSelect={
+                                                    handleAvailableTicketSelect
+                                                }
+                                                handleAvailableTicketChange={
+                                                    handleAvailableTicketChange
+                                                }
+                                            />
+                                        ))}
+                                    </>
+                                )}
+                            </tbody>
+                        </table>
+                        <Tools visible={visible} />
+                    </div>
                 </>
             )}
         </>
