@@ -12,93 +12,86 @@
 
 
 <div class="modal container-fluid" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header m-1 p-2">
 
-            <!-- Modal Header -->
-            <div class="modal-header m-1 p-2">
+                    <h4 class="modal-title m-2">Modal Heading</h4>
+                    <p>
+                        <b>Tuesday, 22 March 2022</b>
+                        <br>
+                        O2 Eventim Apollo, London, United Kingdom
+                    </p>
 
-                <h4 class="m-1 p-2">Request an event</h4>
-                <p class="m-1 p-2">Can't find the event you're looking for?
-                    Enter the details below and you can start listing immediately.
-                    Once our support team approves the event, your tickets will become active on our website.
-                </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <!-- Modal body -->
+                <div class="form-group modal-body m-1 p-3">
+                    <div class="dropdowns row">
+                        <label for="">Listings</label>
+                        <p class="col">Sales</p>
+                        <p class="col">Filter By: </p>
+                        <div class="form-group col">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>All Sections</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>All Venue Areas</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>All Quantities</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table mt-5 me-5">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">SECTION</th>
+                                <th scope="col">ROW</th>
+                                <th scope="col">QUANTITY</th>
+                                <th scope="col">PRICE</th>
+                                <th scope="col">PROCEEDS</th>
+                                <th scope="col">VENUE AREA</th>
+                                <th scope="col">LISTING NOTES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>403</td>
+                                <td>57</td>
+                                <td>2</td>
+                                <td>A$34.72</td>
+                                <td></td>
+                                <td>Upper Tier</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer m-1 p-2">
+                    <button type="button" class="btn btn-secondary">Secondary</button>
+                    <button type="button" class="btn btn-success">Success</button>
+                </div>
+
             </div>
-
-            <!-- Modal body -->
-            <div class="form-group m-1 p-3">
-                <form >
-                    <div class="row">
-                        <label for="exampleFormControlInput1">Artist, Home Team, Tournament, Festival or Show*</label>
-                        <input type="show" class="" id="exampleFormControlInput1" placeholder="Search">
-                    </div>
-                    <div class="row">
-                        <label for="exampleFormControlSelect1">Event*</label>
-                        <input type="event" class="" id="exampleFormControlInput1">
-                    </div>
-                    <div class="row">
-                        <label for="date">Event Date/Time*</label>
-                        <input type="date" class="col me-1" id="date" name="date">
-                        <select class="col ms-1" id="exampleFormControlSelect1">
-                            <option>times</option>
-                        </select>
-                    </div>
-                    <div class="row">
-                        <label for="exampleFormControlInput1">Venue*</label>
-                        <input type="venue" class=" placeholder="Search">
-                    </div>
-                    <div class="row">
-                        <label for="exampleFormControlInput1">City*</label>
-                        <input type="city" class=" ">
-                    </div>
-                    <div class="row">
-                        <label for="exampleFormControlSelect1">Country*</label>
-                        <select class="" id="exampleFormControlSelect1">
-                            <option selected>Albania</option>
-                            <option>Algeria</option>
-                            <option>American Samoa</option>
-                            <option>Andorra</option>
-                            <option>Angola</option>
-                        </select>
-                    </div>
-                    <div class="row">
-
-                        <label for="exampleFormControlInput1">Onsale</label>
-                        <input type="date" class="col me-1" id="date" name="date">
-
-                        <select class="col ms-1" id="exampleFormControlSelect1">
-                            <option>times</option>
-                        </select>
-                    </div>
-                    <div class="row">
-                        <label for="exampleFormControlInput1">Face Value</label>
-                        <select class="col me-1" id="exampleFormControlSelect1">
-                            <option>Euro</option>
-                            <option>Hong Kong Dollar</option>
-                            <option>Croatian Kuna</option>
-                            <option>Japanese Yen</option>
-                            <option>South Korean Won</option>
-                        </select>
-                        <input type="valmin" class="col mx-1" id="exampleFormControlInput1" placeholder="Face Value Min">
-                        <input type="valmax" class="col ms-1" id="exampleFormControlInput1" placeholder="Face Value Max">
-                    </div>
-                    <div class="row">
-                        <label for="exampleFormControlInput1">Event Url and Notes*</label>
-                        <input type="venue" class="" id="exampleFormControlInput1">
-
-                    </div>
-                </form>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer m-1 p-2">
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-success">Success</button>
-            </div>
-
         </div>
-    </div>
 </div>
 
 @endsection
