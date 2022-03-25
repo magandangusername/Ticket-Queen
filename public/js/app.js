@@ -5530,7 +5530,15 @@ var ListingConcerts = function ListingConcerts(_ref) {
           className: "text-muted mb-0",
           children: concert.remaining_days
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+        className: "border-dark border-1 justify-content-center ",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          href: "",
+          className: "fas fa-search",
+          "data-bs-toggle": "modal",
+          "data-bs-target": "#magnify"
+        })
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
       className: "tabularinfo__subblock collapse a".concat(concert.ConcertID),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {

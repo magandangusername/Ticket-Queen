@@ -1,35 +1,24 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-    <div class="container-fluid bg.transparent" style="">
-        <div id="ListingTable"></div>
+<div class="container-fluid bg.transparent" style="">
+    <div id="ListingTable"></div>
 
-        <br>
-    </div>
-
-    <div class="modal w-100" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-
+    <br>
 </div>
 
 
-<div class="modal"  id="myModal">
+<div class="modal" id="myModal">
     <div class="modal-dialog modal-lg" style=" overflow-y: initial !important">
         <div class="modal-content" style="max-height: px;">
             <!-- Modal Header -->
@@ -45,7 +34,7 @@
             </div>
 
             <!-- Modal body -->
-            <div class="row modal-body" style=" height: 70vh; overflow-y: auto;" >
+            <div class="row modal-body" style=" height: 70vh; ">
                 <div class="container-fluid col" style="overflow-y: scroll; max-height:100%;">
                     <form>
                         <div class="row">
@@ -129,7 +118,7 @@
 
                         <div class="row">
                             <div class="form-group col>
-                                <label for="exampleFormControlInput1">Face Value*</label>
+                                <label for=" exampleFormControlInput1">Face Value*</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
 
@@ -257,7 +246,7 @@
                             </div>
                         </div>
                         <div class="row">
-                                <b>Listing notes</b>
+                            <b>Listing notes</b>
                         </div>
 
                         <div class="row">
@@ -372,8 +361,8 @@
                 </div>
                 <div class="col-3">
                     <div class="form-check form-switch border p-1">
-                    <input class="form-check-input ms-auto" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label ms-5" for="flexSwitchCheckDefault">Publish</label>
+                        <input class="form-check-input ms-auto" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label ms-5" for="flexSwitchCheckDefault">Publish</label>
                     </div>
                     <div class="border p-1">
                         <label class="form-label" for="">Sold Status</label>
@@ -393,28 +382,108 @@
                 </div>
 
 
+
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light float-sm-start">Clone</button>
+                <button type="button" class="btn btn-danger float-sm-start">Delete</button>
+                <button type="button" class="btn btn-success float-sm-end">Save</button>
+                <button type="button" class="btn btn-secondary float-sm-end">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal container-fluid" id="magnify">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header m-1 p-2">
+
+                    <h4 class="modal-title m-2">Modal Heading</h4>
+                    <p>
+                        <b>Tuesday, 22 March 2022</b>
+                        <br>
+                        O2 Eventim Apollo, London, United Kingdom
+                    </p>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="form-group modal-body m-1 p-3">
+                    <div class="dropdowns row">
+                        <label for="">Listings</label>
+                        <p class="col-1 ">Sales</p>
+                        <p class="col-2 ms-auto">Filter By: </p>
+                        <div class="form-group col-3">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>All Sections</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-3">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>All Venue Areas</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-3    ">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>All Quantities</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table mt-5 me-5">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">SECTION</th>
+                                <th scope="col">ROW</th>
+                                <th scope="col">QUANTITY</th>
+                                <th scope="col">PRICE</th>
+                                <th scope="col">PROCEEDS</th>
+                                <th scope="col">VENUE AREA</th>
+                                <th scope="col">LISTING NOTES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>403</td>
+                                <td>57</td>
+                                <td>2</td>
+                                <td>A$34.72</td>
+                                <td></td>
+                                <td>Upper Tier</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light float-sm-start">Clone</button>
-                    <button type="button" class="btn btn-danger float-sm-start">Delete</button>
-                    <button type="button" class="btn btn-success float-sm-end">Save</button>
-                    <button type="button" class="btn btn-secondary float-sm-end">Cancel</button>
+                <div class="modal-footer m-1 p-2">
+                    
                 </div>
 
             </div>
         </div>
-    </div>
+</div>
 
 
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
     <script>
@@ -428,4 +497,4 @@
         //     });
         // });
     </script>
-@endsection
+    @endsection

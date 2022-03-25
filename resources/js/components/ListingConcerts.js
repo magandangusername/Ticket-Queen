@@ -62,7 +62,14 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                 <td>
                     <p className="text-muted mb-0">{concert.remaining_days}</p>
                 </td>
-                <td></td>
+                <td className="border-dark border-1 justify-content-center ">
+                <a
+                    href=""
+                    className="fas fa-search"
+                    data-bs-toggle="modal"
+                    data-bs-target="#magnify"
+                ></a>
+            </td>
             </tr>
             <tr
                 className={`tabularinfo__subblock collapse a${concert.ConcertID}`}
