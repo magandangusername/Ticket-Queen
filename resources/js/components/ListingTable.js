@@ -13,11 +13,19 @@ const ListingTable = () => {
     const [isConcertsLoading, setIsConcertsLoading] = useState(true);
     const [isTicketsLoading, setIsTicketsLoading] = useState(true);
     const [visible, setVisible] = useState(false);
-    const [sortAllListing, setSortAllListing] = useState(true);
+    const [sortAllListing, setSortAllListing] = useState([]);
     const [sortEligibleLastMinuteSales, setSortEligibleLastMinuteSales] =
-        useState(false);
-    const [sortActive, setSortActive] = useState(false);
-    const [sortInactive, setSortInactive] = useState(false);
+        useState([]);
+    const [sortActive, setSortActive] = useState([]);
+    const [sortInactive, setSortInactive] = useState([]);
+    const [sortAllListingActive, setSortAllListingActive] = useState(true);
+    const [
+        sortEligibleLastMinuteSalesActive,
+        setSortEligibleLastMinuteSalesActive,
+    ] = useState(false);
+    const [sortActiveActive, setSortActiveActive] = useState(false);
+    const [sortInactiveActive, setSortInactiveActive] = useState(false);
+    const [sort, setSort] = useState([]);
 
     // gets data when opening/refreshing the page
     const fetchConcert = async () => {
@@ -78,63 +86,149 @@ const ListingTable = () => {
     }, [tickets]);
 
     // for logging purposes
-    useEffect(() => {
-        console.log(concerts);
-    }, [concerts]);
+    // useEffect(() => {
+    //     console.log(concerts);
+    // }, [concerts]);
 
     useEffect(() => {
-        if (sortEligibleLastMinuteSales || sortActive || sortInactive)
-            setSortAllListing(false);
-        else if (!sortEligibleLastMinuteSales && !sortActive && !sortInactive)
-            setSortAllListing(true);
+        if (
+            sortEligibleLastMinuteSalesActive ||
+            sortActiveActive ||
+            sortInactiveActive
+        )
+            setSortAllListingActive(false);
+        else if (
+            !sortEligibleLastMinuteSalesActive &&
+            !sortActiveActive &&
+            !sortInactiveActive
+        )
+            setSortAllListingActive(true);
+        // else if (sortAllListingActive) {
+        //     setSortAllListingActive(false);
+        // }
+
+        // console.log(sortEligibleLastMinuteSales);
+        // console.log(sortActive);
+        // console.log(sortInactive);
+        // console.log(sortAllListing);
 
         // handleSort();
-    }, [sortEligibleLastMinuteSales, sortActive, sortInactive]);
+    }, [
+        sortEligibleLastMinuteSalesActive,
+        sortActiveActive,
+        sortInactiveActive,
+        sortAllListingActive,
+    ]);
 
     useEffect(() => {
-        if (sortAllListing) {
-            setSortEligibleLastMinuteSales(false);
-            setSortActive(false);
-            setSortInactive(false);
-        } else if (
-            !sortAllListing &&
-            !sortEligibleLastMinuteSales &&
-            !sortActive &&
-            !sortInactive
-        ) {
-            setSortAllListing(true);
-        }
-        // handleSort();
-    }, [sortAllListing]);
-
-    const handleSort = async () => {
-        if (sortAllListing) {
-            setIsConcertsLoading(true);
-            setIsTicketsLoading(true);
-            fetchConcert();
-            fetchTicket();
-        }
-        if (sortEligibleLastMinuteSales) {
-            const listConcerts = concerts.filter(
-                (concert) => concert.ConcertID === concert.ConcertID
+        //sorting
+        if (sortInactiveActive) {
+            const inactiveList = concerts.filter(
+                (concert) => concert.status === "expired"
             );
-            setConcerts(listConcerts);
+            setSortInactive(inactiveList);
+        } else {
+            setSortInactive([]);
         }
-        if (sortActive) {
-            const listConcerts = concerts.filter(
+        if (sortActiveActive) {
+            const activeList = concerts.filter(
                 (concert) => concert.status === "active"
             );
-            setConcerts(listConcerts);
+            setSortActive(activeList);
+        } else {
+            setSortActive([]);
         }
-        if (sortInactive) {
-            const listConcerts = concerts.filter(
-                (concert) =>
-                    concert.status === "expired" ||
-                    concert.status === "disabled"
-            );
-            setConcerts(listConcerts);
+        if (sortAllListingActive) {
+            setSortAllListing(concerts);
+        } else {
+            setSortAllListing([]);
         }
-    };
+
+        var al = new Set(sortAllListing.map((x) => x.ConcertID));
+        var merged = [
+            ...sortAllListing,
+            ...sortInactive.filter((x) => !al.has(x.ConcertID)),
+        ];
+        var al = new Set(merged.map((x) => x.ConcertID));
+        var merged2 = [
+            ...merged,
+            ...sortActive.filter((x) => !al.has(x.ConcertID)),
+        ];
+
+        setSort(merged2);
+        console.log("combined active effect");
+    }, [
+        sortEligibleLastMinuteSalesActive,
+        sortActiveActive,
+        sortInactiveActive
+    ]);
+
+    // useEffect(() => {
+    //     console.log(sort);
+    // }, [sort]);
+
+    // useEffect(() => {
+    //     console.log(sortAllListing);
+    //     console.log(sortEligibleLastMinuteSales);
+    //     console.log(sortActive);
+    //     console.log(sortInactive);
+    // }, [sortAllListing,sortEligibleLastMinuteSales,sortActive,sortInactive])
+
+    // useEffect(() => {
+    //     // handleSort();
+    //     if (sortAllListingActive && sortEligibleLastMinuteSalesActive && sortActiveActive && sortInactiveActive) {
+    //         setSortEligibleLastMinuteSalesActive(false);
+    //         setSortActiveActive(false);
+    //         setSortInactiveActive(false);
+    //         console.log("all active effect");
+    //     } else if (
+    //         // !sortAllListingActive &&
+    //         !sortEligibleLastMinuteSalesActive &&
+    //         !sortActiveActive &&
+    //         !sortInactiveActive
+    //     ) {
+    //         setSortAllListingActive(true);
+    //         console.log("all active effect");
+    //         // handleSort();
+    //     }
+
+    // }, [sortAllListingActive]);
+
+    // useEffect(() => {
+    //     if (sortInactiveActive) {
+
+    //     }
+    // }, [sortInactiveActive]);
+
+    // const handleSort = async () => {
+    //     if (sortAllListingActive) {
+    //         // setIsConcertsLoading(true);
+    //         // setIsTicketsLoading(true);
+    //         // fetchConcert();
+    //         // fetchTicket();
+    //         // console.log(sortAllListingActive);
+    //     }
+    //     if (sortEligibleLastMinuteSalesActive) {
+    //         const listConcerts = concerts.filter(
+    //             (concert) => concert.ConcertID === concert.ConcertID
+    //         );
+    //         setConcerts(listConcerts);
+    //     }
+    //     if (sortActiveActive) {
+    //         const listConcerts = concerts.filter(
+    //             (concert) => concert.status === "active"
+    //         );
+    //         setConcerts(listConcerts);
+    //     }
+    //     if (sortInactiveActive) {
+    //         const listConcerts = concerts.filter(
+    //             (concert) =>
+    //                 concert.status === "expired" ||
+    //                 concert.status === "disabled"
+    //         );
+    //         setConcerts(listConcerts);
+    //     }
+    // };
 
     const handleCheck = async (id) => {
         //finds the set of data from the list and set its value
@@ -260,7 +354,19 @@ const ListingTable = () => {
                         }
                         setSortActive={setSortActive}
                         setSortInactive={setSortInactive}
-                        handleSort={handleSort}
+                        // handleSort={handleSort}
+                        sortAllListingActive={sortAllListingActive}
+                        sortEligibleLastMinuteSalesActive={
+                            sortEligibleLastMinuteSalesActive
+                        }
+                        sortActiveActive={sortActiveActive}
+                        sortInactiveActive={sortInactiveActive}
+                        setSortAllListingActive={setSortAllListingActive}
+                        setSortEligibleLastMinuteSalesActive={
+                            setSortEligibleLastMinuteSalesActive
+                        }
+                        setSortActiveActive={setSortActiveActive}
+                        setSortInactiveActive={setSortInactiveActive}
                     />
                     <div className="container-fluid">
                         <br />
@@ -292,7 +398,15 @@ const ListingTable = () => {
                             <tbody id="tabletickets">
                                 {!concerts.length && (
                                     <tr>
-                                        <td colSpan={10} style={{textAlign: "center", color: "white"}}>No data to show</td>
+                                        <td
+                                            colSpan={10}
+                                            style={{
+                                                textAlign: "center",
+                                                color: "white",
+                                            }}
+                                        >
+                                            No data to show
+                                        </td>
                                     </tr>
                                 )}
                                 {concerts.length ? (

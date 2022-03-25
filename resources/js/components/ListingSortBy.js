@@ -1,6 +1,7 @@
 import React from "react";
 
-const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive, sortInactive, setSortAllListing, setSortEligibleLastMinuteSales, setSortActive, setSortInactive, handleSort}) => {
+const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive, sortInactive, setSortAllListing, setSortEligibleLastMinuteSales, setSortActive, setSortInactive, handleSort,
+    sortAllListingActive, sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, setSortAllListingActive, setSortEligibleLastMinuteSalesActive, setSortActiveActive, setSortInactiveActive}) => {
     return (
         <>
             <div className="container-fluid d-flex justify-content-center">
@@ -21,8 +22,8 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 className="form-check-input"
                                 type="checkbox"
                                 id="All Listing"
-                                checked={sortAllListing}
-                                onChange={() => setSortAllListing(!sortAllListing)}
+                                checked={sortAllListingActive}
+                                onChange={() => (!sortEligibleLastMinuteSalesActive & !sortActiveActive & !sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
                             />
                             <label
                                 className="form-check-label"
@@ -37,8 +38,8 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 type="checkbox"
                                 value=""
                                 id="EligibleLastMinuteSales"
-                                checked={sortEligibleLastMinuteSales}
-                                onChange={() => setSortEligibleLastMinuteSales(!sortEligibleLastMinuteSales)}
+                                checked={sortEligibleLastMinuteSalesActive}
+                                onChange={() => setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive)}
                             />
                             <label
                                 className="form-check-label"
@@ -53,8 +54,8 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 type="checkbox"
                                 value=""
                                 id="Active Listing"
-                                checked={sortActive}
-                                onChange={() => setSortActive(!sortActive)}
+                                checked={sortActiveActive}
+                                onChange={() => setSortActiveActive(!sortActiveActive)}
                             />
                             <label
                                 className="form-check-label"
@@ -69,8 +70,8 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 type="checkbox"
                                 value=""
                                 id="Inactive"
-                                checked={sortInactive}
-                                onChange={() => setSortInactive(!sortInactive)}
+                                checked={sortInactiveActive}
+                                onChange={() => setSortInactiveActive(!sortInactiveActive)}
                             />
                             <label
                                 className="form-check-label"
