@@ -51,10 +51,6 @@
         <br>
 
 
-
-
-
-
         {{-- <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -209,12 +205,6 @@
 
 
         <div id="ListingTable"></div>
-
-
-
-
-
-
         <br>
 
         <tbody>
@@ -282,10 +272,10 @@
 
 </div>
 
-<div class="modal w-100" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
+<div class="modal"  id="myModal">
+    <div class="modal-dialog modal-lg" style=" overflow-y: initial !important">
+        <div class="modal-content" style="max-height: px;">
             <!-- Modal Header -->
             <div class="modal-header">
 
@@ -299,19 +289,17 @@
             </div>
 
             <!-- Modal body -->
-
-
-            <div class="row">
-                <div class="container-fluid col-7 sm">
+            <div class="row modal-body" style=" height: 70vh; overflow-y: auto;" >
+                <div class="container-fluid col" style="overflow-y: scroll; max-height:100%;">
                     <form>
                         <div class="row">
-                            <div class="form-group col-2">
+                            <div class="form-group col">
 
                                 <label for="exampleFormControlInput1">Available Tickets*</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
 
-                            <div class="form-group col-2">
+                            <div class="form-group col">
                                 <label for="exampleFormControlSelect1">Ticket Separation</label>
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option>Any</option>
@@ -321,7 +309,7 @@
                                     <option>Avoid odd numbers</option>
                                 </select>
                             </div>
-                            <div class="form-group col-2">
+                            <div class="form-group col">
                                 <label for="exampleFormControlInput1">Quantity Sold</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
@@ -329,19 +317,19 @@
                         </div>
 
                         <div class="row">
-                            <div class="form-group col-3">
+                            <div class="form-group col">
                                 <label for="exampleFormControlInput1">Section*</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
 
-                            <div class="form-group col-3    ">
+                            <div class="form-group col">
                                 <label for="exampleFormControlInput1">Row</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-3 my-1">
-                                <label class="sr-only" for="inlineFormInputGroupUsername">Seats*</label>
+                            <div class="col">
+                                <label class="" for="#inlineFormInputGroupUsername">Seats</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="inlineFormInputGroupMinimum">
                                     <div class="input-group-prepend">
@@ -352,9 +340,9 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-2 my-1">
-                                <label class="sr-only" for="inlineFormInputGroupUsername">Website Price*</label>
+                        <div class="row my-1">
+                            <div class="col">
+                                <label class="" for="inlineFormInputGroupUsername">Website Price*</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">A$</div>
@@ -363,16 +351,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-2 my-1">
-                                <label class="sr-only" for="inlineFormInputGroupUsername">Proceeds*</label>
-                                <div class="input-group">
+                            <div class="col">
+                                <label class="" for="inlineFormInputGroupUsername">Proceeds*</label>
+                                <div class="input-group ">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">A$</div>
                                     </div>
                                     <input type="text" class="form-control" id="inlineFormInputGroupUsername">
                                 </div>
                             </div>
-                            <div class="col-sm-2 my-1">
+                            <div class="col">
                                 <label for="exampleFormControlSelect1">Ticket Separation</label>
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option>AUD</option>
@@ -384,12 +372,12 @@
                         </div>
 
                         <div class="row">
-                            <div class="form-group col-3">
+                            <div class="form-group col>
                                 <label for="exampleFormControlInput1">Face Value*</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
 
-                            <div class="form-group col-3">
+                            <div class="form-group col">
                                 <label for="exampleFormControlInput1">Max Display Quantity*</label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1">
                             </div>
@@ -405,106 +393,106 @@
                             </p>
                         </div>
                         <div class="row">
-                            <div class="listboxes col-6 col-md-4 w-25">
-                                <div class="form-check ms-5">
+                            <div class="listboxes col">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
                             </div>
-                            <div class="listboxes col-6 col-md-4 w-25">
-                                <div class="form-check ms-5">
+                            <div class="listboxes col">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
@@ -513,113 +501,110 @@
                             </div>
                         </div>
                         <div class="row">
-                            <br>
-                            <p>
                                 <b>Listing notes</b>
-                            </p>
                         </div>
 
                         <div class="row">
-                            <div class="listboxes col-6 col-md-4 w-25">
-                                <div class="form-check ms-5">
+                            <div class="listboxes col">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
                             </div>
-                            <div class="listboxes col-6 col-md-4 w-25">
-                                <div class="form-check ms-5">
+                            <div class="listboxes col">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show All Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Listings Eligible For Last Minute Sales
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check ">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Active Listings
                                     </label>
                                 </div>
-                                <div class="form-check ms-5">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck1">
                                         Show Inactive Listings
@@ -629,22 +614,22 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-4 m-2">
-                    <div class="form-check form-switch border">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Publish</label>
+                <div class="col-3">
+                    <div class="form-check form-switch border p-1">
+                    <input class="form-check-input ms-auto" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label ms-5" for="flexSwitchCheckDefault">Publish</label>
                     </div>
-                    <div class="border">
+                    <div class="border p-1">
                         <label class="form-label" for="">Sold Status</label>
                         <br>
                         <label class="form-label" for="">blah blah</label>
                     </div>
-                    <div class="border">
+                    <div class="border p-1">
                         <label class="form-label" for="">Listing ID</label>
                         <br>
                         <label class="form-label" for="">1232132131</label>
                     </div>
-                    <div class="border">
+                    <div class="border p-1">
                         <label class="form-label" for="">Ticket Type</label>
                         <br>
                         <label class="form-label" for="">E-ticket</label>

@@ -236,8 +236,8 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer m-1 p-2">
-                <button type="button" class="btn btn-secondary">Secondary</button>
-                <button type="button" class="btn btn-success">Success</button>
+                <button type="button" class="btn btn-secondary"><b><</b>    Back</button>
+                <button type="button" class="btn btn-success">Submit</button>
             </div>
 
         </div>
