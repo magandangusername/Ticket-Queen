@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListingSortBy = () => {
+const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive, sortInactive, setSortAllListing, setSortEligibleLastMinuteSales, setSortActive, setSortInactive, handleSort}) => {
     return (
         <>
             <div className="container-fluid d-flex justify-content-center">
@@ -20,12 +20,13 @@ const ListingSortBy = () => {
                             <input
                                 className="form-check-input"
                                 type="checkbox"
-                                value=""
-                                id="defaultCheck1"
+                                id="All Listing"
+                                checked={sortAllListing}
+                                onChange={() => setSortAllListing(!sortAllListing)}
                             />
                             <label
                                 className="form-check-label"
-                                htmlFor="defaultCheck1"
+                                htmlFor="All Listing"
                             >
                                 Show All Listings
                             </label>
@@ -35,11 +36,13 @@ const ListingSortBy = () => {
                                 className="form-check-input"
                                 type="checkbox"
                                 value=""
-                                id="defaultCheck1"
+                                id="EligibleLastMinuteSales"
+                                checked={sortEligibleLastMinuteSales}
+                                onChange={() => setSortEligibleLastMinuteSales(!sortEligibleLastMinuteSales)}
                             />
                             <label
                                 className="form-check-label"
-                                htmlFor="defaultCheck1"
+                                htmlFor="EligibleLastMinuteSales"
                             >
                                 Show Listings Eligible For Last Minute Sales
                             </label>
@@ -49,11 +52,13 @@ const ListingSortBy = () => {
                                 className="form-check-input"
                                 type="checkbox"
                                 value=""
-                                id="defaultCheck1"
+                                id="Active Listing"
+                                checked={sortActive}
+                                onChange={() => setSortActive(!sortActive)}
                             />
                             <label
                                 className="form-check-label"
-                                htmlFor="defaultCheck1"
+                                htmlFor="Active Listing"
                             >
                                 Show Active Listings
                             </label>
@@ -63,11 +68,13 @@ const ListingSortBy = () => {
                                 className="form-check-input"
                                 type="checkbox"
                                 value=""
-                                id="defaultCheck1"
+                                id="Inactive"
+                                checked={sortInactive}
+                                onChange={() => setSortInactive(!sortInactive)}
                             />
                             <label
                                 className="form-check-label"
-                                htmlFor="defaultCheck1"
+                                htmlFor="Inactive"
                             >
                                 Show Inactive Listings
                             </label>

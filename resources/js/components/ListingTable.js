@@ -10,54 +10,60 @@ const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
     const [tickets, setTickets] = useState([]);
     const [fetchError, setFetchError] = useState("");
-    const [isLoading, setIsLoading] = useState(true);
+    const [isConcertsLoading, setIsConcertsLoading] = useState(true);
+    const [isTicketsLoading, setIsTicketsLoading] = useState(true);
     const [visible, setVisible] = useState(false);
     const [sortAllListing, setSortAllListing] = useState(true);
-    const [sortEligibleLastMinuteSales, setSortEligibleLastMinuteSales] = useState(false);
+    const [sortEligibleLastMinuteSales, setSortEligibleLastMinuteSales] =
+        useState(false);
     const [sortActive, setSortActive] = useState(false);
     const [sortInactive, setSortInactive] = useState(false);
 
     // gets data when opening/refreshing the page
+    const fetchConcert = async () => {
+        try {
+            const response = await axios.get("/api/concerts");
+            setConcerts(response.data);
+
+            var arrOfObj = response.data;
+
+            var result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isSelected = false;
+                return o;
+            });
+            setConcerts(result);
+
+            // p.s. to myself: add a condition for active/expired concert in the future
+        } catch (error) {
+            setFetchError(error.message);
+        } finally {
+            setIsConcertsLoading(false);
+        }
+    };
+    const fetchTicket = async () => {
+        try {
+            const response = await axios.get("/api/tickets");
+            setTickets(response.data);
+
+            var arrOfObj = response.data;
+
+            var result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isSelected = false;
+                o.isPriceSelected = false;
+                o.isAvailableTicketSelected = false;
+                return o;
+            });
+            setTickets(result);
+        } catch (error) {
+            setFetchError(error.message);
+        } finally {
+            setIsTicketsLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchConcert = async () => {
-            try {
-                const response = await axios.get("/api/concerts");
-                setConcerts(response.data);
-
-                var arrOfObj = response.data;
-
-                var result = arrOfObj.map(function (el) {
-                    var o = Object.assign({}, el);
-                    o.isSelected = false;
-                    return o;
-                });
-                setConcerts(result);
-            } catch (error) {
-                setFetchError(error.message);
-            }
-        };
-        const fetchTicket = async () => {
-            try {
-                const response = await axios.get("/api/tickets");
-                setTickets(response.data);
-
-                var arrOfObj = response.data;
-
-                var result = arrOfObj.map(function (el) {
-                    var o = Object.assign({}, el);
-                    o.isSelected = false;
-                    o.isPriceSelected = false;
-                    o.isAvailableTicketSelected = false;
-                    return o;
-                });
-                setTickets(result);
-            } catch (error) {
-                setFetchError(error.message);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
         fetchConcert();
         fetchTicket();
     }, []);
@@ -71,12 +77,65 @@ const ListingTable = () => {
         // console.log(tickets);
     }, [tickets]);
 
-    //for logging purposes
-    // useEffect(() => {
-    //     console.log(concerts);
-    // }, [concerts]);
+    // for logging purposes
+    useEffect(() => {
+        console.log(concerts);
+    }, [concerts]);
 
-    //not finished, to be continued
+    useEffect(() => {
+        if (sortEligibleLastMinuteSales || sortActive || sortInactive)
+            setSortAllListing(false);
+        else if (!sortEligibleLastMinuteSales && !sortActive && !sortInactive)
+            setSortAllListing(true);
+
+        // handleSort();
+    }, [sortEligibleLastMinuteSales, sortActive, sortInactive]);
+
+    useEffect(() => {
+        if (sortAllListing) {
+            setSortEligibleLastMinuteSales(false);
+            setSortActive(false);
+            setSortInactive(false);
+        } else if (
+            !sortAllListing &&
+            !sortEligibleLastMinuteSales &&
+            !sortActive &&
+            !sortInactive
+        ) {
+            setSortAllListing(true);
+        }
+        // handleSort();
+    }, [sortAllListing]);
+
+    const handleSort = async () => {
+        if (sortAllListing) {
+            setIsConcertsLoading(true);
+            setIsTicketsLoading(true);
+            fetchConcert();
+            fetchTicket();
+        }
+        if (sortEligibleLastMinuteSales) {
+            const listConcerts = concerts.filter(
+                (concert) => concert.ConcertID === concert.ConcertID
+            );
+            setConcerts(listConcerts);
+        }
+        if (sortActive) {
+            const listConcerts = concerts.filter(
+                (concert) => concert.status === "active"
+            );
+            setConcerts(listConcerts);
+        }
+        if (sortInactive) {
+            const listConcerts = concerts.filter(
+                (concert) =>
+                    concert.status === "expired" ||
+                    concert.status === "disabled"
+            );
+            setConcerts(listConcerts);
+        }
+    };
+
     const handleCheck = async (id) => {
         //finds the set of data from the list and set its value
         const listTickets = tickets.map((ticket) =>
@@ -162,9 +221,10 @@ const ListingTable = () => {
             });
     };
 
+    // This is the display code
     return (
         <>
-            {isLoading && (
+            {isConcertsLoading && isTicketsLoading && (
                 <table className="table">
                     <thead className="thead-light">
                         <tr>
@@ -184,9 +244,24 @@ const ListingTable = () => {
                     </thead>
                 </table>
             )}
-            {!fetchError && !isLoading && (
+
+            {!fetchError && !isConcertsLoading && !isTicketsLoading && (
                 <>
-                    <ListingSortBy />
+                    <ListingSortBy
+                        sortAllListing={sortAllListing}
+                        sortEligibleLastMinuteSales={
+                            sortEligibleLastMinuteSales
+                        }
+                        sortActive={sortActive}
+                        sortInactive={sortInactive}
+                        setSortAllListing={setSortAllListing}
+                        setSortEligibleLastMinuteSales={
+                            setSortEligibleLastMinuteSales
+                        }
+                        setSortActive={setSortActive}
+                        setSortInactive={setSortInactive}
+                        handleSort={handleSort}
+                    />
                     <div className="container-fluid">
                         <br />
                         <br />
@@ -215,7 +290,12 @@ const ListingTable = () => {
                             </thead>
 
                             <tbody id="tabletickets">
-                                {concerts.length && (
+                                {!concerts.length && (
+                                    <tr>
+                                        <td colSpan={10} style={{textAlign: "center", color: "white"}}>No data to show</td>
+                                    </tr>
+                                )}
+                                {concerts.length ? (
                                     <>
                                         {concerts.map((concert) => (
                                             <ListingConcerts
@@ -239,7 +319,7 @@ const ListingTable = () => {
                                             />
                                         ))}
                                     </>
-                                )}
+                                ) : null}
                             </tbody>
                         </table>
                         <Tools visible={visible} />

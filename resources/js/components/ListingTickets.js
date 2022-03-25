@@ -51,6 +51,7 @@ const ListingTickets = ({
                         type="text"
                         className="form-control d-inline me-2"
                         style={{ width: 75 + "px" }}
+                        title="Double click to edit"
                         value={ticket.Price}
                         readOnly={!ticket.isPriceSelected}
                         onDoubleClick={() =>
@@ -84,6 +85,7 @@ const ListingTickets = ({
                         type="text"
                         className="form-control d-inline me-2"
                         style={{ width: 75 + "px" }}
+                        title="Double click to edit"
                         value={ticket.Available_Tickets}
                         readOnly={!ticket.isAvailableTicketSelected}
                         onDoubleClick={() =>
