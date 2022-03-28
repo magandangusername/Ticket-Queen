@@ -11380,3 +11380,11 @@ form.example::after {
 .navz-index {
   z-index: 500;
 }
+
+body, html {
+  height: 100%;
+}
+
+.table-heights {
+  height: 65%;
+}
