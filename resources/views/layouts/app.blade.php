@@ -190,7 +190,7 @@
                     </div>
                     <div class="row">
                         <label for="exampleFormControlInput1">Venue*</label>
-                        <input type="venue" class=" placeholder="Search">
+                        <input type="venue" class="" placeholder="Search">
                     </div>
                     <div class="row">
                         <label for="exampleFormControlInput1">City*</label>

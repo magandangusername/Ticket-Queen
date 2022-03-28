@@ -11,11 +11,10 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-<div class="container-fluid bg.transparent" style="">
-    <div id="ListingTable"></div>
-
-    <br>
-</div>
+{{-- <div class="container-fluid bg.transparent" style="">
+    
+</div> --}}
+<div id="ListingTable"></div>
 
 
 <div class="modal" id="myModal">

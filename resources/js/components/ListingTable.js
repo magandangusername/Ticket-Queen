@@ -369,10 +369,6 @@ const ListingTable = () => {
                         setSortInactiveActive={setSortInactiveActive}
                     />
                     <div className="container-fluid">
-                        <br />
-                        <br />
-                        <br />
-
                         <table className="table border">
                             <thead className="thead-light">
                                 <tr>
