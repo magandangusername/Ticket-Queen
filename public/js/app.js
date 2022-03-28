@@ -5445,7 +5445,8 @@ var ListingConcerts = function ListingConcerts(_ref) {
       handlePriceSelect = _ref.handlePriceSelect,
       handlePriceChange = _ref.handlePriceChange,
       handleAvailableTicketSelect = _ref.handleAvailableTicketSelect,
-      handleAvailableTicketChange = _ref.handleAvailableTicketChange;
+      handleAvailableTicketChange = _ref.handleAvailableTicketChange,
+      handleTicketEdit = _ref.handleTicketEdit;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
       className: "clickable js-tabularinfo-toggle",
@@ -5584,7 +5585,8 @@ var ListingConcerts = function ListingConcerts(_ref) {
                 handlePriceSelect: handlePriceSelect,
                 handlePriceChange: handlePriceChange,
                 handleAvailableTicketSelect: handleAvailableTicketSelect,
-                handleAvailableTicketChange: handleAvailableTicketChange
+                handleAvailableTicketChange: handleAvailableTicketChange,
+                handleTicketEdit: handleTicketEdit
               }, ticket.Listing_ID) : null;
             })
           }) : null]
@@ -5633,6 +5635,766 @@ var ListingDelete = function ListingDelete() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingDelete);
+
+/***/ }),
+
+/***/ "./resources/js/components/ListingEditTicket.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/ListingEditTicket.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var ListingEditTicket = function ListingEditTicket(_ref) {
+  var ticketEdit = _ref.ticketEdit;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "modal",
+    id: "myModal",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "modal-dialog modal-lg",
+      style: {
+        overflowY: "initial !important"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "modal-content",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "modal-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+            children: "Concert name"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+              children: "Date"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            type: "button",
+            className: "btn-close",
+            "data-bs-dismiss": "modal"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "row modal-body",
+          style: {
+            height: 90 + "vh"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "container-fluid col",
+            style: {
+              overflowY: "scroll",
+              maxHeight: 100 + "%"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlInput1",
+                    children: "Available Tickets*"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "exampleFormControlInput1",
+                    value: ticketEdit[0].Available_Tickets,
+                    readOnly: true
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlSelect1",
+                    children: "Ticket Separation"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+                    className: "form-control",
+                    id: "exampleFormControlSelect1",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "Any"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "None"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      selected: true,
+                      children: "Avoid leaving one ticket"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "Avoid leaving one or three tickets"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "Avoid odd numbers"
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlInput1",
+                    children: "Quantity Sold"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "exampleFormControlInput1"
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlInput1",
+                    children: "Section*"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "exampleFormControlInput1",
+                    value: ticketEdit[0].Section,
+                    readOnly: true
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlInput1",
+                    children: "Row"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "exampleFormControlInput1",
+                    value: ticketEdit[0].Row,
+                    readOnly: true
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "row",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    className: "",
+                    htmlFor: "#inlineFormInputGroupUsername",
+                    children: "Seats"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "input-group",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inlineFormInputGroupMinimum",
+                      value: ticketEdit[0].Seats,
+                      readOnly: true
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                      className: "input-group-prepend",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                        className: "input-group-text",
+                        children: "To"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inlineFormInputGroupMaximum",
+                      value: ticketEdit[0].Seats,
+                      readOnly: true
+                    })]
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row my-1",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    className: "",
+                    htmlFor: "inlineFormInputGroupUsername",
+                    children: "Website Price*"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "input-group",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                      className: "input-group-prepend",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                        className: "input-group-text",
+                        children: "A$"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inlineFormInputGroupUsername",
+                      value: ticketEdit[0].Price,
+                      readOnly: true
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    className: "",
+                    htmlFor: "inlineFormInputGroupUsername",
+                    children: "Proceeds*"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "input-group ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                      className: "input-group-prepend",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                        className: "input-group-text",
+                        children: "A$"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "text",
+                      className: "form-control",
+                      id: "inlineFormInputGroupUsername"
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlSelect1",
+                    children: "Ticket Separation"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+                    className: "form-control",
+                    id: "exampleFormControlSelect1",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "AUD"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "AED"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      children: "ARS"
+                    })]
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlInput1",
+                    children: "Face Value*"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "exampleFormControlInput1"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "form-group col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                    htmlFor: "exampleFormControlInput1",
+                    children: "Max Display Quantity*"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                    type: "email",
+                    className: "form-control",
+                    id: "exampleFormControlInput1"
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+                    children: "Select Restrictions on Use"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "If any of the following conditions apply to your tickets, please select them from the list below. If there is a restriction on the use of your ticket not shown here, please stop listing and contact us.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "listboxes col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "listboxes col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck1"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "row",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+                  children: "Listing notes"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "listboxes col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "listboxes col",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show All Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Listings Eligible For Last Minute Sales"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check ",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Active Listings"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-check",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      className: "form-check-input",
+                      type: "checkbox",
+                      value: "",
+                      id: "defaultCheck2"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "form-check-label",
+                      htmlFor: "defaultCheck1",
+                      children: "Show Inactive Listings"
+                    })]
+                  })]
+                })]
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "col-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-check form-switch border p-1",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                className: "form-check-input ms-auto",
+                type: "checkbox",
+                role: "switch",
+                id: "flexSwitchCheckDefault"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-check-label ms-5",
+                htmlFor: "flexSwitchCheckDefault",
+                children: "Publish"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "border p-1",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-label",
+                htmlFor: "",
+                children: "Sold Status"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-label",
+                htmlFor: "",
+                children: "blah blah"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "border p-1",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-label",
+                htmlFor: "",
+                children: "Listing ID"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-label",
+                htmlFor: "",
+                children: "1232132131"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "border p-1",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-label",
+                htmlFor: "",
+                children: "Ticket Type"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "form-label",
+                htmlFor: "",
+                children: "E-ticket"
+              })]
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "modal-footer",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            type: "button",
+            className: "btn btn-light float-sm-start",
+            children: "Clone"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            type: "button",
+            className: "btn btn-danger float-sm-start",
+            children: "Delete"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            type: "button",
+            className: "btn btn-success float-sm-end",
+            children: "Save"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            type: "button",
+            className: "btn btn-secondary float-sm-end",
+            children: "Cancel"
+          })]
+        })]
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingEditTicket);
 
 /***/ }),
 
@@ -5784,7 +6546,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListingConcerts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ListingConcerts */ "./resources/js/components/ListingConcerts.js");
 /* harmony import */ var _Tools__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Tools */ "./resources/js/components/Tools.js");
 /* harmony import */ var _ListingSortBy__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ListingSortBy */ "./resources/js/components/ListingSortBy.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _ListingEditTicket__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ListingEditTicket */ "./resources/js/components/ListingEditTicket.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5820,7 +6583,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var ListingTable = function ListingTable() {
+  var _jsx2, _jsx3, _jsx4, _jsx5, _jsx6, _jsx7, _jsx8, _jsx9, _jsx10, _jsx11, _jsx12, _jsx13, _jsx14, _jsx15, _jsx16, _jsx17, _jsx18, _jsx19, _jsx20, _jsx21, _jsx22, _jsx23, _jsx24, _jsx25, _jsx26, _jsx27, _jsx28, _jsx29, _jsx30, _jsx31, _jsx32, _jsx33, _jsx34, _jsx35, _jsx36, _jsx37, _jsx38, _jsx39, _jsx40, _jsx41, _jsx42, _jsx43, _jsx44, _jsx45;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       concerts = _useState2[0],
@@ -5894,7 +6660,12 @@ var ListingTable = function ListingTable() {
   var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState30 = _slicedToArray(_useState29, 2),
       sort = _useState30[0],
-      setSort = _useState30[1]; // gets data when opening/refreshing the page
+      setSort = _useState30[1];
+
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
+      _useState32 = _slicedToArray(_useState31, 2),
+      ticketEdit = _useState32[0],
+      setTicketEdit = _useState32[1]; // gets data when opening/refreshing the page
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6109,6 +6880,9 @@ var ListingTable = function ListingTable() {
   //     // ];
   //     // setSort(merged2);
   // };
+  // useEffect(() => {
+  //   console.log(ticketEdit)
+  // }, [ticketEdit])
 
   var handleCheck = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
@@ -6123,7 +6897,7 @@ var ListingTable = function ListingTable() {
                   isSelected: !ticket.isSelected
                 }) : ticket;
               });
-              setTickets(listTickets);
+              setTicketEdit(listTickets);
 
             case 2:
             case "end":
@@ -6138,12 +6912,38 @@ var ListingTable = function ListingTable() {
     };
   }();
 
-  var handlePriceSelect = /*#__PURE__*/function () {
+  var handleTicketEdit = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
-      var listTickets, ticket;
+      var editList;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
+            case 0:
+              editList = tickets.filter(function (ticket) {
+                return tickets.Listing_ID === id;
+              });
+              setTicketEdit(editList);
+              console.log(editList);
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function handleTicketEdit(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var handlePriceSelect = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
+      var listTickets, ticket;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -6161,23 +6961,23 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
         }
-      }, _callee4);
+      }, _callee5);
     }));
 
-    return function handlePriceSelect(_x2) {
-      return _ref4.apply(this, arguments);
+    return function handlePriceSelect(_x3) {
+      return _ref5.apply(this, arguments);
     };
   }();
 
   var handlePriceChange = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id, val, key) {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id, val, key) {
       var listTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -6188,23 +6988,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
         }
-      }, _callee5);
+      }, _callee6);
     }));
 
-    return function handlePriceChange(_x3, _x4, _x5) {
-      return _ref5.apply(this, arguments);
+    return function handlePriceChange(_x4, _x5, _x6) {
+      return _ref6.apply(this, arguments);
     };
   }();
 
   var handleAvailableTicketSelect = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id) {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
-          switch (_context6.prev = _context6.next) {
+          switch (_context7.prev = _context7.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -6222,23 +7022,23 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
         }
-      }, _callee6);
+      }, _callee7);
     }));
 
-    return function handleAvailableTicketSelect(_x6) {
-      return _ref6.apply(this, arguments);
+    return function handleAvailableTicketSelect(_x7) {
+      return _ref7.apply(this, arguments);
     };
   }();
 
   var handleAvailableTicketChange = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id, val, key) {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(id, val, key) {
       var listTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
         while (1) {
-          switch (_context7.prev = _context7.next) {
+          switch (_context8.prev = _context8.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -6249,23 +7049,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context7.stop();
+              return _context8.stop();
           }
         }
-      }, _callee7);
+      }, _callee8);
     }));
 
-    return function handleAvailableTicketChange(_x7, _x8, _x9) {
-      return _ref7.apply(this, arguments);
+    return function handleAvailableTicketChange(_x8, _x9, _x10) {
+      return _ref8.apply(this, arguments);
     };
   }();
 
   var ticketUpdate = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(ticket) {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(ticket) {
       var ticket_info;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
         while (1) {
-          switch (_context8.prev = _context8.next) {
+          switch (_context9.prev = _context9.next) {
             case 0:
               ticket_info = {
                 Listing_ID: ticket[0].Listing_ID,
@@ -6288,36 +7088,36 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context8.stop();
+              return _context9.stop();
           }
         }
-      }, _callee8);
+      }, _callee9);
     }));
 
-    return function ticketUpdate(_x10) {
-      return _ref8.apply(this, arguments);
+    return function ticketUpdate(_x11) {
+      return _ref9.apply(this, arguments);
     };
   }(); // This is the display code
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, {
-      children: [isConcertsLoading && isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("table", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, {
+      children: [isConcertsLoading && isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("table", {
         className: "table",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("thead", {
           className: "thead-light",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("tr", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
               children: "Loading Items..."
             })
           })
         })
-      }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("table", {
+      }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("table", {
         className: "table",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("thead", {
           className: "thead-light",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
               style: {
                 color: "red"
               },
@@ -6325,8 +7125,8 @@ var ListingTable = function ListingTable() {
             })
           })
         })
-      }), !fetchError && !isConcertsLoading && !isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }), !fetchError && !isConcertsLoading && !isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_7__["default"], {
           sortAllListing: sortAllListing,
           sortEligibleLastMinuteSales: sortEligibleLastMinuteSales,
           sortActive: sortActive,
@@ -6344,35 +7144,35 @@ var ListingTable = function ListingTable() {
           setSortEligibleLastMinuteSalesActive: setSortEligibleLastMinuteSalesActive,
           setSortActiveActive: setSortActiveActive,
           setSortInactiveActive: setSortInactiveActive
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "container-fluid",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("table", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("table", {
             className: "table border",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("thead", {
               className: "thead-light",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
                   className: "text-center border-dark border-4",
                   children: "Ticket Details"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
                   className: "text-center border-dark border-4"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
                   className: "text-center border-dark border-4",
                   children: "Available Ticket"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
                   className: "text-center border-dark border-4",
                   children: "Ticket Sold"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
                   className: "text-center border-dark border-4"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {
                   className: "text-center border-dark border-4",
                   children: "Days"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {})]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("th", {})]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("tbody", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("tbody", {
               id: "tabletickets",
-              children: [!concerts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("td", {
+              children: [!concerts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("tr", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("td", {
                   colSpan: 10,
                   style: {
                     textAlign: "center",
@@ -6380,9 +7180,9 @@ var ListingTable = function ListingTable() {
                   },
                   children: "No data to show"
                 })
-              }), concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+              }), concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
                 children: concerts.map(function (concert) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
                     concert: concert,
                     tickets: tickets,
                     setTickets: setTickets,
@@ -6390,15 +7190,653 @@ var ListingTable = function ListingTable() {
                     handlePriceSelect: handlePriceSelect,
                     handlePriceChange: handlePriceChange,
                     handleAvailableTicketSelect: handleAvailableTicketSelect,
-                    handleAvailableTicketChange: handleAvailableTicketChange
+                    handleAvailableTicketChange: handleAvailableTicketChange,
+                    handleTicketEdit: handleTicketEdit
                   }, concert.ConcertID);
                 })
               }) : null]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
             visible: visible
           })]
         })]
+      }), ticketEdit.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ListingEditTicket__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        ticketEdit: ticketEdit
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        className: "modal",
+        id: "myModal",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          className: "modal-dialog modal-lg" // style=" overflow-y: initial !important"
+          ,
+          style: {
+            overflowY: "initial !important"
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+            className: "modal-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "modal-header",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h4", {
+                children: "Concert name"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("p", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("b", {
+                  children: "Date"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {})]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                type: "button",
+                className: "btn-close",
+                "data-bs-dismiss": "modal"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "row modal-body",
+              style: {
+                height: 90 + "vh"
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                className: "container-fluid col",
+                style: {
+                  overflowY: "scroll",
+                  maxHeight: 100 + "%"
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlInput1",
+                        children: "Available Tickets*"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                        type: "email",
+                        className: "form-control",
+                        id: "exampleFormControlInput1"
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlSelect1",
+                        children: "Ticket Separation"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
+                        className: "form-control",
+                        id: "exampleFormControlSelect1",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "Any"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "None"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          defaultValue: true,
+                          children: "Avoid leaving one ticket"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "Avoid leaving one or three tickets"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "Avoid odd numbers"
+                        })]
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlInput1",
+                        children: "Quantity Sold"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                        type: "email",
+                        className: "form-control",
+                        id: "exampleFormControlInput1"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlInput1",
+                        children: "Section*"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                        type: "email",
+                        className: "form-control",
+                        id: "exampleFormControlInput1"
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlInput1",
+                        children: "Row"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                        type: "email",
+                        className: "form-control",
+                        id: "exampleFormControlInput1"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                    className: "row",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx2 = {
+                        className: ""
+                      }, _defineProperty(_jsx2, "className", "#inlineFormInputGroupUsername"), _defineProperty(_jsx2, "children", "Seats"), _jsx2)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "input-group",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          type: "text",
+                          className: "form-control",
+                          id: "inlineFormInputGroupMinimum"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                          className: "input-group-prepend",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                            className: "input-group-text",
+                            children: "To"
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          type: "text",
+                          className: "form-control",
+                          id: "inlineFormInputGroupMaximum"
+                        })]
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row my-1",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx3 = {
+                        className: ""
+                      }, _defineProperty(_jsx3, "className", "inlineFormInputGroupUsername"), _defineProperty(_jsx3, "children", "Website Price*"), _jsx3)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "input-group",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                          className: "input-group-prepend",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                            className: "input-group-text",
+                            children: "A$"
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          type: "text",
+                          className: "form-control",
+                          id: "inlineFormInputGroupUsername"
+                        })]
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx4 = {
+                        className: ""
+                      }, _defineProperty(_jsx4, "className", "inlineFormInputGroupUsername"), _defineProperty(_jsx4, "children", "Proceeds*"), _jsx4)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "input-group ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                          className: "input-group-prepend",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                            className: "input-group-text",
+                            children: "A$"
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          type: "text",
+                          className: "form-control",
+                          id: "inlineFormInputGroupUsername"
+                        })]
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlSelect1",
+                        children: "Ticket Separation"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("select", {
+                        className: "form-control",
+                        id: "exampleFormControlSelect1",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "AUD"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "AED"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("option", {
+                          children: "ARS"
+                        })]
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlInput1",
+                        children: "Face Value*"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                        type: "email",
+                        className: "form-control",
+                        id: "exampleFormControlInput1"
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "form-group col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", {
+                        className: "exampleFormControlInput1",
+                        children: "Max Display Quantity*"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                        type: "email",
+                        className: "form-control",
+                        id: "exampleFormControlInput1"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("p", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("b", {
+                        children: "Select Restrictions on Use"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), "If any of the following conditions apply to your tickets, please select them from the list below. If there is a restriction on the use of your ticket not shown here, please stop listing and contact us.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {})]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "listboxes col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx5 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx5, "className", "defaultCheck1"), _defineProperty(_jsx5, "children", "Show All Listings"), _jsx5))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx6 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx6, "className", "defaultCheck1"), _defineProperty(_jsx6, "children", "Show Listings Eligible For Last Minute Sales"), _jsx6))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx7 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx7, "className", "defaultCheck1"), _defineProperty(_jsx7, "children", "Show Active Listings"), _jsx7))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx8 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx8, "className", "defaultCheck1"), _defineProperty(_jsx8, "children", "Show Inactive Listings"), _jsx8))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx9 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx9, "className", "defaultCheck1"), _defineProperty(_jsx9, "children", "Show All Listings"), _jsx9))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx10 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx10, "className", "defaultCheck1"), _defineProperty(_jsx10, "children", "Show Listings Eligible For Last Minute Sales"), _jsx10))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx11 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx11, "className", "defaultCheck1"), _defineProperty(_jsx11, "children", "Show Active Listings"), _jsx11))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx12 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx12, "className", "defaultCheck1"), _defineProperty(_jsx12, "children", "Show Inactive Listings"), _jsx12))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx13 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx13, "className", "defaultCheck1"), _defineProperty(_jsx13, "children", "Show Inactive Listings"), _jsx13))]
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "listboxes col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx14 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx14, "className", "defaultCheck1"), _defineProperty(_jsx14, "children", "Show All Listings"), _jsx14))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx15 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx15, "className", "defaultCheck1"), _defineProperty(_jsx15, "children", "Show Listings Eligible For Last Minute Sales"), _jsx15))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx16 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx16, "className", "defaultCheck1"), _defineProperty(_jsx16, "children", "Show Active Listings"), _jsx16))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx17 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx17, "className", "defaultCheck1"), _defineProperty(_jsx17, "children", "Show Inactive Listings"), _jsx17))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx18 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx18, "className", "defaultCheck1"), _defineProperty(_jsx18, "children", "Show All Listings"), _jsx18))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx19 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx19, "className", "defaultCheck1"), _defineProperty(_jsx19, "children", "Show Listings Eligible For Last Minute Sales"), _jsx19))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx20 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx20, "className", "defaultCheck1"), _defineProperty(_jsx20, "children", "Show Active Listings"), _jsx20))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck1"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx21 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx21, "className", "defaultCheck1"), _defineProperty(_jsx21, "children", "Show Inactive Listings"), _jsx21))]
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                    className: "row",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("b", {
+                      children: "Listing notes"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                    className: "row",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "listboxes col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx22 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx22, "className", "defaultCheck1"), _defineProperty(_jsx22, "children", "Show All Listings"), _jsx22))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx23 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx23, "className", "defaultCheck1"), _defineProperty(_jsx23, "children", "Show Listings Eligible For Last Minute Sales"), _jsx23))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx24 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx24, "className", "defaultCheck1"), _defineProperty(_jsx24, "children", "Show Active Listings"), _jsx24))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx25 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx25, "className", "defaultCheck1"), _defineProperty(_jsx25, "children", "Show Inactive Listings"), _jsx25))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx26 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx26, "className", "defaultCheck1"), _defineProperty(_jsx26, "children", "Show All Listings"), _jsx26))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx27 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx27, "className", "defaultCheck1"), _defineProperty(_jsx27, "children", "Show Listings Eligible For Last Minute Sales"), _jsx27))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx28 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx28, "className", "defaultCheck1"), _defineProperty(_jsx28, "children", "Show Active Listings"), _jsx28))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx29 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx29, "className", "defaultCheck1"), _defineProperty(_jsx29, "children", "Show Inactive Listings"), _jsx29))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx30 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx30, "className", "defaultCheck1"), _defineProperty(_jsx30, "children", "Show Inactive Listings"), _jsx30))]
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                      className: "listboxes col",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx31 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx31, "className", "defaultCheck1"), _defineProperty(_jsx31, "children", "Show All Listings"), _jsx31))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx32 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx32, "className", "defaultCheck1"), _defineProperty(_jsx32, "children", "Show Listings Eligible For Last Minute Sales"), _jsx32))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx33 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx33, "className", "defaultCheck1"), _defineProperty(_jsx33, "children", "Show Active Listings"), _jsx33))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx34 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx34, "className", "defaultCheck1"), _defineProperty(_jsx34, "children", "Show Inactive Listings"), _jsx34))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx35 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx35, "className", "defaultCheck1"), _defineProperty(_jsx35, "children", "Show All Listings"), _jsx35))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx36 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx36, "className", "defaultCheck1"), _defineProperty(_jsx36, "children", "Show Listings Eligible For Last Minute Sales"), _jsx36))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check ",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx37 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx37, "className", "defaultCheck1"), _defineProperty(_jsx37, "children", "Show Active Listings"), _jsx37))]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                        className: "form-check",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          value: "",
+                          id: "defaultCheck2"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx38 = {
+                          className: "form-check-label"
+                        }, _defineProperty(_jsx38, "className", "defaultCheck1"), _defineProperty(_jsx38, "children", "Show Inactive Listings"), _jsx38))]
+                      })]
+                    })]
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "col-3",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  className: "form-check form-switch border p-1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("input", {
+                    className: "form-check-input ms-auto",
+                    type: "checkbox",
+                    role: "switch",
+                    id: "flexSwitchCheckDefault"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx39 = {
+                    className: "form-check-label ms-5"
+                  }, _defineProperty(_jsx39, "className", "flexSwitchCheckDefault"), _defineProperty(_jsx39, "children", "Publish"), _jsx39))]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  className: "border p-1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx40 = {
+                    className: "form-label"
+                  }, _defineProperty(_jsx40, "className", ""), _defineProperty(_jsx40, "children", "Sold Status"), _jsx40)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx41 = {
+                    className: "form-label"
+                  }, _defineProperty(_jsx41, "className", ""), _defineProperty(_jsx41, "children", "blah blah"), _jsx41))]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  className: "border p-1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx42 = {
+                    className: "form-label"
+                  }, _defineProperty(_jsx42, "className", ""), _defineProperty(_jsx42, "children", "Listing ID"), _jsx42)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx43 = {
+                    className: "form-label"
+                  }, _defineProperty(_jsx43, "className", ""), _defineProperty(_jsx43, "children", "1232132131"), _jsx43))]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                  className: "border p-1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx44 = {
+                    className: "form-label"
+                  }, _defineProperty(_jsx44, "className", ""), _defineProperty(_jsx44, "children", "Ticket Type"), _jsx44)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("label", (_jsx45 = {
+                    className: "form-label"
+                  }, _defineProperty(_jsx45, "className", ""), _defineProperty(_jsx45, "children", "E-ticket"), _jsx45))]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "modal-footer",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                type: "button",
+                className: "btn btn-light float-sm-start",
+                children: "Clone"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                type: "button",
+                className: "btn btn-danger float-sm-start",
+                children: "Delete"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                type: "button",
+                className: "btn btn-success float-sm-end",
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                type: "button",
+                className: "btn btn-secondary float-sm-end",
+                children: "Cancel"
+              })]
+            })]
+          })
+        })
       })]
     })
   });
@@ -6408,7 +7846,7 @@ var ListingTable = function ListingTable() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingTable);
 
 if (document.getElementById("ListingTable")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_4__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ListingTable, {}), document.getElementById("ListingTable"));
+  react_dom__WEBPACK_IMPORTED_MODULE_4__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(ListingTable, {}), document.getElementById("ListingTable"));
 }
 
 /***/ }),
@@ -6436,7 +7874,8 @@ var ListingTickets = function ListingTickets(_ref) {
       handlePriceSelect = _ref.handlePriceSelect,
       handlePriceChange = _ref.handlePriceChange,
       handleAvailableTicketSelect = _ref.handleAvailableTicketSelect,
-      handleAvailableTicketChange = _ref.handleAvailableTicketChange;
+      handleAvailableTicketChange = _ref.handleAvailableTicketChange,
+      handleTicketEdit = _ref.handleTicketEdit;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
@@ -6593,7 +8032,10 @@ var ListingTickets = function ListingTickets(_ref) {
         href: "",
         className: "fas fa-edit",
         "data-bs-toggle": "modal",
-        "data-bs-target": "#myModal"
+        "data-bs-target": "#myModal",
+        onClick: function onClick() {
+          return handleTicketEdit(ticket.Listing_ID);
+        }
       })
     })]
   });
