@@ -23,7 +23,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 type="checkbox"
                                 id="All Listing"
                                 checked={sortAllListingActive}
-                                onChange={() => (!sortEligibleLastMinuteSalesActive & !sortActiveActive & !sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
+                                onChange={() => (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
                             />
                             <label
                                 className="form-check-label"

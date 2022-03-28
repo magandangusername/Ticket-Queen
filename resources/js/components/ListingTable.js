@@ -74,6 +74,18 @@ const ListingTable = () => {
     useEffect(() => {
         fetchConcert();
         fetchTicket();
+
+        // setSortAllListing(concerts);
+        // const inactiveList = concerts.filter(
+        //     (concert) => concert.status === "expired"
+        // );
+        // setSortInactive(inactiveList);
+        // const activeList = concerts.filter(
+        //     (concert) => concert.status === "active"
+        // );
+        // setSortActive(activeList);
+
+        // handleSort();
     }, []);
 
     useEffect(() => {
@@ -121,113 +133,98 @@ const ListingTable = () => {
     ]);
 
     useEffect(() => {
-        //sorting
-        if (sortInactiveActive) {
-            const inactiveList = concerts.filter(
-                (concert) => concert.status === "expired"
-            );
-            setSortInactive(inactiveList);
-        } else {
-            setSortInactive([]);
-        }
-        if (sortActiveActive) {
-            const activeList = concerts.filter(
-                (concert) => concert.status === "active"
-            );
-            setSortActive(activeList);
-        } else {
-            setSortActive([]);
-        }
         if (sortAllListingActive) {
-            setSortAllListing(concerts);
-        } else {
-            setSortAllListing([]);
+            setSortEligibleLastMinuteSalesActive(false);
+            setSortActiveActive(false);
+            setSortInactiveActive(false);
+            console.log("all active effect");
         }
+    }, [sortAllListingActive]);
 
-        var al = new Set(sortAllListing.map((x) => x.ConcertID));
-        var merged = [
-            ...sortAllListing,
-            ...sortInactive.filter((x) => !al.has(x.ConcertID)),
-        ];
-        var al = new Set(merged.map((x) => x.ConcertID));
-        var merged2 = [
-            ...merged,
-            ...sortActive.filter((x) => !al.has(x.ConcertID)),
-        ];
+    // useEffect(() => {
+    //     //sorting
 
-        setSort(merged2);
-        console.log("combined active effect");
-    }, [
-        sortEligibleLastMinuteSalesActive,
-        sortActiveActive,
-        sortInactiveActive
-    ]);
+    //     if (sortAllListingActive) {
+    //         setSortAllListing(concerts);
+    //     } else {
+    //         setSortAllListing([]);
+    //     }
+    //     if (sortInactiveActive) {
+    //         const inactiveList = concerts.filter(
+    //             (concert) => concert.status === "expired"
+    //         );
+    //         setSortInactive(inactiveList);
+    //     } else {
+    //         setSortInactive([]);
+    //     }
+    //     if (sortActiveActive) {
+    //         const activeList = concerts.filter(
+    //             (concert) => concert.status === "active"
+    //         );
+    //         setSortActive(activeList);
+    //     } else {
+    //         setSortActive([]);
+    //     }
+
+    //     // console.log(sortAllListing);
+    //     // console.log(sortActive);
+    //     // console.log(sortInactive);
+
+    //     handleSort();
+    //     // console.log("combined active effect");
+    // }, [
+    //     sortEligibleLastMinuteSalesActive,
+    //     sortActiveActive,
+    //     sortInactiveActive,
+    //     sortAllListingActive,
+    //     concerts,
+    // ]);
 
     // useEffect(() => {
     //     console.log(sort);
     // }, [sort]);
 
-    // useEffect(() => {
-    //     console.log(sortAllListing);
-    //     console.log(sortEligibleLastMinuteSales);
-    //     console.log(sortActive);
-    //     console.log(sortInactive);
-    // }, [sortAllListing,sortEligibleLastMinuteSales,sortActive,sortInactive])
-
-    // useEffect(() => {
-    //     // handleSort();
-    //     if (sortAllListingActive && sortEligibleLastMinuteSalesActive && sortActiveActive && sortInactiveActive) {
-    //         setSortEligibleLastMinuteSalesActive(false);
-    //         setSortActiveActive(false);
-    //         setSortInactiveActive(false);
-    //         console.log("all active effect");
-    //     } else if (
-    //         // !sortAllListingActive &&
-    //         !sortEligibleLastMinuteSalesActive &&
-    //         !sortActiveActive &&
-    //         !sortInactiveActive
-    //     ) {
-    //         setSortAllListingActive(true);
-    //         console.log("all active effect");
-    //         // handleSort();
-    //     }
-
-    // }, [sortAllListingActive]);
-
-    // useEffect(() => {
-    //     if (sortInactiveActive) {
-
-    //     }
-    // }, [sortInactiveActive]);
-
-    // const handleSort = async () => {
-    //     if (sortAllListingActive) {
-    //         // setIsConcertsLoading(true);
-    //         // setIsTicketsLoading(true);
-    //         // fetchConcert();
-    //         // fetchTicket();
-    //         // console.log(sortAllListingActive);
-    //     }
-    //     if (sortEligibleLastMinuteSalesActive) {
-    //         const listConcerts = concerts.filter(
-    //             (concert) => concert.ConcertID === concert.ConcertID
-    //         );
-    //         setConcerts(listConcerts);
-    //     }
+    // const handleSort = () => {
+    //     var al;
+    //     var merged;
+    //     var merged2;
     //     if (sortActiveActive) {
-    //         const listConcerts = concerts.filter(
-    //             (concert) => concert.status === "active"
-    //         );
-    //         setConcerts(listConcerts);
+    //         al = new Set(sort.map((x) => x.ConcertID));
+    //         merged = [
+    //             ...sort,
+    //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
+    //         ];
+    //         // console.log(merged);
+    //         setSort(merged);
     //     }
+
+    //     // var al = new Set(sortAllListing.map((x) => x.ConcertID));
+    //     // var merged = [
+    //     //     ...sortAllListing,
+    //     //     ...sortInactive.filter((x) => !al.has(x.ConcertID)),
+    //     // ];
+
     //     if (sortInactiveActive) {
-    //         const listConcerts = concerts.filter(
-    //             (concert) =>
-    //                 concert.status === "expired" ||
-    //                 concert.status === "disabled"
-    //         );
-    //         setConcerts(listConcerts);
+    //         al = new Set(sort.map((x) => x.ConcertID));
+    //         vmerged2 = [
+    //             ...sort,
+    //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
+    //         ];
+    //         // console.log(merged);
+    //         setSort(merged2);
     //     }
+
+    //     if(sortAllListingActive) {
+
+    //         setSort(concerts);
+    //     }
+    //     // var al = new Set(merged.map((x) => x.ConcertID));
+    //     // var merged2 = [
+    //     //     ...merged,
+    //     //     ...sortActive.filter((x) => !al.has(x.ConcertID)),
+    //     // ];
+
+    //     // setSort(merged2);
     // };
 
     const handleCheck = async (id) => {
@@ -318,128 +315,130 @@ const ListingTable = () => {
     // This is the display code
     return (
         <>
-            {isConcertsLoading && isTicketsLoading && (
-                <table className="table">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>Loading Items...</th>
-                        </tr>
-                    </thead>
-                </table>
-            )}
-            {fetchError && (
-                <table className="table">
-                    <thead className="thead-light">
-                        <th>
-                            <p
-                                style={{ color: "red" }}
-                            >{`Error: ${fetchError}`}</p>
-                        </th>
-                    </thead>
-                </table>
-            )}
+            <React.StrictMode>
+                {isConcertsLoading && isTicketsLoading && (
+                    <table className="table">
+                        <thead className="thead-light">
+                            <tr>
+                                <th>Loading Items...</th>
+                            </tr>
+                        </thead>
+                    </table>
+                )}
+                {fetchError && (
+                    <table className="table">
+                        <thead className="thead-light">
+                            <th>
+                                <p
+                                    style={{ color: "red" }}
+                                >{`Error: ${fetchError}`}</p>
+                            </th>
+                        </thead>
+                    </table>
+                )}
 
-            {!fetchError && !isConcertsLoading && !isTicketsLoading && (
-                <>
-                    <ListingSortBy
-                        sortAllListing={sortAllListing}
-                        sortEligibleLastMinuteSales={
-                            sortEligibleLastMinuteSales
-                        }
-                        sortActive={sortActive}
-                        sortInactive={sortInactive}
-                        setSortAllListing={setSortAllListing}
-                        setSortEligibleLastMinuteSales={
-                            setSortEligibleLastMinuteSales
-                        }
-                        setSortActive={setSortActive}
-                        setSortInactive={setSortInactive}
-                        // handleSort={handleSort}
-                        sortAllListingActive={sortAllListingActive}
-                        sortEligibleLastMinuteSalesActive={
-                            sortEligibleLastMinuteSalesActive
-                        }
-                        sortActiveActive={sortActiveActive}
-                        sortInactiveActive={sortInactiveActive}
-                        setSortAllListingActive={setSortAllListingActive}
-                        setSortEligibleLastMinuteSalesActive={
-                            setSortEligibleLastMinuteSalesActive
-                        }
-                        setSortActiveActive={setSortActiveActive}
-                        setSortInactiveActive={setSortInactiveActive}
-                    />
-                    <div className="container-fluid">
-                        <br />
-                        <br />
-                        <br />
+                {!fetchError && !isConcertsLoading && !isTicketsLoading && (
+                    <>
+                        <ListingSortBy
+                            sortAllListing={sortAllListing}
+                            sortEligibleLastMinuteSales={
+                                sortEligibleLastMinuteSales
+                            }
+                            sortActive={sortActive}
+                            sortInactive={sortInactive}
+                            setSortAllListing={setSortAllListing}
+                            setSortEligibleLastMinuteSales={
+                                setSortEligibleLastMinuteSales
+                            }
+                            setSortActive={setSortActive}
+                            setSortInactive={setSortInactive}
+                            // handleSort={handleSort}
+                            sortAllListingActive={sortAllListingActive}
+                            sortEligibleLastMinuteSalesActive={
+                                sortEligibleLastMinuteSalesActive
+                            }
+                            sortActiveActive={sortActiveActive}
+                            sortInactiveActive={sortInactiveActive}
+                            setSortAllListingActive={setSortAllListingActive}
+                            setSortEligibleLastMinuteSalesActive={
+                                setSortEligibleLastMinuteSalesActive
+                            }
+                            setSortActiveActive={setSortActiveActive}
+                            setSortInactiveActive={setSortInactiveActive}
+                        />
+                        <div className="container-fluid">
+                            <br />
+                            <br />
+                            <br />
 
-                        <table className="table border">
-                            <thead className="thead-light">
-                                <tr>
-                                    <th></th>
-                                    <th className="text-center border-dark border-4">
-                                        Ticket Details
-                                    </th>
-                                    <th className="text-center border-dark border-4"></th>
-                                    <th className="text-center border-dark border-4">
-                                        Available Ticket
-                                    </th>
-                                    <th className="text-center border-dark border-4">
-                                        Ticket Sold
-                                    </th>
-                                    <th className="text-center border-dark border-4"></th>
-                                    <th className="text-center border-dark border-4">
-                                        Days
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="tabletickets">
-                                {!concerts.length && (
+                            <table className="table border">
+                                <thead className="thead-light">
                                     <tr>
-                                        <td
-                                            colSpan={10}
-                                            style={{
-                                                textAlign: "center",
-                                                color: "white",
-                                            }}
-                                        >
-                                            No data to show
-                                        </td>
+                                        <th></th>
+                                        <th className="text-center border-dark border-4">
+                                            Ticket Details
+                                        </th>
+                                        <th className="text-center border-dark border-4"></th>
+                                        <th className="text-center border-dark border-4">
+                                            Available Ticket
+                                        </th>
+                                        <th className="text-center border-dark border-4">
+                                            Ticket Sold
+                                        </th>
+                                        <th className="text-center border-dark border-4"></th>
+                                        <th className="text-center border-dark border-4">
+                                            Days
+                                        </th>
+                                        <th></th>
                                     </tr>
-                                )}
-                                {concerts.length ? (
-                                    <>
-                                        {concerts.map((concert) => (
-                                            <ListingConcerts
-                                                key={concert.ConcertID}
-                                                concert={concert}
-                                                tickets={tickets}
-                                                setTickets={setTickets}
-                                                handleCheck={handleCheck}
-                                                handlePriceSelect={
-                                                    handlePriceSelect
-                                                }
-                                                handlePriceChange={
-                                                    handlePriceChange
-                                                }
-                                                handleAvailableTicketSelect={
-                                                    handleAvailableTicketSelect
-                                                }
-                                                handleAvailableTicketChange={
-                                                    handleAvailableTicketChange
-                                                }
-                                            />
-                                        ))}
-                                    </>
-                                ) : null}
-                            </tbody>
-                        </table>
-                        <Tools visible={visible} />
-                    </div>
-                </>
-            )}
+                                </thead>
+
+                                <tbody id="tabletickets">
+                                    {!concerts.length && (
+                                        <tr>
+                                            <td
+                                                colSpan={10}
+                                                style={{
+                                                    textAlign: "center",
+                                                    color: "white",
+                                                }}
+                                            >
+                                                No data to show
+                                            </td>
+                                        </tr>
+                                    )}
+                                    {concerts.length ? (
+                                        <>
+                                            {concerts.map((concert) => (
+                                                <ListingConcerts
+                                                    key={concert.ConcertID}
+                                                    concert={concert}
+                                                    tickets={tickets}
+                                                    setTickets={setTickets}
+                                                    handleCheck={handleCheck}
+                                                    handlePriceSelect={
+                                                        handlePriceSelect
+                                                    }
+                                                    handlePriceChange={
+                                                        handlePriceChange
+                                                    }
+                                                    handleAvailableTicketSelect={
+                                                        handleAvailableTicketSelect
+                                                    }
+                                                    handleAvailableTicketChange={
+                                                        handleAvailableTicketChange
+                                                    }
+                                                />
+                                            ))}
+                                        </>
+                                    ) : null}
+                                </tbody>
+                            </table>
+                            <Tools visible={visible} />
+                        </div>
+                    </>
+                )}
+            </React.StrictMode>
         </>
     );
 };

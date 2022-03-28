@@ -5693,7 +5693,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
               id: "All Listing",
               checked: sortAllListingActive,
               onChange: function onChange() {
-                return !sortEligibleLastMinuteSalesActive & !sortActiveActive & !sortInactiveActive && setSortAllListingActive(!sortAllListingActive);
+                return (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
               className: "form-check-label",
@@ -5790,14 +5790,6 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 
 
@@ -6004,7 +5996,16 @@ var ListingTable = function ListingTable() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     fetchConcert();
-    fetchTicket();
+    fetchTicket(); // setSortAllListing(concerts);
+    // const inactiveList = concerts.filter(
+    //     (concert) => concert.status === "expired"
+    // );
+    // setSortInactive(inactiveList);
+    // const activeList = concerts.filter(
+    //     (concert) => concert.status === "active"
+    // );
+    // setSortActive(activeList);
+    // handleSort();
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     var selected = tickets.filter(function (ticket) {
@@ -6027,104 +6028,86 @@ var ListingTable = function ListingTable() {
     // handleSort();
   }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, sortAllListingActive]);
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
-    //sorting
-    if (sortInactiveActive) {
-      var inactiveList = concerts.filter(function (concert) {
-        return concert.status === "expired";
-      });
-      setSortInactive(inactiveList);
-    } else {
-      setSortInactive([]);
-    }
-
-    if (sortActiveActive) {
-      var activeList = concerts.filter(function (concert) {
-        return concert.status === "active";
-      });
-      setSortActive(activeList);
-    } else {
-      setSortActive([]);
-    }
-
     if (sortAllListingActive) {
-      setSortAllListing(concerts);
-    } else {
-      setSortAllListing([]);
+      setSortEligibleLastMinuteSalesActive(false);
+      setSortActiveActive(false);
+      setSortInactiveActive(false);
+      console.log("all active effect");
     }
-
-    var al = new Set(sortAllListing.map(function (x) {
-      return x.ConcertID;
-    }));
-    var merged = [].concat(_toConsumableArray(sortAllListing), _toConsumableArray(sortInactive.filter(function (x) {
-      return !al.has(x.ConcertID);
-    })));
-    var al = new Set(merged.map(function (x) {
-      return x.ConcertID;
-    }));
-    var merged2 = [].concat(_toConsumableArray(merged), _toConsumableArray(sortActive.filter(function (x) {
-      return !al.has(x.ConcertID);
-    })));
-    setSort(merged2);
-    console.log("combined active effect");
-  }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive]); // useEffect(() => {
-  //     console.log(sort);
-  // }, [sort]);
-  // useEffect(() => {
-  //     console.log(sortAllListing);
-  //     console.log(sortEligibleLastMinuteSales);
-  //     console.log(sortActive);
-  //     console.log(sortInactive);
-  // }, [sortAllListing,sortEligibleLastMinuteSales,sortActive,sortInactive])
-  // useEffect(() => {
-  //     // handleSort();
-  //     if (sortAllListingActive && sortEligibleLastMinuteSalesActive && sortActiveActive && sortInactiveActive) {
-  //         setSortEligibleLastMinuteSalesActive(false);
-  //         setSortActiveActive(false);
-  //         setSortInactiveActive(false);
-  //         console.log("all active effect");
-  //     } else if (
-  //         // !sortAllListingActive &&
-  //         !sortEligibleLastMinuteSalesActive &&
-  //         !sortActiveActive &&
-  //         !sortInactiveActive
-  //     ) {
-  //         setSortAllListingActive(true);
-  //         console.log("all active effect");
-  //         // handleSort();
-  //     }
-  // }, [sortAllListingActive]);
-  // useEffect(() => {
-  //     if (sortInactiveActive) {
-  //     }
-  // }, [sortInactiveActive]);
-  // const handleSort = async () => {
+  }, [sortAllListingActive]); // useEffect(() => {
+  //     //sorting
   //     if (sortAllListingActive) {
-  //         // setIsConcertsLoading(true);
-  //         // setIsTicketsLoading(true);
-  //         // fetchConcert();
-  //         // fetchTicket();
-  //         // console.log(sortAllListingActive);
+  //         setSortAllListing(concerts);
+  //     } else {
+  //         setSortAllListing([]);
   //     }
-  //     if (sortEligibleLastMinuteSalesActive) {
-  //         const listConcerts = concerts.filter(
-  //             (concert) => concert.ConcertID === concert.ConcertID
+  //     if (sortInactiveActive) {
+  //         const inactiveList = concerts.filter(
+  //             (concert) => concert.status === "expired"
   //         );
-  //         setConcerts(listConcerts);
+  //         setSortInactive(inactiveList);
+  //     } else {
+  //         setSortInactive([]);
   //     }
   //     if (sortActiveActive) {
-  //         const listConcerts = concerts.filter(
+  //         const activeList = concerts.filter(
   //             (concert) => concert.status === "active"
   //         );
-  //         setConcerts(listConcerts);
+  //         setSortActive(activeList);
+  //     } else {
+  //         setSortActive([]);
   //     }
+  //     // console.log(sortAllListing);
+  //     // console.log(sortActive);
+  //     // console.log(sortInactive);
+  //     handleSort();
+  //     // console.log("combined active effect");
+  // }, [
+  //     sortEligibleLastMinuteSalesActive,
+  //     sortActiveActive,
+  //     sortInactiveActive,
+  //     sortAllListingActive,
+  //     concerts,
+  // ]);
+  // useEffect(() => {
+  //     console.log(sort);
+  // }, [sort]);
+  // const handleSort = () => {
+  //     var al;
+  //     var merged;
+  //     var merged2;
+  //     if (sortActiveActive) {
+  //         al = new Set(sort.map((x) => x.ConcertID));
+  //         merged = [
+  //             ...sort,
+  //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
+  //         ];
+  //         // console.log(merged);
+  //         setSort(merged);
+  //     }
+  //     // var al = new Set(sortAllListing.map((x) => x.ConcertID));
+  //     // var merged = [
+  //     //     ...sortAllListing,
+  //     //     ...sortInactive.filter((x) => !al.has(x.ConcertID)),
+  //     // ];
   //     if (sortInactiveActive) {
-  //         const listConcerts = concerts.filter(
-  //             (concert) =>
-  //                 concert.status === "expired" ||
-  //                 concert.status === "disabled"
-  //         );
-  //         setConcerts(listConcerts);
+  //         al = new Set(sort.map((x) => x.ConcertID));
+  //         vmerged2 = [
+  //             ...sort,
+  //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
+  //         ];
+  //         // console.log(merged);
+  //         setSort(merged2);
   //     }
+  //     if(sortAllListingActive) {
+  //         setSort(concerts);
+  //     }
+  //     // var al = new Set(merged.map((x) => x.ConcertID));
+  //     // var merged2 = [
+  //     //     ...merged,
+  //     //     ...sortActive.filter((x) => !al.has(x.ConcertID)),
+  //     // ];
+  //     // setSort(merged2);
   // };
 
   var handleCheck = /*#__PURE__*/function () {
@@ -6317,105 +6300,107 @@ var ListingTable = function ListingTable() {
   }(); // This is the display code
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: [isConcertsLoading && isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("table", {
-      className: "table",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
-        className: "thead-light",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-            children: "Loading Items..."
-          })
-        })
-      })
-    }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("table", {
-      className: "table",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
-        className: "thead-light",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-            style: {
-              color: "red"
-            },
-            children: "Error: ".concat(fetchError)
-          })
-        })
-      })
-    }), !fetchError && !isConcertsLoading && !isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        sortAllListing: sortAllListing,
-        sortEligibleLastMinuteSales: sortEligibleLastMinuteSales,
-        sortActive: sortActive,
-        sortInactive: sortInactive,
-        setSortAllListing: setSortAllListing,
-        setSortEligibleLastMinuteSales: setSortEligibleLastMinuteSales,
-        setSortActive: setSortActive,
-        setSortInactive: setSortInactive // handleSort={handleSort}
-        ,
-        sortAllListingActive: sortAllListingActive,
-        sortEligibleLastMinuteSalesActive: sortEligibleLastMinuteSalesActive,
-        sortActiveActive: sortActiveActive,
-        sortInactiveActive: sortInactiveActive,
-        setSortAllListingActive: setSortAllListingActive,
-        setSortEligibleLastMinuteSalesActive: setSortEligibleLastMinuteSalesActive,
-        setSortActiveActive: setSortActiveActive,
-        setSortInactiveActive: setSortInactiveActive
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-        className: "container-fluid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("table", {
-          className: "table border",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
-            className: "thead-light",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-                className: "text-center border-dark border-4",
-                children: "Ticket Details"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-                className: "text-center border-dark border-4"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-                className: "text-center border-dark border-4",
-                children: "Available Ticket"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-                className: "text-center border-dark border-4",
-                children: "Ticket Sold"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-                className: "text-center border-dark border-4"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
-                className: "text-center border-dark border-4",
-                children: "Days"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, {
+      children: [isConcertsLoading && isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("table", {
+        className: "table",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
+          className: "thead-light",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+              children: "Loading Items..."
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("tbody", {
-            id: "tabletickets",
-            children: [!concerts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("td", {
-                colSpan: 10,
-                style: {
-                  textAlign: "center",
-                  color: "white"
-                },
-                children: "No data to show"
+          })
+        })
+      }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("table", {
+        className: "table",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
+          className: "thead-light",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+              style: {
+                color: "red"
+              },
+              children: "Error: ".concat(fetchError)
+            })
+          })
+        })
+      }), !fetchError && !isConcertsLoading && !isTicketsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          sortAllListing: sortAllListing,
+          sortEligibleLastMinuteSales: sortEligibleLastMinuteSales,
+          sortActive: sortActive,
+          sortInactive: sortInactive,
+          setSortAllListing: setSortAllListing,
+          setSortEligibleLastMinuteSales: setSortEligibleLastMinuteSales,
+          setSortActive: setSortActive,
+          setSortInactive: setSortInactive // handleSort={handleSort}
+          ,
+          sortAllListingActive: sortAllListingActive,
+          sortEligibleLastMinuteSalesActive: sortEligibleLastMinuteSalesActive,
+          sortActiveActive: sortActiveActive,
+          sortInactiveActive: sortInactiveActive,
+          setSortAllListingActive: setSortAllListingActive,
+          setSortEligibleLastMinuteSalesActive: setSortEligibleLastMinuteSalesActive,
+          setSortActiveActive: setSortActiveActive,
+          setSortInactiveActive: setSortInactiveActive
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          className: "container-fluid",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("table", {
+            className: "table border",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("thead", {
+              className: "thead-light",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                  className: "text-center border-dark border-4",
+                  children: "Ticket Details"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                  className: "text-center border-dark border-4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                  className: "text-center border-dark border-4",
+                  children: "Available Ticket"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                  className: "text-center border-dark border-4",
+                  children: "Ticket Sold"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                  className: "text-center border-dark border-4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
+                  className: "text-center border-dark border-4",
+                  children: "Days"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {})]
               })
-            }), concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-              children: concerts.map(function (concert) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  concert: concert,
-                  tickets: tickets,
-                  setTickets: setTickets,
-                  handleCheck: handleCheck,
-                  handlePriceSelect: handlePriceSelect,
-                  handlePriceChange: handlePriceChange,
-                  handleAvailableTicketSelect: handleAvailableTicketSelect,
-                  handleAvailableTicketChange: handleAvailableTicketChange
-                }, concert.ConcertID);
-              })
-            }) : null]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("tbody", {
+              id: "tabletickets",
+              children: [!concerts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("td", {
+                  colSpan: 10,
+                  style: {
+                    textAlign: "center",
+                    color: "white"
+                  },
+                  children: "No data to show"
+                })
+              }), concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                children: concerts.map(function (concert) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                    concert: concert,
+                    tickets: tickets,
+                    setTickets: setTickets,
+                    handleCheck: handleCheck,
+                    handlePriceSelect: handlePriceSelect,
+                    handlePriceChange: handlePriceChange,
+                    handleAvailableTicketSelect: handleAvailableTicketSelect,
+                    handleAvailableTicketChange: handleAvailableTicketChange
+                  }, concert.ConcertID);
+                })
+              }) : null]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            visible: visible
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          visible: visible
         })]
       })]
-    })]
+    })
   });
 }; //by [w@r.fr{e}(97),k]
 
