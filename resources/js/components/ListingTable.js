@@ -368,9 +368,9 @@ const ListingTable = () => {
                         setSortActiveActive={setSortActiveActive}
                         setSortInactiveActive={setSortInactiveActive}
                     />
-                    <div className="container-fluid">
+                    <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-3">
                         <table className="table border">
-                            <thead className="thead-light">
+                            <thead className="thead-light sticky-top border">
                                 <tr>
                                     <th></th>
                                     <th className="text-center border-dark border-4">
@@ -431,9 +431,16 @@ const ListingTable = () => {
                                     </>
                                 ) : null}
                             </tbody>
+                            {/* <tfoot className="container-fluid sticky-bottom">
+                                <tr>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>                                
+                            </tfoot> */}
                         </table>
-                        <Tools visible={visible} />
                     </div>
+                    <Tools visible={visible} />
                 </>
             )}
         </>

@@ -8,7 +8,7 @@ const Tools = ({visible}) => {
     return (
         <>
             {visible && (
-                <div>
+                <div className="container-fluid position-fixed position-absolute bottom-0 start-50 translate-middle-x">
                     <hr className="bg-information border-2 border-top border-information" />
                     <div className="container-fluid row col-md-auto">
                         <div className="d-inline col container-fluid">
