@@ -5526,9 +5526,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
           className: "text-muted mb-0",
-          children: concert.remaining_days
+          children: [concert.remaining_days, " days"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         className: "border-dark border-1 justify-content-center ",
@@ -5578,7 +5578,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
             })
           }), tickets.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
             children: tickets.map(function (ticket) {
-              return ticket.ConcertID === concert.ConcertID & ticket.status === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              return ticket.ConcertID === concert.ConcertID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 ticket: ticket,
                 handleCheck: handleCheck,
                 handlePriceSelect: handlePriceSelect,

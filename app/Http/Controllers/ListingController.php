@@ -135,7 +135,7 @@ class ListingController extends Controller
     public function concerts()
     {
         $concert_listing = queenticketeventinfo::all();
-
+        
         return $concert_listing->toJson();
     }
 

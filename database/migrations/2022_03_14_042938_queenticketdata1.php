@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Location')->nullable();
             $table->integer('Total_Available')->default(0);
             $table->integer('Total_Sold')->default(0);
+            $table->integer('remaining_days')->default(0);
             $table->enum('status', ['expired', 'active', 'disabled']);  
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
