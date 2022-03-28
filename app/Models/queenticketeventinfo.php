@@ -15,7 +15,8 @@ class queenticketeventinfo extends Model
     {
     
         if ($this->ConcertDate) {
-            $remaining_days = Carbon::now()->diffInDays(Carbon::parse($this->ConcertDate));
+           // $remaining_days = Carbon::now()->diffInDays(Carbon::parse($this->ConcertDate));
+            $remaining_days = Carbon::parse($this->ConcertDate)->diffInDays(now());
         } else {
             $remaining_days = 0;
         }

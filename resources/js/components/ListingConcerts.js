@@ -1,6 +1,5 @@
 import React from "react";
 import ListingTickets from "./ListingTickets";
-
 const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, handlePriceChange, handleAvailableTicketSelect, handleAvailableTicketChange }) => {
     return (
         <>
@@ -60,7 +59,7 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                     </div>
                 </td>
                 <td>
-                    <p className="text-muted mb-0">{concert.remaining_days}</p>
+                    <p className="text-muted mb-0">{concert.remaining_days} days</p>
                 </td>
                 <td className="border-dark border-1 justify-content-center ">
                 <a
@@ -98,7 +97,7 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                         {tickets.length ? (
                             <tbody>
                                 {tickets.map((ticket) =>
-                                    ticket.ConcertID === concert.ConcertID & ticket.status === "active" ? (
+                                    ticket.ConcertID === concert.ConcertID ? (
                                         <ListingTickets
                                             key={ticket.Listing_ID}
                                             ticket={ticket}

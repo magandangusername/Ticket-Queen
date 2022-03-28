@@ -46,6 +46,7 @@ background-position:center;outline:0;
 #ticketinfocontent{
     color: whitesmoke;
 }
+
 #tabletickets{
     border: solid 2px #1C1C1C;
     background-color:#424549;
@@ -89,4 +90,10 @@ form.example input[type=text] {
   }
   .navz-index{
     z-index: 500;
+  }
+  body, html{
+    height: 100%;
+  }
+  .table-heights{
+    height: 65%
   }
