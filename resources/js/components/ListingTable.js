@@ -45,6 +45,9 @@ const ListingTable = () => {
         status: ""
 
     }]);
+    const [restrictions, setRestrictions] = useState([]);
+    const [listingNotes, setListingNotes] = useState([]);
+    const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
 
     // gets data when opening/refreshing the page
     const fetchConcert = async () => {
@@ -83,10 +86,16 @@ const ListingTable = () => {
                 return o;
             });
             setTickets(result);
+
+            const restrictions = await axios.get("/api/restrictions");
+            setRestrictions(response.data);
+            const notes = await axios.get("/api/listing_notes");
+            setListingNotes(notes.data);
         } catch (error) {
             setFetchError(error.message);
         } finally {
             setIsTicketsLoading(false);
+            setIsRestrictionsLoading(false);
         }
     };
 
@@ -264,8 +273,6 @@ const ListingTable = () => {
     const handleTicketEdit = async (id) => {
         const editList = tickets.filter((ticket) => ticket.Listing_ID === id);
         setTicketEdit(editList);
-        console.log(editList);
-        console.log('come on man');
     };
 
 
@@ -348,7 +355,7 @@ const ListingTable = () => {
     return (
         <>
             <React.StrictMode>
-                {isConcertsLoading && isTicketsLoading && (
+                {isConcertsLoading && isTicketsLoading && isRestrictionsLoading && (
                     <table className="table">
                         <thead className="thead-light">
                             <tr>
@@ -369,7 +376,7 @@ const ListingTable = () => {
                     </table>
                 )}
 
-                {!fetchError && !isConcertsLoading && !isTicketsLoading && (
+                {!fetchError && !isConcertsLoading && !isTicketsLoading && !isRestrictionsLoading && (
                     <>
                         <ListingSortBy
                             sortAllListing={sortAllListing}
@@ -476,7 +483,7 @@ const ListingTable = () => {
 
                 {/* This thing still works with errors */}
                 {ticketEdit.length ? (
-                    <ListingEditTicket ticketEdit={ticketEdit} />
+                    <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} />
                 ) : null}
             </React.StrictMode>
         </>

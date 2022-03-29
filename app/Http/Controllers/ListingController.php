@@ -8,6 +8,10 @@ use App\Models\queenticketeventinfo;
 use App\Models\ConcertListing;
 use Exception;
 use App\Models\queenticketeventdetails;
+use App\Models\Restrictions;
+use App\Models\listing_notes;
+
+
 class ListingController extends Controller
 {
     //
@@ -135,7 +139,7 @@ class ListingController extends Controller
     public function concerts()
     {
         $concert_listing = queenticketeventinfo::all();
-        
+
         return $concert_listing->toJson();
     }
 
@@ -144,5 +148,19 @@ class ListingController extends Controller
         $ticket_listing = queenticketeventdetails::all();
 
         return $ticket_listing->toJson();
+    }
+
+    public function restrictions()
+    {
+        $restrictions = restrictions::all();
+
+        return $restrictions->toJson();
+    }
+
+    public function listing_notes()
+    {
+        $listing_notes = listing_notes::all();
+
+        return $listing_notes->toJson();
     }
 }

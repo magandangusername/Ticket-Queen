@@ -1,11 +1,11 @@
 import React from "react";
 
-const ListingEditTicket = ({ ticketEdit }) => {
+const ListingEditTicket = ({ ticketEdit, restrictions }) => {
     return (
         <div className="modal" id="myModal">
             <div
                 className="modal-dialog modal-lg"
-                style={{overflowY: "initial !important"}}
+                style={{ overflowY: "initial !important" }}
             >
                 <div className="modal-content">
                     {/* <!-- Modal Header --> */}
@@ -23,10 +23,16 @@ const ListingEditTicket = ({ ticketEdit }) => {
                     </div>
 
                     {/* <!-- Modal body --> */}
-                    <div className="row modal-body" style={{height: 90 + "vh"}}>
+                    <div
+                        className="row modal-body"
+                        style={{ height: 90 + "vh" }}
+                    >
                         <div
                             className="container-fluid col"
-                            style={{overflowY: "scroll", maxHeight: 100 + "%"}}
+                            style={{
+                                overflowY: "scroll",
+                                maxHeight: 100 + "%",
+                            }}
                         >
                             <form>
                                 <div className="row">
@@ -234,235 +240,25 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                     </p>
                                 </div>
                                 <div className="row">
-                                    <div className="listboxes col">
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show All Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check ">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Listings Eligible For Last
-                                                Minute Sales
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Active Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Inactive Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show All Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Listings Eligible For Last
-                                                Minute Sales
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Active Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Inactive Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Inactive Listings
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div className="listboxes col">
-                                        <div className="form-check ">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show All Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check ">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Listings Eligible For Last
-                                                Minute Sales
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Active Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Inactive Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show All Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Listings Eligible For Last
-                                                Minute Sales
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Active Listings
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="checkbox"
-                                                id="defaultCheck1"
-                                            />
-                                            <label
-                                                className="form-check-label"
-                                                htmlFor="defaultCheck1"
-                                            >
-                                                Show Inactive Listings
-                                            </label>
-                                        </div>
-                                    </div>
+                                    {restrictions.map((restriction, index) => {
+                                        return index < 9 ? (
+                                            <div className="listboxes col" key={index}>
+                                                <div className="form-check">
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id={`restriction${restriction.Restriction_ID}`}
+                                                    />
+                                                    <label
+                                                        className="form-check-label"
+                                                        htmlFor={`restriction${restriction.Restriction_ID}`}
+                                                    >
+                                                        {restriction.Restriction}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        ) : null;
+                                    })}
                                 </div>
                                 <div className="row">
                                     <b>Listing notes</b>
@@ -474,7 +270,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -488,7 +283,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -503,7 +297,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -517,7 +310,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -531,7 +323,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -545,7 +336,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -560,7 +350,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -574,7 +363,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -588,7 +376,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -604,7 +391,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -618,7 +404,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -633,7 +418,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -647,7 +431,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -661,7 +444,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -675,7 +457,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -690,7 +471,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -704,7 +484,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-
                                                 id="defaultCheck2"
                                             />
                                             <label
