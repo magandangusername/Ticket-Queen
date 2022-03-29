@@ -55,7 +55,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                         >
                                             <option>Any</option>
                                             <option>None</option>
-                                            <option selected>
+                                            <option defaultValue>
                                                 Avoid leaving one ticket
                                             </option>
                                             <option>
@@ -118,7 +118,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                                 type="text"
                                                 className="form-control"
                                                 id="inlineFormInputGroupMinimum"
-                                                value={ticketEdit[0].Seats}
+                                                // value={ticketEdit[0].Seats}
                                                 readOnly
                                             />
                                             <div className="input-group-prepend">
@@ -130,7 +130,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                                 type="text"
                                                 className="form-control"
                                                 id="inlineFormInputGroupMaximum"
-                                                value={ticketEdit[0].Seats}
+                                                // value={ticketEdit[0].Seats}
                                                 readOnly
                                             />
                                         </div>
@@ -239,7 +239,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -253,7 +252,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -268,7 +266,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -282,7 +279,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -296,7 +292,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -310,7 +305,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -325,7 +319,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -339,7 +332,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -353,7 +345,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -369,7 +360,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -383,7 +373,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -398,7 +387,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -412,7 +400,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -426,7 +413,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -440,7 +426,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -455,7 +440,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -469,7 +453,6 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
                                                 id="defaultCheck1"
                                             />
                                             <label
@@ -491,7 +474,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -505,7 +488,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -520,7 +503,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -534,7 +517,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -548,7 +531,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -562,7 +545,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -577,7 +560,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -591,7 +574,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -605,7 +588,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -621,7 +604,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -635,7 +618,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -650,7 +633,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -664,7 +647,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -678,7 +661,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -692,7 +675,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -707,7 +690,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
@@ -721,7 +704,7 @@ const ListingEditTicket = ({ ticketEdit }) => {
                                             <input
                                                 className="form-check-input"
                                                 type="checkbox"
-                                                value=""
+
                                                 id="defaultCheck2"
                                             />
                                             <label
