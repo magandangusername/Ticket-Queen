@@ -1,6 +1,15 @@
 import React from "react";
 import ListingTickets from "./ListingTickets";
-const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, handlePriceChange, handleAvailableTicketSelect, handleAvailableTicketChange, handleTicketEdit }) => {
+const ListingConcerts = ({
+    concert,
+    tickets,
+    handleCheck,
+    handlePriceSelect,
+    handlePriceChange,
+    handleAvailableTicketSelect,
+    handleAvailableTicketChange,
+    handleTicketEdit,
+}) => {
     return (
         <>
             <tr
@@ -41,11 +50,17 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                     </div>
                 </td>
                 <td>
-                    <p className="text-white-50 mb-0">Last Minute Sales Event</p>
+                    <p className="text-white-50 mb-0">
+                        Last Minute Sales Event
+                    </p>
                 </td>
                 <td>
-                    <p className="fw-normal mb-1 text-light">Available Tickets</p>
-                    <p className="text-white-50 mb-0">{concert.Total_Available}</p>
+                    <p className="fw-normal mb-1 text-light">
+                        Available Tickets
+                    </p>
+                    <p className="text-white-50 mb-0">
+                        {concert.Total_Available}
+                    </p>
                 </td>
                 <td>
                     <p className="fw-normal mb-1 text-light">Ticket Sold</p>
@@ -59,16 +74,18 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                     </div>
                 </td>
                 <td>
-                    <p className="text-muted mb-0">{concert.remaining_days} days</p>
+                    <p className="text-muted mb-0">
+                        {concert.remaining_days} days
+                    </p>
                 </td>
                 <td className="border-dark border-1 justify-content-center ">
-                <a
-                    href=""
-                    className="fas fa-search"
-                    data-bs-toggle="modal"
-                    data-bs-target="#magnify"
-                ></a>
-            </td>
+                    <a
+                        href=""
+                        className="fas fa-search"
+                        data-bs-toggle="modal"
+                        data-bs-target="#magnify"
+                    ></a>
+                </td>
             </tr>
             <tr
                 className={`tabularinfo__subblock collapse a${concert.ConcertID}`}
@@ -81,15 +98,27 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                         <thead>
                             <tr className="border-dark border-2">
                                 <th className="text-center border-dark border-2"></th>
-                                <th className="text-center border-dark border-2">Ticket Details</th>
-                                <th className="text-center border-dark border-2">Ticket Type</th>
-                                <th className="text-center border-dark border-2">Visibility</th>
-                                <th className="text-center border-dark border-2">Price</th>
+                                <th className="text-center border-dark border-2">
+                                    Ticket Details
+                                </th>
+                                <th className="text-center border-dark border-2">
+                                    Ticket Type
+                                </th>
+                                <th className="text-center border-dark border-2">
+                                    Visibility
+                                </th>
+                                <th className="text-center border-dark border-2">
+                                    Price
+                                </th>
                                 <th className="text-center border-dark border-2">
                                     Available Tickets
                                 </th>
-                                <th className="text-center border-dark border-2">Sold tickets</th>
-                                <th className="text-center border-dark border-2">Publish</th>
+                                <th className="text-center border-dark border-2">
+                                    Sold tickets
+                                </th>
+                                <th className="text-center border-dark border-2">
+                                    Publish
+                                </th>
                                 <th className="text-center border-dark border-2"></th>
                             </tr>
                         </thead>
@@ -103,16 +132,41 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                                             ticket={ticket}
                                             concert={concert}
                                             handleCheck={handleCheck}
-                                            handlePriceSelect={handlePriceSelect}
-                                            handlePriceChange={handlePriceChange}
-                                            handleAvailableTicketSelect={handleAvailableTicketSelect}
-                                            handleAvailableTicketChange={handleAvailableTicketChange}
+                                            handlePriceSelect={
+                                                handlePriceSelect
+                                            }
+                                            handlePriceChange={
+                                                handlePriceChange
+                                            }
+                                            handleAvailableTicketSelect={
+                                                handleAvailableTicketSelect
+                                            }
+                                            handleAvailableTicketChange={
+                                                handleAvailableTicketChange
+                                            }
                                             handleTicketEdit={handleTicketEdit}
                                         />
                                     ) : null
                                 )}
                             </tbody>
                         ) : null}
+                        {tickets.filter(
+                            (ticket) => ticket.ConcertID === concert.ConcertID
+                        ).length ? null : (
+                            <tbody>
+                                <tr>
+                                    <td
+                                        colSpan={10}
+                                        style={{
+                                            textAlign: "center",
+                                            color: "black",
+                                        }}
+                                    >
+                                        No data to show
+                                    </td>
+                                </tr>
+                            </tbody>
+                        )}
                     </table>
                 </td>
             </tr>

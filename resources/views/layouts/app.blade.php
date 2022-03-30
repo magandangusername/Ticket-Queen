@@ -30,7 +30,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class=""
+<body class="vh-100"
     style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
     <div id="app"
         style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
@@ -39,13 +39,15 @@
                         alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            
+            <button id="nav-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav position-absolute top-50 end-0 translate-middle-y pe-4" style="font-size: 120%;">
+            
+            
+            <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 120%;">
                     <li class="nav-item active me-3 pe-3 justify-content-center">
                         <form class="form-control w-100 m-auto justify-content-evenly" method="get" action="/search">
                             <input class="w-75" type="text" placeholder="Search.." name="search2">
@@ -56,7 +58,7 @@
                         <a class="nav-link text-light" href="">Express Local Shipping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light btn" data-bs-toggle="modal" data-bs-target="#ListingModal"
+                        <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#ListingModal"
                             href="">+ New Listing</a>
                     </li>
                     {{-- <li class="nav-item dropdown">

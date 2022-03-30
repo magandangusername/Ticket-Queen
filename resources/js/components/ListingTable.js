@@ -456,8 +456,8 @@ const ListingTable = () => {
                             setSortActiveActive={setSortActiveActive}
                             setSortInactiveActive={setSortInactiveActive}
                         />
-                        <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-3">
-
+                        <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
+                    
 
                             <table className="table border">
                                 <thead className="thead-lights bg-color sticky-top border">
@@ -531,7 +531,7 @@ const ListingTable = () => {
                     </>
                 )}
 
-                {/* This thing still works with errors */}
+                {/* This thing still works but with errors */}
                 {ticketEdit.length ? (
                     <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} handleTicketDelete={handleTicketDelete} />
                 ) : null}

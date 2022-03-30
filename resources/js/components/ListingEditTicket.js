@@ -79,6 +79,10 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                             type="email"
                                             className="form-control"
                                             id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].Ticket_Sold
+                                            }
+                                            readOnly
                                         />
                                     </div>
                                 </div>
@@ -124,7 +128,7 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                                 type="text"
                                                 className="form-control"
                                                 id="inlineFormInputGroupMinimum"
-                                                // value={ticketEdit[0].Seats}
+                                                value={ticketEdit[0].Seats}
                                                 readOnly
                                             />
                                             <div className="input-group-prepend">
