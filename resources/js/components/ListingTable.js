@@ -357,7 +357,7 @@ const ListingTable = () => {
             <React.StrictMode>
                 {isConcertsLoading && isTicketsLoading && isRestrictionsLoading && (
                     <table className="table">
-                        <thead className="thead-light">
+                        <thead className="thead-lights bg-color">
                             <tr>
                                 <th>Loading Items...</th>
                             </tr>
@@ -366,7 +366,7 @@ const ListingTable = () => {
                 )}
                 {fetchError && (
                     <table className="table">
-                        <thead className="thead-light">
+                        <thead className="thead-lights bg-color">
                             <th>
                                 <p
                                     style={{ color: "red" }}
@@ -405,30 +405,28 @@ const ListingTable = () => {
                             setSortActiveActive={setSortActiveActive}
                             setSortInactiveActive={setSortInactiveActive}
                         />
-                        <div className="container-fluid">
-                            <br />
-                            <br />
-                            <br />
+                        <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-3">
+                    
 
                             <table className="table border">
-                                <thead className="thead-light">
+                                <thead className="thead-lights bg-color sticky-top border">
                                     <tr>
-                                        <th></th>
-                                        <th className="text-center border-dark border-4">
+                                        <th className="text-center"></th>
+                                        <th className="text-center text-white">
                                             Ticket Details
                                         </th>
-                                        <th className="text-center border-dark border-4"></th>
-                                        <th className="text-center border-dark border-4">
+                                        <th className="text-center text-white"></th>
+                                        <th className="text-center text-white">
                                             Available Ticket
                                         </th>
-                                        <th className="text-center border-dark border-4">
+                                        <th className="text-center text-white">
                                             Ticket Sold
                                         </th>
-                                        <th className="text-center border-dark border-4"></th>
-                                        <th className="text-center border-dark border-4">
+                                        <th className="text-center"></th>
+                                        <th className="text-center text-white">
                                             Days
                                         </th>
-                                        <th></th>
+                                        <th className="text-center"></th>
                                     </tr>
                                 </thead>
 
@@ -476,8 +474,9 @@ const ListingTable = () => {
                                     ) : null}
                                 </tbody>
                             </table>
-                            <Tools visible={visible} />
+                            
                         </div>
+                        <Tools visible={visible} />
                     </>
                 )}
 
