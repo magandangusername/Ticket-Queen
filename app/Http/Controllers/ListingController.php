@@ -111,7 +111,20 @@ class ListingController extends Controller
      */
     public function destroy(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'Listing_ID' => 'required',
+            'ConcertID' => 'required',
+            'Section' => 'required',
+            'Row' => 'nullable',
+            'Seats' => 'nullable',
+            'Ticket_Type' => 'required',
+            'Price' => 'required|numeric',
+            'Available_Tickets' => 'required|',
+            'Expiration' => 'required',
+            'status' => 'required'
+        ]);
+
+        $ticket = queenticketeventdetails::where('Listing_ID', $validatedData['Listing_ID'])->delete();
     }
 
     public function deleteTicket(Request $request)
