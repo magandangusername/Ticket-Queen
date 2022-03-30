@@ -101,6 +101,7 @@ const ListingConcerts = ({ concert, tickets, handleCheck, handlePriceSelect, han
                                         <ListingTickets
                                             key={ticket.Listing_ID}
                                             ticket={ticket}
+                                            concert={concert}
                                             handleCheck={handleCheck}
                                             handlePriceSelect={handlePriceSelect}
                                             handlePriceChange={handlePriceChange}

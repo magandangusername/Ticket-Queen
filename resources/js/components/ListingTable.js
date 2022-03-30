@@ -88,7 +88,7 @@ const ListingTable = () => {
             setTickets(result);
 
             const restrictions = await axios.get("/api/restrictions");
-            setRestrictions(response.data);
+            setRestrictions(restrictions.data);
             const notes = await axios.get("/api/listing_notes");
             setListingNotes(notes.data);
         } catch (error) {
@@ -168,6 +168,8 @@ const ListingTable = () => {
             console.log("all active effect");
         }
     }, [sortAllListingActive]);
+
+
 
     // useEffect(() => {
     //     //sorting
@@ -270,10 +272,29 @@ const ListingTable = () => {
         setTicketEdit(listTickets);
     };
 
-    const handleTicketEdit = async (id) => {
-        const editList = tickets.filter((ticket) => ticket.Listing_ID === id);
-        setTicketEdit(editList);
+    const handleTicketEdit = async (id, concert) => {
+        var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
+        // editList = [{...editList, concert}];
+
+        var arrOfObj = editList.data;
+
+        var result = arrOfObj.map(function (el) {
+            var o = Object.assign({}, el);
+            o.ConcertID = concert.ConcertID;
+            o.ConcertName = concert.ConcertName;
+            o.ConcertDate = concert.ConcertDate;
+            o.Location = concert.Location;
+            o.Total_Available = concert.Total_Available;
+            o.status = concert.status;
+            return o;
+        });
+        setTicketEdit(result);
     };
+
+    useEffect(() => {
+      console.log(ticketEdit);
+    }, [ticketEdit])
+
 
 
     const handlePriceSelect = async (id) => {
@@ -482,7 +503,7 @@ const ListingTable = () => {
 
                 {/* This thing still works with errors */}
                 {ticketEdit.length ? (
-                    <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} />
+                    <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} />
                 ) : null}
             </React.StrictMode>
         </>
