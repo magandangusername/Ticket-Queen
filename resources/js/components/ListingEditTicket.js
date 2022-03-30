@@ -167,26 +167,7 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                         </div>
                                     </div>
 
-                                    <div className="col">
-                                        <label
-                                            className=""
-                                            htmlFor="inlineFormInputGroupUsername"
-                                        >
-                                            Proceeds*
-                                        </label>
-                                        <div className="input-group ">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text">
-                                                    A$
-                                                </div>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="inlineFormInputGroupUsername"
-                                            />
-                                        </div>
-                                    </div>
+
                                     <div className="col">
                                         <label htmlFor="exampleFormControlSelect1">
                                             Ticket Separation
@@ -199,30 +180,6 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                             <option>AED</option>
                                             <option>ARS</option>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div className="row">
-                                    <div className="form-group col">
-                                        <label htmlFor="exampleFormControlInput1">
-                                            Face Value*
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                        />
-                                    </div>
-
-                                    <div className="form-group col">
-                                        <label htmlFor="exampleFormControlInput1">
-                                            Max Display Quantity*
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                        />
                                     </div>
                                 </div>
                                 <div className="row">
@@ -322,28 +279,48 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                 <label className="form-label" htmlFor="">
                                     Sold Status
                                 </label>
+                                <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].status
+                                            }
+                                            readOnly
+                                        />
                                 <br />
-                                <label className="form-label" htmlFor="">
-                                    blah blah
-                                </label>
+
                             </div>
                             <div className="border p-1">
                                 <label className="form-label" htmlFor="">
                                     Listing ID
                                 </label>
+                                <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].Listing_ID
+                                            }
+                                            readOnly
+                                        />
                                 <br />
-                                <label className="form-label" htmlFor="">
-                                    {ticketEdit[0].Listing_ID}
-                                </label>
+
                             </div>
                             <div className="border p-1">
                                 <label className="form-label" htmlFor="">
                                     Ticket Type
                                 </label>
                                 <br />
-                                <label className="form-label" htmlFor="">
-                                    {ticketEdit[0].Ticket_Type}
-                                </label>
+                                <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].Ticket_Type
+                                            }
+                                            readOnly
+                                        />
                             </div>
                         </div>
                     </div>
