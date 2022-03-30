@@ -7,7 +7,8 @@ const ListingTickets = ({
     handlePriceChange,
     handleAvailableTicketSelect,
     handleAvailableTicketChange,
-    handleTicketEdit
+    handleTicketEdit,
+    concert
 }) => {
     return (
         <tr>
@@ -140,7 +141,7 @@ const ListingTickets = ({
                     className="fas fa-edit"
                     data-bs-toggle="modal"
                     data-bs-target="#myModal"
-                    onClick={() => handleTicketEdit(ticket.Listing_ID)}
+                    onClick={() => handleTicketEdit(ticket.Listing_ID, concert)}
                 ></a>
             </td>
         </tr>
