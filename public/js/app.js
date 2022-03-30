@@ -5739,7 +5739,9 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                     type: "email",
                     className: "form-control",
-                    id: "exampleFormControlInput1"
+                    id: "exampleFormControlInput1",
+                    value: ticketEdit[0].Ticket_Sold,
+                    readOnly: true
                   })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -5782,8 +5784,8 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                       type: "text",
                       className: "form-control",
-                      id: "inlineFormInputGroupMinimum" // value={ticketEdit[0].Seats}
-                      ,
+                      id: "inlineFormInputGroupMinimum",
+                      value: ticketEdit[0].Seats,
                       readOnly: true
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                       className: "input-group-prepend",
