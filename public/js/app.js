@@ -5752,7 +5752,9 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                     type: "email",
                     className: "form-control",
-                    id: "exampleFormControlInput1"
+                    id: "exampleFormControlInput1",
+                    value: ticketEdit[0].Ticket_Sold,
+                    readOnly: true
                   })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -5795,8 +5797,8 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                       type: "text",
                       className: "form-control",
-                      id: "inlineFormInputGroupMinimum" // value={ticketEdit[0].Seats}
-                      ,
+                      id: "inlineFormInputGroupMinimum",
+                      value: ticketEdit[0].Seats,
                       readOnly: true
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                       className: "input-group-prepend",
@@ -6844,7 +6846,7 @@ var ListingTable = function ListingTable() {
           setSortActiveActive: setSortActiveActive,
           setSortInactiveActive: setSortInactiveActive
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-          className: "container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-3",
+          className: "container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("table", {
             className: "table border",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("thead", {
