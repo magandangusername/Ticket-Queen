@@ -6058,7 +6058,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-2",
+              className: "form-check-label mt-1",
               htmlFor: "All Listing",
               children: "Show All Listings"
             })]
@@ -6074,7 +6074,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-2",
+              className: "form-check-label mt-1",
               htmlFor: "EligibleLastMinuteSales",
               children: "Show Listings Eligible For Last Minute Sales"
             })]
@@ -6090,7 +6090,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortActiveActive(!sortActiveActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-2",
+              className: "form-check-label mt-1",
               htmlFor: "Active Listing",
               children: "Show Active Listings"
             })]
@@ -6106,7 +6106,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortInactiveActive(!sortInactiveActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-2",
+              className: "form-check-label mt-1",
               htmlFor: "Inactive",
               children: "Show Inactive Listings"
             })]

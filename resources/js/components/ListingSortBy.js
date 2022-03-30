@@ -26,7 +26,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
                             />
                             <label
-                                className="form-check-label mt-2"
+                                className="form-check-label mt-1"
                                 htmlFor="All Listing"
                             >
                                 Show All Listings
@@ -42,7 +42,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive)}
                             />
                             <label
-                                className="form-check-label mt-2"
+                                className="form-check-label mt-1"
                                 htmlFor="EligibleLastMinuteSales"
                             >
                                 Show Listings Eligible For Last Minute Sales
@@ -58,7 +58,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortActiveActive(!sortActiveActive)}
                             />
                             <label
-                                className="form-check-label mt-2"
+                                className="form-check-label mt-1"
                                 htmlFor="Active Listing"
                             >
                                 Show Active Listings
@@ -74,7 +74,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortInactiveActive(!sortInactiveActive)}
                             />
                             <label
-                                className="form-check-label mt-2"
+                                className="form-check-label mt-1"
                                 htmlFor="Inactive"
                             >
                                 Show Inactive Listings
