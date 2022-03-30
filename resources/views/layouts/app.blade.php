@@ -48,9 +48,9 @@
 
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 120%;">
-                    <li class="nav-item active me-3 pe-3 justify-content-center">
-                        <form class="form-control w-100 m-auto justify-content-evenly" method="get" action="/search">
-                            <input class="w-75" type="text" placeholder="Search.." name="search2">
+                    <li class="nav-item active justify-content-center">
+                        <form class="form-control d-flex w-100 m-auto justify-content-evenly" method="get" action="/search">
+                            <input class="w-100" type="text" placeholder="Search.." name="search2">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </li>

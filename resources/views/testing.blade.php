@@ -6,7 +6,7 @@
 
 
 @section('content')
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tiks">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ul">
     Open modal
 </button>
 
@@ -100,7 +100,9 @@
             <!-- Modal Header -->
             <div class="modal-header m-1 p-2">
 
-              <b><h4 class="modal-title">Select Ticket Type</h4></b>  
+                <b>
+                    <h4 class="modal-title">Select Ticket Type</h4>
+                </b>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
@@ -111,7 +113,95 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer m-1 p-2">
-                <button type="button" class="btn btn-secondary"><b> < </b>Back</button>
+                <button type="button" class="btn btn-secondary"><b>
+                        < </b>Back</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal container-fluid" id="ul">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content text-center">
+            <!-- Modal Header -->
+            <div class="modal-header m-1 p-2">
+
+                <b>
+                    <h4 class="modal-title">Express Local Shipping</h4>
+                </b>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="form-group modal-body m-1 p-3">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        A Ticket Location will only appear here if it is in the postcode range of an Express Local Shipping delivery
+                        plan.
+                        Remember that only tickets for events in the same city as your Ticket Location will be available for Express
+                        Local Shipping.
+                    </li>
+
+
+                    <li class="list-group-item">
+                        Queen Trading
+                        <br>
+                        214 st kilda road, st kilda, Melbourne
+                        <br>
+                        Melbourne, Victoria, 3189
+                        <br>
+                        Australia
+
+                        <div class="position-absolute top-50 end-0 translate-middle-y">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="list-group-item">
+                        Nicolas Finthal
+                        <br>
+                        199 roscoe
+                        <br>
+                        Bondi beach, New South Wales, 2026
+                        <br>
+                        Australia
+
+                        <div class="position-absolute top-50 end-0 translate-middle-y">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        Matuidi Nicolas
+                        <br>
+                        15/78 Curlewis St
+                        <br>
+                        Bondi Beach, New South Wales, 2026
+                        <br>
+                        Australia
+
+                        <div class="position-absolute top-50 end-0 translate-middle-y">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer m-1 p-2">
+                <button type="button" class="btn btn-secondary"><b>
+                        < </b>Back</button>
             </div>
 
         </div>
