@@ -46,6 +46,6 @@ Route::get('/testing', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/listing', [App\Http\Controllers\ListingController::class, 'show'])->name('listing');
+Route::get('/listing', [App\Http\Controllers\ListingController::class, 'show'])->name('listing')->middleware('auth');
 Route::get('eventdetails',[joinEventDetails::class,'show']);
 Route::get('/search',[App\Http\Controllers\ListingController::class, 'search']);

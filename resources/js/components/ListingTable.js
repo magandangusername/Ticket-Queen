@@ -6,6 +6,7 @@ import ListingConcerts from "./ListingConcerts";
 import Tools from "./Tools";
 import ListingSortBy from "./ListingSortBy";
 import ListingEditTicket from "./ListingEditTicket";
+import ListingNew from "./ListingNew";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -457,7 +458,7 @@ const ListingTable = () => {
                             setSortInactiveActive={setSortInactiveActive}
                         />
                         <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
-                    
+
 
                             <table className="table border">
                                 <thead className="thead-lights bg-color sticky-top border">
@@ -535,6 +536,7 @@ const ListingTable = () => {
                 {ticketEdit.length ? (
                     <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} handleTicketDelete={handleTicketDelete} />
                 ) : null}
+                <ListingNew concerts={concerts} />
             </React.StrictMode>
         </>
     );

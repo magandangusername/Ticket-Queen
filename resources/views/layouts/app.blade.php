@@ -39,13 +39,13 @@
                         alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
-            
+
             <button id="nav-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            
+
+
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 120%;">
                     <li class="nav-item active me-3 pe-3 justify-content-center">
@@ -73,7 +73,7 @@
                     </li> --}}
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">{{ __('Login') }}</a>
+                            <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         {{-- @if (Route::has('register'))
                             <li class="nav-item">
@@ -82,7 +82,7 @@
                         @endif --}}
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
+                            <a class="nav-link text-light" href="#">{{ Auth::user()->name }}</a>
                         </li>
 
                         <li class="nav-item">
@@ -110,7 +110,7 @@
         </main>
 
     </div>
-    <div class="modal w-100" id="ListingModal">
+    {{-- <div class="modal w-100" id="ListingModal">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -170,7 +170,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="modal container-fluid" id="ReqEventModal">
         <div class="modal-dialog">
