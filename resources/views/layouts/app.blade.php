@@ -39,11 +39,13 @@
                         alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            
+            <button id="nav-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            
             <div class="justify-content-center collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 120%;">
                     <li class="nav-item active me-3 pe-3 justify-content-center">

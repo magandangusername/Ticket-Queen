@@ -269,14 +269,14 @@ const ListingTable = () => {
                 ? { ...ticket, isSelected: !ticket.isSelected }
                 : ticket
         );
-        setTicketEdit(listTickets);
+        setTickets(listTickets);
     };
 
     const handleTicketEdit = async (id, concert) => {
         var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
         // editList = [{...editList, concert}];
 
-        var arrOfObj = editList.data;
+        var arrOfObj = editList;
 
         var result = arrOfObj.map(function (el) {
             var o = Object.assign({}, el);
@@ -361,6 +361,7 @@ const ListingTable = () => {
             Expiration: ticket[0].Expiration,
             status: ticket[0].status,
         };
+
         axios
             .post("/api/tickets/update", ticket_info)
             .then((response) => {
@@ -370,7 +371,36 @@ const ListingTable = () => {
                 console.log(error.response);
                 setFetchError(error.message);
             });
+
     };
+
+    const handleTicketDelete = async (ticket) => {
+        const ticket_info = {
+            Listing_ID: ticket.Listing_ID,
+            ConcertID: ticket.ConcertID,
+            Section: ticket.Section,
+            Row: ticket.Row,
+            Seats: ticket.Seats,
+            Ticket_Type: ticket.Ticket_Type,
+            Price: ticket.Price,
+            Available_Tickets: ticket.Available_Tickets,
+            Expiration: ticket.Expiration,
+            status: ticket.status,
+        };
+        axios
+            .post("/api/tickets/destroy", ticket_info)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+
+        var newtickets = tickets.filter((ticket) => ticket.Listing_ID !== ticket_info.Listing_ID);
+
+        setTickets(newtickets);
+    }
 
     // This is the display code
     return (
@@ -495,7 +525,7 @@ const ListingTable = () => {
                                     ) : null}
                                 </tbody>
                             </table>
-                            
+
                         </div>
                         <Tools visible={visible} />
                     </>
@@ -503,7 +533,7 @@ const ListingTable = () => {
 
                 {/* This thing still works with errors */}
                 {ticketEdit.length ? (
-                    <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} />
+                    <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} handleTicketDelete={handleTicketDelete} />
                 ) : null}
             </React.StrictMode>
         </>

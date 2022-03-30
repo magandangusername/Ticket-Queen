@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
+const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicketDelete }) => {
     return (
         <div className="modal" id="myModal">
             <div
@@ -10,9 +10,9 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                 <div className="modal-content">
                     {/* <!-- Modal Header --> */}
                     <div className="modal-header">
-                        <h4>Concert name</h4>
+                        <h4>{ticketEdit[0].ConcertName}</h4>
                         <p>
-                            <b>Date</b>
+                            <b>{ticketEdit[0].ConcertDate}</b>
                             <br />
                         </p>
                         <button
@@ -79,6 +79,10 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                             type="email"
                                             className="form-control"
                                             id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].Ticket_Sold
+                                            }
+                                            readOnly
                                         />
                                     </div>
                                 </div>
@@ -124,7 +128,7 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                                 type="text"
                                                 className="form-control"
                                                 id="inlineFormInputGroupMinimum"
-                                                // value={ticketEdit[0].Seats}
+                                                value={ticketEdit[0].Seats}
                                                 readOnly
                                             />
                                             <div className="input-group-prepend">
@@ -167,26 +171,7 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                         </div>
                                     </div>
 
-                                    <div className="col">
-                                        <label
-                                            className=""
-                                            htmlFor="inlineFormInputGroupUsername"
-                                        >
-                                            Proceeds*
-                                        </label>
-                                        <div className="input-group ">
-                                            <div className="input-group-prepend">
-                                                <div className="input-group-text">
-                                                    A$
-                                                </div>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="inlineFormInputGroupUsername"
-                                            />
-                                        </div>
-                                    </div>
+
                                     <div className="col">
                                         <label htmlFor="exampleFormControlSelect1">
                                             Ticket Separation
@@ -199,30 +184,6 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                             <option>AED</option>
                                             <option>ARS</option>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div className="row">
-                                    <div className="form-group col">
-                                        <label htmlFor="exampleFormControlInput1">
-                                            Face Value*
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                        />
-                                    </div>
-
-                                    <div className="form-group col">
-                                        <label htmlFor="exampleFormControlInput1">
-                                            Max Display Quantity*
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                        />
                                     </div>
                                 </div>
                                 <div className="row">
@@ -243,29 +204,29 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                     <div className="listboxes col">
                                         {restrictions.map(
                                             (restriction, index) => (
-                                                    <div
-                                                        className="form-check"
-                                                        key={
-                                                            restriction.Restriction_ID
-                                                        }
+                                                <div
+                                                    className="form-check"
+                                                    key={
+                                                        restriction.Restriction_ID
+                                                    }
+                                                >
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id={`restriction${index}`}
+                                                    />
+                                                    <label
+                                                        className="form-check-label"
+                                                        htmlFor={`restriction${index}`}
                                                     >
-                                                        <input
-                                                            className="form-check-input"
-                                                            type="checkbox"
-                                                            id={`restriction${index}`}
-                                                        />
-                                                        <label
-                                                            className="form-check-label"
-                                                            htmlFor={`restriction${index}`}
-                                                        >
-                                                            {
-                                                                restriction.Restriction
-                                                            }
-                                                        </label>
-                                                    </div>
+                                                        {
+                                                            restriction.Restriction
+                                                        }
+                                                    </label>
+                                                </div>
 
-                                                    // && index % 9 === 0 && </div><div className="listboxes col">
-                                                )
+                                                // && index % 9 === 0 && </div><div className="listboxes col">
+                                            )
                                         )}
                                     </div>
                                 </div>
@@ -274,32 +235,30 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                 </div>
 
                                 <div className="row">
-                                <div className="listboxes col">
+                                    <div className="listboxes col">
                                         {listingNotes.map(
                                             (listingNote, index) => (
-                                                    <div
-                                                        className="form-check"
-                                                        key={
-                                                            index
-                                                        }
+                                                <div
+                                                    className="form-check"
+                                                    key={index}
+                                                >
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id={`restriction${index}`}
+                                                    />
+                                                    <label
+                                                        className="form-check-label"
+                                                        htmlFor={`restriction${index}`}
                                                     >
-                                                        <input
-                                                            className="form-check-input"
-                                                            type="checkbox"
-                                                            id={`restriction${index}`}
-                                                        />
-                                                        <label
-                                                            className="form-check-label"
-                                                            htmlFor={`restriction${index}`}
-                                                        >
-                                                            {
-                                                                listingNote.Listing_note
-                                                            }
-                                                        </label>
-                                                    </div>
+                                                        {
+                                                            listingNote.Listing_note
+                                                        }
+                                                    </label>
+                                                </div>
 
-                                                    // && index % 9 === 0 && </div><div className="listboxes col">
-                                                )
+                                                // && index % 9 === 0 && </div><div className="listboxes col">
+                                            )
                                         )}
                                     </div>
                                 </div>
@@ -324,28 +283,48 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                                 <label className="form-label" htmlFor="">
                                     Sold Status
                                 </label>
+                                <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].status
+                                            }
+                                            readOnly
+                                        />
                                 <br />
-                                <label className="form-label" htmlFor="">
-                                    blah blah
-                                </label>
+
                             </div>
                             <div className="border p-1">
                                 <label className="form-label" htmlFor="">
                                     Listing ID
                                 </label>
+                                <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].Listing_ID
+                                            }
+                                            readOnly
+                                        />
                                 <br />
-                                <label className="form-label" htmlFor="">
-                                    1232132131
-                                </label>
+
                             </div>
                             <div className="border p-1">
                                 <label className="form-label" htmlFor="">
                                     Ticket Type
                                 </label>
                                 <br />
-                                <label className="form-label" htmlFor="">
-                                    E-ticket
-                                </label>
+                                <input
+                                            type="email"
+                                            className="form-control"
+                                            id="exampleFormControlInput1"
+                                            value={
+                                                ticketEdit[0].Ticket_Type
+                                            }
+                                            readOnly
+                                        />
                             </div>
                         </div>
                     </div>
@@ -360,6 +339,8 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes }) => {
                         <button
                             type="button"
                             className="btn btn-danger float-sm-start"
+                            data-bs-dismiss="modal"
+                            onClick={()=>handleTicketDelete(ticketEdit[0])}
                         >
                             Delete
                         </button>
