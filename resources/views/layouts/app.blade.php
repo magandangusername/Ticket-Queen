@@ -76,7 +76,7 @@
                     </li> --}}
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">{{ __('Login') }}</a>
+                            <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         {{-- @if (Route::has('register'))
                             <li class="nav-item">
@@ -85,7 +85,7 @@
                         @endif --}}
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ Auth::user()->first_name }}</a>
+                            <a class="nav-link text-light" href="#">{{ Auth::user()->name }}</a>
                         </li>
 
                         <li class="nav-item">
@@ -111,7 +111,7 @@
         </main>
 
     </div>
-    <div class="modal w-100" id="ListingModal">
+    {{-- <div class="modal w-100" id="ListingModal">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -171,7 +171,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="modal container-fluid" id="ReqEventModal">
         <div class="modal-dialog">
