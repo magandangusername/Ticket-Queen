@@ -5590,7 +5590,20 @@ var ListingConcerts = function ListingConcerts(_ref) {
                 handleTicketEdit: handleTicketEdit
               }, ticket.Listing_ID) : null;
             })
-          }) : null]
+          }) : null, tickets.filter(function (ticket) {
+            return ticket.ConcertID === concert.ConcertID;
+          }).length ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                colSpan: 10,
+                style: {
+                  textAlign: "center",
+                  color: "black"
+                },
+                children: "No data to show"
+              })
+            })
+          })]
         })
       })
     })]

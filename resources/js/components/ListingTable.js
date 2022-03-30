@@ -531,7 +531,7 @@ const ListingTable = () => {
                     </>
                 )}
 
-                {/* This thing still works with errors */}
+                {/* This thing still works but with errors */}
                 {ticketEdit.length ? (
                     <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} handleTicketDelete={handleTicketDelete} />
                 ) : null}
