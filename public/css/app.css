@@ -11378,7 +11378,7 @@ form.example::after {
 }
 
 .navz-index {
-  z-index: 500;
+  z-index: 600;
 }
 
 .table-heights {
@@ -11387,4 +11387,8 @@ form.example::after {
 
 .bg-color {
   background-color: #2B6ABC;
+}
+
+#navbarNavDropdown {
+  z-index: 2000;
 }
