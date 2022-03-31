@@ -6,9 +6,42 @@
 
 
 @section('content')
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ul">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#express">
     Open modal
 </button>
+
+<div class="container">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action ">
+                <i class="fa-solid fa-house-chimney"></i>
+                Dashboard
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fa-solid fa-tag"></i>
+                Listings
+            </a>
+            <a href="#" class="list-group-item list-group-item-action ">
+                <i class="fa-solid fa-money-bill-1-wave"></i>
+                Sales
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fa-solid fa-clock"></i>
+                Last Minute Sales
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fa-solid fa-location-dot"></i>
+                Reports
+            </a>
+            <a href="#" class="list-group-item list-group-item-action ">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+            <a href="#" class="list-group-item list-group-item-action ">
+                <i class="fa-solid fa-envelope"></i>
+                Messages
+            </a>
+        </div>
+    </div>
 
 
 <div class="modal container-fluid" id="myModal">
@@ -121,8 +154,8 @@
     </div>
 </div>
 
-<div class="modal container-fluid" id="ul">
-    <div class="modal-dialog modal-lg">
+<div class="modal container-fluid" id="express">
+    <div class="modal-dialog modal-auto">
         <div class="modal-content text-center">
             <!-- Modal Header -->
             <div class="modal-header m-1 p-2">
@@ -135,73 +168,80 @@
             </div>
 
             <!-- Modal body -->
-            <div class="form-group modal-body m-1 p-3">
-                <ul class="list-group">
-                    <li class="list-group-item">
+            <div class="form-group modal-body m-1 p-2">
+                <div class="p-2 m-2">
+                    <div class="row border text-left p-2">
+            
                         A Ticket Location will only appear here if it is in the postcode range of an Express Local Shipping delivery
                         plan.
                         Remember that only tickets for events in the same city as your Ticket Location will be available for Express
                         Local Shipping.
-                    </li>
+                        
+                    </div>
 
 
-                    <li class="list-group-item">
-                        Queen Trading
-                        <br>
-                        214 st kilda road, st kilda, Melbourne
-                        <br>
-                        Melbourne, Victoria, 3189
-                        <br>
-                        Australia
-
-                        <div class="position-absolute top-50 end-0 translate-middle-y">
-                            <div class="form-check form-switch">
+                    <div class="border row p-2">
+                        <div class="col text-left"> 
+                            Queen Trading
+                            <br>
+                            214 st kilda road, st kilda, Melbourne
+                            <br>
+                            Melbourne, Victoria, 3189
+                            <br>
+                            Australia
+                        </div>
+                        <div class="col ">
+                            <div class="form-check form-switch ">
                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
                             </div>
                         </div>
-                    </li>
+                    </div>
 
 
-                    <li class="list-group-item">
-                        Nicolas Finthal
-                        <br>
-                        199 roscoe
-                        <br>
-                        Bondi beach, New South Wales, 2026
-                        <br>
-                        Australia
+                    <div class="border row p-2">
+                        <div class="col text-left">
+                            Nicolas Finthal
+                            <br>
+                            199 roscoe
+                            <br>
+                            Bondi beach, New South Wales, 2026
+                            <br>
+                            Australia
+                        </div>
 
-                        <div class="position-absolute top-50 end-0 translate-middle-y">
-                            <div class="form-check form-switch">
+                        <div class="col ">
+                            <div class="form-check form-switch ">
                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
                             </div>
                         </div>
-                    </li>
+                    </div>
 
-                    <li class="list-group-item">
-                        Matuidi Nicolas
-                        <br>
-                        15/78 Curlewis St
-                        <br>
-                        Bondi Beach, New South Wales, 2026
-                        <br>
-                        Australia
+                    <div class="border row p-2">
+                        <div class="col text-left">
+                            Matuidi Nicolas
+                            <br>
+                            15/78 Curlewis St
+                            <br>
+                            Bondi Beach, New South Wales, 2026
+                            <br>
+                            Australia
+                        </div>
 
-                        <div class="position-absolute top-50 end-0 translate-middle-y">
-                            <div class="form-check form-switch">
+                        <div class="col ">
+                            <div class="form-check form-switch " >
                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer m-1 p-2">
-                <button type="button" class="btn btn-secondary"><b>
-                        < </b>Back</button>
+                <button type="button" class="btn btn-secondary"><B class="bold">
+                        < </B>Back</button>
             </div>
 
         </div>
