@@ -49,12 +49,12 @@ const ListingConcerts = ({
                         </div>
                     </div>
                 </td>
-                <td>
+                <td className="justify-content-center">
                     <p className="text-white-50 mb-0">
                         Last Minute Sales Event
                     </p>
                 </td>
-                <td>
+                <td className="justify-content-center">
                     <p className="fw-normal mb-1 text-light">
                         Available Tickets
                     </p>
@@ -62,12 +62,12 @@ const ListingConcerts = ({
                         {concert.Total_Available}
                     </p>
                 </td>
-                <td>
+                <td className="justify-content-center">
                     <p className="fw-normal mb-1 text-light">Ticket Sold</p>
                     <p className="text-white-50 mb-0">{concert.Total_Sold}</p>
                 </td>
                 <td>
-                    <div className="border border-dark border-2 container-fluid h-auto bg-danger rounded">
+                    <div className="border border-dark border-2 container-fluid h-auto bg-danger rounded justify-content-center">
                         <p className="fw-normal-50 mb-1">No. of ticket</p>
                         <p className="text-white-50 mb-0">Sold in the last</p>
                         <p className="text-black-50 mb-1">No. of days</p>
@@ -78,7 +78,7 @@ const ListingConcerts = ({
                         {concert.remaining_days} days
                     </p>
                 </td>
-                <td className="border-dark border-1 justify-content-center ">
+                <td className="border-dark border-1 justify-content-center">
                     <a
                         href=""
                         className="fas fa-search"

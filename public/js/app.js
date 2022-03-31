@@ -5492,11 +5492,13 @@ var ListingConcerts = function ListingConcerts(_ref) {
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+        className: "justify-content-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "text-white-50 mb-0",
           children: "Last Minute Sales Event"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+        className: "justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "fw-normal mb-1 text-light",
           children: "Available Tickets"
@@ -5505,6 +5507,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
           children: concert.Total_Available
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+        className: "justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "fw-normal mb-1 text-light",
           children: "Ticket Sold"
@@ -5514,7 +5517,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "border border-dark border-2 container-fluid h-auto bg-danger rounded",
+          className: "border border-dark border-2 container-fluid h-auto bg-danger rounded justify-content-center",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
             className: "fw-normal-50 mb-1",
             children: "No. of ticket"
@@ -5532,7 +5535,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
           children: [concert.remaining_days, " days"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-        className: "border-dark border-1 justify-content-center ",
+        className: "border-dark border-1 justify-content-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: "",
           className: "fas fa-search",
@@ -6164,7 +6167,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1",
+              className: "form-check-label mt-1 text-dark fw-bold",
               htmlFor: "All Listing",
               children: "Show All Listings"
             })]
@@ -6180,7 +6183,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1",
+              className: "form-check-label mt-1 text-dark fw-bold",
               htmlFor: "EligibleLastMinuteSales",
               children: "Show Listings Eligible For Last Minute Sales"
             })]
@@ -6196,14 +6199,14 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortActiveActive(!sortActiveActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1",
+              className: "form-check-label mt-1 text-dark fw-bold",
               htmlFor: "Active Listing",
               children: "Show Active Listings"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "form-check form-check-inline text-light col",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              className: "form-check-input mt-2 ms-1",
+              className: "form-check-input mt-2 ms-1 text-dark",
               type: "checkbox",
               value: "",
               id: "Inactive",
@@ -6212,7 +6215,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortInactiveActive(!sortInactiveActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1",
+              className: "form-check-label mt-1 text-dark fw-bold",
               htmlFor: "Inactive",
               children: "Show Inactive Listings"
             })]
@@ -6912,13 +6915,29 @@ var ListingTable = function ListingTable() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, {
       children: [isConcertsLoading && isTicketsLoading && isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("table", {
-        className: "table",
+        className: "",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("thead", {
-          className: "thead-lights bg-color",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("tr", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-              children: "Loading Items..."
-            })
+          className: "w-auto position-absolute top-50 start-50 translate-middle",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
+            className: "w-auto",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                "class": "spinner-border text-info",
+                role: "status",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
+                  "class": "visually-hidden",
+                  children: "Loading..."
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                className: "d-inline text-white",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
+                  className: "ps-2",
+                  children: "LOADING ITEMS..."
+                })
+              })
+            })]
           })
         })
       }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("table", {
@@ -6956,27 +6975,27 @@ var ListingTable = function ListingTable() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("table", {
-            className: "table border",
+            className: "table",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("thead", {
-              className: "thead-lights bg-color sticky-top border",
+              className: "thead-lights bg-color sticky-top",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                   className: "text-center"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                  className: "text-center text-white",
+                  className: "text-center text-dark",
                   children: "Ticket Details"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                  className: "text-center text-white"
+                  className: "text-center text-dark"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                  className: "text-center text-white",
+                  className: "text-center text-dark",
                   children: "Available Ticket"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                  className: "text-center text-white",
+                  className: "text-center text-dark",
                   children: "Ticket Sold"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                   className: "text-center"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-                  className: "text-center text-white",
+                  className: "text-center text-dark",
                   children: "Days"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
                   className: "text-center"

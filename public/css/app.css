@@ -11294,7 +11294,7 @@ a.tools {
   color: yellow;
 }
 
-thead.thead-lights {
+.thead-lights {
   border: solid 3px #1C1C1C;
 }
 
@@ -11313,6 +11313,10 @@ thead.thead-lights {
   background-repeat: no-repeat;
   background-position: center;
   outline: 0;
+}
+
+h2, .h2 {
+  margin-bottom: 0.3rem;
 }
 
 #Search::-webkit-search-cancel-button {
@@ -11386,7 +11390,7 @@ form.example::after {
 }
 
 .bg-color {
-  background-color: #2B6ABC;
+  background-color: #E4E4E4;
 }
 
 #navbarNavDropdown {
