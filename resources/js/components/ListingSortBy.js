@@ -26,7 +26,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
                             />
                             <label
-                                className="form-check-label mt-1"
+                                className="form-check-label mt-1 text-dark fw-bold"
                                 htmlFor="All Listing"
                             >
                                 Show All Listings
@@ -42,7 +42,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive)}
                             />
                             <label
-                                className="form-check-label mt-1"
+                                className="form-check-label mt-1 text-dark fw-bold"
                                 htmlFor="EligibleLastMinuteSales"
                             >
                                 Show Listings Eligible For Last Minute Sales
@@ -58,7 +58,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortActiveActive(!sortActiveActive)}
                             />
                             <label
-                                className="form-check-label mt-1"
+                                className="form-check-label mt-1 text-dark fw-bold"
                                 htmlFor="Active Listing"
                             >
                                 Show Active Listings
@@ -66,7 +66,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                         </div>
                         <div className="form-check form-check-inline text-light col">
                             <input
-                                className="form-check-input mt-2 ms-1"
+                                className="form-check-input mt-2 ms-1 text-dark"
                                 type="checkbox"
                                 value=""
                                 id="Inactive"
@@ -74,7 +74,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortInactiveActive(!sortInactiveActive)}
                             />
                             <label
-                                className="form-check-label mt-1"
+                                className="form-check-label mt-1 text-dark fw-bold"
                                 htmlFor="Inactive"
                             >
                                 Show Inactive Listings

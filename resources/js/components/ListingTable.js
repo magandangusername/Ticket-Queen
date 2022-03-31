@@ -422,14 +422,24 @@ const ListingTable = () => {
                 {isConcertsLoading &&
                     isTicketsLoading &&
                     isRestrictionsLoading && (
-                        <table className="table">
-                            <thead className="thead-lights bg-color">
-                                <tr>
-                                    <th>Loading Items...</th>
+                        <table className="">
+                            <thead className="w-auto position-absolute top-50 start-50 translate-middle">
+                                <tr className="w-auto">
+                                    <td>
+                                    <div class="spinner-border text-info" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    </td>
+                                    <td>
+                                    <div className="d-inline text-white">
+                                        <h2 className="ps-2">LOADING ITEMS...</h2>
+                                    </div>
+                                    </td>
+
                                 </tr>
                             </thead>
                         </table>
-                    )}
+                     )}
                 {fetchError && (
                     <table className="table">
                         <thead className="thead-lights bg-color">
@@ -477,22 +487,22 @@ const ListingTable = () => {
                                 setSortInactiveActive={setSortInactiveActive}
                             />
                             <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
-                                <table className="table border">
-                                    <thead className="thead-lights bg-color sticky-top border">
+                                <table className="table">
+                                    <thead className="thead-lights bg-color sticky-top">
                                         <tr>
                                             <th className="text-center"></th>
-                                            <th className="text-center text-white">
+                                            <th className="text-center text-dark">
                                                 Ticket Details
                                             </th>
-                                            <th className="text-center text-white"></th>
-                                            <th className="text-center text-white">
+                                            <th className="text-center text-dark"></th>
+                                            <th className="text-center text-dark">
                                                 Available Ticket
                                             </th>
-                                            <th className="text-center text-white">
+                                            <th className="text-center text-dark">
                                                 Ticket Sold
                                             </th>
                                             <th className="text-center"></th>
-                                            <th className="text-center text-white">
+                                            <th className="text-center text-dark">
                                                 Days
                                             </th>
                                             <th className="text-center"></th>

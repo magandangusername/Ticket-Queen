@@ -14,7 +14,7 @@ a.tools{
 .tools:hover {
     color: yellow;
   }
-thead.thead-lights{
+.thead-lights{
   border: solid 3px #1C1C1C;
 }
 .table{
@@ -28,6 +28,9 @@ padding-top:1px;
 font-size:18px;color:black;
 background-repeat:no-repeat;
 background-position:center;outline:0;
+}
+h2{
+  margin-bottom: 0.3rem;
 }
 
 #Search::-webkit-search-cancel-button{
@@ -97,9 +100,9 @@ form.example input[type=text] {
   .table-heights{
     height: 65%
   }
-  .bg-color{
-    background-color: #2B6ABC;
-  }
+    .bg-color{
+      background-color: #E4E4E4;
+    }
   #navbarNavDropdown{
     z-index: 2000;
   }
