@@ -55,7 +55,7 @@ const ListingNew = ({ concerts }) => {
                             {concerts.length ? (
                                 <tbody>
                                     {concerts.map((concert) => (
-                                        <tr>
+                                        <tr key={concert.ConcertID}>
                                             <td>
                                             {/* dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy") to get Tuesday, April 30th, 2019. */}
                                                 {dateFormat(concert.ConcertDate, "dddd")}

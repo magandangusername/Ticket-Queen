@@ -28,27 +28,31 @@ const ListingTable = () => {
     const [sortActiveActive, setSortActiveActive] = useState(false);
     const [sortInactiveActive, setSortInactiveActive] = useState(false);
     const [sort, setSort] = useState([]);
-    const [ticketEdit, setTicketEdit] = useState([{
-        Available_Tickets: "",
-        ConcertID: "",
-        Expiration: "",
-        Listing_ID: "",
-        Price: "",
-        Row: "",
-        Seats: "",
-        Section: "",
-        Ticket_Sold: "",
-        Ticket_Type: "",
-        created_at: "",
-        isAvailableTicketSelected: "",
-        isPriceSelected: "",
-        isSelected: "",
-        status: ""
-
-    }]);
+    const [ticketEdit, setTicketEdit] = useState([
+        {
+            Available_Tickets: "",
+            ConcertID: "",
+            Expiration: "",
+            Listing_ID: "",
+            Price: "",
+            Row: "",
+            Seats: "",
+            Section: "",
+            Ticket_Sold: "",
+            Ticket_Type: "",
+            created_at: "",
+            isAvailableTicketSelected: "",
+            isPriceSelected: "",
+            isSelected: "",
+            status: "",
+        },
+    ]);
+    const [ticketRestrictionEdit, setTicketRestrictionEdit] = useState([]);
+    const [ticketListingNoteEdit, setTicketListingNoteEdit] = useState([]);
     const [restrictions, setRestrictions] = useState([]);
     const [listingNotes, setListingNotes] = useState([]);
     const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
+    const [isTicketEditLoading, setIsTicketEditLoading] = useState(true);
 
     // gets data when opening/refreshing the page
     const fetchConcert = async () => {
@@ -170,8 +174,6 @@ const ListingTable = () => {
         }
     }, [sortAllListingActive]);
 
-
-
     // useEffect(() => {
     //     //sorting
 
@@ -262,7 +264,6 @@ const ListingTable = () => {
     //   console.log(ticketEdit)
     // }, [ticketEdit])
 
-
     const handleCheck = async (id) => {
         //finds the set of data from the list and set its value
         const listTickets = tickets.map((ticket) =>
@@ -274,29 +275,39 @@ const ListingTable = () => {
     };
 
     const handleTicketEdit = async (id, concert) => {
-        var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
-        // editList = [{...editList, concert}];
+        try {
+            var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
+            // editList = [{...editList, concert}];
 
-        var arrOfObj = editList;
+            var arrOfObj = editList;
 
-        var result = arrOfObj.map(function (el) {
-            var o = Object.assign({}, el);
-            o.ConcertID = concert.ConcertID;
-            o.ConcertName = concert.ConcertName;
-            o.ConcertDate = concert.ConcertDate;
-            o.Location = concert.Location;
-            o.Total_Available = concert.Total_Available;
-            o.status = concert.status;
-            return o;
-        });
-        setTicketEdit(result);
+            var result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.ConcertID = concert.ConcertID;
+                o.ConcertName = concert.ConcertName;
+                o.ConcertDate = concert.ConcertDate;
+                o.Location = concert.Location;
+                o.Total_Available = concert.Total_Available;
+                o.status = concert.status;
+                return o;
+            });
+
+            setTicketEdit(result);
+
+            const restricts = await axios.get("/api/restrictions/" + id);
+            setTicketRestrictionEdit(restricts.data);
+            const listnotes = await axios.get("/api/listing_notes/" + id);
+            setTicketListingNoteEdit(listnotes.data);
+        } catch (error) {
+            setFetchError(error.message);
+        } finally {
+            setIsTicketEditLoading(false);
+        }
     };
 
     useEffect(() => {
-      console.log(ticketEdit);
-    }, [ticketEdit])
-
-
+        console.log(ticketEdit);
+    }, [ticketEdit]);
 
     const handlePriceSelect = async (id) => {
         const listTickets = tickets.map((ticket) =>
@@ -372,7 +383,6 @@ const ListingTable = () => {
                 console.log(error.response);
                 setFetchError(error.message);
             });
-
     };
 
     const handleTicketDelete = async (ticket) => {
@@ -398,24 +408,28 @@ const ListingTable = () => {
                 setFetchError(error.message);
             });
 
-        var newtickets = tickets.filter((ticket) => ticket.Listing_ID !== ticket_info.Listing_ID);
+        var newtickets = tickets.filter(
+            (ticket) => ticket.Listing_ID !== ticket_info.Listing_ID
+        );
 
         setTickets(newtickets);
-    }
+    };
 
     // This is the display code
     return (
         <>
             <React.StrictMode>
-                {isConcertsLoading && isTicketsLoading && isRestrictionsLoading && (
-                    <table className="table">
-                        <thead className="thead-lights bg-color">
-                            <tr>
-                                <th>Loading Items...</th>
-                            </tr>
-                        </thead>
-                    </table>
-                )}
+                {isConcertsLoading &&
+                    isTicketsLoading &&
+                    isRestrictionsLoading && (
+                        <table className="table">
+                            <thead className="thead-lights bg-color">
+                                <tr>
+                                    <th>Loading Items...</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    )}
                 {fetchError && (
                     <table className="table">
                         <thead className="thead-lights bg-color">
@@ -428,113 +442,128 @@ const ListingTable = () => {
                     </table>
                 )}
 
-                {!fetchError && !isConcertsLoading && !isTicketsLoading && !isRestrictionsLoading && (
-                    <>
-                        <ListingSortBy
-                            sortAllListing={sortAllListing}
-                            sortEligibleLastMinuteSales={
-                                sortEligibleLastMinuteSales
-                            }
-                            sortActive={sortActive}
-                            sortInactive={sortInactive}
-                            setSortAllListing={setSortAllListing}
-                            setSortEligibleLastMinuteSales={
-                                setSortEligibleLastMinuteSales
-                            }
-                            setSortActive={setSortActive}
-                            setSortInactive={setSortInactive}
-                            // handleSort={handleSort}
-                            sortAllListingActive={sortAllListingActive}
-                            sortEligibleLastMinuteSalesActive={
-                                sortEligibleLastMinuteSalesActive
-                            }
-                            sortActiveActive={sortActiveActive}
-                            sortInactiveActive={sortInactiveActive}
-                            setSortAllListingActive={setSortAllListingActive}
-                            setSortEligibleLastMinuteSalesActive={
-                                setSortEligibleLastMinuteSalesActive
-                            }
-                            setSortActiveActive={setSortActiveActive}
-                            setSortInactiveActive={setSortInactiveActive}
-                        />
-                        <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
-
-
-                            <table className="table border">
-                                <thead className="thead-lights bg-color sticky-top border">
-                                    <tr>
-                                        <th className="text-center"></th>
-                                        <th className="text-center text-white">
-                                            Ticket Details
-                                        </th>
-                                        <th className="text-center text-white"></th>
-                                        <th className="text-center text-white">
-                                            Available Ticket
-                                        </th>
-                                        <th className="text-center text-white">
-                                            Ticket Sold
-                                        </th>
-                                        <th className="text-center"></th>
-                                        <th className="text-center text-white">
-                                            Days
-                                        </th>
-                                        <th className="text-center"></th>
-                                    </tr>
-                                </thead>
-
-                                <tbody id="tabletickets">
-                                    {!concerts.length && (
+                {!fetchError &&
+                    !isConcertsLoading &&
+                    !isTicketsLoading &&
+                    !isRestrictionsLoading && (
+                        <>
+                            <ListingSortBy
+                                sortAllListing={sortAllListing}
+                                sortEligibleLastMinuteSales={
+                                    sortEligibleLastMinuteSales
+                                }
+                                sortActive={sortActive}
+                                sortInactive={sortInactive}
+                                setSortAllListing={setSortAllListing}
+                                setSortEligibleLastMinuteSales={
+                                    setSortEligibleLastMinuteSales
+                                }
+                                setSortActive={setSortActive}
+                                setSortInactive={setSortInactive}
+                                // handleSort={handleSort}
+                                sortAllListingActive={sortAllListingActive}
+                                sortEligibleLastMinuteSalesActive={
+                                    sortEligibleLastMinuteSalesActive
+                                }
+                                sortActiveActive={sortActiveActive}
+                                sortInactiveActive={sortInactiveActive}
+                                setSortAllListingActive={
+                                    setSortAllListingActive
+                                }
+                                setSortEligibleLastMinuteSalesActive={
+                                    setSortEligibleLastMinuteSalesActive
+                                }
+                                setSortActiveActive={setSortActiveActive}
+                                setSortInactiveActive={setSortInactiveActive}
+                            />
+                            <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
+                                <table className="table border">
+                                    <thead className="thead-lights bg-color sticky-top border">
                                         <tr>
-                                            <td
-                                                colSpan={10}
-                                                style={{
-                                                    textAlign: "center",
-                                                    color: "white",
-                                                }}
-                                            >
-                                                No data to show
-                                            </td>
+                                            <th className="text-center"></th>
+                                            <th className="text-center text-white">
+                                                Ticket Details
+                                            </th>
+                                            <th className="text-center text-white"></th>
+                                            <th className="text-center text-white">
+                                                Available Ticket
+                                            </th>
+                                            <th className="text-center text-white">
+                                                Ticket Sold
+                                            </th>
+                                            <th className="text-center"></th>
+                                            <th className="text-center text-white">
+                                                Days
+                                            </th>
+                                            <th className="text-center"></th>
                                         </tr>
-                                    )}
-                                    {concerts.length ? (
-                                        <>
-                                            {concerts.map((concert) => (
-                                                <ListingConcerts
-                                                    key={concert.ConcertID}
-                                                    concert={concert}
-                                                    tickets={tickets}
-                                                    setTickets={setTickets}
-                                                    handleCheck={handleCheck}
-                                                    handlePriceSelect={
-                                                        handlePriceSelect
-                                                    }
-                                                    handlePriceChange={
-                                                        handlePriceChange
-                                                    }
-                                                    handleAvailableTicketSelect={
-                                                        handleAvailableTicketSelect
-                                                    }
-                                                    handleAvailableTicketChange={
-                                                        handleAvailableTicketChange
-                                                    }
-                                                    handleTicketEdit={
-                                                        handleTicketEdit
-                                                    }
-                                                />
-                                            ))}
-                                        </>
-                                    ) : null}
-                                </tbody>
-                            </table>
+                                    </thead>
 
-                        </div>
-                        <Tools visible={visible} />
-                    </>
-                )}
+                                    <tbody id="tabletickets">
+                                        {!concerts.length && (
+                                            <tr>
+                                                <td
+                                                    colSpan={10}
+                                                    style={{
+                                                        textAlign: "center",
+                                                        color: "white",
+                                                    }}
+                                                >
+                                                    No data to show
+                                                </td>
+                                            </tr>
+                                        )}
+                                        {concerts.length ? (
+                                            <>
+                                                {concerts.map((concert) => (
+                                                    <ListingConcerts
+                                                        key={concert.ConcertID}
+                                                        concert={concert}
+                                                        tickets={tickets}
+                                                        setTickets={setTickets}
+                                                        handleCheck={
+                                                            handleCheck
+                                                        }
+                                                        handlePriceSelect={
+                                                            handlePriceSelect
+                                                        }
+                                                        handlePriceChange={
+                                                            handlePriceChange
+                                                        }
+                                                        handleAvailableTicketSelect={
+                                                            handleAvailableTicketSelect
+                                                        }
+                                                        handleAvailableTicketChange={
+                                                            handleAvailableTicketChange
+                                                        }
+                                                        handleTicketEdit={
+                                                            handleTicketEdit
+                                                        }
+                                                    />
+                                                ))}
+                                            </>
+                                        ) : null}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <Tools visible={visible} />
+                        </>
+                    )}
 
                 {/* This thing still works but with errors */}
                 {ticketEdit.length ? (
-                    <ListingEditTicket ticketEdit={ticketEdit} restrictions={restrictions} listingNotes={listingNotes} handleTicketDelete={handleTicketDelete} />
+                    <ListingEditTicket
+                        ticketEdit={ticketEdit}
+                        restrictions={restrictions}
+                        listingNotes={listingNotes}
+                        handleTicketDelete={handleTicketDelete}
+                        isTicketEditLoading={isTicketEditLoading}
+                        setIsTicketEditLoading={setIsTicketEditLoading}
+                        ticketRestrictionEdit={ticketRestrictionEdit}
+                        ticketListingNoteEdit={ticketListingNoteEdit}
+                        setTicketRestrictionEdit={setTicketRestrictionEdit}
+                        setTicketListingNoteEdit={setTicketListingNoteEdit}
+                    />
                 ) : null}
                 <ListingNew concerts={concerts} />
             </React.StrictMode>

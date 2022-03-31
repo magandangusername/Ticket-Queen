@@ -5669,11 +5669,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var ListingEditTicket = function ListingEditTicket(_ref) {
   var ticketEdit = _ref.ticketEdit,
       restrictions = _ref.restrictions,
       listingNotes = _ref.listingNotes,
-      handleTicketDelete = _ref.handleTicketDelete;
+      handleTicketDelete = _ref.handleTicketDelete,
+      isTicketEditLoading = _ref.isTicketEditLoading,
+      setIsTicketEditLoading = _ref.setIsTicketEditLoading,
+      ticketRestrictionEdit = _ref.ticketRestrictionEdit,
+      ticketListingNoteEdit = _ref.ticketListingNoteEdit,
+      setTicketRestrictionEdit = _ref.setTicketRestrictionEdit,
+      setTicketListingNoteEdit = _ref.setTicketListingNoteEdit;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "modal",
     id: "myModal",
@@ -5868,17 +5875,42 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                   className: "listboxes col",
                   children: restrictions.map(function (restriction, index) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                       className: "form-check",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                        className: "form-check-input",
-                        type: "checkbox",
-                        id: "restriction".concat(index)
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                        className: "form-check-label",
-                        htmlFor: "restriction".concat(index),
-                        children: restriction.Restriction
-                      })]
+                      children: ticketRestrictionEdit.length ? ticketRestrictionEdit.map(function (restrict) {
+                        return restrict.Restriction_ID === restriction.Restriction_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                            className: "form-check-input",
+                            type: "checkbox",
+                            id: "restriction".concat(index),
+                            checked: true
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                            className: "form-check-label",
+                            htmlFor: "restriction".concat(index),
+                            children: restriction.Restriction
+                          })]
+                        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                            className: "form-check-input",
+                            type: "checkbox",
+                            id: "restriction".concat(index)
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                            className: "form-check-label",
+                            htmlFor: "restriction".concat(index),
+                            children: restriction.Restriction
+                          }), " "]
+                        });
+                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                          className: "form-check-input",
+                          type: "checkbox",
+                          id: "restriction".concat(index)
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                          className: "form-check-label",
+                          htmlFor: "restriction".concat(index),
+                          children: restriction.Restriction
+                        }), " "]
+                      })
                     }, restriction.Restriction_ID) // && index % 9 === 0 && </div><div className="listboxes col">
                     ;
                   })
@@ -5986,6 +6018,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             type: "button",
             className: "btn btn-secondary float-sm-end",
+            "data-bs-dismiss": "modal",
             children: "Cancel"
           })]
         })]
@@ -6081,7 +6114,7 @@ var ListingNew = function ListingNew(_ref) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
                     children: [concert.ConcertName, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), concert.Location, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
                   })]
-                });
+                }, concert.ConcertID);
               })
             }) : null
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
@@ -6391,18 +6424,33 @@ var ListingTable = function ListingTable() {
 
   var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState34 = _slicedToArray(_useState33, 2),
-      restrictions = _useState34[0],
-      setRestrictions = _useState34[1];
+      ticketRestrictionEdit = _useState34[0],
+      setTicketRestrictionEdit = _useState34[1];
 
   var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState36 = _slicedToArray(_useState35, 2),
-      listingNotes = _useState36[0],
-      setListingNotes = _useState36[1];
+      ticketListingNoteEdit = _useState36[0],
+      setTicketListingNoteEdit = _useState36[1];
 
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState38 = _slicedToArray(_useState37, 2),
-      isRestrictionsLoading = _useState38[0],
-      setIsRestrictionsLoading = _useState38[1]; // gets data when opening/refreshing the page
+      restrictions = _useState38[0],
+      setRestrictions = _useState38[1];
+
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
+      _useState40 = _slicedToArray(_useState39, 2),
+      listingNotes = _useState40[0],
+      setListingNotes = _useState40[1];
+
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
+      _useState42 = _slicedToArray(_useState41, 2),
+      isRestrictionsLoading = _useState42[0],
+      setIsRestrictionsLoading = _useState42[1];
+
+  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
+      _useState44 = _slicedToArray(_useState43, 2),
+      isTicketEditLoading = _useState44[0],
+      setIsTicketEditLoading = _useState44[1]; // gets data when opening/refreshing the page
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6665,11 +6713,12 @@ var ListingTable = function ListingTable() {
 
   var handleTicketEdit = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id, concert) {
-      var editList, arrOfObj, result;
+      var editList, arrOfObj, result, restricts, listnotes;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
+              _context4.prev = 0;
               editList = tickets.filter(function (ticket) {
                 return ticket.Listing_ID === id;
               }); // editList = [{...editList, concert}];
@@ -6686,13 +6735,37 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketEdit(result);
+              _context4.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/restrictions/" + id);
 
-            case 4:
+            case 7:
+              restricts = _context4.sent;
+              setTicketRestrictionEdit(restricts.data);
+              _context4.next = 11;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/listing_notes/" + id);
+
+            case 11:
+              listnotes = _context4.sent;
+              setTicketListingNoteEdit(listnotes.data);
+              _context4.next = 18;
+              break;
+
+            case 15:
+              _context4.prev = 15;
+              _context4.t0 = _context4["catch"](0);
+              setFetchError(_context4.t0.message);
+
+            case 18:
+              _context4.prev = 18;
+              setIsTicketEditLoading(false);
+              return _context4.finish(18);
+
+            case 21:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4);
+      }, _callee4, null, [[0, 15, 18, 21]]);
     }));
 
     return function handleTicketEdit(_x2, _x3) {
@@ -7017,7 +7090,13 @@ var ListingTable = function ListingTable() {
         ticketEdit: ticketEdit,
         restrictions: restrictions,
         listingNotes: listingNotes,
-        handleTicketDelete: handleTicketDelete
+        handleTicketDelete: handleTicketDelete,
+        isTicketEditLoading: isTicketEditLoading,
+        setIsTicketEditLoading: setIsTicketEditLoading,
+        ticketRestrictionEdit: ticketRestrictionEdit,
+        ticketListingNoteEdit: ticketListingNoteEdit,
+        setTicketRestrictionEdit: setTicketRestrictionEdit,
+        setTicketListingNoteEdit: setTicketListingNoteEdit
       }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_9__["default"], {
         concerts: concerts
       })]

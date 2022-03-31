@@ -26,3 +26,5 @@ Route::post('tickets/destroy', [ListingController::class, 'destroy']);
 Route::post('tickets/create', [ListingController::class, 'create']);
 Route::get('restrictions',[ListingController::class, 'restrictions']);
 Route::get('listing_notes',[ListingController::class, 'listing_notes']);
+Route::get('listing_notes/{id}',[ListingController::class, 'listing_notes_fetch'])->where('id', '[0-9]+');
+Route::get('restrictions/{id}',[ListingController::class, 'restrictions_fetch'])->where('id', '[0-9]+');

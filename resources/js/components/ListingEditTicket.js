@@ -1,6 +1,17 @@
 import React from "react";
 
-const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicketDelete }) => {
+const ListingEditTicket = ({
+    ticketEdit,
+    restrictions,
+    listingNotes,
+    handleTicketDelete,
+    isTicketEditLoading,
+    setIsTicketEditLoading,
+    ticketRestrictionEdit,
+    ticketListingNoteEdit,
+    setTicketRestrictionEdit,
+    setTicketListingNoteEdit,
+}) => {
     return (
         <div className="modal" id="myModal">
             <div
@@ -79,9 +90,7 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                             type="email"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={
-                                                ticketEdit[0].Ticket_Sold
-                                            }
+                                            value={ticketEdit[0].Ticket_Sold}
                                             readOnly
                                         />
                                     </div>
@@ -171,7 +180,6 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                         </div>
                                     </div>
 
-
                                     <div className="col">
                                         <label htmlFor="exampleFormControlSelect1">
                                             Ticket Separation
@@ -210,19 +218,62 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                                         restriction.Restriction_ID
                                                     }
                                                 >
-                                                    <input
-                                                        className="form-check-input"
-                                                        type="checkbox"
-                                                        id={`restriction${index}`}
-                                                    />
-                                                    <label
-                                                        className="form-check-label"
-                                                        htmlFor={`restriction${index}`}
-                                                    >
-                                                        {
-                                                            restriction.Restriction
-                                                        }
-                                                    </label>
+                                                    {ticketRestrictionEdit.length ? (
+                                                        ticketRestrictionEdit.map(
+                                                            (restrict) =>
+                                                                restrict.Restriction_ID ===
+                                                                restriction.Restriction_ID ? (
+                                                                    <>
+                                                                        <input
+                                                                            className="form-check-input"
+                                                                            type="checkbox"
+                                                                            id={`restriction${index}`}
+                                                                            checked
+                                                                        />
+                                                                        <label
+                                                                            className="form-check-label"
+                                                                            htmlFor={`restriction${index}`}
+                                                                        >
+                                                                            {
+                                                                                restriction.Restriction
+                                                                            }
+                                                                        </label>
+                                                                    </>
+                                                                ) : (
+                                                                    <>
+                                                                        <input
+                                                                            className="form-check-input"
+                                                                            type="checkbox"
+                                                                            id={`restriction${index}`}
+                                                                        />
+                                                                        <label
+                                                                            className="form-check-label"
+                                                                            htmlFor={`restriction${index}`}
+                                                                        >
+                                                                            {
+                                                                                restriction.Restriction
+                                                                            }
+                                                                        </label>{" "}
+                                                                    </>
+                                                                )
+                                                        )
+                                                    ) : (
+                                                        <>
+                                                            <input
+                                                                className="form-check-input"
+                                                                type="checkbox"
+                                                                id={`restriction${index}`}
+                                                            />
+                                                            <label
+                                                                className="form-check-label"
+                                                                htmlFor={`restriction${index}`}
+                                                            >
+                                                                {
+                                                                    restriction.Restriction
+                                                                }
+                                                            </label>{" "}
+                                                        </>
+                                                    )}
                                                 </div>
 
                                                 // && index % 9 === 0 && </div><div className="listboxes col">
@@ -284,32 +335,26 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                     Sold Status
                                 </label>
                                 <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            value={
-                                                ticketEdit[0].status
-                                            }
-                                            readOnly
-                                        />
+                                    type="email"
+                                    className="form-control"
+                                    id="exampleFormControlInput1"
+                                    value={ticketEdit[0].status}
+                                    readOnly
+                                />
                                 <br />
-
                             </div>
                             <div className="border p-1">
                                 <label className="form-label" htmlFor="">
                                     Listing ID
                                 </label>
                                 <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            value={
-                                                ticketEdit[0].Listing_ID
-                                            }
-                                            readOnly
-                                        />
+                                    type="email"
+                                    className="form-control"
+                                    id="exampleFormControlInput1"
+                                    value={ticketEdit[0].Listing_ID}
+                                    readOnly
+                                />
                                 <br />
-
                             </div>
                             <div className="border p-1">
                                 <label className="form-label" htmlFor="">
@@ -317,14 +362,12 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                                 </label>
                                 <br />
                                 <input
-                                            type="email"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            value={
-                                                ticketEdit[0].Ticket_Type
-                                            }
-                                            readOnly
-                                        />
+                                    type="email"
+                                    className="form-control"
+                                    id="exampleFormControlInput1"
+                                    value={ticketEdit[0].Ticket_Type}
+                                    readOnly
+                                />
                             </div>
                         </div>
                     </div>
@@ -340,7 +383,7 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                             type="button"
                             className="btn btn-danger float-sm-start"
                             data-bs-dismiss="modal"
-                            onClick={()=>handleTicketDelete(ticketEdit[0])}
+                            onClick={() => handleTicketDelete(ticketEdit[0])}
                         >
                             Delete
                         </button>
@@ -350,9 +393,11 @@ const ListingEditTicket = ({ ticketEdit, restrictions, listingNotes, handleTicke
                         >
                             Save
                         </button>
+                        {/* <p className="float-sm-start">Saving...</p> */}
                         <button
                             type="button"
                             className="btn btn-secondary float-sm-end"
+                            data-bs-dismiss="modal"
                         >
                             Cancel
                         </button>

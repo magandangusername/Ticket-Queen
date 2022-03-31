@@ -10,6 +10,7 @@ use Exception;
 use App\Models\queenticketeventdetails;
 use App\Models\Restrictions;
 use App\Models\listing_notes;
+use App\Models\ticket_restriction_listing;
 
 
 class ListingController extends Controller
@@ -176,4 +177,22 @@ class ListingController extends Controller
 
         return $listing_notes->toJson();
     }
+
+    public function restrictions_fetch($id)
+    {
+        $restrictions = restrictions::leftjoin('ticket_restriction_listings', 'restrictions.Restriction_ID' , '=', 'ticket_restriction_listings.Restriction_ID')
+        ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
+
+        return $restrictions->toJson();
+    }
+
+    public function listing_notes_fetch($id)
+    {
+        $listing_notes = listing_notes::leftjoin('ticket_restriction_listings', 'listing_notes.Restriction_ID' , '=', 'ticket_restriction_listings.Restriction_ID')
+        ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
+
+        return $listing_notes->toJson();
+    }
+
+
 }
