@@ -6,45 +6,44 @@
 
 
 @section('content')
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#express">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tiktypes">
     Open modal
 </button>
 
 <div class="container">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action ">
-                <i class="fa-solid fa-house-chimney"></i>
-                Dashboard
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fa-solid fa-tag"></i>
-                Listings
-            </a>
-            <a href="#" class="list-group-item list-group-item-action ">
-                <i class="fa-solid fa-money-bill-1-wave"></i>
-                Sales
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fa-solid fa-clock"></i>
-                Last Minute Sales
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fa-solid fa-location-dot"></i>
-                Reports
-            </a>
-            <a href="#" class="list-group-item list-group-item-action ">
-                <i class="fa-solid fa-gear"></i>
-                Settings
-            </a>
-            <a href="#" class="list-group-item list-group-item-action ">
-                <i class="fa-solid fa-envelope"></i>
-                Messages
-            </a>
-        </div>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action ">
+            <i class="fa-solid fa-house-chimney"></i>
+            Dashboard
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa-solid fa-tag"></i>
+            Listings
+        </a>
+        <a href="#" class="list-group-item list-group-item-action ">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+            Sales
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa-solid fa-clock"></i>
+            Last Minute Sales
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa-solid fa-location-dot"></i>
+            Reports
+        </a>
+        <a href="#" class="list-group-item list-group-item-action ">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+        <a href="#" class="list-group-item list-group-item-action ">
+            <i class="fa-solid fa-envelope"></i>
+            Messages
+        </a>
     </div>
+</div>
 
-
-<div class="modal container-fluid" id="myModal">
+{--<div class="modal container-fluid" id="myModal">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -125,9 +124,10 @@
 
         </div>
     </div>
-</div>
+</div> --}
 
-<div class="modal container-fluid" id="tiks">
+
+<div class="modal container-fluid" id="tiktypes">
     <div class="modal-dialog modal-sm">
         <div class="modal-content text-center">
             <!-- Modal Header -->
@@ -171,17 +171,17 @@
             <div class="form-group modal-body m-1 p-2">
                 <div class="p-2 m-2">
                     <div class="row border text-left p-2">
-            
+
                         A Ticket Location will only appear here if it is in the postcode range of an Express Local Shipping delivery
                         plan.
                         Remember that only tickets for events in the same city as your Ticket Location will be available for Express
                         Local Shipping.
-                        
+
                     </div>
 
 
                     <div class="border row p-2">
-                        <div class="col text-left"> 
+                        <div class="col text-left">
                             Queen Trading
                             <br>
                             214 st kilda road, st kilda, Melbourne
@@ -230,7 +230,7 @@
                         </div>
 
                         <div class="col ">
-                            <div class="form-check form-switch " >
+                            <div class="form-check form-switch ">
                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Opt-in</label>
                             </div>
@@ -242,6 +242,104 @@
             <div class="modal-footer m-1 p-2">
                 <button type="button" class="btn btn-secondary"><B class="bold">
                         < </B>Back</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal container-fluid" id="clone">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header m-1 p-2">
+
+                <b>
+                    <h4 class="modal-title">Clone Listing</h4>
+                </b>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="form-group modal-body m-1 p-3">
+                <p>
+                    <i class="fa-solid fa-circle-info"></i>
+                    By cloning this listing you are confirming that all information provided about the listings you want to create,
+                    except the fields you explicitly change, are the same.
+                </p>
+                <h4>Stereophonics</h4>
+                <p>
+                    <b>Friday, 01 April 2022</b>
+                    <br>
+                    The O2, London, United Kingdom
+                </p>
+                <table class="container form bg-light text-dark border" >
+                    <div >
+                        <tr>
+                        <th>Section</th>
+                        <th>Row</th>
+                        <th>Seat From</th>
+                        <th>Seat To</th>
+                        <th>Website Price</th>
+                        <th>Proceeds</th>
+                        <th>Available Ticket</th>
+                        <th></th>
+                        </tr>
+                        <tr class="p-2">
+                            <td>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                        <i class="fa-regular fa-chevron-down"></i>
+                                        <option selected>Choose one</option>
+                                        <option>Lounge</option>
+                                        <option>417</option>
+                                        <option>Lower Tier</option>
+                                        <option>Upper Tier</option>
+                                    </select>
+                            </td>
+                            <td>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option selected>P</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                        <i class="fa-regular fa-chevron-down"></i>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                            <input type="seatfrom" class="form-control" id="exampleFormControlInput1">
+                            </td>
+                            <td>
+                            <input type="seatto" class="form-control" id="exampleFormControlInput1">
+                            </td>
+                            <td>
+                            <input type="webprice" class="form-control" id="exampleFormControlInput1">
+                            </td>
+                            <td>
+                            <input type="proceeds" class="form-control" id="exampleFormControlInput1">
+                            </td>
+                            <td>
+                            <input type="availtick" class="form-control" id="exampleFormControlInput1">
+                            </td>
+                            <td class="text-justify"><i class="fa text-danger fa-times-circle" aria-hidden="true"></i></td>
+                        </tr>
+
+                    </div>
+                </table>
+
+
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer m-1 p-2">
+
+                <button type="button" class="btn btn-light">+ Add another clone</button>
+
+                <button type="button" class="btn btn-light">Save</button>
+
+                <button type="button" class="btn btn-secondary">Cancel</button>
+
             </div>
 
         </div>
