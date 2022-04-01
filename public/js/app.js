@@ -5692,339 +5692,381 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
       style: {
         overflowY: "initial !important"
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "modal-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-            children: ticketEdit[0].ConcertName
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
-              children: ticketEdit[0].ConcertDate
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn-close",
-            "data-bs-dismiss": "modal"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "row modal-body",
-          style: {
-            height: 90 + "vh"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "container-fluid col",
-            style: {
-              overflowY: "scroll",
-              maxHeight: 100 + "%"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "form-group col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    htmlFor: "exampleFormControlInput1",
-                    children: "Available Tickets*"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "email",
-                    className: "form-control",
-                    id: "exampleFormControlInput1",
-                    value: ticketEdit[0].Available_Tickets,
-                    readOnly: true
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "form-group col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    htmlFor: "exampleFormControlSelect1",
-                    children: "Ticket Separation"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-                    className: "form-control",
-                    id: "exampleFormControlSelect1",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "Any"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "None"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      defaultValue: true,
-                      children: "Avoid leaving one ticket"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "Avoid leaving one or three tickets"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "Avoid odd numbers"
-                    })]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "form-group col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    htmlFor: "exampleFormControlInput1",
-                    children: "Quantity Sold"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "email",
-                    className: "form-control",
-                    id: "exampleFormControlInput1",
-                    value: ticketEdit[0].Ticket_Sold,
-                    readOnly: true
-                  })]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "form-group col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    htmlFor: "exampleFormControlInput1",
-                    children: "Section*"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "email",
-                    className: "form-control",
-                    id: "exampleFormControlInput1",
-                    value: ticketEdit[0].Section,
-                    readOnly: true
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "form-group col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    htmlFor: "exampleFormControlInput1",
-                    children: "Row"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "email",
-                    className: "form-control",
-                    id: "exampleFormControlInput1",
-                    value: ticketEdit[0].Row,
-                    readOnly: true
-                  })]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                className: "row",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    className: "",
-                    htmlFor: "#inlineFormInputGroupUsername",
-                    children: "Seats"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                    className: "input-group",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inlineFormInputGroupMinimum",
-                      value: ticketEdit[0].Seats,
-                      readOnly: true
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                      className: "input-group-prepend",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                        className: "input-group-text",
-                        children: "To"
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inlineFormInputGroupMaximum" // value={ticketEdit[0].Seats}
-                      ,
-                      readOnly: true
-                    })]
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "row my-1",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    className: "",
-                    htmlFor: "inlineFormInputGroupUsername",
-                    children: "Website Price*"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                    className: "input-group",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                      className: "input-group-prepend",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                        className: "input-group-text",
-                        children: "A$"
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
-                      className: "form-control",
-                      id: "inlineFormInputGroupUsername",
-                      value: ticketEdit[0].Price,
-                      readOnly: true
-                    })]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                  className: "col",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                    htmlFor: "exampleFormControlSelect1",
-                    children: "Ticket Separation"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-                    className: "form-control",
-                    id: "exampleFormControlSelect1",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "AUD"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "AED"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "ARS"
-                    })]
-                  })]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
-                    children: "Select Restrictions on Use"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "If any of the following conditions apply to your tickets, please select them from the list below. If there is a restriction on the use of your ticket not shown here, please stop listing and contact us.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                className: "row",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                  className: "listboxes col",
-                  children: restrictions.map(function (restriction, index) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                      className: "form-check",
-                      children: ticketRestrictionEdit.length ? ticketRestrictionEdit.map(function (restrict) {
-                        return restrict.Restriction_ID === restriction.Restriction_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                            className: "form-check-input",
-                            type: "checkbox",
-                            id: "restriction".concat(index),
-                            checked: true
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                            className: "form-check-label",
-                            htmlFor: "restriction".concat(index),
-                            children: restriction.Restriction
-                          })]
-                        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                            className: "form-check-input",
-                            type: "checkbox",
-                            id: "restriction".concat(index)
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                            className: "form-check-label",
-                            htmlFor: "restriction".concat(index),
-                            children: restriction.Restriction
-                          }), " "]
-                        });
-                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                          className: "form-check-input",
-                          type: "checkbox",
-                          id: "restriction".concat(index)
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                          className: "form-check-label",
-                          htmlFor: "restriction".concat(index),
-                          children: restriction.Restriction
-                        }), " "]
-                      })
-                    }, restriction.Restriction_ID) // && index % 9 === 0 && </div><div className="listboxes col">
-                    ;
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                className: "row",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
-                  children: "Listing notes"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                className: "row",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                  className: "listboxes col",
-                  children: listingNotes.map(function (listingNote, index) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                      className: "form-check",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                        className: "form-check-input",
-                        type: "checkbox",
-                        id: "restriction".concat(index)
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                        className: "form-check-label",
-                        htmlFor: "restriction".concat(index),
-                        children: listingNote.Listing_note
-                      })]
-                    }, index) // && index % 9 === 0 && </div><div className="listboxes col">
-                    ;
-                  })
-                })
-              })]
-            })
+        children: isTicketEditLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: "Loading data..."
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "modal-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+              children: ticketEdit[0].ConcertName
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+                children: ticketEdit[0].ConcertDate
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn-close",
+              "data-bs-dismiss": "modal"
+            })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "col-3",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-check form-switch border p-1",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                className: "form-check-input ms-auto",
-                type: "checkbox",
-                role: "switch",
-                id: "flexSwitchCheckDefault"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "form-check-label ms-5",
-                htmlFor: "flexSwitchCheckDefault",
-                children: "Publish"
-              })]
+            className: "row modal-body",
+            style: {
+              height: 90 + "vh"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "container-fluid col",
+              style: {
+                overflowY: "scroll",
+                maxHeight: 100 + "%"
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-group col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      htmlFor: "exampleFormControlInput1",
+                      children: "Available Tickets*"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "email",
+                      className: "form-control",
+                      id: "exampleFormControlInput1",
+                      value: ticketEdit[0].Available_Tickets,
+                      readOnly: true
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-group col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      htmlFor: "exampleFormControlSelect1",
+                      children: "Ticket Separation"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+                      className: "form-control",
+                      id: "exampleFormControlSelect1",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "Any"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "None"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        defaultValue: true,
+                        children: "Avoid leaving one ticket"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "Avoid leaving one or three tickets"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "Avoid odd numbers"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-group col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      htmlFor: "exampleFormControlInput1",
+                      children: "Quantity Sold"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "email",
+                      className: "form-control",
+                      id: "exampleFormControlInput1",
+                      value: ticketEdit[0].Ticket_Sold,
+                      readOnly: true
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-group col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      htmlFor: "exampleFormControlInput1",
+                      children: "Section*"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "email",
+                      className: "form-control",
+                      id: "exampleFormControlInput1",
+                      value: ticketEdit[0].Section,
+                      readOnly: true
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "form-group col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      htmlFor: "exampleFormControlInput1",
+                      children: "Row"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                      type: "email",
+                      className: "form-control",
+                      id: "exampleFormControlInput1",
+                      value: ticketEdit[0].Row,
+                      readOnly: true
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                  className: "row",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "",
+                      htmlFor: "#inlineFormInputGroupUsername",
+                      children: "Seats"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                      className: "input-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inlineFormInputGroupMinimum",
+                        value: ticketEdit[0].Seats,
+                        readOnly: true
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                        className: "input-group-prepend",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                          className: "input-group-text",
+                          children: "To"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inlineFormInputGroupMaximum" // value={ticketEdit[0].Seats}
+                        ,
+                        readOnly: true
+                      })]
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "row my-1",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      className: "",
+                      htmlFor: "inlineFormInputGroupUsername",
+                      children: "Website Price*"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                      className: "input-group",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                        className: "input-group-prepend",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                          className: "input-group-text",
+                          children: "A$"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                        type: "text",
+                        className: "form-control",
+                        id: "inlineFormInputGroupUsername",
+                        value: ticketEdit[0].Price,
+                        readOnly: true
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                    className: "col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                      htmlFor: "exampleFormControlSelect1",
+                      children: "Ticket Separation"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+                      className: "form-control",
+                      id: "exampleFormControlSelect1",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "AUD"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "AED"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        children: "ARS"
+                      })]
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                  className: "row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+                      children: "Select Restrictions on Use"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "If any of the following conditions apply to your tickets, please select them from the list below. If there is a restriction on the use of your ticket not shown here, please stop listing and contact us.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                  className: "row",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                    className: "listboxes col",
+                    children: restrictions.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                      children: restrictions.map(function (restriction) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                          className: "form-check",
+                          children: ticketRestrictionEdit.length ? ticketRestrictionEdit.map(function (restrict) {
+                            return restrict.Restriction_ID === restriction.Restriction_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                                className: "form-check-input",
+                                type: "checkbox",
+                                id: "restriction".concat(restrict.Restriction_ID),
+                                checked: restrict.isChecked,
+                                readOnly: true
+                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                                className: "form-check-label",
+                                htmlFor: "restriction".concat(restrict.Restriction_ID),
+                                children: restriction.Restriction
+                              })]
+                            }, restrict.Restriction_ID) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                                className: "form-check-input",
+                                type: "checkbox",
+                                id: "restriction".concat(restriction.Restriction_ID),
+                                checked: restriction.isChecked,
+                                readOnly: true
+                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                                className: "form-check-label",
+                                htmlFor: "restriction".concat(restriction.Restriction_ID),
+                                children: restriction.Restriction
+                              })]
+                            }, restriction.Restriction_ID);
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                              className: "form-check-input",
+                              type: "checkbox",
+                              id: "restriction".concat(restriction.Restriction_ID),
+                              checked: restriction.isChecked,
+                              readOnly: true
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                              className: "form-check-label",
+                              htmlFor: "restriction".concat(restriction.Restriction_ID),
+                              children: restriction.Restriction
+                            }), " "]
+                          }, restriction.Restriction_ID)
+                        }, restriction.Restriction_ID) // && index % 9 === 0 && </div><div className="listboxes col">
+                        ;
+                      })
+                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                      children: "No restriction options available"
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                  className: "row",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+                    children: "Listing notes"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                  className: "row",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                    className: "listboxes col",
+                    children: listingNotes.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                      children: listingNotes.map(function (listingNote) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                          className: "form-check",
+                          children: ticketListingNoteEdit.length ? ticketListingNoteEdit.map(function (listnote) {
+                            return listnote.Listing_note_ID === listingNote.Listing_note_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                                className: "form-check-input",
+                                type: "checkbox",
+                                id: "listingnote".concat(listingNote.Listing_note_ID),
+                                checked: true,
+                                readOnly: true
+                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                                className: "form-check-label",
+                                htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
+                                children: listingNote.Listing_note
+                              }), " "]
+                            }, listingNote.Listing_note_ID) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                                className: "form-check-input",
+                                type: "checkbox",
+                                id: "listingnote".concat(listingNote.Listing_note_ID)
+                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                                className: "form-check-label",
+                                htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
+                                children: listingNote.Listing_note
+                              })]
+                            }, listingNote.Listing_note_ID);
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                              className: "form-check-input",
+                              type: "checkbox",
+                              id: "listingnote".concat(listingNote.Listing_note_ID)
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                              className: "form-check-label",
+                              htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
+                              children: listingNote.Listing_note
+                            })]
+                          }, listingNote.Listing_note_ID)
+                        }, listingNote.Listing_note_ID);
+                      })
+                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                      children: "No listing note options available"
+                    })
+                  })
+                })]
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "border p-1",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "form-label",
-                htmlFor: "",
-                children: "Sold Status"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "email",
-                className: "form-control",
-                id: "exampleFormControlInput1",
-                value: ticketEdit[0].status,
-                readOnly: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "border p-1",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "form-label",
-                htmlFor: "",
-                children: "Listing ID"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "email",
-                className: "form-control",
-                id: "exampleFormControlInput1",
-                value: ticketEdit[0].Listing_ID,
-                readOnly: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "border p-1",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "form-label",
-                htmlFor: "",
-                children: "Ticket Type"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "email",
-                className: "form-control",
-                id: "exampleFormControlInput1",
-                value: ticketEdit[0].Ticket_Type,
-                readOnly: true
+              className: "col-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "form-check form-switch border p-1",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                  className: "form-check-input ms-auto",
+                  type: "checkbox",
+                  role: "switch",
+                  id: "flexSwitchCheckDefault"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                  className: "form-check-label ms-5",
+                  htmlFor: "flexSwitchCheckDefault",
+                  children: "Publish"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "border p-1",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                  className: "form-label",
+                  htmlFor: "",
+                  children: "Sold Status"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                  type: "email",
+                  className: "form-control",
+                  id: "exampleFormControlInput1",
+                  value: ticketEdit[0].status,
+                  readOnly: true
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "border p-1",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                  className: "form-label",
+                  htmlFor: "",
+                  children: "Listing ID"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                  type: "email",
+                  className: "form-control",
+                  id: "exampleFormControlInput1",
+                  value: ticketEdit[0].Listing_ID,
+                  readOnly: true
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "border p-1",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                  className: "form-label",
+                  htmlFor: "",
+                  children: "Ticket Type"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                  type: "email",
+                  className: "form-control",
+                  id: "exampleFormControlInput1",
+                  value: ticketEdit[0].Ticket_Type,
+                  readOnly: true
+                })]
               })]
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "modal-footer",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn btn-light float-sm-start",
+              children: "Clone"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn btn-danger float-sm-start",
+              "data-bs-dismiss": "modal",
+              onClick: function onClick() {
+                return handleTicketDelete(ticketEdit[0]);
+              },
+              children: "Delete"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn btn-success float-sm-end",
+              children: "Save"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn btn-secondary float-sm-end",
+              "data-bs-dismiss": "modal",
+              children: "Cancel"
+            })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-footer",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn btn-light float-sm-start",
-            children: "Clone"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn btn-danger float-sm-start",
-            "data-bs-dismiss": "modal",
-            onClick: function onClick() {
-              return handleTicketDelete(ticketEdit[0]);
-            },
-            children: "Delete"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn btn-success float-sm-end",
-            children: "Save"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn btn-secondary float-sm-end",
-            "data-bs-dismiss": "modal",
-            children: "Cancel"
-          })]
-        })]
+        })
       })
     })
   });
@@ -6453,7 +6495,7 @@ var ListingTable = function ListingTable() {
   var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
       _useState44 = _slicedToArray(_useState43, 2),
       isTicketEditLoading = _useState44[0],
-      setIsTicketEditLoading = _useState44[1]; // gets data when opening/refreshing the page
+      setIsTicketEditLoading = _useState44[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6502,7 +6544,8 @@ var ListingTable = function ListingTable() {
     return function fetchConcert() {
       return _ref.apply(this, arguments);
     };
-  }();
+  }(); // gets the ticket, restrictions, listing notes data from the database
+
 
   var fetchTicket = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -6533,39 +6576,52 @@ var ListingTable = function ListingTable() {
 
             case 10:
               _restrictions = _context2.sent;
-              setRestrictions(_restrictions.data);
-              _context2.next = 14;
+              arrOfObj = _restrictions.data;
+              result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = false;
+                return o;
+              });
+              setRestrictions(result);
+              _context2.next = 16;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/listing_notes");
 
-            case 14:
+            case 16:
               notes = _context2.sent;
-              setListingNotes(notes.data);
-              _context2.next = 21;
+              arrOfObj = notes.data;
+              result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = false;
+                return o;
+              });
+              setListingNotes(result);
+              _context2.next = 25;
               break;
 
-            case 18:
-              _context2.prev = 18;
+            case 22:
+              _context2.prev = 22;
               _context2.t0 = _context2["catch"](0);
               setFetchError(_context2.t0.message);
 
-            case 21:
-              _context2.prev = 21;
+            case 25:
+              _context2.prev = 25;
               setIsTicketsLoading(false);
               setIsRestrictionsLoading(false);
-              return _context2.finish(21);
+              return _context2.finish(25);
 
-            case 25:
+            case 29:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 18, 21, 25]]);
+      }, _callee2, null, [[0, 22, 25, 29]]);
     }));
 
     return function fetchTicket() {
       return _ref2.apply(this, arguments);
     };
-  }();
+  }(); // gets data when opening/refreshing the page
+
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     fetchConcert();
@@ -6579,16 +6635,14 @@ var ListingTable = function ListingTable() {
     // );
     // setSortActive(activeList);
     // handleSort();
-  }, []);
+  }, []); // displays the tool when one or more tickets are selected
+
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     var selected = tickets.filter(function (ticket) {
       return ticket.isSelected === true;
     });
     if (selected.length > 0) setVisible(true);else setVisible(false); // console.log(tickets);
-  }, [tickets]); // for logging purposes
-  // useEffect(() => {
-  //     console.log(concerts);
-  // }, [concerts]);
+  }, [tickets]); // sorting options interaction
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     if (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) setSortAllListingActive(false);else if (!sortEligibleLastMinuteSalesActive && !sortActiveActive && !sortInactiveActive) setSortAllListingActive(true); // else if (sortAllListingActive) {
@@ -6599,7 +6653,8 @@ var ListingTable = function ListingTable() {
     // console.log(sortInactive);
     // console.log(sortAllListing);
     // handleSort();
-  }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, sortAllListingActive]);
+  }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, sortAllListingActive]); // sorting options interaction
+
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     if (sortAllListingActive) {
       setSortEligibleLastMinuteSalesActive(false);
@@ -6685,6 +6740,7 @@ var ListingTable = function ListingTable() {
   // useEffect(() => {
   //   console.log(ticketEdit)
   // }, [ticketEdit])
+  // updating the which tickets are selected
 
   var handleCheck = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
@@ -6712,7 +6768,8 @@ var ListingTable = function ListingTable() {
     return function handleCheck(_x) {
       return _ref3.apply(this, arguments);
     };
-  }();
+  }(); // handles getting the ticket data from the database to the modal for editting
+
 
   var handleTicketEdit = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id, concert) {
@@ -6722,6 +6779,7 @@ var ListingTable = function ListingTable() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.prev = 0;
+              setIsTicketEditLoading(true);
               editList = tickets.filter(function (ticket) {
                 return ticket.Listing_ID === id;
               }); // editList = [{...editList, concert}];
@@ -6738,47 +6796,60 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketEdit(result);
-              _context4.next = 7;
+              _context4.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/restrictions/" + id);
 
-            case 7:
+            case 8:
               restricts = _context4.sent;
-              setTicketRestrictionEdit(restricts.data);
-              _context4.next = 11;
+              arrOfObj = restricts.data;
+              result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = true;
+                return o;
+              });
+              setTicketRestrictionEdit(result);
+              _context4.next = 14;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/listing_notes/" + id);
 
-            case 11:
+            case 14:
               listnotes = _context4.sent;
-              setTicketListingNoteEdit(listnotes.data);
-              _context4.next = 18;
+              arrOfObj = restricts.data;
+              result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = true;
+                return o;
+              });
+              setTicketListingNoteEdit(result);
+              _context4.next = 23;
               break;
 
-            case 15:
-              _context4.prev = 15;
+            case 20:
+              _context4.prev = 20;
               _context4.t0 = _context4["catch"](0);
               setFetchError(_context4.t0.message);
 
-            case 18:
-              _context4.prev = 18;
+            case 23:
+              _context4.prev = 23;
               setIsTicketEditLoading(false);
-              return _context4.finish(18);
+              return _context4.finish(23);
 
-            case 21:
+            case 26:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[0, 15, 18, 21]]);
+      }, _callee4, null, [[0, 20, 23, 26]]);
     }));
 
     return function handleTicketEdit(_x2, _x3) {
       return _ref4.apply(this, arguments);
     };
-  }();
+  }(); // logging only
+
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     console.log(ticketEdit);
-  }, [ticketEdit]);
+  }, [ticketEdit]); // setting interaction for price input when focused
 
   var handlePriceSelect = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
@@ -6812,7 +6883,8 @@ var ListingTable = function ListingTable() {
     return function handlePriceSelect(_x4) {
       return _ref5.apply(this, arguments);
     };
-  }();
+  }(); // updating the price input value
+
 
   var handlePriceChange = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id, val, key) {
@@ -6839,7 +6911,8 @@ var ListingTable = function ListingTable() {
     return function handlePriceChange(_x5, _x6, _x7) {
       return _ref6.apply(this, arguments);
     };
-  }();
+  }(); // setting interaction for available ticket input when focused
+
 
   var handleAvailableTicketSelect = /*#__PURE__*/function () {
     var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id) {
@@ -6873,7 +6946,8 @@ var ListingTable = function ListingTable() {
     return function handleAvailableTicketSelect(_x8) {
       return _ref7.apply(this, arguments);
     };
-  }();
+  }(); // updating the available ticket input value
+
 
   var handleAvailableTicketChange = /*#__PURE__*/function () {
     var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(id, val, key) {
@@ -6900,7 +6974,8 @@ var ListingTable = function ListingTable() {
     return function handleAvailableTicketChange(_x9, _x10, _x11) {
       return _ref8.apply(this, arguments);
     };
-  }();
+  }(); // update ticket to the database
+
 
   var ticketUpdate = /*#__PURE__*/function () {
     var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(ticket) {
@@ -6939,7 +7014,8 @@ var ListingTable = function ListingTable() {
     return function ticketUpdate(_x12) {
       return _ref9.apply(this, arguments);
     };
-  }();
+  }(); // for deleting ticket
+
 
   var handleTicketDelete = /*#__PURE__*/function () {
     var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(ticket) {
@@ -6995,10 +7071,10 @@ var ListingTable = function ListingTable() {
             className: "w-auto",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-                "class": "spinner-border text-info",
+                className: "spinner-border text-info",
                 role: "status",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("span", {
-                  "class": "visually-hidden",
+                  className: "visually-hidden",
                   children: "Loading..."
                 })
               })
@@ -7017,12 +7093,14 @@ var ListingTable = function ListingTable() {
         className: "table",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("thead", {
           className: "thead-lights bg-color",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("th", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
-              style: {
-                color: "red"
-              },
-              children: "Error: ".concat(fetchError)
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("tr", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+                style: {
+                  color: "red"
+                },
+                children: "Error: ".concat(fetchError)
+              })
             })
           })
         })

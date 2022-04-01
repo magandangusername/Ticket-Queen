@@ -188,7 +188,7 @@ class ListingController extends Controller
 
     public function listing_notes_fetch($id)
     {
-        $listing_notes = listing_notes::leftjoin('ticket_restriction_listings', 'listing_notes.Restriction_ID' , '=', 'ticket_restriction_listings.Restriction_ID')
+        $listing_notes = listing_notes::leftjoin('ticket_restriction_listings', 'listing_notes.Listing_note_ID' , '=', 'ticket_restriction_listings.Listing_note_ID')
         ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
 
         return $listing_notes->toJson();

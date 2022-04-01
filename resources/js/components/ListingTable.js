@@ -54,7 +54,7 @@ const ListingTable = () => {
     const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
     const [isTicketEditLoading, setIsTicketEditLoading] = useState(true);
 
-    // gets data when opening/refreshing the page
+    // gets the concert data from the database
     const fetchConcert = async () => {
         try {
             const response = await axios.get("/api/concerts");
@@ -76,6 +76,8 @@ const ListingTable = () => {
             setIsConcertsLoading(false);
         }
     };
+
+    // gets the ticket, restrictions, listing notes data from the database
     const fetchTicket = async () => {
         try {
             const response = await axios.get("/api/tickets");
@@ -93,9 +95,21 @@ const ListingTable = () => {
             setTickets(result);
 
             const restrictions = await axios.get("/api/restrictions");
-            setRestrictions(restrictions.data);
+            arrOfObj = (restrictions.data);
+            result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = false;
+                return o;
+            });
+            setRestrictions(result);
             const notes = await axios.get("/api/listing_notes");
-            setListingNotes(notes.data);
+            arrOfObj = (notes.data);
+            result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = false;
+                return o;
+            });
+            setListingNotes(result);
         } catch (error) {
             setFetchError(error.message);
         } finally {
@@ -104,6 +118,7 @@ const ListingTable = () => {
         }
     };
 
+    // gets data when opening/refreshing the page
     useEffect(() => {
         fetchConcert();
         fetchTicket();
@@ -121,6 +136,7 @@ const ListingTable = () => {
         // handleSort();
     }, []);
 
+    // displays the tool when one or more tickets are selected
     useEffect(() => {
         const selected = tickets.filter((ticket) => ticket.isSelected === true);
 
@@ -130,11 +146,7 @@ const ListingTable = () => {
         // console.log(tickets);
     }, [tickets]);
 
-    // for logging purposes
-    // useEffect(() => {
-    //     console.log(concerts);
-    // }, [concerts]);
-
+    // sorting options interaction
     useEffect(() => {
         if (
             sortEligibleLastMinuteSalesActive ||
@@ -165,6 +177,7 @@ const ListingTable = () => {
         sortAllListingActive,
     ]);
 
+    // sorting options interaction
     useEffect(() => {
         if (sortAllListingActive) {
             setSortEligibleLastMinuteSalesActive(false);
@@ -264,6 +277,7 @@ const ListingTable = () => {
     //   console.log(ticketEdit)
     // }, [ticketEdit])
 
+    // updating the which tickets are selected
     const handleCheck = async (id) => {
         //finds the set of data from the list and set its value
         const listTickets = tickets.map((ticket) =>
@@ -274,8 +288,10 @@ const ListingTable = () => {
         setTickets(listTickets);
     };
 
+    // handles getting the ticket data from the database to the modal for editting
     const handleTicketEdit = async (id, concert) => {
         try {
+            setIsTicketEditLoading(true);
             var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
             // editList = [{...editList, concert}];
 
@@ -295,9 +311,22 @@ const ListingTable = () => {
             setTicketEdit(result);
 
             const restricts = await axios.get("/api/restrictions/" + id);
-            setTicketRestrictionEdit(restricts.data);
+            arrOfObj = (restricts.data);
+            result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = true;
+                return o;
+            });
+            setTicketRestrictionEdit(result);
+
             const listnotes = await axios.get("/api/listing_notes/" + id);
-            setTicketListingNoteEdit(listnotes.data);
+            arrOfObj = (restricts.data);
+            result = arrOfObj.map(function (el) {
+                var o = Object.assign({}, el);
+                o.isChecked = true;
+                return o;
+            });
+            setTicketListingNoteEdit(result);
         } catch (error) {
             setFetchError(error.message);
         } finally {
@@ -305,10 +334,12 @@ const ListingTable = () => {
         }
     };
 
+    // logging only
     useEffect(() => {
         console.log(ticketEdit);
     }, [ticketEdit]);
 
+    // setting interaction for price input when focused
     const handlePriceSelect = async (id) => {
         const listTickets = tickets.map((ticket) =>
             ticket.Listing_ID === id
@@ -324,6 +355,7 @@ const ListingTable = () => {
         }
     };
 
+    // updating the price input value
     const handlePriceChange = async (id, val, key) => {
         const listTickets = tickets.map((ticket) =>
             ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
@@ -332,6 +364,7 @@ const ListingTable = () => {
         setTickets(listTickets);
     };
 
+    // setting interaction for available ticket input when focused
     const handleAvailableTicketSelect = async (id) => {
         const listTickets = tickets.map((ticket) =>
             ticket.Listing_ID === id
@@ -351,6 +384,7 @@ const ListingTable = () => {
         }
     };
 
+    // updating the available ticket input value
     const handleAvailableTicketChange = async (id, val, key) => {
         const listTickets = tickets.map((ticket) =>
             ticket.Listing_ID === id
@@ -360,6 +394,7 @@ const ListingTable = () => {
         setTickets(listTickets);
     };
 
+    // update ticket to the database
     const ticketUpdate = async (ticket) => {
         const ticket_info = {
             Listing_ID: ticket[0].Listing_ID,
@@ -385,6 +420,7 @@ const ListingTable = () => {
             });
     };
 
+    // for deleting ticket
     const handleTicketDelete = async (ticket) => {
         const ticket_info = {
             Listing_ID: ticket.Listing_ID,
@@ -426,28 +462,36 @@ const ListingTable = () => {
                             <thead className="w-auto position-absolute top-50 start-50 translate-middle">
                                 <tr className="w-auto">
                                     <td>
-                                    <div class="spinner-border text-info" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                    </div>
+                                        <div
+                                            className="spinner-border text-info"
+                                            role="status"
+                                        >
+                                            <span className="visually-hidden">
+                                                Loading...
+                                            </span>
+                                        </div>
                                     </td>
                                     <td>
-                                    <div className="d-inline text-white">
-                                        <h2 className="ps-2">LOADING ITEMS...</h2>
-                                    </div>
+                                        <div className="d-inline text-white">
+                                            <h2 className="ps-2">
+                                                LOADING ITEMS...
+                                            </h2>
+                                        </div>
                                     </td>
-
                                 </tr>
                             </thead>
                         </table>
-                     )}
+                    )}
                 {fetchError && (
                     <table className="table">
                         <thead className="thead-lights bg-color">
-                            <th>
-                                <p
-                                    style={{ color: "red" }}
-                                >{`Error: ${fetchError}`}</p>
-                            </th>
+                            <tr>
+                                <td>
+                                    <p
+                                        style={{ color: "red" }}
+                                    >{`Error: ${fetchError}`}</p>
+                                </td>
+                            </tr>
                         </thead>
                     </table>
                 )}
