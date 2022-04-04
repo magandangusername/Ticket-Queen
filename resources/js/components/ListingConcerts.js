@@ -9,6 +9,7 @@ const ListingConcerts = ({
     handleAvailableTicketSelect,
     handleAvailableTicketChange,
     handleTicketEdit,
+    handleTicketPublishChange,
 }) => {
     return (
         <>
@@ -145,6 +146,7 @@ const ListingConcerts = ({
                                                 handleAvailableTicketChange
                                             }
                                             handleTicketEdit={handleTicketEdit}
+                                            handleTicketPublishChange={handleTicketPublishChange}
                                         />
                                     ) : null
                                 )}

@@ -8,7 +8,8 @@ const ListingTickets = ({
     handleAvailableTicketSelect,
     handleAvailableTicketChange,
     handleTicketEdit,
-    concert
+    concert,
+    handleTicketPublishChange,
 }) => {
     return (
         <tr>
@@ -121,12 +122,23 @@ const ListingTickets = ({
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="form-check form-switch d-flex justify-content-center">
-                    <input
-                        className="form-check-input me-4"
-                        type="checkbox"
-                        id="flexSwitchCheckChecked"
-                        readOnly
-                    />
+                    {ticket.status === "active" ? (
+                        <input
+                            className="form-check-input me-4"
+                            type="checkbox"
+                            id="flexSwitchCheckChecked"
+                            checked
+                            onChange={() => handleTicketPublishChange(ticket.Listing_ID)}
+                        />
+                    ) : (
+                        <input
+                            className="form-check-input me-4"
+                            type="checkbox"
+                            id="flexSwitchCheckChecked"
+                            checked={false}
+                            onChange={() => handleTicketPublishChange(ticket.Listing_ID)}
+                        />
+                    )}
                     <img
                         // src=""
                         alt="???"

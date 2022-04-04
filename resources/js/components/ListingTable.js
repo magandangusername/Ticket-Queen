@@ -7,6 +7,7 @@ import Tools from "./Tools";
 import ListingSortBy from "./ListingSortBy";
 import ListingEditTicket from "./ListingEditTicket";
 import ListingNew from "./ListingNew";
+import { list } from "postcss";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -95,7 +96,7 @@ const ListingTable = () => {
             setTickets(result);
 
             const restrictions = await axios.get("/api/restrictions");
-            arrOfObj = (restrictions.data);
+            arrOfObj = restrictions.data;
             result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isChecked = false;
@@ -103,7 +104,7 @@ const ListingTable = () => {
             });
             setRestrictions(result);
             const notes = await axios.get("/api/listing_notes");
-            arrOfObj = (notes.data);
+            arrOfObj = notes.data;
             result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isChecked = false;
@@ -304,14 +305,14 @@ const ListingTable = () => {
                 o.ConcertDate = concert.ConcertDate;
                 o.Location = concert.Location;
                 o.Total_Available = concert.Total_Available;
-                o.status = concert.status;
+                // o.status = concert.status;
                 return o;
             });
 
             setTicketEdit(result);
 
             const restricts = await axios.get("/api/restrictions/" + id);
-            arrOfObj = (restricts.data);
+            arrOfObj = restricts.data;
             result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isChecked = true;
@@ -320,7 +321,7 @@ const ListingTable = () => {
             setTicketRestrictionEdit(result);
 
             const listnotes = await axios.get("/api/listing_notes/" + id);
-            arrOfObj = (restricts.data);
+            arrOfObj = restricts.data;
             result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isChecked = true;
@@ -334,7 +335,118 @@ const ListingTable = () => {
         }
     };
 
-    // logging only
+    // updating the ticket input values
+    // this function may not be the best, but its the best i could think of.
+    const handleTicketEditChange = async (id, input_id, input_type, val = "") => {
+        if (input_type === "restriction") {
+            var len = ticketRestrictionEdit.filter(
+                (ticketrestriction) =>
+                    (ticketrestriction.Restriction_ID === input_id) &
+                    (ticketrestriction.Listing_ID === id)
+            );
+            if (len.length > 0) {
+                var ticketRestrictEdit = ticketRestrictionEdit.map(
+                    (ticketrestrict) =>
+                        ticketrestrict.Restriction_ID === input_id
+                            ? {
+                                  ...ticketrestrict,
+                                  isChecked: !ticketrestrict.isChecked,
+                              }
+                            : ticketrestrict
+                );
+                setTicketRestrictionEdit(ticketRestrictEdit);
+            } else if (len.length === 0) {
+                var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
+                    ticketrestrict.Restriction_ID === input_id
+                        ? {
+                              ...ticketrestrict,
+                              isChecked: !ticketrestrict.isChecked,
+                          }
+                        : ticketrestrict
+                );
+                setRestrictions(ticketRestrictEdit);
+            }
+        } else if (input_type === "listing_note") {
+            var len = ticketListingNoteEdit.filter(
+                (ticketlistingnote) =>
+                    (ticketlistingnote.Listing_note_ID === input_id) &
+                    (ticketlistingnote.Listing_ID === id)
+            );
+            if (len.length > 0) {
+                var ticketListNoteEdit = ticketListingNoteEdit.map(
+                    (ticketlistnote) =>
+                        ticketlistnote.Listing_note_ID === input_id
+                            ? {
+                                  ...ticketlistnote,
+                                  isChecked: !ticketlistnote.isChecked,
+                              }
+                            : ticketlistnote
+                );
+                setTicketListingNoteEdit(ticketListNoteEdit);
+            } else if (len.length === 0) {
+                var ticketListNoteEdit = listingNotes.map((ticketlistnote) =>
+                    ticketlistnote.Listing_note_ID === input_id
+                        ? {
+                              ...ticketlistnote,
+                              isChecked: !ticketlistnote.isChecked,
+                          }
+                        : ticketlistnote
+                );
+                setListingNotes(ticketListNoteEdit);
+            }
+        } else if (input_type === "available_tickets") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.Listing_ID === id
+                    ? { ...ticket, Available_Tickets: val }
+                    : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "Ticket_Sold") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.Listing_ID === id
+                    ? { ...ticket, Ticket_Sold: val }
+                    : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "Section") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.Listing_ID === id ? { ...ticket, Section: val } : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "Row") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.Listing_ID === id ? { ...ticket, Row: val } : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "Seats") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.Listing_ID === id ? { ...ticket, Seats: val } : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "Price") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "publish") {
+            if (ticketEdit[0].status === "active") {
+                var ticketinput = ticketEdit.map((ticket) =>
+                    ticket.Listing_ID === id
+                        ? { ...ticket, publish: "disabled" }
+                        : ticket
+                );
+            } else if (ticketEdit[0].status === "disabled") {
+                var ticketinput = ticketEdit.map((ticket) =>
+                    ticket.Listing_ID === id
+                        ? { ...ticket, publish: "active" }
+                        : ticket
+                );
+            }
+            setTicketEdit(ticketinput);
+        }
+    };
+
+    // for logging only in the console
     useEffect(() => {
         console.log(ticketEdit);
     }, [ticketEdit]);
@@ -392,6 +504,19 @@ const ListingTable = () => {
                 : ticket
         );
         setTickets(listTickets);
+    };
+
+    // set publish status of ticket
+    const handleTicketPublishChange = async (id) => {
+        const listTickets = tickets.map((ticket) =>
+            ticket.Listing_ID === id & ticket.status === "active"
+                ? { ...ticket, status: "disabled" }
+                : ticket.Listing_ID === id & ticket.status === "disabled" ? { ...ticket, status: "active" } : ticket
+        );
+        setTickets(listTickets);
+
+        const ticket = listTickets.filter((ticket) => ticket.Listing_ID === id);
+        ticketUpdate(ticket);
     };
 
     // update ticket to the database
@@ -593,6 +718,7 @@ const ListingTable = () => {
                                                         handleTicketEdit={
                                                             handleTicketEdit
                                                         }
+                                                        handleTicketPublishChange={handleTicketPublishChange}
                                                     />
                                                 ))}
                                             </>
@@ -617,6 +743,7 @@ const ListingTable = () => {
                         ticketListingNoteEdit={ticketListingNoteEdit}
                         setTicketRestrictionEdit={setTicketRestrictionEdit}
                         setTicketListingNoteEdit={setTicketListingNoteEdit}
+                        handleTicketEditChange={handleTicketEditChange}
                     />
                 ) : null}
                 <ListingNew concerts={concerts} />
@@ -624,7 +751,7 @@ const ListingTable = () => {
         </>
     );
 };
-//by [w@r.fr{e}(97),k]
+
 export default ListingTable;
 
 if (document.getElementById("ListingTable")) {

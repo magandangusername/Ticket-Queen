@@ -11,6 +11,7 @@ const ListingEditTicket = ({
     ticketListingNoteEdit,
     setTicketRestrictionEdit,
     setTicketListingNoteEdit,
+    handleTicketEditChange,
 }) => {
     return (
         <div className="modal" id="myModal">
@@ -56,18 +57,19 @@ const ListingEditTicket = ({
                                                     Available Tickets*
                                                 </label>
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
                                                         ticketEdit[0]
                                                             .Available_Tickets
                                                     }
-                                                    readOnly
+                                                    onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "available_tickets", e.target.value)}
                                                 />
                                             </div>
 
                                             <div className="form-group col">
+                                                {/* idk what this thing is in the database*/}
                                                 <label htmlFor="exampleFormControlSelect1">
                                                     Ticket Separation
                                                 </label>
@@ -101,7 +103,7 @@ const ListingEditTicket = ({
                                                         ticketEdit[0]
                                                             .Ticket_Sold
                                                     }
-                                                    readOnly
+                                                    onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "Ticket_Sold", e.target.value)}
                                                 />
                                             </div>
                                         </div>
@@ -118,7 +120,7 @@ const ListingEditTicket = ({
                                                     value={
                                                         ticketEdit[0].Section
                                                     }
-                                                    readOnly
+                                                    onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "Section", e.target.value)}
                                                 />
                                             </div>
 
@@ -131,7 +133,7 @@ const ListingEditTicket = ({
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={ticketEdit[0].Row}
-                                                    readOnly
+                                                    onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "Row", e.target.value)}
                                                 />
                                             </div>
                                         </div>
@@ -152,7 +154,7 @@ const ListingEditTicket = ({
                                                         value={
                                                             ticketEdit[0].Seats
                                                         }
-                                                        readOnly
+                                                        onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "Seats", e.target.value)}
                                                     />
                                                     <div className="input-group-prepend">
                                                         <div className="input-group-text">
@@ -164,7 +166,7 @@ const ListingEditTicket = ({
                                                         className="form-control"
                                                         id="inlineFormInputGroupMaximum"
                                                         // value={ticketEdit[0].Seats}
-                                                        readOnly
+                                                        onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "Seats", e.target.value)}
                                                     />
                                                 </div>
                                             </div>
@@ -191,14 +193,15 @@ const ListingEditTicket = ({
                                                         value={
                                                             ticketEdit[0].Price
                                                         }
-                                                        readOnly
+                                                        onChange={(e)=>handleTicketEditChange( ticketEdit[0].Listing_ID, ticketEdit[0].Listing_ID, "Price", e.target.value)}
                                                     />
                                                 </div>
                                             </div>
 
                                             <div className="col">
+                                                {/* i dont see this in the database, so i wont code this */}
                                                 <label htmlFor="exampleFormControlSelect1">
-                                                    Ticket Separation
+                                                    Currency
                                                 </label>
                                                 <select
                                                     className="form-control"
@@ -255,8 +258,17 @@ const ListingEditTicket = ({
                                                                                             className="form-check-input"
                                                                                             type="checkbox"
                                                                                             id={`restriction${restrict.Restriction_ID}`}
-                                                                                            checked={restrict.isChecked}
-                                                                                            readOnly
+                                                                                            checked={
+                                                                                                restrict.isChecked
+                                                                                            }
+                                                                                            onChange={() =>
+                                                                                                handleTicketEditChange(
+                                                                                                    ticketEdit[0]
+                                                                                                        .Listing_ID,
+                                                                                                    restrict.Restriction_ID,
+                                                                                                    "restriction"
+                                                                                                )
+                                                                                            }
                                                                                         />
                                                                                         <label
                                                                                             className="form-check-label"
@@ -277,8 +289,17 @@ const ListingEditTicket = ({
                                                                                             className="form-check-input"
                                                                                             type="checkbox"
                                                                                             id={`restriction${restriction.Restriction_ID}`}
-                                                                                            checked={restriction.isChecked}
-                                                                                            readOnly
+                                                                                            checked={
+                                                                                                restriction.isChecked
+                                                                                            }
+                                                                                            onChange={() =>
+                                                                                                handleTicketEditChange(
+                                                                                                    ticketEdit[0]
+                                                                                                        .Listing_ID,
+                                                                                                    restriction.Restriction_ID,
+                                                                                                    "restriction"
+                                                                                                )
+                                                                                            }
                                                                                         />
                                                                                         <label
                                                                                             className="form-check-label"
@@ -301,8 +322,17 @@ const ListingEditTicket = ({
                                                                                 className="form-check-input"
                                                                                 type="checkbox"
                                                                                 id={`restriction${restriction.Restriction_ID}`}
-                                                                                checked={restriction.isChecked}
-                                                                                readOnly
+                                                                                checked={
+                                                                                    restriction.isChecked
+                                                                                }
+                                                                                onChange={() =>
+                                                                                    handleTicketEditChange(
+                                                                                        ticketEdit[0]
+                                                                                            .Listing_ID,
+                                                                                        restriction.Restriction_ID,
+                                                                                        "restriction"
+                                                                                    )
+                                                                                }
                                                                             />
                                                                             <label
                                                                                 className="form-check-label"
@@ -360,8 +390,17 @@ const ListingEditTicket = ({
                                                                                             className="form-check-input"
                                                                                             type="checkbox"
                                                                                             id={`listingnote${listingNote.Listing_note_ID}`}
-                                                                                            checked
-                                                                                            readOnly
+                                                                                            checked={
+                                                                                                listnote.isChecked
+                                                                                            }
+                                                                                            onChange={() =>
+                                                                                                handleTicketEditChange(
+                                                                                                    ticketEdit[0]
+                                                                                                        .Listing_ID,
+                                                                                                    listnote.Listing_note_ID,
+                                                                                                    "listing_note"
+                                                                                                )
+                                                                                            }
                                                                                         />
                                                                                         <label
                                                                                             className="form-check-label"
@@ -370,7 +409,7 @@ const ListingEditTicket = ({
                                                                                             {
                                                                                                 listingNote.Listing_note
                                                                                             }
-                                                                                        </label>{" "}
+                                                                                        </label>
                                                                                     </div>
                                                                                 ) : (
                                                                                     <div
@@ -382,6 +421,17 @@ const ListingEditTicket = ({
                                                                                             className="form-check-input"
                                                                                             type="checkbox"
                                                                                             id={`listingnote${listingNote.Listing_note_ID}`}
+                                                                                            checked={
+                                                                                                listingNote.isChecked
+                                                                                            }
+                                                                                            onChange={() =>
+                                                                                                handleTicketEditChange(
+                                                                                                    ticketEdit[0]
+                                                                                                        .Listing_ID,
+                                                                                                    listingNote.Listing_note_ID,
+                                                                                                    "listing_note"
+                                                                                                )
+                                                                                            }
                                                                                         />
                                                                                         <label
                                                                                             className="form-check-label"
@@ -404,6 +454,17 @@ const ListingEditTicket = ({
                                                                                 className="form-check-input"
                                                                                 type="checkbox"
                                                                                 id={`listingnote${listingNote.Listing_note_ID}`}
+                                                                                checked={
+                                                                                    listingNote.isChecked
+                                                                                }
+                                                                                onChange={() =>
+                                                                                    handleTicketEditChange(
+                                                                                        ticketEdit[0]
+                                                                                            .Listing_ID,
+                                                                                        listingNote.Listing_note_ID,
+                                                                                        "listing_note"
+                                                                                    )
+                                                                                }
                                                                             />
                                                                             <label
                                                                                 className="form-check-label"
@@ -431,12 +492,25 @@ const ListingEditTicket = ({
                                 </div>
                                 <div className="col-3">
                                     <div className="form-check form-switch border p-1">
-                                        <input
-                                            className="form-check-input ms-auto"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="flexSwitchCheckDefault"
-                                        />
+                                        {ticketEdit[0].status === "active" ? (
+                                            <input
+                                                className="form-check-input ms-auto"
+                                                type="checkbox"
+                                                role="switch"
+                                                id={"flexSwitchCheckDefault " + ticketEdit[0].status}
+                                                checked
+                                                onChange={()=>handleTicketEditChange( ticketEdit[0].Listing_ID, "", "publish")}
+                                            />
+                                        ) : (
+                                            <input
+                                                className="form-check-input ms-auto"
+                                                type="checkbox"
+                                                role="switch"
+                                                id={"flexSwitchCheckDefault " + ticketEdit[0].status}
+                                                checked={false}
+                                                onChange={()=>handleTicketEditChange( ticketEdit[0].Listing_ID, "", "publish")}
+                                            />
+                                        )}
                                         <label
                                             className="form-check-label ms-5"
                                             htmlFor="flexSwitchCheckDefault"
