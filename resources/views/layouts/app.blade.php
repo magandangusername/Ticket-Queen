@@ -10,6 +10,9 @@
 
     @yield('head')
 
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/e4b74e1e72.js" crossorigin="anonymous"></script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
