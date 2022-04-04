@@ -17,9 +17,14 @@ a.tools{
 .thead-lights{
   border: solid 3px #1C1C1C;
 }
-.table{
+.table-1{
   border: solid 3px #1C1C1C;
 } 
+table{
+  border-style : hidden!important;
+}
+
+
 
 #Search{
 width:480px;height:49px; border:2px solid black;
