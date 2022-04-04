@@ -11298,8 +11298,12 @@ a.tools {
   border: solid 3px #1C1C1C;
 }
 
-.table {
+.table-1 {
   border: solid 3px #1C1C1C;
+}
+
+table {
+  border-style: hidden !important;
 }
 
 #Search {

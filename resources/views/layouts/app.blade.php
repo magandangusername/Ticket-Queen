@@ -30,8 +30,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="vh-100" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
-    <div id="app" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
+<body>
+    <div class="vh-100 bg-image" id="app" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-repeat: no-repeat; background-size: cover">
         <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-1 bg-dark position-fixed w-100 navz-index">
             <a class="navbar-brand fw-bold text-light" href="#">Queen of Tickets <span class=""><img src="#" alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
