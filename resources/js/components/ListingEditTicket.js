@@ -12,9 +12,11 @@ const ListingEditTicket = ({
     setTicketRestrictionEdit,
     setTicketListingNoteEdit,
     handleTicketEditChange,
+    isTicketEditModalVisible,
+    ticketEditUpdate
 }) => {
     return (
-        <div className="modal" id="myModal">
+        <div className="modal" id="myModal" aria-hidden="true">
             <div
                 className="modal-dialog modal-lg"
                 style={{ overflowY: "initial !important" }}
@@ -589,6 +591,7 @@ const ListingEditTicket = ({
                                 <button
                                     type="button"
                                     className="btn btn-success float-sm-end"
+                                    onClick={()=>ticketEditUpdate(ticketEdit[0], restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit)}
                                 >
                                     Save
                                 </button>

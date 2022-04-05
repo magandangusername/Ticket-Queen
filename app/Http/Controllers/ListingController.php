@@ -84,7 +84,7 @@ class ListingController extends Controller
             'Seats' => 'nullable',
             'Ticket_Type' => 'required',
             'Price' => 'required|numeric',
-            'Available_Tickets' => 'required|',
+            'Available_Tickets' => 'required',
             'Expiration' => 'required',
             'status' => 'required'
         ]);
@@ -102,6 +102,39 @@ class ListingController extends Controller
         ]);
 
         // return $ticket->toJson('Ticket Updated!');
+    }
+
+    public function ticketupdate(Request $request)
+    {
+
+        $validatedData = $request[0]->validate([
+            'Listing_ID' => 'required',
+            // 'ConcertID' => 'required',
+            // 'Section' => 'required',
+            // 'Row' => 'nullable',
+            // 'Seats' => 'nullable',
+            // 'Ticket_Type' => 'required',
+            // 'Price' => 'required|numeric',
+            // 'Available_Tickets' => 'required',
+            // 'Ticket_Sold' => 'required|numeric',
+            // 'Expiration' => 'required',
+            // 'status' => 'required'
+        ]);
+
+        // $ticket = queenticketeventdetails::where('Listing_ID', $validatedData['Listing_ID'])->update([
+        //     'ConcertID' => $validatedData['ConcertID'],
+        //     'Section' => $validatedData['Section'],
+        //     'Row' => $validatedData['Row'],
+        //     'Seats' => $validatedData['Seats'],
+        //     'Ticket_Type' => $validatedData['Ticket_Type'],
+        //     'Price' => $validatedData['Price'],
+        //     'Available_Tickets' => $validatedData['Available_Tickets'],
+        //     'Expiration' => $validatedData['Expiration'],
+        //     'status' => $validatedData['status']
+        // ]);
+
+
+
     }
 
     /**

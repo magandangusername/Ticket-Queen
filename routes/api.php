@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('concerts', [ListingController::class, 'concerts']);
 Route::get('tickets', [ListingController::class, 'tickets']);
 Route::post('tickets/update', [ListingController::class, 'update']);
+Route::post('tickets/edit/update', [ListingController::class, 'ticketupdate']);
 Route::post('tickets/destroy', [ListingController::class, 'destroy']);
 Route::post('tickets/create', [ListingController::class, 'create']);
 Route::get('restrictions',[ListingController::class, 'restrictions']);

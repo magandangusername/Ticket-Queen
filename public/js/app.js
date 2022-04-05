@@ -5686,10 +5686,13 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
       ticketListingNoteEdit = _ref.ticketListingNoteEdit,
       setTicketRestrictionEdit = _ref.setTicketRestrictionEdit,
       setTicketListingNoteEdit = _ref.setTicketListingNoteEdit,
-      handleTicketEditChange = _ref.handleTicketEditChange;
+      handleTicketEditChange = _ref.handleTicketEditChange,
+      isTicketEditModalVisible = _ref.isTicketEditModalVisible,
+      ticketEditUpdate = _ref.ticketEditUpdate;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "modal",
     id: "myModal",
+    "aria-hidden": "true",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "modal-dialog modal-lg",
       style: {
@@ -6104,6 +6107,9 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "button",
               className: "btn btn-success float-sm-end",
+              onClick: function onClick() {
+                return ticketEditUpdate(ticketEdit[0], restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit);
+              },
               children: "Save"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "button",
@@ -6543,7 +6549,12 @@ var ListingTable = function ListingTable() {
   var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
       _useState44 = _slicedToArray(_useState43, 2),
       isTicketEditLoading = _useState44[0],
-      setIsTicketEditLoading = _useState44[1]; // gets the concert data from the database
+      setIsTicketEditLoading = _useState44[1];
+
+  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState46 = _slicedToArray(_useState45, 2),
+      isTicketEditModalVisible = _useState46[0],
+      setIsTicketEditModalVisible = _useState46[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6821,7 +6832,7 @@ var ListingTable = function ListingTable() {
 
   var handleTicketEdit = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id, concert) {
-      var editList, arrOfObj, result, restricts, listnotes;
+      var editList, arrOfObj, result, restrictionset, listingnoteset, restricts, listnotes;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
@@ -6844,10 +6855,22 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketEdit(result);
-              _context4.next = 8;
+              restrictionset = restrictions.map(function (restriction) {
+                return  true ? _objectSpread(_objectSpread({}, restriction), {}, {
+                  isChecked: false
+                }) : 0;
+              });
+              setRestrictions(restrictionset);
+              listingnoteset = listingNotes.map(function (listingnote) {
+                return  true ? _objectSpread(_objectSpread({}, listingnote), {}, {
+                  isChecked: false
+                }) : 0;
+              });
+              setListingNotes(listingnoteset);
+              _context4.next = 12;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/restrictions/" + id);
 
-            case 8:
+            case 12:
               restricts = _context4.sent;
               arrOfObj = restricts.data;
               result = arrOfObj.map(function (el) {
@@ -6856,10 +6879,10 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketRestrictionEdit(result);
-              _context4.next = 14;
+              _context4.next = 18;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/listing_notes/" + id);
 
-            case 14:
+            case 18:
               listnotes = _context4.sent;
               arrOfObj = restricts.data;
               result = arrOfObj.map(function (el) {
@@ -6868,25 +6891,25 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketListingNoteEdit(result);
-              _context4.next = 23;
+              _context4.next = 27;
               break;
 
-            case 20:
-              _context4.prev = 20;
+            case 24:
+              _context4.prev = 24;
               _context4.t0 = _context4["catch"](0);
               setFetchError(_context4.t0.message);
 
-            case 23:
-              _context4.prev = 23;
+            case 27:
+              _context4.prev = 27;
               setIsTicketEditLoading(false);
-              return _context4.finish(23);
+              return _context4.finish(27);
 
-            case 26:
+            case 30:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[0, 20, 23, 26]]);
+      }, _callee4, null, [[0, 24, 27, 30]]);
     }));
 
     return function handleTicketEdit(_x2, _x3) {
@@ -6996,13 +7019,13 @@ var ListingTable = function ListingTable() {
                 if (ticketEdit[0].status === "active") {
                   ticketinput = ticketEdit.map(function (ticket) {
                     return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                      publish: "disabled"
+                      status: "disabled"
                     }) : ticket;
                   });
                 } else if (ticketEdit[0].status === "disabled") {
                   ticketinput = ticketEdit.map(function (ticket) {
                     return ticket.Listing_ID === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                      publish: "active"
+                      status: "active"
                     }) : ticket;
                   });
                 }
@@ -7185,15 +7208,72 @@ var ListingTable = function ListingTable() {
     return function handleTicketPublishChange(_x15) {
       return _ref10.apply(this, arguments);
     };
+  }(); // updates data from ticket edit modal to the database
+
+
+  var ticketEditUpdate = /*#__PURE__*/function () {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
+      var ticket, request;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              ticket = {
+                Listing_ID: ticketedit.Listing_ID,
+                ConcertID: ticketedit.ConcertID,
+                Section: ticketedit.Section,
+                Row: ticketedit.Row,
+                Seats: ticketedit.Seats,
+                Ticket_Type: ticketedit.Ticket_Type,
+                Price: ticketedit.Price,
+                Available_Tickets: ticketedit.Available_Tickets,
+                Ticket_Sold: ticketedit.Ticket_Sold,
+                Expiration: ticketedit.Expiration,
+                status: ticketedit.status
+              };
+              restricts = restricts.filter(function (restrict) {
+                return restrict.isChecked === true;
+              });
+              ticketrestrictions = ticketrestrictions.filter(function (restrict) {
+                return restrict.isChecked === true;
+              });
+              restricts = restricts.concat(ticketrestrictions);
+              listingnotes = listingnotes.filter(function (listnote) {
+                return listnote.isChecked === true;
+              });
+              ticketlistingnotes = ticketlistingnotes.filter(function (listnote) {
+                return listnote.isChecked === true;
+              });
+              listingnotes = listingnotes.concat(ticketlistingnotes);
+              request = [ticket, restricts, listingnotes];
+              console.log(request);
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/edit/update", request).then(function (response) {
+                console.log(response);
+              })["catch"](function (error) {
+                console.log(error.response);
+                setFetchError(error.message);
+              });
+
+            case 10:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }));
+
+    return function ticketEditUpdate(_x16, _x17, _x18, _x19, _x20) {
+      return _ref11.apply(this, arguments);
+    };
   }(); // update ticket to the database
 
 
   var ticketUpdate = /*#__PURE__*/function () {
-    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(ticket) {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(ticket) {
       var ticket_info;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
         while (1) {
-          switch (_context11.prev = _context11.next) {
+          switch (_context12.prev = _context12.next) {
             case 0:
               ticket_info = {
                 Listing_ID: ticket[0].Listing_ID,
@@ -7216,24 +7296,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context11.stop();
+              return _context12.stop();
           }
         }
-      }, _callee11);
+      }, _callee12);
     }));
 
-    return function ticketUpdate(_x16) {
-      return _ref11.apply(this, arguments);
+    return function ticketUpdate(_x21) {
+      return _ref12.apply(this, arguments);
     };
   }(); // for deleting ticket
 
 
   var handleTicketDelete = /*#__PURE__*/function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(ticket) {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(ticket) {
       var ticket_info, newtickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
         while (1) {
-          switch (_context12.prev = _context12.next) {
+          switch (_context13.prev = _context13.next) {
             case 0:
               ticket_info = {
                 Listing_ID: ticket.Listing_ID,
@@ -7260,21 +7340,21 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context12.stop();
+              return _context13.stop();
           }
         }
-      }, _callee12);
+      }, _callee13);
     }));
 
-    return function handleTicketDelete(_x17) {
-      return _ref12.apply(this, arguments);
+    return function handleTicketDelete(_x22) {
+      return _ref13.apply(this, arguments);
     };
   }(); // This is the display code
 
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, {
-      children: [isConcertsLoading && isTicketsLoading && isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("table", {
+      children: [isConcertsLoading & isTicketsLoading & isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("table", {
         className: "",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("thead", {
           className: "w-auto position-absolute top-50 start-50 translate-middle",
@@ -7329,7 +7409,7 @@ var ListingTable = function ListingTable() {
             })
           })
         })
-      }), !fetchError && !isConcertsLoading && !isTicketsLoading && !isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+      }), !fetchError & !isConcertsLoading & !isTicketsLoading & !isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_7__["default"], {
           sortAllListing: sortAllListing,
           sortEligibleLastMinuteSales: sortEligibleLastMinuteSales,
@@ -7420,7 +7500,9 @@ var ListingTable = function ListingTable() {
         ticketListingNoteEdit: ticketListingNoteEdit,
         setTicketRestrictionEdit: setTicketRestrictionEdit,
         setTicketListingNoteEdit: setTicketListingNoteEdit,
-        handleTicketEditChange: handleTicketEditChange
+        handleTicketEditChange: handleTicketEditChange,
+        isTicketEditModalVisible: isTicketEditModalVisible,
+        ticketEditUpdate: ticketEditUpdate
       }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_9__["default"], {
         concerts: concerts
       })]
@@ -63461,7 +63543,7 @@ function injectIntoDevTools(devToolsConfig) {
     scheduleRoot:  scheduleRoot ,
     setRefreshHandler:  setRefreshHandler ,
     // Enables DevTools to append owner stacks to error messages in DEV mode.
-    getCurrentFiber:  getCurrentFiberForDevTools
+    getCurrentFiber:  getCurrentFiberForDevTools 
   });
 }
 
@@ -71009,7 +71091,7 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -71023,20 +71105,20 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
@@ -71069,7 +71151,7 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			return result;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -71081,7 +71163,7 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -71093,7 +71175,7 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -71105,12 +71187,12 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -71121,7 +71203,7 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -71130,11 +71212,11 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/
+/******/ 		
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
@@ -71142,19 +71224,19 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		// no chunk on demand loading
-/******/
+/******/ 		
 /******/ 		// no prefetching
-/******/
+/******/ 		
 /******/ 		// no preloaded
-/******/
+/******/ 		
 /******/ 		// no HMR
-/******/
+/******/ 		
 /******/ 		// no HMR manifest
-/******/
+/******/ 		
 /******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/
+/******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime] = data;
@@ -71179,20 +71261,20 @@ const Node = _postcss_js__WEBPACK_IMPORTED_MODULE_0__.Node
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
-/******/
+/******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/
+/******/ 	
 /******/ })()
 ;

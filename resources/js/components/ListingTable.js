@@ -54,6 +54,7 @@ const ListingTable = () => {
     const [listingNotes, setListingNotes] = useState([]);
     const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
     const [isTicketEditLoading, setIsTicketEditLoading] = useState(true);
+    const [isTicketEditModalVisible, setIsTicketEditModalVisible] = useState(false);
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -311,6 +312,14 @@ const ListingTable = () => {
 
             setTicketEdit(result);
 
+            const restrictionset = restrictions.map((restriction) => true ? {...restriction, isChecked: false} : restriction);
+
+            setRestrictions(restrictionset);
+
+            const listingnoteset = listingNotes.map((listingnote) => true ? {...listingnote, isChecked: false} : listingnote);
+
+            setListingNotes(listingnoteset);
+
             const restricts = await axios.get("/api/restrictions/" + id);
             arrOfObj = restricts.data;
             result = arrOfObj.map(function (el) {
@@ -337,7 +346,12 @@ const ListingTable = () => {
 
     // updating the ticket input values
     // this function may not be the best, but its the best i could think of.
-    const handleTicketEditChange = async (id, input_id, input_type, val = "") => {
+    const handleTicketEditChange = async (
+        id,
+        input_id,
+        input_type,
+        val = ""
+    ) => {
         if (input_type === "restriction") {
             var len = ticketRestrictionEdit.filter(
                 (ticketrestriction) =>
@@ -432,13 +446,13 @@ const ListingTable = () => {
             if (ticketEdit[0].status === "active") {
                 var ticketinput = ticketEdit.map((ticket) =>
                     ticket.Listing_ID === id
-                        ? { ...ticket, publish: "disabled" }
+                        ? { ...ticket, status: "disabled" }
                         : ticket
                 );
             } else if (ticketEdit[0].status === "disabled") {
                 var ticketinput = ticketEdit.map((ticket) =>
                     ticket.Listing_ID === id
-                        ? { ...ticket, publish: "active" }
+                        ? { ...ticket, status: "active" }
                         : ticket
                 );
             }
@@ -509,15 +523,55 @@ const ListingTable = () => {
     // set publish status of ticket
     const handleTicketPublishChange = async (id) => {
         const listTickets = tickets.map((ticket) =>
-            ticket.Listing_ID === id & ticket.status === "active"
+            (ticket.Listing_ID === id) & (ticket.status === "active")
                 ? { ...ticket, status: "disabled" }
-                : ticket.Listing_ID === id & ticket.status === "disabled" ? { ...ticket, status: "active" } : ticket
+                : (ticket.Listing_ID === id) & (ticket.status === "disabled")
+                ? { ...ticket, status: "active" }
+                : ticket
         );
         setTickets(listTickets);
 
         const ticket = listTickets.filter((ticket) => ticket.Listing_ID === id);
         ticketUpdate(ticket);
     };
+
+    // updates data from ticket edit modal to the database
+    const ticketEditUpdate = async (ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) => {
+        const ticket = {
+            Listing_ID: ticketedit.Listing_ID,
+            ConcertID: ticketedit.ConcertID,
+            Section: ticketedit.Section,
+            Row: ticketedit.Row,
+            Seats: ticketedit.Seats,
+            Ticket_Type: ticketedit.Ticket_Type,
+            Price: ticketedit.Price,
+            Available_Tickets: ticketedit.Available_Tickets,
+            Ticket_Sold: ticketedit.Ticket_Sold,
+            Expiration: ticketedit.Expiration,
+            status: ticketedit.status
+        }
+
+        restricts = restricts.filter((restrict) => restrict.isChecked === true);
+        ticketrestrictions = ticketrestrictions.filter((restrict) => restrict.isChecked === true);
+        restricts = restricts.concat(ticketrestrictions);
+
+        listingnotes = listingnotes.filter((listnote) => listnote.isChecked === true);
+        ticketlistingnotes = ticketlistingnotes.filter((listnote) => listnote.isChecked === true);
+        listingnotes = listingnotes.concat(ticketlistingnotes);
+
+        const request = [ticket, restricts, listingnotes];
+        console.log(request);
+
+
+        axios.post("/api/tickets/edit/update", request)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error.response);
+            setFetchError(error.message);
+        });
+    }
 
     // update ticket to the database
     const ticketUpdate = async (ticket) => {
@@ -580,160 +634,168 @@ const ListingTable = () => {
     return (
         <>
             <React.StrictMode>
-                {isConcertsLoading &&
-                    isTicketsLoading &&
+                {isConcertsLoading &
+                    isTicketsLoading &
                     isRestrictionsLoading && (
-                        <table className="">
-                            <thead className="w-auto position-absolute top-50 start-50 translate-middle">
-                                <tr className="w-auto">
-                                    <td>
-                                        <div
-                                            className="spinner-border text-info"
-                                            role="status"
-                                        >
-                                            <span className="visually-hidden">
-                                                Loading...
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="d-inline text-white">
-                                            <h2 className="ps-2">
-                                                LOADING ITEMS...
-                                            </h2>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    )}
+                    <table className="">
+                        <thead className="w-auto position-absolute top-50 start-50 translate-middle">
+                            <tr className="w-auto">
+                                <td>
+                                    <div
+                                        className="spinner-border text-info"
+                                        role="status"
+                                    >
+                                        <span className="visually-hidden">
+                                            Loading...
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="d-inline text-white">
+                                        <h2 className="ps-2">
+                                            LOADING ITEMS...
+                                        </h2>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                )}
                 {fetchError && (
                     <table className="table">
                         <thead className="w-50 justify-content-center">
                             <tr>
                                 <td className="justify-content-center">
-                                <div className="alert alert-danger d-flex align-items-center" role="alert">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                </svg>
-                                <div>
-                                    {`Error: ${fetchError}`}
-                                </div>
-                                </div>
+                                    <div
+                                        className="alert alert-danger d-flex align-items-center"
+                                        role="alert"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="currentColor"
+                                            className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+                                            viewBox="0 0 16 16"
+                                            role="img"
+                                            aria-label="Warning:"
+                                        >
+                                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                        </svg>
+                                        <div>{`Error: ${fetchError}`}</div>
+                                    </div>
                                 </td>
                             </tr>
                         </thead>
                     </table>
                 )}
 
-                {!fetchError &&
-                    !isConcertsLoading &&
-                    !isTicketsLoading &&
+                {!fetchError &
+                    !isConcertsLoading &
+                    !isTicketsLoading &
                     !isRestrictionsLoading && (
-                        <>
-                            <ListingSortBy
-                                sortAllListing={sortAllListing}
-                                sortEligibleLastMinuteSales={
-                                    sortEligibleLastMinuteSales
-                                }
-                                sortActive={sortActive}
-                                sortInactive={sortInactive}
-                                setSortAllListing={setSortAllListing}
-                                setSortEligibleLastMinuteSales={
-                                    setSortEligibleLastMinuteSales
-                                }
-                                setSortActive={setSortActive}
-                                setSortInactive={setSortInactive}
-                                // handleSort={handleSort}
-                                sortAllListingActive={sortAllListingActive}
-                                sortEligibleLastMinuteSalesActive={
-                                    sortEligibleLastMinuteSalesActive
-                                }
-                                sortActiveActive={sortActiveActive}
-                                sortInactiveActive={sortInactiveActive}
-                                setSortAllListingActive={
-                                    setSortAllListingActive
-                                }
-                                setSortEligibleLastMinuteSalesActive={
-                                    setSortEligibleLastMinuteSalesActive
-                                }
-                                setSortActiveActive={setSortActiveActive}
-                                setSortInactiveActive={setSortInactiveActive}
-                            />
-                            <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
-                                <table className="table">
-                                    <thead className="thead-lights bg-color sticky-top">
-                                        <tr>
-                                            <th className="text-center"></th>
-                                            <th className="text-center text-dark">
-                                                Ticket Details
-                                            </th>
-                                            <th className="text-center text-dark"></th>
-                                            <th className="text-center text-dark">
-                                                Available Ticket
-                                            </th>
-                                            <th className="text-center text-dark">
-                                                Ticket Sold
-                                            </th>
-                                            <th className="text-center"></th>
-                                            <th className="text-center text-dark">
-                                                Days
-                                            </th>
-                                            <th className="text-center"></th>
-                                        </tr>
-                                    </thead>
+                    <>
+                        <ListingSortBy
+                            sortAllListing={sortAllListing}
+                            sortEligibleLastMinuteSales={
+                                sortEligibleLastMinuteSales
+                            }
+                            sortActive={sortActive}
+                            sortInactive={sortInactive}
+                            setSortAllListing={setSortAllListing}
+                            setSortEligibleLastMinuteSales={
+                                setSortEligibleLastMinuteSales
+                            }
+                            setSortActive={setSortActive}
+                            setSortInactive={setSortInactive}
+                            // handleSort={handleSort}
+                            sortAllListingActive={sortAllListingActive}
+                            sortEligibleLastMinuteSalesActive={
+                                sortEligibleLastMinuteSalesActive
+                            }
+                            sortActiveActive={sortActiveActive}
+                            sortInactiveActive={sortInactiveActive}
+                            setSortAllListingActive={setSortAllListingActive}
+                            setSortEligibleLastMinuteSalesActive={
+                                setSortEligibleLastMinuteSalesActive
+                            }
+                            setSortActiveActive={setSortActiveActive}
+                            setSortInactiveActive={setSortInactiveActive}
+                        />
+                        <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
+                            <table className="table">
+                                <thead className="thead-lights bg-color sticky-top">
+                                    <tr>
+                                        <th className="text-center"></th>
+                                        <th className="text-center text-dark">
+                                            Ticket Details
+                                        </th>
+                                        <th className="text-center text-dark"></th>
+                                        <th className="text-center text-dark">
+                                            Available Ticket
+                                        </th>
+                                        <th className="text-center text-dark">
+                                            Ticket Sold
+                                        </th>
+                                        <th className="text-center"></th>
+                                        <th className="text-center text-dark">
+                                            Days
+                                        </th>
+                                        <th className="text-center"></th>
+                                    </tr>
+                                </thead>
 
-                                    <tbody id="tabletickets">
-                                        {!concerts.length && (
-                                            <tr>
-                                                <td
-                                                    colSpan={10}
-                                                    style={{
-                                                        textAlign: "center",
-                                                        color: "white",
-                                                    }}
-                                                >
-                                                    No data to show
-                                                </td>
-                                            </tr>
-                                        )}
-                                        {concerts.length ? (
-                                            <>
-                                                {concerts.map((concert) => (
-                                                    <ListingConcerts
-                                                        key={concert.ConcertID}
-                                                        concert={concert}
-                                                        tickets={tickets}
-                                                        setTickets={setTickets}
-                                                        handleCheck={
-                                                            handleCheck
-                                                        }
-                                                        handlePriceSelect={
-                                                            handlePriceSelect
-                                                        }
-                                                        handlePriceChange={
-                                                            handlePriceChange
-                                                        }
-                                                        handleAvailableTicketSelect={
-                                                            handleAvailableTicketSelect
-                                                        }
-                                                        handleAvailableTicketChange={
-                                                            handleAvailableTicketChange
-                                                        }
-                                                        handleTicketEdit={
-                                                            handleTicketEdit
-                                                        }
-                                                        handleTicketPublishChange={handleTicketPublishChange}
-                                                    />
-                                                ))}
-                                            </>
-                                        ) : null}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <Tools visible={visible} />
-                        </>
-                    )}
+                                <tbody id="tabletickets">
+                                    {!concerts.length && (
+                                        <tr>
+                                            <td
+                                                colSpan={10}
+                                                style={{
+                                                    textAlign: "center",
+                                                    color: "white",
+                                                }}
+                                            >
+                                                No data to show
+                                            </td>
+                                        </tr>
+                                    )}
+                                    {concerts.length ? (
+                                        <>
+                                            {concerts.map((concert) => (
+                                                <ListingConcerts
+                                                    key={concert.ConcertID}
+                                                    concert={concert}
+                                                    tickets={tickets}
+                                                    setTickets={setTickets}
+                                                    handleCheck={handleCheck}
+                                                    handlePriceSelect={
+                                                        handlePriceSelect
+                                                    }
+                                                    handlePriceChange={
+                                                        handlePriceChange
+                                                    }
+                                                    handleAvailableTicketSelect={
+                                                        handleAvailableTicketSelect
+                                                    }
+                                                    handleAvailableTicketChange={
+                                                        handleAvailableTicketChange
+                                                    }
+                                                    handleTicketEdit={
+                                                        handleTicketEdit
+                                                    }
+                                                    handleTicketPublishChange={
+                                                        handleTicketPublishChange
+                                                    }
+                                                />
+                                            ))}
+                                        </>
+                                    ) : null}
+                                </tbody>
+                            </table>
+                        </div>
+                        <Tools visible={visible} />
+                    </>
+                )}
 
                 {/* This thing still works but with errors */}
                 {ticketEdit.length ? (
@@ -749,6 +811,8 @@ const ListingTable = () => {
                         setTicketRestrictionEdit={setTicketRestrictionEdit}
                         setTicketListingNoteEdit={setTicketListingNoteEdit}
                         handleTicketEditChange={handleTicketEditChange}
+                        isTicketEditModalVisible={isTicketEditModalVisible}
+                        ticketEditUpdate={ticketEditUpdate}
                     />
                 ) : null}
                 <ListingNew concerts={concerts} />
