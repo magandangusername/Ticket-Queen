@@ -5904,7 +5904,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       children: restrictions.map(function (restriction) {
                         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                           className: "form-check",
-                          children: ticketRestrictionEdit.length ? ticketRestrictionEdit.map(function (restrict) {
+                          children: ticketRestrictionEdit.length ? ticketRestrictionEdit.map(function (restrict, index) {
                             return restrict.Restriction_ID === restriction.Restriction_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                                 className: "form-check-input",
@@ -5919,7 +5919,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                                 htmlFor: "restriction".concat(restrict.Restriction_ID),
                                 children: restriction.Restriction
                               })]
-                            }, restrict.Restriction_ID) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                            }, restrict.Restriction_ID) : index === ticketRestrictionEdit.length - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                                 className: "form-check-input",
                                 type: "checkbox",
@@ -7249,6 +7249,10 @@ var ListingTable = function ListingTable() {
               console.log(request);
               axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/edit/update", request).then(function (response) {
                 console.log(response);
+                var ticketinfo = tickets.map(function (ticket) {
+                  return ticket.Listing_ID === ticketedit.Listing_ID ? _objectSpread(_objectSpread({}, ticket), ticketedit) : ticket;
+                });
+                setTickets(ticketinfo);
               })["catch"](function (error) {
                 console.log(error.response);
                 setFetchError(error.message);

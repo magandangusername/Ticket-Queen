@@ -247,7 +247,7 @@ const ListingEditTicket = ({
                                                                     {ticketRestrictionEdit.length ? (
                                                                         ticketRestrictionEdit.map(
                                                                             (
-                                                                                restrict
+                                                                                restrict, index
                                                                             ) =>
                                                                                 restrict.Restriction_ID ===
                                                                                 restriction.Restriction_ID ? (
@@ -281,7 +281,7 @@ const ListingEditTicket = ({
                                                                                             }
                                                                                         </label>
                                                                                     </div>
-                                                                                ) : (
+                                                                                ) : index === ticketRestrictionEdit.length - 1 && (
                                                                                     <div
                                                                                         key={
                                                                                             restriction.Restriction_ID

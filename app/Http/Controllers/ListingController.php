@@ -24,7 +24,6 @@ class ListingController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -56,15 +55,15 @@ class ListingController extends Controller
      */
     public function show()
     {
-       // $data=queenticketeventinfo::join('queenticketeventdetails','queenticketeventdetails.ConcertID','=','queenticketeventinfo.ConcertID')
-       // ->select('queenticketeventdetails.*','queenticketeventinfo.*')
-       // ->get();
-        $data=queenticketeventinfo::all();
-        $data2=queenticketeventdetails::all();
+        // $data=queenticketeventinfo::join('queenticketeventdetails','queenticketeventdetails.ConcertID','=','queenticketeventinfo.ConcertID')
+        // ->select('queenticketeventdetails.*','queenticketeventinfo.*')
+        // ->get();
+        $data = queenticketeventinfo::all();
+        $data2 = queenticketeventdetails::all();
 
-    //    return view('listing',['queenticketeventinfo'=>$data]);
-       // return view('listing',compact('data'));
-       return \view('listing',['data'=> $data,'data2' => $data2]);
+        //    return view('listing',['queenticketeventinfo'=>$data]);
+        // return view('listing',compact('data'));
+        return \view('listing', ['data' => $data, 'data2' => $data2]);
     }
 
     /**
@@ -107,32 +106,63 @@ class ListingController extends Controller
     public function ticketupdate(Request $request)
     {
 
-        $validatedData = $request[0]->validate([
-            'Listing_ID' => 'required',
-            // 'ConcertID' => 'required',
-            // 'Section' => 'required',
-            // 'Row' => 'nullable',
-            // 'Seats' => 'nullable',
-            // 'Ticket_Type' => 'required',
-            // 'Price' => 'required|numeric',
-            // 'Available_Tickets' => 'required',
-            // 'Ticket_Sold' => 'required|numeric',
-            // 'Expiration' => 'required',
-            // 'status' => 'required'
+
+        $validatedData = $request->validate([
+            '0.Listing_ID' => 'required',
+            '0.ConcertID' => 'required',
+            '0.Section' => 'required',
+            '0.Row' => 'nullable',
+            '0.Seats' => 'nullable',
+            '0.Ticket_Type' => 'required',
+            '0.Price' => 'required|numeric',
+            '0.Available_Tickets' => 'required',
+            '0.Ticket_Sold' => 'required|numeric',
+            '0.Expiration' => 'required',
+            '0.status' => 'required'
         ]);
 
-        // $ticket = queenticketeventdetails::where('Listing_ID', $validatedData['Listing_ID'])->update([
-        //     'ConcertID' => $validatedData['ConcertID'],
-        //     'Section' => $validatedData['Section'],
-        //     'Row' => $validatedData['Row'],
-        //     'Seats' => $validatedData['Seats'],
-        //     'Ticket_Type' => $validatedData['Ticket_Type'],
-        //     'Price' => $validatedData['Price'],
-        //     'Available_Tickets' => $validatedData['Available_Tickets'],
-        //     'Expiration' => $validatedData['Expiration'],
-        //     'status' => $validatedData['status']
-        // ]);
+        $ticket = queenticketeventdetails::where('Listing_ID', $validatedData[0]['Listing_ID'])->update([
+            'ConcertID' => $validatedData[0]['ConcertID'],
+            'Section' => $validatedData[0]['Section'],
+            'Row' => $validatedData[0]['Row'],
+            'Seats' => $validatedData[0]['Seats'],
+            'Ticket_Type' => $validatedData[0]['Ticket_Type'],
+            'Price' => $validatedData[0]['Price'],
+            'Available_Tickets' => $validatedData[0]['Available_Tickets'],
+            'Expiration' => $validatedData[0]['Expiration'],
+            'status' => $validatedData[0]['status']
+        ]);
 
+        $restrictiondel = ticket_restriction_listing::where('Listing_ID', $validatedData[0]['Listing_ID'])->delete();
+        // return json_decode(json_encode($request[1]));
+        // $request[1]->array_map(function($restrict){
+        //     $restrictioncreate = ticket_restriction_listing::create([
+        //         "Listing_ID" => $restrict['Listing_ID'],
+        //         "Restriction_ID" => $restrict['Restriction_ID'],
+        //         "Listing_note_ID" => $restrict['Listing_note_ID']
+        //     ]);
+        // });
+
+        foreach ($request[1] as $key => $value) {
+            // return $value;
+            $restrictioncreate = ticket_restriction_listing::create([
+                "Listing_ID" => $validatedData[0]['Listing_ID'],
+                "Restriction_ID" => $value["Restriction_ID"]
+            ]);
+        }
+
+        foreach ($request[2] as $key => $value) {
+            // return $value;
+            $restrictioncreate = ticket_restriction_listing::create([
+                "Listing_ID" => $validatedData[0]['Listing_ID'],
+                "Listing_note_ID" => $value["Listing_note_ID"]
+            ]);
+        }
+
+
+        // $ticket = queenticketeventdetails::where('Listing_ID', '989318363')->update([
+        //     'Row' => $request[0]['Row']
+        // ]);
 
 
     }
@@ -163,23 +193,20 @@ class ListingController extends Controller
 
     public function deleteTicket(Request $request)
     {
-        try
-    {
-        $ids = array_column($request->id, "id");
-        ConcertListing::whereIn('id', $ids)->delete();
-        return response()->json('Enquiry deleted');
-    }
-
-    catch (Exception $e) {
-        return response()->json($e->getMessage(), 500);
-    }
+        try {
+            $ids = array_column($request->id, "id");
+            ConcertListing::whereIn('id', $ids)->delete();
+            return response()->json('Enquiry deleted');
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 500);
+        }
     }
     public function search(Request $request)
     {
-        $search=$request->get('search');
-        $data= queenticketeventinfo::where('ConcertName','LIKE','%'.$search.'%')->paginate(5);
-        $data2=queenticketeventdetails::all();
-        return view('listing',['data'=> $data,'data2' => $data2]);
+        $search = $request->get('search');
+        $data = queenticketeventinfo::where('ConcertName', 'LIKE', '%' . $search . '%')->paginate(5);
+        $data2 = queenticketeventdetails::all();
+        return view('listing', ['data' => $data, 'data2' => $data2]);
     }
 
 
@@ -213,19 +240,17 @@ class ListingController extends Controller
 
     public function restrictions_fetch($id)
     {
-        $restrictions = restrictions::leftjoin('ticket_restriction_listings', 'restrictions.Restriction_ID' , '=', 'ticket_restriction_listings.Restriction_ID')
-        ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
+        $restrictions = restrictions::leftjoin('ticket_restriction_listings', 'restrictions.Restriction_ID', '=', 'ticket_restriction_listings.Restriction_ID')
+            ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
 
         return $restrictions->toJson();
     }
 
     public function listing_notes_fetch($id)
     {
-        $listing_notes = listing_notes::leftjoin('ticket_restriction_listings', 'listing_notes.Listing_note_ID' , '=', 'ticket_restriction_listings.Listing_note_ID')
-        ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
+        $listing_notes = listing_notes::leftjoin('ticket_restriction_listings', 'listing_notes.Listing_note_ID', '=', 'ticket_restriction_listings.Listing_note_ID')
+            ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
 
         return $listing_notes->toJson();
     }
-
-
 }

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ticket_restriction_listings', function (Blueprint $table) {
             $table->integer("Listing_ID");
-            $table->integer("Restriction_ID");
-            $table->integer("Listing_note_ID");
+            $table->integer("Restriction_ID")->nullable();
+            $table->integer("Listing_note_ID")->nullable();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

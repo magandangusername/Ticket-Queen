@@ -566,6 +566,9 @@ const ListingTable = () => {
         axios.post("/api/tickets/edit/update", request)
         .then((response) => {
             console.log(response);
+            const ticketinfo = tickets.map((ticket) => ticket.Listing_ID === ticketedit.Listing_ID ? {...ticket, ...ticketedit} : ticket);
+            setTickets(ticketinfo);
+
         })
         .catch((error) => {
             console.log(error.response);
