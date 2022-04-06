@@ -43,7 +43,7 @@
     </div>
 </div>
 
-{--<div class="modal container-fluid" id="myModal">
+{--<div class="modal fade container-fluid" id="myModal">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -127,11 +127,11 @@
 </div> --}
 
 
-<div class="modal container-fluid" id="tiktypes">
+<div class="modal fade container-fluid" id="tiktypes">
     <div class="modal-dialog modal-sm">
         <div class="modal-content text-center">
             <!-- Modal Header -->
-            <div class="modal-header m-1 p-2">
+            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
 
                 <b>
                     <h4 class="modal-title">Select Ticket Type</h4>
@@ -145,20 +145,20 @@
                 <button type="button" class="btn btn-light p-2">Name of Ticket Type</button>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer m-1 p-2">
-                <button type="button" class="btn btn-secondary"><b>
-                        < </b>Back</button>
+            <div class="modal-footer m-1 p-2 justify-content-between">
+                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal" style="float: left;">
+                    < Back </button>
             </div>
 
         </div>
     </div>
 </div>
 
-<div class="modal container-fluid" id="express">
+<div class="modal fade container-fluid" id="express">
     <div class="modal-dialog modal-auto">
         <div class="modal-content text-center">
             <!-- Modal Header -->
-            <div class="modal-header m-1 p-2">
+            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
 
                 <b>
                     <h4 class="modal-title">Express Local Shipping</h4>
@@ -168,7 +168,7 @@
             </div>
 
             <!-- Modal body -->
-            <div class="form-group modal-body m-1 p-2">
+            <div class="form-group modal-body m-1 p-3">
                 <div class="p-2 m-2">
                     <div class="row border text-left p-2">
 
@@ -240,19 +240,19 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer m-1 p-2">
-                <button type="button" class="btn btn-secondary"><B class="bold">
-                        < </B>Back</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    < Back</button>
             </div>
 
         </div>
     </div>
 </div>
 
-<div class="modal container-fluid" id="clone">
+<div class="modal fade container-fluid" id="clone">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- Modal Header -->
-            <div class="modal-header m-1 p-2">
+            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
 
                 <b>
                     <h4 class="modal-title">Clone Listing</h4>
@@ -325,35 +325,33 @@
                     </td>
                     <td class="text-justify"><i class="fa text-danger fa-times-circle" aria-hidden="true"></i></td>
                     </tr>
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer m-1 p-2 justify-content-between">
+
+                <button type="button" class="btn btn-light">+ Add another clone</button>
+                <div >
+                    <button type="button" class="btn btn-light">Save</button>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
 
             </div>
-            </table>
-
 
         </div>
-        <!-- Modal footer -->
-        <div class="modal-footer m-1 p-2">
-
-            <button type="button" class="btn btn-light">+ Add another clone</button>
-
-            <button type="button" class="btn btn-light">Save</button>
-
-            <button type="button" class="btn btn-secondary">Cancel</button>
-
-        </div>
-
     </div>
 </div>
-</div>
 
-<div class="modal container-fluid" id="persexpress">
+<div class="modal fade container-fluid" id="persexpress">
     <div class="modal-dialog modal-lg">
         <div class="modal-content text-center">
             <!-- Modal Header -->
-            <div class="modal-header m-1 p-2">
+            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
 
                 <b>
-                    <h4 class="modal-title">Select Ticket Type</h4>
+                    <h4 class="modal-title">Express Local Shipping</h4>
                 </b>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -362,8 +360,8 @@
             <!-- Modal body -->
             <div class="form-group modal-body text-left m-3 p-3">
                 <p class="row ">
-                    
-                   By opting in to Express Local Shipping your listings will stay active for longer,giving you a higher chance of selling your tickets.
+
+                    By opting in to Express Local Shipping your listings will stay active for longer,giving you a higher chance of selling your tickets.
                 </p>
                 <p class="row">
                     Tickets for events in the same city as the Ticket Location – the physical location of your ticket – will be available for Express Local Shipping, allowing them to be sold to nearby buyers as close as 4 hours before the event Make sure you’re aware of which locations your listings are registered to – only the tickets at locations in the same city as the event will stay active for longer!
@@ -373,15 +371,15 @@
                 </p>
                 <p class="row">
                     If you are no longer able to dispatch orders this quickly, you must opt out of Express Local Shipping or unpublish you listings or you may incur charges.
-                  
+
                 </p>
                 <p class="row">
-                    You will be able to view instructions on how to arrange the courier with each order. You will have to pay for the courier to make the delivery, and will receive a reimbursement when you receive the proceeds for the sale. 
+                    You will be able to view instructions on how to arrange the courier with each order. You will have to pay for the courier to make the delivery, and will receive a reimbursement when you receive the proceeds for the sale.
                 </p>
 
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer m-1 p-2">
+            <div class="modal-footer m-1 p-2 justify-content-between">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
@@ -397,5 +395,27 @@
         </div>
     </div>
 </div>
+
+<div class="modal right fade" id="delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
+                <h4 class="modal-title" id="staticBackdropLabel">Delete Someting</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p>Are you sure you want to delete this someting?</p>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection
