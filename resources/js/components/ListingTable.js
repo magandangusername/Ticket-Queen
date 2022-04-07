@@ -656,7 +656,7 @@ const ListingTable = () => {
             <React.StrictMode>
                 {isConcertsLoading &
                     isTicketsLoading &
-                    isRestrictionsLoading && (
+                    isRestrictionsLoading ? (
                     <table className="">
                         <thead className="w-auto position-absolute top-50 start-50 translate-middle">
                             <tr className="w-auto">
@@ -680,8 +680,8 @@ const ListingTable = () => {
                             </tr>
                         </thead>
                     </table>
-                )}
-                {fetchError && (
+                ):null}
+                {fetchError ? (
                     <table className="table">
                         <thead className="w-50 justify-content-center">
                             <tr>
@@ -708,12 +708,12 @@ const ListingTable = () => {
                             </tr>
                         </thead>
                     </table>
-                )}
+                ):null}
 
                 {!fetchError &
                     !isConcertsLoading &
                     !isTicketsLoading &
-                    !isRestrictionsLoading && (
+                    !isRestrictionsLoading ? (
                     <>
                         <ListingSortBy
                             sortAllListing={sortAllListing}
@@ -815,7 +815,7 @@ const ListingTable = () => {
                         </div>
                         <Tools visible={visible} />
                     </>
-                )}
+                ):null}
 
                 {/* This thing still works but with errors */}
                 {ticketEdit.length ? (
