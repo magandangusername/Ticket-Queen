@@ -7,6 +7,7 @@ import Tools from "./Tools";
 import ListingSortBy from "./ListingSortBy";
 import ListingEditTicket from "./ListingEditTicket";
 import ListingNew from "./ListingNew";
+import ListingTicketClone from "./ListingTicketClone";
 import { list } from "postcss";
 
 const ListingTable = () => {
@@ -837,6 +838,7 @@ const ListingTable = () => {
                     />
                 ) : null}
                 <ListingNew concerts={concerts} />
+                <ListingTicketClone />
             </React.StrictMode>
         </>
     );

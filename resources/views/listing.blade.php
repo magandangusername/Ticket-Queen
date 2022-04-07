@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('head')
+<title>Inventory Manager | Listing</title>
+@endsection
+
 @section('content')
     <noscript>Please enable javascript to use this page.</noscript>
 

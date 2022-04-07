@@ -605,6 +605,7 @@ const ListingEditTicket = ({
                                 <button
                                     type="button"
                                     className="btn btn-light float-sm-start"
+                                    data-bs-toggle="modal" data-bs-target="#clone"
                                 >
                                     Clone
                                 </button>
