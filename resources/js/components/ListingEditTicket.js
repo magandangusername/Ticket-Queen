@@ -14,6 +14,8 @@ const ListingEditTicket = ({
     handleTicketEditChange,
     isTicketEditModalVisible,
     ticketEditUpdate,
+    isTicketSaving,
+    successMsg
 }) => {
     return (
         <div className="modal" id="myModal" aria-hidden="true">
@@ -33,6 +35,7 @@ const ListingEditTicket = ({
                                     <b>{ticketEdit[0].ConcertDate}</b>
                                     <br />
                                 </p>
+
                                 <button
                                     type="button"
                                     className="btn-close"
@@ -598,6 +601,7 @@ const ListingEditTicket = ({
                             </div>
                             {/* <!-- Modal footer --> */}
                             <div className="modal-footer">
+                                <p className="text-success">{successMsg}</p>
                                 <button
                                     type="button"
                                     className="btn btn-light float-sm-start"
@@ -614,21 +618,32 @@ const ListingEditTicket = ({
                                 >
                                     Delete
                                 </button>
-                                <button
-                                    type="button"
-                                    className="btn btn-success float-sm-end"
-                                    onClick={() =>
-                                        ticketEditUpdate(
-                                            ticketEdit[0],
-                                            restrictions,
-                                            ticketRestrictionEdit,
-                                            listingNotes,
-                                            ticketListingNoteEdit
-                                        )
-                                    }
-                                >
-                                    Save
-                                </button>
+                                {isTicketSaving ? (
+                                    <button
+                                        type="button"
+                                        className="btn btn-success float-sm-end"
+                                        disabled
+                                    >
+                                        Saving...
+                                    </button>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        className="btn btn-success float-sm-end"
+                                        onClick={() =>
+                                            ticketEditUpdate(
+                                                ticketEdit[0],
+                                                restrictions,
+                                                ticketRestrictionEdit,
+                                                listingNotes,
+                                                ticketListingNoteEdit
+                                            )
+                                        }
+                                    >
+                                        Save
+                                    </button>
+                                )}
+
                                 {/* <p className="float-sm-start">Saving...</p> */}
                                 <button
                                     type="button"

@@ -55,6 +55,8 @@ const ListingTable = () => {
     const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
     const [isTicketEditLoading, setIsTicketEditLoading] = useState(true);
     const [isTicketEditModalVisible, setIsTicketEditModalVisible] = useState(false);
+    const [isTicketSaving, setIsTicketSaving] = useState(false);
+    const [successMsg, setSuccessMsg] = useState(null);
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -294,6 +296,7 @@ const ListingTable = () => {
     const handleTicketEdit = async (id, concert) => {
         try {
             setIsTicketEditLoading(true);
+            setSuccessMsg(null);
             var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
             // editList = [{...editList, concert}];
 
@@ -547,6 +550,7 @@ const ListingTable = () => {
 
     // updates data from ticket edit modal to the database
     const ticketEditUpdate = async (ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) => {
+        setIsTicketSaving(true);
         const ticket = {
             Listing_ID: ticketedit.Listing_ID,
             ConcertID: ticketedit.ConcertID,
@@ -584,6 +588,8 @@ const ListingTable = () => {
             console.log(error.response);
             setFetchError(error.message);
         });
+        setIsTicketSaving(false);
+        setSuccessMsg("Saved");
     }
 
     // update ticket to the database
@@ -826,6 +832,8 @@ const ListingTable = () => {
                         handleTicketEditChange={handleTicketEditChange}
                         isTicketEditModalVisible={isTicketEditModalVisible}
                         ticketEditUpdate={ticketEditUpdate}
+                        isTicketSaving={isTicketSaving}
+                        successMsg={successMsg}
                     />
                 ) : null}
                 <ListingNew concerts={concerts} />

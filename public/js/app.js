@@ -5688,7 +5688,9 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
       setTicketListingNoteEdit = _ref.setTicketListingNoteEdit,
       handleTicketEditChange = _ref.handleTicketEditChange,
       isTicketEditModalVisible = _ref.isTicketEditModalVisible,
-      ticketEditUpdate = _ref.ticketEditUpdate;
+      ticketEditUpdate = _ref.ticketEditUpdate,
+      isTicketSaving = _ref.isTicketSaving,
+      successMsg = _ref.successMsg;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "modal",
     id: "myModal",
@@ -6068,7 +6070,10 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "modal-footer",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              className: "text-success",
+              children: successMsg
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "button",
               className: "btn btn-light float-sm-start",
               children: "Clone"
@@ -6080,7 +6085,12 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                 return handleTicketDelete(ticketEdit[0]);
               },
               children: "Delete"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            }), isTicketSaving ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              type: "button",
+              className: "btn btn-success float-sm-end",
+              disabled: true,
+              children: "Saving..."
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "button",
               className: "btn btn-success float-sm-end",
               onClick: function onClick() {
@@ -6530,7 +6540,17 @@ var ListingTable = function ListingTable() {
   var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
       _useState46 = _slicedToArray(_useState45, 2),
       isTicketEditModalVisible = _useState46[0],
-      setIsTicketEditModalVisible = _useState46[1]; // gets the concert data from the database
+      setIsTicketEditModalVisible = _useState46[1];
+
+  var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState48 = _slicedToArray(_useState47, 2),
+      isTicketSaving = _useState48[0],
+      setIsTicketSaving = _useState48[1];
+
+  var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState50 = _slicedToArray(_useState49, 2),
+      successMsg = _useState50[0],
+      setSuccessMsg = _useState50[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6815,6 +6835,7 @@ var ListingTable = function ListingTable() {
             case 0:
               _context4.prev = 0;
               setIsTicketEditLoading(true);
+              setSuccessMsg(null);
               editList = tickets.filter(function (ticket) {
                 return ticket.Listing_ID === id;
               }); // editList = [{...editList, concert}];
@@ -6843,10 +6864,10 @@ var ListingTable = function ListingTable() {
                 }) : 0;
               });
               setListingNotes(listingnoteset);
-              _context4.next = 12;
+              _context4.next = 13;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/restrictions/" + id);
 
-            case 12:
+            case 13:
               restricts = _context4.sent;
               arrOfObj = restricts.data;
               result = arrOfObj.map(function (el) {
@@ -6855,10 +6876,10 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketRestrictionEdit(result);
-              _context4.next = 18;
+              _context4.next = 19;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/listing_notes/" + id);
 
-            case 18:
+            case 19:
               listnotes = _context4.sent;
               arrOfObj = listnotes.data;
               result = arrOfObj.map(function (el) {
@@ -6867,25 +6888,25 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketListingNoteEdit(result);
-              _context4.next = 27;
+              _context4.next = 28;
               break;
 
-            case 24:
-              _context4.prev = 24;
+            case 25:
+              _context4.prev = 25;
               _context4.t0 = _context4["catch"](0);
               setFetchError(_context4.t0.message);
 
-            case 27:
-              _context4.prev = 27;
+            case 28:
+              _context4.prev = 28;
               setIsTicketEditLoading(false);
-              return _context4.finish(27);
+              return _context4.finish(28);
 
-            case 30:
+            case 31:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[0, 24, 27, 30]]);
+      }, _callee4, null, [[0, 25, 28, 31]]);
     }));
 
     return function handleTicketEdit(_x2, _x3) {
@@ -7202,6 +7223,7 @@ var ListingTable = function ListingTable() {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
+              setIsTicketSaving(true);
               ticket = {
                 Listing_ID: ticketedit.Listing_ID,
                 ConcertID: ticketedit.ConcertID,
@@ -7241,8 +7263,10 @@ var ListingTable = function ListingTable() {
                 console.log(error.response);
                 setFetchError(error.message);
               });
+              setIsTicketSaving(false);
+              setSuccessMsg("Saved");
 
-            case 10:
+            case 13:
             case "end":
               return _context11.stop();
           }
@@ -7490,7 +7514,9 @@ var ListingTable = function ListingTable() {
         setTicketListingNoteEdit: setTicketListingNoteEdit,
         handleTicketEditChange: handleTicketEditChange,
         isTicketEditModalVisible: isTicketEditModalVisible,
-        ticketEditUpdate: ticketEditUpdate
+        ticketEditUpdate: ticketEditUpdate,
+        isTicketSaving: isTicketSaving,
+        successMsg: successMsg
       }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_9__["default"], {
         concerts: concerts
       })]
