@@ -5904,42 +5904,14 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       children: restrictions.map(function (restriction) {
                         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                           className: "form-check",
-                          children: ticketRestrictionEdit.length ? ticketRestrictionEdit.map(function (restrict, index) {
-                            return restrict.Restriction_ID === restriction.Restriction_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                                className: "form-check-input",
-                                type: "checkbox",
-                                id: "restriction".concat(restrict.Restriction_ID),
-                                checked: restrict.isChecked,
-                                onChange: function onChange() {
-                                  return handleTicketEditChange(ticketEdit[0].Listing_ID, restrict.Restriction_ID, "restriction");
-                                }
-                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                                className: "form-check-label",
-                                htmlFor: "restriction".concat(restrict.Restriction_ID),
-                                children: restriction.Restriction
-                              })]
-                            }, restrict.Restriction_ID) : index === ticketRestrictionEdit.length - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                                className: "form-check-input",
-                                type: "checkbox",
-                                id: "restriction".concat(restriction.Restriction_ID),
-                                checked: restriction.isChecked,
-                                onChange: function onChange() {
-                                  return handleTicketEditChange(ticketEdit[0].Listing_ID, restriction.Restriction_ID, "restriction");
-                                }
-                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                                className: "form-check-label",
-                                htmlFor: "restriction".concat(restriction.Restriction_ID),
-                                children: restriction.Restriction
-                              })]
-                            }, restriction.Restriction_ID);
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                          children: ticketRestrictionEdit.length & ticketRestrictionEdit.filter(function (restrict) {
+                            return restrict.Restriction_ID === restriction.Restriction_ID & restrict.isChecked;
+                          }).length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
                             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                               className: "form-check-input",
                               type: "checkbox",
                               id: "restriction".concat(restriction.Restriction_ID),
-                              checked: restriction.isChecked,
+                              checked: true,
                               onChange: function onChange() {
                                 return handleTicketEditChange(ticketEdit[0].Listing_ID, restriction.Restriction_ID, "restriction");
                               }
@@ -5947,9 +5919,25 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                               className: "form-check-label",
                               htmlFor: "restriction".concat(restriction.Restriction_ID),
                               children: restriction.Restriction
-                            }), " "]
-                          }, restriction.Restriction_ID)
-                        }, restriction.Restriction_ID) // && index % 9 === 0 && </div><div className="listboxes col">
+                            })]
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                              className: "form-check-input",
+                              type: "checkbox",
+                              id: "restriction".concat(restriction.Restriction_ID),
+                              checked: restriction.isChecked | ticketRestrictionEdit.filter(function (restrict) {
+                                return restrict.Restriction_ID === restriction.Restriction_ID & restrict.isChecked;
+                              }).length,
+                              onChange: function onChange() {
+                                return handleTicketEditChange(ticketEdit[0].Listing_ID, restriction.Restriction_ID, "restriction");
+                              }
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                              className: "form-check-label",
+                              htmlFor: "restriction".concat(restriction.Restriction_ID),
+                              children: restriction.Restriction
+                            })]
+                          })
+                        }, "r" + restriction.Restriction_ID) // && index % 9 === 0 && </div><div className="listboxes col">
                         ;
                       })
                     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
@@ -5969,42 +5957,14 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       children: listingNotes.map(function (listingNote) {
                         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                           className: "form-check",
-                          children: ticketListingNoteEdit.length ? ticketListingNoteEdit.map(function (listnote) {
-                            return listnote.Listing_note_ID === listingNote.Listing_note_ID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                                className: "form-check-input",
-                                type: "checkbox",
-                                id: "listingnote".concat(listingNote.Listing_note_ID),
-                                checked: listnote.isChecked,
-                                onChange: function onChange() {
-                                  return handleTicketEditChange(ticketEdit[0].Listing_ID, listnote.Listing_note_ID, "listing_note");
-                                }
-                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                                className: "form-check-label",
-                                htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
-                                children: listingNote.Listing_note
-                              })]
-                            }, listingNote.Listing_note_ID) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                                className: "form-check-input",
-                                type: "checkbox",
-                                id: "listingnote".concat(listingNote.Listing_note_ID),
-                                checked: listingNote.isChecked,
-                                onChange: function onChange() {
-                                  return handleTicketEditChange(ticketEdit[0].Listing_ID, listingNote.Listing_note_ID, "listing_note");
-                                }
-                              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                                className: "form-check-label",
-                                htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
-                                children: listingNote.Listing_note
-                              })]
-                            }, listingNote.Listing_note_ID);
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                          children: ticketListingNoteEdit.length & ticketListingNoteEdit.filter(function (listnote) {
+                            return listnote.Listing_note_ID === listingNote.Listing_note_ID & listnote.isChecked;
+                          }).length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
                             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                               className: "form-check-input",
                               type: "checkbox",
                               id: "listingnote".concat(listingNote.Listing_note_ID),
-                              checked: listingNote.isChecked,
+                              checked: true,
                               onChange: function onChange() {
                                 return handleTicketEditChange(ticketEdit[0].Listing_ID, listingNote.Listing_note_ID, "listing_note");
                               }
@@ -6013,8 +5973,24 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                               htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
                               children: listingNote.Listing_note
                             })]
-                          }, listingNote.Listing_note_ID)
-                        }, listingNote.Listing_note_ID);
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                              className: "form-check-input",
+                              type: "checkbox",
+                              id: "listingnote".concat(listingNote.Listing_note_ID),
+                              checked: listingNote.isChecked | ticketListingNoteEdit.filter(function (listnote) {
+                                return listnote.Listing_note_ID === listingNote.Listing_note_ID & listnote.isChecked;
+                              }).length,
+                              onChange: function onChange() {
+                                return handleTicketEditChange(ticketEdit[0].Listing_ID, listingNote.Listing_note_ID, "listing_note");
+                              }
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                              className: "form-check-label",
+                              htmlFor: "listingnote".concat(listingNote.Listing_note_ID),
+                              children: listingNote.Listing_note
+                            })]
+                          }, "l" + listingNote.Listing_note_ID)
+                        }, "l" + listingNote.Listing_note_ID);
                       })
                     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
                       children: "No listing note options available"
@@ -6884,7 +6860,7 @@ var ListingTable = function ListingTable() {
 
             case 18:
               listnotes = _context4.sent;
-              arrOfObj = restricts.data;
+              arrOfObj = listnotes.data;
               result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isChecked = true;
@@ -6944,7 +6920,15 @@ var ListingTable = function ListingTable() {
                       isChecked: !ticketrestrict.isChecked
                     }) : ticketrestrict;
                   });
-                  setTicketRestrictionEdit(ticketRestrictEdit);
+                  setTicketRestrictionEdit(ticketRestrictEdit); // var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
+                  //     ticketrestrict.Restriction_ID === input_id
+                  //         ? {
+                  //               ...ticketrestrict,
+                  //               isChecked: !ticketrestrict.isChecked,
+                  //           }
+                  //         : ticketrestrict
+                  // );
+                  // setRestrictions(ticketRestrictEdit);
                 } else if (len.length === 0) {
                   ticketRestrictEdit = restrictions.map(function (ticketrestrict) {
                     return ticketrestrict.Restriction_ID === input_id ? _objectSpread(_objectSpread({}, ticketrestrict), {}, {

@@ -330,7 +330,7 @@ const ListingTable = () => {
             setTicketRestrictionEdit(result);
 
             const listnotes = await axios.get("/api/listing_notes/" + id);
-            arrOfObj = restricts.data;
+            arrOfObj = listnotes.data;
             result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isChecked = true;
@@ -369,6 +369,15 @@ const ListingTable = () => {
                             : ticketrestrict
                 );
                 setTicketRestrictionEdit(ticketRestrictEdit);
+                // var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
+                //     ticketrestrict.Restriction_ID === input_id
+                //         ? {
+                //               ...ticketrestrict,
+                //               isChecked: !ticketrestrict.isChecked,
+                //           }
+                //         : ticketrestrict
+                // );
+                // setRestrictions(ticketRestrictEdit);
             } else if (len.length === 0) {
                 var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
                     ticketrestrict.Restriction_ID === input_id
@@ -408,6 +417,7 @@ const ListingTable = () => {
                 );
                 setListingNotes(ticketListNoteEdit);
             }
+
         } else if (input_type === "available_tickets") {
             var ticketinput = ticketEdit.map((ticket) =>
                 ticket.Listing_ID === id
