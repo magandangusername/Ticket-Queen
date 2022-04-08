@@ -5690,7 +5690,8 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
       isTicketEditModalVisible = _ref.isTicketEditModalVisible,
       ticketEditUpdate = _ref.ticketEditUpdate,
       isTicketSaving = _ref.isTicketSaving,
-      successMsg = _ref.successMsg;
+      successMsg = _ref.successMsg,
+      setTicketClone = _ref.setTicketClone;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "modal",
     id: "myModal",
@@ -6554,7 +6555,12 @@ var ListingTable = function ListingTable() {
   var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
       _useState50 = _slicedToArray(_useState49, 2),
       successMsg = _useState50[0],
-      setSuccessMsg = _useState50[1]; // gets the concert data from the database
+      setSuccessMsg = _useState50[1];
+
+  var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
+      _useState52 = _slicedToArray(_useState51, 2),
+      ticketClone = _useState52[0],
+      setTicketClone = _useState52[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6856,6 +6862,7 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketEdit(result);
+              setTicketClone(result);
               restrictionset = restrictions.map(function (restriction) {
                 return  true ? _objectSpread(_objectSpread({}, restriction), {}, {
                   isChecked: false
@@ -6868,10 +6875,10 @@ var ListingTable = function ListingTable() {
                 }) : 0;
               });
               setListingNotes(listingnoteset);
-              _context4.next = 13;
+              _context4.next = 14;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/restrictions/" + id);
 
-            case 13:
+            case 14:
               restricts = _context4.sent;
               arrOfObj = restricts.data;
               result = arrOfObj.map(function (el) {
@@ -6880,10 +6887,10 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketRestrictionEdit(result);
-              _context4.next = 19;
+              _context4.next = 20;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/listing_notes/" + id);
 
-            case 19:
+            case 20:
               listnotes = _context4.sent;
               arrOfObj = listnotes.data;
               result = arrOfObj.map(function (el) {
@@ -6892,25 +6899,25 @@ var ListingTable = function ListingTable() {
                 return o;
               });
               setTicketListingNoteEdit(result);
-              _context4.next = 28;
+              _context4.next = 29;
               break;
 
-            case 25:
-              _context4.prev = 25;
+            case 26:
+              _context4.prev = 26;
               _context4.t0 = _context4["catch"](0);
               setFetchError(_context4.t0.message);
 
-            case 28:
-              _context4.prev = 28;
+            case 29:
+              _context4.prev = 29;
               setIsTicketEditLoading(false);
-              return _context4.finish(28);
+              return _context4.finish(29);
 
-            case 31:
+            case 32:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[0, 25, 28, 31]]);
+      }, _callee4, null, [[0, 26, 29, 32]]);
     }));
 
     return function handleTicketEdit(_x2, _x3) {
@@ -7217,15 +7224,72 @@ var ListingTable = function ListingTable() {
     return function handleTicketPublishChange(_x15) {
       return _ref10.apply(this, arguments);
     };
+  }(); // change the values of cloned tickets
+
+
+  var handleTicketCloneEdit = /*#__PURE__*/function () {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(val, index, input) {
+      var ticketclones;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              ticketclones = ticketClone;
+
+              if (input === 'Section') {
+                ticketclones = ticketClone.map(function (clone, cloneindex) {
+                  return cloneindex === index ? _objectSpread(_objectSpread({}, clone), {}, {
+                    Section: val
+                  }) : clone;
+                });
+              } else if (input === 'Row') {
+                ticketclones = ticketClone.map(function (clone, cloneindex) {
+                  return cloneindex === index ? _objectSpread(_objectSpread({}, clone), {}, {
+                    Row: val
+                  }) : clone;
+                });
+              } else if (input === 'Seats') {
+                ticketclones = ticketClone.map(function (clone, cloneindex) {
+                  return cloneindex === index ? _objectSpread(_objectSpread({}, clone), {}, {
+                    Seats: val
+                  }) : clone;
+                });
+              } else if (input === 'Price') {
+                ticketclones = ticketClone.map(function (clone, cloneindex) {
+                  return cloneindex === index ? _objectSpread(_objectSpread({}, clone), {}, {
+                    Price: val
+                  }) : clone;
+                });
+              } else if (input === 'Available_Tickets') {
+                ticketclones = ticketClone.map(function (clone, cloneindex) {
+                  return cloneindex === index ? _objectSpread(_objectSpread({}, clone), {}, {
+                    Available_Tickets: val
+                  }) : clone;
+                });
+              }
+
+              setTicketClone(ticketclones);
+
+            case 3:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }));
+
+    return function handleTicketCloneEdit(_x16, _x17, _x18) {
+      return _ref11.apply(this, arguments);
+    };
   }(); // updates data from ticket edit modal to the database
 
 
   var ticketEditUpdate = /*#__PURE__*/function () {
-    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
       var ticket, request;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
         while (1) {
-          switch (_context11.prev = _context11.next) {
+          switch (_context12.prev = _context12.next) {
             case 0:
               setIsTicketSaving(true);
               ticket = {
@@ -7272,24 +7336,47 @@ var ListingTable = function ListingTable() {
 
             case 13:
             case "end":
-              return _context11.stop();
+              return _context12.stop();
           }
         }
-      }, _callee11);
+      }, _callee12);
     }));
 
-    return function ticketEditUpdate(_x16, _x17, _x18, _x19, _x20) {
-      return _ref11.apply(this, arguments);
+    return function ticketEditUpdate(_x19, _x20, _x21, _x22, _x23) {
+      return _ref12.apply(this, arguments);
+    };
+  }();
+
+  var handleTicketCloneUpdate = /*#__PURE__*/function () {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              setIsTicketSaving(true);
+              setIsTicketSaving(false);
+              setSuccessMsg("Saved");
+
+            case 3:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13);
+    }));
+
+    return function handleTicketCloneUpdate() {
+      return _ref13.apply(this, arguments);
     };
   }(); // update ticket to the database
 
 
   var ticketUpdate = /*#__PURE__*/function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(ticket) {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(ticket) {
       var ticket_info;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
         while (1) {
-          switch (_context12.prev = _context12.next) {
+          switch (_context14.prev = _context14.next) {
             case 0:
               ticket_info = {
                 Listing_ID: ticket[0].Listing_ID,
@@ -7312,24 +7399,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context12.stop();
+              return _context14.stop();
           }
         }
-      }, _callee12);
+      }, _callee14);
     }));
 
-    return function ticketUpdate(_x21) {
-      return _ref12.apply(this, arguments);
+    return function ticketUpdate(_x24) {
+      return _ref14.apply(this, arguments);
     };
   }(); // for deleting ticket
 
 
   var handleTicketDelete = /*#__PURE__*/function () {
-    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(ticket) {
+    var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15(ticket) {
       var ticket_info, newtickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
         while (1) {
-          switch (_context13.prev = _context13.next) {
+          switch (_context15.prev = _context15.next) {
             case 0:
               ticket_info = {
                 Listing_ID: ticket.Listing_ID,
@@ -7356,14 +7443,14 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context13.stop();
+              return _context15.stop();
           }
         }
-      }, _callee13);
+      }, _callee15);
     }));
 
-    return function handleTicketDelete(_x22) {
-      return _ref13.apply(this, arguments);
+    return function handleTicketDelete(_x25) {
+      return _ref15.apply(this, arguments);
     };
   }(); // This is the display code
 
@@ -7520,10 +7607,16 @@ var ListingTable = function ListingTable() {
         isTicketEditModalVisible: isTicketEditModalVisible,
         ticketEditUpdate: ticketEditUpdate,
         isTicketSaving: isTicketSaving,
-        successMsg: successMsg
+        successMsg: successMsg,
+        setTicketClone: setTicketClone
       }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_9__["default"], {
         concerts: concerts
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_ListingTicketClone__WEBPACK_IMPORTED_MODULE_10__["default"], {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_ListingTicketClone__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        ticketClone: ticketClone,
+        setTicketClone: setTicketClone,
+        isTicketEditLoading: isTicketEditLoading,
+        handleTicketCloneEdit: handleTicketCloneEdit
+      })]
     })
   });
 };
@@ -7548,165 +7641,200 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dateformat */ "./node_modules/dateformat/lib/dateformat.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
 
-var ListingTicketClone = function ListingTicketClone() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+
+
+
+var ListingTicketClone = function ListingTicketClone(_ref) {
+  var ticketClone = _ref.ticketClone,
+      setTicketClone = _ref.setTicketClone,
+      isTicketEditLoading = _ref.isTicketEditLoading,
+      handleTicketCloneEdit = _ref.handleTicketCloneEdit;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "modal fade container-fluid",
     id: "clone",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "modal-dialog modal-lg",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "modal-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-header p-2",
-          style: {
-            background: "#424549",
-            color: "#edf6ff"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-              className: "modal-title",
-              children: "Clone Listing"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn-close",
-            "data-bs-dismiss": "modal"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "form-group modal-body m-1 p-3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              className: "fa-solid fa-circle-info"
-            }), "By cloning this listing you are confirming that all information provided about the listings you want to create, except the fields you explicitly change, are the same."]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-            children: "Stereophonics"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
-              children: "Friday, 01 April 2022"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "The O2, London, United Kingdom"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("table", {
-            className: "container form bg-light text-dark border",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Section"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Row"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Seat From"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Seat To"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Website Price"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Proceeds"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-                  children: "Available Ticket"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {})]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-                className: "p-2",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-                    className: "form-control",
-                    id: "exampleFormControlSelect1",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                      className: "fa-regular fa-chevron-down"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      selected: true,
-                      children: "Choose one"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "Lounge"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "417"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "Lower Tier"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "Upper Tier"
+        children: isTicketEditLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "Loading data..."
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "modal-header p-2",
+            style: {
+              background: "#424549",
+              color: "#edf6ff"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("b", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
+                className: "modal-title",
+                children: "Clone Listing"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              type: "button",
+              className: "btn-close",
+              "data-bs-dismiss": "modal"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "form-group modal-body m-1 p-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+                className: "fa-solid fa-circle-info"
+              }), "By cloning this listing you are confirming that all information provided about the listings you want to create, except the fields you explicitly change, are the same."]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
+              children: ticketClone[0].ConcertName
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("b", {
+                children: (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(ticketClone[0].ConcertDate, "dddd, dd mmmm yyyy")
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), ticketClone[0].Location]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+              className: "container form bg-light text-dark border",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Section"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Row"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Seat From"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Seat To"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Website Price"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Proceeds"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                    children: "Available Ticket"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {})]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+                children: ticketClone.map(function (clone, index) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+                    className: "p-2",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        className: "form-control",
+                        type: "text",
+                        value: clone.Section,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Section');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        className: "form-control",
+                        type: "text",
+                        value: clone.Row,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Row');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        type: "seatfrom",
+                        className: "form-control",
+                        id: "exampleFormControlInput1",
+                        value: clone.Seats,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Seats');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        type: "seatto",
+                        className: "form-control",
+                        id: "exampleFormControlInput1",
+                        value: clone.Seats,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Seats');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        type: "webprice",
+                        className: "form-control",
+                        id: "exampleFormControlInput1",
+                        value: clone.Price,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Price');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        type: "proceeds",
+                        className: "form-control",
+                        id: "exampleFormControlInput1",
+                        value: clone.Price,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Price');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                        type: "availtick",
+                        className: "form-control",
+                        id: "exampleFormControlInput1",
+                        value: clone.Available_Tickets,
+                        onChange: function onChange(e) {
+                          return handleTicketCloneEdit(e.target.value, index, 'Available_Tickets');
+                        }
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                      className: "text-justify",
+                      children: index ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+                        className: "fa text-danger fa-times-circle",
+                        "aria-hidden": "true",
+                        onClick: function onClick() {
+                          return setTicketClone(ticketClone.filter(function (ticket, ticketindex) {
+                            return ticketindex !== index;
+                          }));
+                        }
+                      }) : null
                     })]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-                    className: "form-control",
-                    id: "exampleFormControlSelect1",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "A"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "B"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      selected: true,
-                      children: "P"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "C"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                      children: "D"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                      className: "fa-regular fa-chevron-down"
-                    })]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "seatfrom",
-                    className: "form-control",
-                    id: "exampleFormControlInput1"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "seatto",
-                    className: "form-control",
-                    id: "exampleFormControlInput1"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "webprice",
-                    className: "form-control",
-                    id: "exampleFormControlInput1"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "proceeds",
-                    className: "form-control",
-                    id: "exampleFormControlInput1"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                    type: "availtick",
-                    className: "form-control",
-                    id: "exampleFormControlInput1"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                  className: "text-justify",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                    className: "fa text-danger fa-times-circle",
-                    "aria-hidden": "true"
-                  })
-                })]
+                  }, index);
+                })
               })]
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-footer m-1 p-2 justify-content-between",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            type: "button",
-            className: "btn btn-light",
-            children: "+ Add another clone"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "modal-footer m-1 p-2 justify-content-between",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               type: "button",
               className: "btn btn-light",
-              children: "Save"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-              type: "button",
-              className: "btn btn-secondary",
-              "data-bs-dismiss": "modal",
-              children: "Cancel"
+              onClick: function onClick() {
+                return setTicketClone([].concat(_toConsumableArray(ticketClone), [ticketClone[ticketClone.length - 1]]));
+              },
+              children: "+ Add another clone"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                type: "button",
+                className: "btn btn-light",
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                type: "button",
+                className: "btn btn-secondary",
+                "data-bs-dismiss": "modal",
+                children: "Cancel"
+              })]
             })]
           })]
-        })]
+        })
       })
     })
   });

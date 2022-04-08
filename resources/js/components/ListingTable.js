@@ -58,6 +58,7 @@ const ListingTable = () => {
     const [isTicketEditModalVisible, setIsTicketEditModalVisible] = useState(false);
     const [isTicketSaving, setIsTicketSaving] = useState(false);
     const [successMsg, setSuccessMsg] = useState(null);
+    const [ticketClone, setTicketClone] = useState([]);
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -315,6 +316,7 @@ const ListingTable = () => {
             });
 
             setTicketEdit(result);
+            setTicketClone(result);
 
             const restrictionset = restrictions.map((restriction) => true ? {...restriction, isChecked: false} : restriction);
 
@@ -341,6 +343,7 @@ const ListingTable = () => {
                 return o;
             });
             setTicketListingNoteEdit(result);
+
         } catch (error) {
             setFetchError(error.message);
         } finally {
@@ -549,6 +552,24 @@ const ListingTable = () => {
         ticketUpdate(ticket);
     };
 
+    // change the values of cloned tickets
+    const handleTicketCloneEdit = async (val, index, input) => {
+        var ticketclones = ticketClone
+        if(input === 'Section') {
+            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Section: val}: clone)
+        } else if(input === 'Row') {
+            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Row: val}: clone)
+        } else if(input === 'Seats') {
+            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Seats: val}: clone)
+        } else if(input === 'Price') {
+            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Price: val}: clone)
+        } else if(input === 'Available_Tickets') {
+            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Available_Tickets: val}: clone)
+        }
+        setTicketClone(ticketclones);
+
+    }
+
     // updates data from ticket edit modal to the database
     const ticketEditUpdate = async (ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) => {
         setIsTicketSaving(true);
@@ -589,6 +610,15 @@ const ListingTable = () => {
             console.log(error.response);
             setFetchError(error.message);
         });
+        setIsTicketSaving(false);
+        setSuccessMsg("Saved");
+    }
+
+    const handleTicketCloneUpdate = async () => {
+        setIsTicketSaving(true);
+
+
+
         setIsTicketSaving(false);
         setSuccessMsg("Saved");
     }
@@ -835,10 +865,16 @@ const ListingTable = () => {
                         ticketEditUpdate={ticketEditUpdate}
                         isTicketSaving={isTicketSaving}
                         successMsg={successMsg}
+                        setTicketClone={setTicketClone}
                     />
                 ) : null}
                 <ListingNew concerts={concerts} />
-                <ListingTicketClone />
+                <ListingTicketClone
+                ticketClone={ticketClone}
+                setTicketClone={setTicketClone}
+                isTicketEditLoading={isTicketEditLoading}
+                handleTicketCloneEdit={handleTicketCloneEdit}
+                />
             </React.StrictMode>
         </>
     );
