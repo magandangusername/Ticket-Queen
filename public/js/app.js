@@ -7457,7 +7457,7 @@ var ListingTable = function ListingTable() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, {
-      children: [isConcertsLoading & isTicketsLoading & isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("table", {
+      children: [isConcertsLoading & isTicketsLoading & isRestrictionsLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("table", {
         className: "",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("thead", {
           className: "w-auto position-absolute top-50 start-50 translate-middle",
@@ -7483,7 +7483,7 @@ var ListingTable = function ListingTable() {
             })]
           })
         })
-      }), fetchError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("table", {
+      }) : null, fetchError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("table", {
         className: "table",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("thead", {
           className: "w-50 justify-content-center",
@@ -7512,7 +7512,7 @@ var ListingTable = function ListingTable() {
             })
           })
         })
-      }), !fetchError & !isConcertsLoading & !isTicketsLoading & !isRestrictionsLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+      }) : null, !fetchError & !isConcertsLoading & !isTicketsLoading & !isRestrictionsLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_7__["default"], {
           sortAllListing: sortAllListing,
           sortEligibleLastMinuteSales: sortEligibleLastMinuteSales,
@@ -7592,7 +7592,7 @@ var ListingTable = function ListingTable() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
           visible: visible
         })]
-      }), ticketEdit.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_ListingEditTicket__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }) : null, ticketEdit.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_ListingEditTicket__WEBPACK_IMPORTED_MODULE_8__["default"], {
         ticketEdit: ticketEdit,
         restrictions: restrictions,
         listingNotes: listingNotes,
