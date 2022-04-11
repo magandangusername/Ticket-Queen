@@ -6,6 +6,8 @@ const ListingTicketClone = ({
     setTicketClone,
     isTicketEditLoading,
     handleTicketCloneEdit,
+    isTicketSaving,
+    handleTicketCloneUpdate
 }) => {
     return (
         <div className="modal fade container-fluid" id="clone">
@@ -91,8 +93,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         type="text"
                                                         value={clone.Section}
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Section')}
-
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Section"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
                                                 <td>
@@ -112,7 +119,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         type="text"
                                                         value={clone.Row}
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Row')}
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Row"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
 
@@ -122,7 +135,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
                                                         value={clone.Seats}
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Seats')}
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Seats"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
                                                 <td>
@@ -131,7 +150,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
                                                         value={clone.Seats}
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Seats')}
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Seats"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
                                                 <td>
@@ -140,7 +165,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
                                                         value={clone.Price}
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Price')}
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Price"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
                                                 <td>
@@ -149,7 +180,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
                                                         value={clone.Price}
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Price')}
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Price"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
                                                 <td>
@@ -160,7 +197,13 @@ const ListingTicketClone = ({
                                                         value={
                                                             clone.Available_Tickets
                                                         }
-                                                        onChange={(e)=>handleTicketCloneEdit(e.target.value, index, 'Available_Tickets')}
+                                                        onChange={(e) =>
+                                                            handleTicketCloneEdit(
+                                                                e.target.value,
+                                                                index,
+                                                                "Available_Tickets"
+                                                            )
+                                                        }
                                                     />
                                                 </td>
                                                 <td className="text-justify">
@@ -168,7 +211,18 @@ const ListingTicketClone = ({
                                                         <i
                                                             className="fa text-danger fa-times-circle"
                                                             aria-hidden="true"
-                                                            onClick={()=>setTicketClone(ticketClone.filter((ticket, ticketindex)=>ticketindex !== index))}
+                                                            onClick={() =>
+                                                                setTicketClone(
+                                                                    ticketClone.filter(
+                                                                        (
+                                                                            ticket,
+                                                                            ticketindex
+                                                                        ) =>
+                                                                            ticketindex !==
+                                                                            index
+                                                                    )
+                                                                )
+                                                            }
                                                         ></i>
                                                     ) : null}
                                                 </td>
@@ -185,19 +239,35 @@ const ListingTicketClone = ({
                                     onClick={() =>
                                         setTicketClone([
                                             ...ticketClone,
-                                            ticketClone[ticketClone.length - 1]
+                                            ticketClone[ticketClone.length - 1],
                                         ])
                                     }
                                 >
                                     + Add another clone
                                 </button>
                                 <div>
-                                    <button
-                                        type="button"
-                                        className="btn btn-light"
-                                    >
-                                        Save
-                                    </button>
+                                    {isTicketSaving ? (
+                                        <button
+                                            type="button"
+                                            className="btn btn-success"
+                                            disabled
+                                        >
+                                            Saving...
+                                        </button>
+                                    ) : (
+                                        <button
+                                            type="button"
+                                            className="btn btn-success"
+                                            data-bs-dismiss="modal"
+                                            onClick={() =>
+                                                handleTicketCloneUpdate(
+
+                                                )
+                                            }
+                                        >
+                                            Save
+                                        </button>
+                                    )}
 
                                     <button
                                         type="button"

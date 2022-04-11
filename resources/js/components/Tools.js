@@ -1,9 +1,6 @@
-import React, { useState, Component } from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ListingDelete from "./ListingDelete";
+import React from "react";
 
-const Tools = ({visible}) => {
+const Tools = ({visible, handleTicketDeleteSelected}) => {
 
     return (
         <>
@@ -32,6 +29,7 @@ const Tools = ({visible}) => {
                             <a
                                 className="text-decoration-none col tools"
                                 href=""
+                                onClick={(e)=> {handleTicketDeleteSelected(); e.preventDefault()}}
                             >
                                 Delete All Selected
                             </a>

@@ -16,7 +16,7 @@ const ListingEditTicket = ({
     ticketEditUpdate,
     isTicketSaving,
     successMsg,
-    setTicketClone
+    setTicketClone,
 }) => {
     return (
         <div className="modal" id="myModal" aria-hidden="true">
@@ -606,18 +606,17 @@ const ListingEditTicket = ({
                                 <button
                                     type="button"
                                     className="btn btn-light float-sm-start"
-                                    data-bs-toggle="modal" data-bs-target="#clone"
-
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#clone"
                                 >
                                     Clone
                                 </button>
                                 <button
                                     type="button"
                                     className="btn btn-danger float-sm-start"
-                                    data-bs-dismiss="modal"
-                                    onClick={() =>
-                                        handleTicketDelete(ticketEdit[0])
-                                    }
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#delete"
+
                                 >
                                     Delete
                                 </button>

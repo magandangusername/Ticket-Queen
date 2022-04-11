@@ -125,11 +125,11 @@ const ListingConcerts = ({
                         </thead>
 
                         {tickets.length ? (
-                            <tbody>
-                                {tickets.map((ticket) =>
+                            <tbody id="ticket">
+                                {tickets.map((ticket, index) =>
                                     ticket.ConcertID === concert.ConcertID ? (
                                         <ListingTickets
-                                            key={ticket.Listing_ID}
+                                            key={index}
                                             ticket={ticket}
                                             concert={concert}
                                             handleCheck={handleCheck}

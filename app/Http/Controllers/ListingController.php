@@ -11,7 +11,7 @@ use App\Models\queenticketeventdetails;
 use App\Models\Restrictions;
 use App\Models\listing_notes;
 use App\Models\ticket_restriction_listing;
-
+use ArrayObject;
 
 class ListingController extends Controller
 {
@@ -63,7 +63,7 @@ class ListingController extends Controller
 
         //    return view('listing',['queenticketeventinfo'=>$data]);
         // return view('listing',compact('data'));
-        return \view('listing', ['data' => $data, 'data2' => $data2]);
+        return view('listing', ['data' => $data, 'data2' => $data2]);
     }
 
     /**
@@ -189,6 +189,29 @@ class ListingController extends Controller
         ]);
 
         $ticket = queenticketeventdetails::where('Listing_ID', $validatedData['Listing_ID'])->delete();
+        ticket_restriction_listing::where('Listing_ID', $validatedData['Listing_ID'])->delete();
+    }
+
+    public function deletedSelected(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.Listing_ID' => 'required',
+            '0.ConcertID' => 'required',
+            '0.Section' => 'required',
+            '0.Row' => 'nullable',
+            '0.Seats' => 'nullable',
+            '0.Ticket_Type' => 'required',
+            '0.Price' => 'required|numeric',
+            '0.Available_Tickets' => 'required',
+            '0.Ticket_Sold' => 'required|numeric',
+            '0.Expiration' => 'required',
+            '0.status' => 'required'
+        ]);
+
+        foreach ($request->all() as $key => $value) {
+            queenticketeventdetails::where('Listing_ID', $value['Listing_ID'])->delete();
+            ticket_restriction_listing::where('Listing_ID', $value['Listing_ID'])->delete();
+        }
     }
 
     public function deleteTicket(Request $request)
@@ -252,5 +275,159 @@ class ListingController extends Controller
             ->where('ticket_restriction_listings.Listing_ID', '=', $id)->get();
 
         return $listing_notes->toJson();
+    }
+
+    public function clone(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.0.Listing_ID' => 'required',
+            '0.0.ConcertID' => 'required',
+            '0.0.Section' => 'required',
+            '0.0.Row' => 'nullable',
+            '0.0.Seats' => 'nullable',
+            '0.0.Ticket_Type' => 'required',
+            '0.0.Price' => 'required|numeric',
+            '0.0.Available_Tickets' => 'required',
+            '0.0.Ticket_Sold' => 'required|numeric',
+            '0.0.Expiration' => 'required',
+            '0.0.status' => 'required'
+        ]);
+
+        foreach ($request[0] as $key => $value) {
+
+            $ticket = queenticketeventdetails::create([
+                'ConcertID' => $value['ConcertID'],
+                'Section' => $value['Section'],
+                'Row' => $value['Row'],
+                'Seats' => $value['Seats'],
+                'Ticket_Type' => $value['Ticket_Type'],
+                'Price' => $value['Price'],
+                'Available_Tickets' => $value['Available_Tickets'],
+                'Expiration' => $value['Expiration'],
+                'status' => $value['status']
+            ]);
+
+            $listingid = queenticketeventdetails::latest('created_at')->first();
+
+            foreach ($request[1] as $key => $value) {
+                $restrictioncreate = ticket_restriction_listing::create([
+                    "Listing_ID" => $listingid->Listing_ID,
+                    "Restriction_ID" => $value["Restriction_ID"]
+                ]);
+            }
+
+            foreach ($request[2] as $key => $value) {
+                // return $value;
+                $restrictioncreate = ticket_restriction_listing::create([
+                    "Listing_ID" => $listingid->Listing_ID,
+                    "Listing_note_ID" => $value["Listing_note_ID"]
+                ]);
+            }
+        }
+    }
+
+    public function publishselect(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.Listing_ID' => 'required',
+            '0.ConcertID' => 'required',
+            '0.Section' => 'required',
+            '0.Row' => 'nullable',
+            '0.Seats' => 'nullable',
+            '0.Ticket_Type' => 'required',
+            '0.Price' => 'required|numeric',
+            '0.Available_Tickets' => 'required',
+            '0.Ticket_Sold' => 'required|numeric',
+            '0.Expiration' => 'required',
+            '0.status' => 'required'
+        ]);
+
+        foreach ($request->all() as $key => $value) {
+            queenticketeventdetails::where('Listing_ID', $value['Listing_ID'])->update([
+                'status' => 'active'
+            ]);
+        }
+    }
+
+    public function unpublishselect(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.Listing_ID' => 'required',
+            '0.ConcertID' => 'required',
+            '0.Section' => 'required',
+            '0.Row' => 'nullable',
+            '0.Seats' => 'nullable',
+            '0.Ticket_Type' => 'required',
+            '0.Price' => 'required|numeric',
+            '0.Available_Tickets' => 'required',
+            '0.Ticket_Sold' => 'required|numeric',
+            '0.Expiration' => 'required',
+            '0.status' => 'required'
+        ]);
+
+        foreach ($request->all() as $key => $value) {
+            queenticketeventdetails::where('Listing_ID', $value['Listing_ID'])->update([
+                'status' => 'disabled'
+            ]);
+        }
+    }
+
+    public function topaperselect(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.Listing_ID' => 'required',
+            '0.ConcertID' => 'required',
+            '0.Section' => 'required',
+            '0.Row' => 'nullable',
+            '0.Seats' => 'nullable',
+            '0.Ticket_Type' => 'required',
+            '0.Price' => 'required|numeric',
+            '0.Available_Tickets' => 'required',
+            '0.Ticket_Sold' => 'required|numeric',
+            '0.Expiration' => 'required',
+            '0.status' => 'required'
+        ]);
+
+        foreach ($request->all() as $key => $value) {
+            queenticketeventdetails::where('Listing_ID', $value['Listing_ID'])->update([
+                'Ticket_Type' => 'Paper Ticket'
+            ]);
+        }
+    }
+
+    public function toeselect(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.Listing_ID' => 'required',
+            '0.ConcertID' => 'required',
+            '0.Section' => 'required',
+            '0.Row' => 'nullable',
+            '0.Seats' => 'nullable',
+            '0.Ticket_Type' => 'required',
+            '0.Price' => 'required|numeric',
+            '0.Available_Tickets' => 'required',
+            '0.Ticket_Sold' => 'required|numeric',
+            '0.Expiration' => 'required',
+            '0.status' => 'required'
+        ]);
+
+        foreach ($request->all() as $key => $value) {
+            queenticketeventdetails::where('Listing_ID', $value['Listing_ID'])->update([
+                'Ticket_Type' => 'E-Ticket'
+            ]);
+        }
+    }
+
+    public function createconcert(Request $request)
+    {
+        $validatedData = $request->validate([
+            'ConcertName' => 'required',
+            'Location' => 'required'
+        ]);
+
+        queenticketeventinfo::create([
+            'ConcertName' => $validatedData['ConcertName'],
+            'Location' => $validatedData['Location']
+        ]);
     }
 }

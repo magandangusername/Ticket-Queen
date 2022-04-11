@@ -8,6 +8,9 @@ import ListingSortBy from "./ListingSortBy";
 import ListingEditTicket from "./ListingEditTicket";
 import ListingNew from "./ListingNew";
 import ListingTicketClone from "./ListingTicketClone";
+import ListingTicketTypes from "./ListingTicketTypes";
+import ListingDeletePrompt from "./ListingDeletePrompt";
+import ListingNewListing from "./ListingNewListing";
 import { list } from "postcss";
 
 const ListingTable = () => {
@@ -55,16 +58,20 @@ const ListingTable = () => {
     const [listingNotes, setListingNotes] = useState([]);
     const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
     const [isTicketEditLoading, setIsTicketEditLoading] = useState(true);
-    const [isTicketEditModalVisible, setIsTicketEditModalVisible] = useState(false);
+    const [isTicketEditModalVisible, setIsTicketEditModalVisible] =
+        useState(false);
     const [isTicketSaving, setIsTicketSaving] = useState(false);
     const [successMsg, setSuccessMsg] = useState(null);
     const [ticketClone, setTicketClone] = useState([]);
+    const [createConcert, setCreateConcert] = useState({
+        ConcertName: "",
+        Location: "",
+    });
 
     // gets the concert data from the database
     const fetchConcert = async () => {
         try {
             const response = await axios.get("/api/concerts");
-            setConcerts(response.data);
 
             var arrOfObj = response.data;
 
@@ -87,7 +94,6 @@ const ListingTable = () => {
     const fetchTicket = async () => {
         try {
             const response = await axios.get("/api/tickets");
-            setTickets(response.data);
 
             var arrOfObj = response.data;
 
@@ -142,6 +148,7 @@ const ListingTable = () => {
         // handleSort();
     }, []);
 
+
     // displays the tool when one or more tickets are selected
     useEffect(() => {
         const selected = tickets.filter((ticket) => ticket.isSelected === true);
@@ -152,8 +159,15 @@ const ListingTable = () => {
         // console.log(tickets);
     }, [tickets]);
 
+    // for logging only in the console
+    useEffect(() => {
+        console.log(sort);
+    }, [sort]);
+
+
     // sorting options interaction
     useEffect(() => {
+        var filter = [];
         if (
             sortEligibleLastMinuteSalesActive ||
             sortActiveActive ||
@@ -166,21 +180,37 @@ const ListingTable = () => {
             !sortInactiveActive
         )
             setSortAllListingActive(true);
-        // else if (sortAllListingActive) {
-        //     setSortAllListingActive(false);
+
+        // prevents duplicates but idk if it works
+        // if(!sortActiveActive) {
+        //     filter = sort.filter((remove) => remove.status != "active")
+        // }
+        // if(!sortInactiveActive) {
+        //     filter = sort.filter((remove) => remove.status != "expired")
         // }
 
-        // console.log(sortEligibleLastMinuteSales);
-        // console.log(sortActive);
-        // console.log(sortInactive);
-        // console.log(sortAllListing);
+        // var activecombinedList = [];
+        // var inactivecombinedList = [];
+        // if (sortActiveActive) {
+        //     const activeList = concerts.filter(
+        //         (concert) => concert.status === "active"
+        //     );
+        //     activecombinedList = [...new Set([...activeList ,...filter])];
+        // }
+        // if (sortInactiveActive) {
+        //     const inactiveList = concerts.filter(
+        //         (concert) => concert.status === "expired"
+        //     );
+        //     inactivecombinedList = [...new Set([...inactiveList ,...filter])];
 
-        // handleSort();
+        // }
+
+        // setSort([...new Set([...activecombinedList, ...inactivecombinedList])]);
     }, [
         sortEligibleLastMinuteSalesActive,
         sortActiveActive,
         sortInactiveActive,
-        sortAllListingActive,
+        // sortAllListingActive,
     ]);
 
     // sorting options interaction
@@ -189,99 +219,39 @@ const ListingTable = () => {
             setSortEligibleLastMinuteSalesActive(false);
             setSortActiveActive(false);
             setSortInactiveActive(false);
-            console.log("all active effect");
+            handleAllListing();
+            // console.log("all active effect");
         }
     }, [sortAllListingActive]);
 
-    // useEffect(() => {
-    //     //sorting
 
-    //     if (sortAllListingActive) {
-    //         setSortAllListing(concerts);
-    //     } else {
-    //         setSortAllListing([]);
-    //     }
-    //     if (sortInactiveActive) {
-    //         const inactiveList = concerts.filter(
-    //             (concert) => concert.status === "expired"
-    //         );
-    //         setSortInactive(inactiveList);
-    //     } else {
-    //         setSortInactive([]);
-    //     }
-    //     if (sortActiveActive) {
-    //         const activeList = concerts.filter(
-    //             (concert) => concert.status === "active"
-    //         );
-    //         setSortActive(activeList);
-    //     } else {
-    //         setSortActive([]);
-    //     }
 
-    //     // console.log(sortAllListing);
-    //     // console.log(sortActive);
-    //     // console.log(sortInactive);
+    // for sorting to active listing
+    const handleSortActiveListing = async (filter) => {
+        const activeList = concerts.filter(
+            (concert) => concert.status === "active"
+        );
+        const combinedList = [...new Set([...activeList ,...filter])];
+        setSort(combinedList);
+        // console.log(combinedList);
+    };
 
-    //     handleSort();
-    //     // console.log("combined active effect");
-    // }, [
-    //     sortEligibleLastMinuteSalesActive,
-    //     sortActiveActive,
-    //     sortInactiveActive,
-    //     sortAllListingActive,
-    //     concerts,
-    // ]);
+    // for sorting to inactive listing
+    const handleSortInactiveListing = async (filter) => {
+        const activeList = concerts.filter(
+            (concert) => concert.status === "expired"
+        );
+        const combinedList = [...new Set([...activeList ,...filter])];
+        setSort(combinedList);
+        // console.log(combinedList);
+    };
 
-    // useEffect(() => {
-    //     console.log(sort);
-    // }, [sort]);
-
-    // const handleSort = () => {
-    //     var al;
-    //     var merged;
-    //     var merged2;
-    //     if (sortActiveActive) {
-    //         al = new Set(sort.map((x) => x.ConcertID));
-    //         merged = [
-    //             ...sort,
-    //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
-    //         ];
-    //         // console.log(merged);
-    //         setSort(merged);
-    //     }
-
-    //     // var al = new Set(sortAllListing.map((x) => x.ConcertID));
-    //     // var merged = [
-    //     //     ...sortAllListing,
-    //     //     ...sortInactive.filter((x) => !al.has(x.ConcertID)),
-    //     // ];
-
-    //     if (sortInactiveActive) {
-    //         al = new Set(sort.map((x) => x.ConcertID));
-    //         vmerged2 = [
-    //             ...sort,
-    //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
-    //         ];
-    //         // console.log(merged);
-    //         setSort(merged2);
-    //     }
-
-    //     if(sortAllListingActive) {
-
-    //         setSort(concerts);
-    //     }
-    //     // var al = new Set(merged.map((x) => x.ConcertID));
-    //     // var merged2 = [
-    //     //     ...merged,
-    //     //     ...sortActive.filter((x) => !al.has(x.ConcertID)),
-    //     // ];
-
-    //     // setSort(merged2);
-    // };
-
-    // useEffect(() => {
-    //   console.log(ticketEdit)
-    // }, [ticketEdit])
+    // for sorting to all listing
+    const handleAllListing = async () => {
+        const activeList = concerts;
+        setSort([]);
+        // console.log(activeList);
+    };
 
     // updating the which tickets are selected
     const handleCheck = async (id) => {
@@ -318,11 +288,15 @@ const ListingTable = () => {
             setTicketEdit(result);
             setTicketClone(result);
 
-            const restrictionset = restrictions.map((restriction) => true ? {...restriction, isChecked: false} : restriction);
+            const restrictionset = restrictions.map((restriction) =>
+                true ? { ...restriction, isChecked: false } : restriction
+            );
 
             setRestrictions(restrictionset);
 
-            const listingnoteset = listingNotes.map((listingnote) => true ? {...listingnote, isChecked: false} : listingnote);
+            const listingnoteset = listingNotes.map((listingnote) =>
+                true ? { ...listingnote, isChecked: false } : listingnote
+            );
 
             setListingNotes(listingnoteset);
 
@@ -343,7 +317,6 @@ const ListingTable = () => {
                 return o;
             });
             setTicketListingNoteEdit(result);
-
         } catch (error) {
             setFetchError(error.message);
         } finally {
@@ -424,7 +397,6 @@ const ListingTable = () => {
                 );
                 setListingNotes(ticketListNoteEdit);
             }
-
         } else if (input_type === "available_tickets") {
             var ticketinput = ticketEdit.map((ticket) =>
                 ticket.Listing_ID === id
@@ -476,12 +448,6 @@ const ListingTable = () => {
             setTicketEdit(ticketinput);
         }
     };
-
-    // for logging only in the console
-    useEffect(() => {
-        console.log(ticketEdit);
-    }, [ticketEdit]);
-
     // setting interaction for price input when focused
     const handlePriceSelect = async (id) => {
         const listTickets = tickets.map((ticket) =>
@@ -554,24 +520,41 @@ const ListingTable = () => {
 
     // change the values of cloned tickets
     const handleTicketCloneEdit = async (val, index, input) => {
-        var ticketclones = ticketClone
-        if(input === 'Section') {
-            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Section: val}: clone)
-        } else if(input === 'Row') {
-            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Row: val}: clone)
-        } else if(input === 'Seats') {
-            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Seats: val}: clone)
-        } else if(input === 'Price') {
-            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Price: val}: clone)
-        } else if(input === 'Available_Tickets') {
-            ticketclones = ticketClone.map((clone, cloneindex) => cloneindex === index ? {...clone, Available_Tickets: val}: clone)
+        var ticketclones = ticketClone;
+        if (input === "Section") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index ? { ...clone, Section: val } : clone
+            );
+        } else if (input === "Row") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index ? { ...clone, Row: val } : clone
+            );
+        } else if (input === "Seats") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index ? { ...clone, Seats: val } : clone
+            );
+        } else if (input === "Price") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index ? { ...clone, Price: val } : clone
+            );
+        } else if (input === "Available_Tickets") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index
+                    ? { ...clone, Available_Tickets: val }
+                    : clone
+            );
         }
         setTicketClone(ticketclones);
-
-    }
+    };
 
     // updates data from ticket edit modal to the database
-    const ticketEditUpdate = async (ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) => {
+    const ticketEditUpdate = async (
+        ticketedit,
+        restricts,
+        ticketrestrictions,
+        listingnotes,
+        ticketlistingnotes
+    ) => {
         setIsTicketSaving(true);
         const ticket = {
             Listing_ID: ticketedit.Listing_ID,
@@ -584,44 +567,71 @@ const ListingTable = () => {
             Available_Tickets: ticketedit.Available_Tickets,
             Ticket_Sold: ticketedit.Ticket_Sold,
             Expiration: ticketedit.Expiration,
-            status: ticketedit.status
-        }
+            status: ticketedit.status,
+        };
 
         restricts = restricts.filter((restrict) => restrict.isChecked === true);
-        ticketrestrictions = ticketrestrictions.filter((restrict) => restrict.isChecked === true);
+        ticketrestrictions = ticketrestrictions.filter(
+            (restrict) => restrict.isChecked === true
+        );
         restricts = restricts.concat(ticketrestrictions);
 
-        listingnotes = listingnotes.filter((listnote) => listnote.isChecked === true);
-        ticketlistingnotes = ticketlistingnotes.filter((listnote) => listnote.isChecked === true);
+        listingnotes = listingnotes.filter(
+            (listnote) => listnote.isChecked === true
+        );
+        ticketlistingnotes = ticketlistingnotes.filter(
+            (listnote) => listnote.isChecked === true
+        );
         listingnotes = listingnotes.concat(ticketlistingnotes);
+
+        setTicketRestrictionEdit(restricts);
+        setTicketListingNoteEdit(listingnotes);
 
         const request = [ticket, restricts, listingnotes];
         console.log(request);
 
-
-        axios.post("/api/tickets/edit/update", request)
-        .then((response) => {
-            console.log(response);
-            const ticketinfo = tickets.map((ticket) => ticket.Listing_ID === ticketedit.Listing_ID ? {...ticket, ...ticketedit} : ticket);
-            setTickets(ticketinfo);
-
-        })
-        .catch((error) => {
-            console.log(error.response);
-            setFetchError(error.message);
-        });
+        axios
+            .post("/api/tickets/edit/update", request)
+            .then((response) => {
+                console.log(response);
+                const ticketinfo = tickets.map((ticket) =>
+                    ticket.Listing_ID === ticketedit.Listing_ID
+                        ? { ...ticket, ...ticketedit }
+                        : ticket
+                );
+                setTickets(ticketinfo);
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
         setIsTicketSaving(false);
         setSuccessMsg("Saved");
-    }
+    };
 
     const handleTicketCloneUpdate = async () => {
         setIsTicketSaving(true);
 
-
+        const request = [
+            ticketClone,
+            ticketRestrictionEdit,
+            ticketListingNoteEdit,
+        ];
+        axios
+            .post("/api/tickets/clone/create", request)
+            .then((response) => {
+                console.log(response);
+                // console.log([...tickets, ...ticketClone]);
+                // setTickets([...tickets, ...ticketClone]);
+                fetchTicket();
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
 
         setIsTicketSaving(false);
-        setSuccessMsg("Saved");
-    }
+    };
 
     // update ticket to the database
     const ticketUpdate = async (ticket) => {
@@ -680,13 +690,119 @@ const ListingTable = () => {
         setTickets(newtickets);
     };
 
+    const handleTicketDeleteSelected = async () => {
+        const selectedTickets = tickets.filter(
+            (ticket) => ticket.isSelected === true
+        );
+        axios
+            .post("/api/tickets/destroyselect", selectedTickets)
+            .then((response) => {
+                console.log(response);
+                setTickets(
+                    tickets.filter((ticket) => ticket.isSelected !== true)
+                );
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+    };
+
+    const handleTicketPublishSelected = async () => {
+        const selectedTickets = tickets.filter(
+            (ticket) => ticket.isSelected === true
+        );
+        axios
+            .post("/api/tickets/publishselect", selectedTickets)
+            .then((response) => {
+                console.log(response);
+                setTickets(
+                    tickets.map((ticket) =>
+                        ticket.isSelected === true
+                            ? { ...ticket, status: "active" }
+                            : ticket
+                    )
+                );
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+    };
+
+    const handleTicketUnpublishSelected = async () => {
+        const selectedTickets = tickets.filter(
+            (ticket) => ticket.isSelected === true
+        );
+        axios
+            .post("/api/tickets/unpublishselect", selectedTickets)
+            .then((response) => {
+                console.log(response);
+                setTickets(
+                    tickets.map((ticket) =>
+                        ticket.isSelected === true
+                            ? { ...ticket, status: "disabled" }
+                            : ticket
+                    )
+                );
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+    };
+
+    const handleTicketToPaperSelected = async () => {
+        const selectedTickets = tickets.filter(
+            (ticket) => ticket.isSelected === true
+        );
+        axios
+            .post("/api/tickets/topaperselect", selectedTickets)
+            .then((response) => {
+                console.log(response);
+                setTickets(
+                    tickets.map((ticket) =>
+                        ticket.isSelected === true
+                            ? { ...ticket, Ticket_Type: "Paper Ticket" }
+                            : ticket
+                    )
+                );
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+    };
+
+    const handleTicketToESelected = async () => {
+        const selectedTickets = tickets.filter(
+            (ticket) => ticket.isSelected === true
+        );
+        axios
+            .post("/api/tickets/toeselect", selectedTickets)
+            .then((response) => {
+                console.log(response);
+                setTickets(
+                    tickets.map((ticket) =>
+                        ticket.isSelected === true
+                            ? { ...ticket, Ticket_Type: "E-Ticket" }
+                            : ticket
+                    )
+                );
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+    };
+
     // This is the display code
     return (
         <>
             <React.StrictMode>
                 {isConcertsLoading &
-                    isTicketsLoading &
-                    isRestrictionsLoading ? (
+                isTicketsLoading &
+                isRestrictionsLoading ? (
                     <table className="">
                         <thead className="w-auto position-absolute top-50 start-50 translate-middle">
                             <tr className="w-auto">
@@ -710,7 +826,7 @@ const ListingTable = () => {
                             </tr>
                         </thead>
                     </table>
-                ):null}
+                ) : null}
                 {fetchError ? (
                     <table className="table">
                         <thead className="w-50 justify-content-center">
@@ -738,12 +854,12 @@ const ListingTable = () => {
                             </tr>
                         </thead>
                     </table>
-                ):null}
+                ) : null}
 
                 {!fetchError &
-                    !isConcertsLoading &
-                    !isTicketsLoading &
-                    !isRestrictionsLoading ? (
+                !isConcertsLoading &
+                !isTicketsLoading &
+                !isRestrictionsLoading ? (
                     <>
                         <ListingSortBy
                             sortAllListing={sortAllListing}
@@ -843,9 +959,14 @@ const ListingTable = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <Tools visible={visible} />
+                        <Tools
+                            visible={visible}
+                            handleTicketDeleteSelected={
+                                handleTicketDeleteSelected
+                            }
+                        />
                     </>
-                ):null}
+                ) : null}
 
                 {/* This thing still works but with errors */}
                 {ticketEdit.length ? (
@@ -870,11 +991,19 @@ const ListingTable = () => {
                 ) : null}
                 <ListingNew concerts={concerts} />
                 <ListingTicketClone
-                ticketClone={ticketClone}
-                setTicketClone={setTicketClone}
-                isTicketEditLoading={isTicketEditLoading}
-                handleTicketCloneEdit={handleTicketCloneEdit}
+                    ticketClone={ticketClone}
+                    setTicketClone={setTicketClone}
+                    isTicketEditLoading={isTicketEditLoading}
+                    isTicketSaving={isTicketSaving}
+                    handleTicketCloneEdit={handleTicketCloneEdit}
+                    handleTicketCloneUpdate={handleTicketCloneUpdate}
                 />
+                <ListingTicketTypes />
+                <ListingDeletePrompt
+                    handleTicketDelete={handleTicketDelete}
+                    ticketEdit={ticketEdit}
+                />
+                <ListingNewListing />
             </React.StrictMode>
         </>
     );

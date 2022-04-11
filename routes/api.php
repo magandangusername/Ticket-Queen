@@ -22,9 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('concerts', [ListingController::class, 'concerts']);
 Route::get('tickets', [ListingController::class, 'tickets']);
 Route::post('tickets/update', [ListingController::class, 'update']);
+Route::post('tickets/clone/create', [ListingController::class, 'clone']);
 Route::post('tickets/edit/update', [ListingController::class, 'ticketupdate']);
+Route::post('tickets/destroyselect', [ListingController::class, 'deletedSelected']);
 Route::post('tickets/destroy', [ListingController::class, 'destroy']);
 Route::post('tickets/create', [ListingController::class, 'create']);
+Route::post('tickets/publishselect', [ListingController::class, 'publishselect']);
+Route::post('tickets/unpublishselect', [ListingController::class, 'unpublishselect']);
+Route::post('tickets/topaperselect', [ListingController::class, 'topaperselect']);
+Route::post('tickets/toeselect', [ListingController::class, 'toeselect']);
+
+Route::post('concerts/create', [ListingController::class, 'createconcert']);
+
 Route::get('restrictions',[ListingController::class, 'restrictions']);
 Route::get('listing_notes',[ListingController::class, 'listing_notes']);
 Route::get('listing_notes/{id}',[ListingController::class, 'listing_notes_fetch'])->where('id', '[0-9]+');

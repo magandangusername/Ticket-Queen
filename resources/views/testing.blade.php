@@ -6,7 +6,7 @@
 
 
 @section('content')
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#persexpress">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#express">
     Open modal
 </button>
 
@@ -127,33 +127,8 @@
 </div>
 
 
-<div class="modal fade container-fluid" id="tiktypes">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content text-center">
-            <!-- Modal Header -->
-            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
-
-                <b>
-                    <h4 class="modal-title">Select Ticket Type</h4>
-                </b>
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="form-group modal-body m-1 p-3">
-                <button type="button" class="btn btn-light p-2">Name of Ticket Type</button>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer m-1 p-2 justify-content-between">
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal" style="float: left;">
-                    < Back </button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
+{{-- This is part is already imported in the js if im not mistaken --}}
+{{--
 <div class="modal fade container-fluid" id="express">
     <div class="modal-dialog modal-auto">
         <div class="modal-content text-center">
@@ -246,30 +221,11 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 
 
 
-<div class="modal right fade" id="delete">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
-                <h4 class="modal-title" id="staticBackdropLabel">Delete Someting</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <p>Are you sure you want to delete this someting?</p>
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 @endsection

@@ -55,7 +55,7 @@ const ListingNew = ({ concerts }) => {
                             {concerts.length ? (
                                 <tbody>
                                     {concerts.map((concert) => (
-                                        <tr key={concert.ConcertID}>
+                                        <tr key={concert.ConcertID} onClick={()=>console.log('test')} data-bs-toggle="modal" data-bs-target="#tiktypes">
                                             <td>
                                             {/* dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy") to get Tuesday, April 30th, 2019. */}
                                                 {dateFormat(concert.ConcertDate, "dddd")}

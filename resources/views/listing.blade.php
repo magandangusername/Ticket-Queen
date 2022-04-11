@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-<title>Inventory Manager | Listing</title>
+    <title>Inventory Manager | Listing</title>
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
 
     <div id="ListingTable"></div>
 
-
+    {{-- I still have no idea what to do with this --}}
     <div class="modal container-fluid" id="magnify">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -83,12 +83,18 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Modal footer -->
-                <div class="modal-footer m-1 p-2">
-
-                </div>
-
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#tableSearch").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+
+                $("#tabletickets tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 @endsection
