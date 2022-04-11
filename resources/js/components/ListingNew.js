@@ -7,7 +7,10 @@ const ListingNew = ({ concerts }) => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     {/* <!-- Modal Header --> */}
-                    <div className="modal-header m-1 p-2">
+                    <div
+                    className="modal-header p-2"
+                    style={{ background: "#424549", color: "#edf6ff"}}
+                    >
                         <h4>Create New Listing</h4>
 
                         <button

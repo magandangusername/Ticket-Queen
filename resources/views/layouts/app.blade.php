@@ -182,7 +182,7 @@
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header m-1 p-2">
+                <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
 
                     <h4 class="m-1 p-2">Request an event</h4>
                     <p class="m-1 p-2">Can't find the event you're looking for?
@@ -262,9 +262,9 @@
                     </form>
                 </div>
                 <!-- Modal footer -->
-                <div class="modal-footer m-1 p-2">
-                    <button type="button" class="btn btn-secondary"><b>
-                            << /b> Back</button>
+                <div class="modal-footer m-1 p-2 justify-content-between">
+                    <button type="button" class="btn btn-secondary">
+                         Back</button>
                     <button type="button" class="btn btn-success">Submit</button>
                 </div>
 
@@ -334,11 +334,12 @@
             </div>
         </div>
     </div>
+
     <div class="modal container-fluid" id="express">
         <div class="modal-dialog modal-auto">
             <div class="modal-content text-center">
                 <!-- Modal Header -->
-                <div class="modal-header m-1 p-2">
+                <div class="modal-header p-2" style="background: #424549; color: #edf6ff">
 
                     <b>
                         <h4 class="modal-title">Express Local Shipping</h4>
