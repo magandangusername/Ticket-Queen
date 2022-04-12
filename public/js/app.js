@@ -6524,11 +6524,11 @@ var ListingSortBy = function ListingSortBy(_ref) {
           backgroundSize: "cover"
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "checkboxes container-fluid row",
+          className: "checkboxes container-fluid row justify-content-center",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-check form-check-inline text-light col-2",
+            className: "form-check form-check-inline text-light col-2 d-flex justify-content-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              className: "form-check-input mt-2 ms-1",
+              className: "form-check-input ms-1",
               type: "checkbox",
               id: "All Listing",
               checked: sortAllListingActive,
@@ -6536,14 +6536,14 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1 text-dark fw-bold",
+              className: "form-check-label text-dark fw-bold",
               htmlFor: "All Listing",
               children: "Show All Listings"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-check form-check-inline text-light col",
+            className: "form-check form-check-inline text-light col d-flex justify-content-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              className: "form-check-input mt-2",
+              className: "form-check-input",
               type: "checkbox",
               value: "",
               id: "EligibleLastMinuteSales",
@@ -6552,14 +6552,14 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1 text-dark fw-bold",
+              className: "form-check-label text-dark fw-bold",
               htmlFor: "EligibleLastMinuteSales",
               children: "Show Listings Eligible For Last Minute Sales"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-check form-check-inline text-light col",
+            className: "form-check form-check-inline text-light col d-flex justify-content-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              className: "form-check-input mt-2 ms-1",
+              className: "form-check-input ms-1",
               type: "checkbox",
               value: "",
               id: "Active Listing",
@@ -6568,14 +6568,14 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortActiveActive(!sortActiveActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1 text-dark fw-bold",
+              className: "form-check-label text-dark fw-bold",
               htmlFor: "Active Listing",
               children: "Show Active Listings"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-check form-check-inline text-light col",
+            className: "form-check form-check-inline text-light col d-flex justify-content-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              className: "form-check-input mt-2 ms-1 text-dark",
+              className: "form-check-input ms-1 text-dark",
               type: "checkbox",
               value: "",
               id: "Inactive",
@@ -6584,12 +6584,12 @@ var ListingSortBy = function ListingSortBy(_ref) {
                 return setSortInactiveActive(!sortInactiveActive);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-              className: "form-check-label mt-1 text-dark fw-bold",
+              className: "form-check-label text-dark fw-bold",
               htmlFor: "Inactive",
               children: "Show Inactive Listings"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "form-check form-check-inline text-light col w-50",
+            className: "form-check form-check-inline text-light col w-50 d-flex justify-content-center mt-1",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
               className: "form-control d-flex w-100 m-auto justify-content-evenly",
               method: "get",

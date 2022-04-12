@@ -16,25 +16,25 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                         backgroundSize: "cover",
                     }}
                 >
-                    <div className="checkboxes container-fluid row">
-                        <div className="form-check form-check-inline text-light col-2">
+                    <div className="checkboxes container-fluid row justify-content-center">
+                        <div className="form-check form-check-inline text-light col-2 d-flex justify-content-center">
                             <input
-                                className="form-check-input mt-2 ms-1"
+                                className="form-check-input ms-1"
                                 type="checkbox"
                                 id="All Listing"
                                 checked={sortAllListingActive}
                                 onChange={() => (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
                             />
                             <label
-                                className="form-check-label mt-1 text-dark fw-bold"
+                                className="form-check-label text-dark fw-bold"
                                 htmlFor="All Listing"
                             >
                                 Show All Listings
                             </label>
                         </div>
-                        <div className="form-check form-check-inline text-light col">
+                        <div className="form-check form-check-inline text-light col d-flex justify-content-center">
                             <input
-                                className="form-check-input mt-2"
+                                className="form-check-input"
                                 type="checkbox"
                                 value=""
                                 id="EligibleLastMinuteSales"
@@ -42,15 +42,15 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive)}
                             />
                             <label
-                                className="form-check-label mt-1 text-dark fw-bold"
+                                className="form-check-label text-dark fw-bold"
                                 htmlFor="EligibleLastMinuteSales"
                             >
                                 Show Listings Eligible For Last Minute Sales
                             </label>
                         </div>
-                        <div className="form-check form-check-inline text-light col">
+                        <div className="form-check form-check-inline text-light col d-flex justify-content-center">
                             <input
-                                className="form-check-input mt-2 ms-1"
+                                className="form-check-input ms-1"
                                 type="checkbox"
                                 value=""
                                 id="Active Listing"
@@ -58,15 +58,15 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortActiveActive(!sortActiveActive)}
                             />
                             <label
-                                className="form-check-label mt-1 text-dark fw-bold"
+                                className="form-check-label text-dark fw-bold"
                                 htmlFor="Active Listing"
                             >
                                 Show Active Listings
                             </label>
                         </div>
-                        <div className="form-check form-check-inline text-light col">
+                        <div className="form-check form-check-inline text-light col d-flex justify-content-center">
                             <input
-                                className="form-check-input mt-2 ms-1 text-dark"
+                                className="form-check-input ms-1 text-dark"
                                 type="checkbox"
                                 value=""
                                 id="Inactive"
@@ -74,13 +74,13 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 onChange={() => setSortInactiveActive(!sortInactiveActive)}
                             />
                             <label
-                                className="form-check-label mt-1 text-dark fw-bold"
+                                className="form-check-label text-dark fw-bold"
                                 htmlFor="Inactive"
                             >
                                 Show Inactive Listings
                             </label>
                         </div>
-                        <div className="form-check form-check-inline text-light col w-50">
+                        <div className="form-check form-check-inline text-light col w-50 d-flex justify-content-center mt-1">
 
                             <form className="form-control d-flex w-100 m-auto justify-content-evenly" method="get" onSubmit={(e)=>e.preventDefault()}>
                                 <input id="tableSearch" value={search} onChange={(e)=>setSearch(e.target.value)} className="w-100 d-flex justify-content-center" type="text" placeholder="Search.." name="search2"/>
