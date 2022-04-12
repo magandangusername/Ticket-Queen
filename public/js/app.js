@@ -6509,7 +6509,9 @@ var ListingSortBy = function ListingSortBy(_ref) {
       setSortAllListingActive = _ref.setSortAllListingActive,
       setSortEligibleLastMinuteSalesActive = _ref.setSortEligibleLastMinuteSalesActive,
       setSortActiveActive = _ref.setSortActiveActive,
-      setSortInactiveActive = _ref.setSortInactiveActive;
+      setSortInactiveActive = _ref.setSortInactiveActive,
+      setSearch = _ref.setSearch,
+      search = _ref.search;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "container-fluid d-flex justify-content-center",
@@ -6586,6 +6588,31 @@ var ListingSortBy = function ListingSortBy(_ref) {
               htmlFor: "Inactive",
               children: "Show Inactive Listings"
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "form-check form-check-inline text-light col w-50",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+              className: "form-control d-flex w-100 m-auto justify-content-evenly",
+              method: "get",
+              onSubmit: function onSubmit(e) {
+                return e.preventDefault();
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                id: "tableSearch",
+                value: search,
+                onChange: function onChange(e) {
+                  return setSearch(e.target.value);
+                },
+                className: "w-100 d-flex justify-content-center",
+                type: "text",
+                placeholder: "Search..",
+                name: "search2"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                type: "submit",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                  className: "fa fa-search d-flex justify-content-center"
+                })
+              })]
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           id: "Tools",
@@ -6833,7 +6860,12 @@ var ListingTable = function ListingTable() {
   }),
       _useState54 = _slicedToArray(_useState53, 2),
       createConcert = _useState54[0],
-      setCreateConcert = _useState54[1]; // gets the concert data from the database
+      setCreateConcert = _useState54[1];
+
+  var _useState55 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(""),
+      _useState56 = _slicedToArray(_useState55, 2),
+      search = _useState56[0],
+      setSearch = _useState56[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -6853,6 +6885,7 @@ var ListingTable = function ListingTable() {
               result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isSelected = false;
+                o.isVisible = true;
                 return o;
               });
               setConcerts(result); // p.s. to myself: add a condition for active/expired concert in the future
@@ -6981,45 +7014,39 @@ var ListingTable = function ListingTable() {
   }, [tickets]); // for logging only in the console
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
-    console.log(sort);
-  }, [sort]); // sorting options interaction
+    console.log(sort); // console.log(document.getElementById("tableSearch").value);
+  }, [sort]); // useEffect(() => {
+  //   console.log(document.getElementById("tableSearch").value);
+  // }, [(document.getElementById("tableSearch").value)]);
+  // const testfunc = () => {
+  //     console.log(document.getElementById("tableSearch").value);
+  // }
+  // sorting options interaction
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     var filter = [];
-    if (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) setSortAllListingActive(false);else if (!sortEligibleLastMinuteSalesActive && !sortActiveActive && !sortInactiveActive) setSortAllListingActive(true); // prevents duplicates but idk if it works. p.s. it doesnt work
-
-    if (!sortActiveActive) {
-      filter = sort.filter(function (remove) {
-        return remove.status != "active";
-      });
-    }
-
-    if (!sortInactiveActive) {
-      filter = sort.filter(function (remove) {
-        return remove.status != "expired";
-      });
-    } // if (sortActiveActive) handleSortActiveListing(filter);
-    // if (sortInactiveActive) handleSortInactiveListing(filter);
-
-
-    var activecombinedList = [];
-    var inactivecombinedList = [];
-
-    if (sortActiveActive) {
-      var activeList = concerts.filter(function (concert) {
-        return concert.status === "active";
-      });
-      activecombinedList = _toConsumableArray(new Set([].concat(_toConsumableArray(activeList), _toConsumableArray(filter))));
-    }
-
-    if (sortInactiveActive) {
-      var inactiveList = concerts.filter(function (concert) {
-        return concert.status === "expired";
-      });
-      inactivecombinedList = _toConsumableArray(new Set([].concat(_toConsumableArray(inactiveList), _toConsumableArray(filter))));
-    }
-
-    setSort(_toConsumableArray(new Set([].concat(_toConsumableArray(activecombinedList), _toConsumableArray(inactivecombinedList))))); // else if(sortAllListingActive) handleAllListing();
+    if (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) setSortAllListingActive(false);else if (!sortEligibleLastMinuteSalesActive && !sortActiveActive && !sortInactiveActive) setSortAllListingActive(true); // prevents duplicates but idk if it works
+    // if(!sortActiveActive) {
+    //     filter = sort.filter((remove) => remove.status != "active")
+    // }
+    // if(!sortInactiveActive) {
+    //     filter = sort.filter((remove) => remove.status != "expired")
+    // }
+    // var activecombinedList = [];
+    // var inactivecombinedList = [];
+    // if (sortActiveActive) {
+    //     const activeList = concerts.filter(
+    //         (concert) => concert.status === "active"
+    //     );
+    //     activecombinedList = [...new Set([...activeList ,...filter])];
+    // }
+    // if (sortInactiveActive) {
+    //     const inactiveList = concerts.filter(
+    //         (concert) => concert.status === "expired"
+    //     );
+    //     inactivecombinedList = [...new Set([...inactiveList ,...filter])];
+    // }
+    // setSort([...new Set([...activecombinedList, ...inactivecombinedList])]);
   }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive // sortAllListingActive,
   ]); // sorting options interaction
 
@@ -7030,84 +7057,11 @@ var ListingTable = function ListingTable() {
       setSortInactiveActive(false);
       handleAllListing(); // console.log("all active effect");
     }
-  }, [sortAllListingActive]); // useEffect(() => {
-  //     //sorting
-  //     if (sortAllListingActive) {
-  //         setSortAllListing(concerts);
-  //     } else {
-  //         setSortAllListing([]);
-  //     }
-  //     if (sortInactiveActive) {
-  //         const inactiveList = concerts.filter(
-  //             (concert) => concert.status === "expired"
-  //         );
-  //         setSortInactive(inactiveList);
-  //     } else {
-  //         setSortInactive([]);
-  //     }
-  //     if (sortActiveActive) {
-  //         const activeList = concerts.filter(
-  //             (concert) => concert.status === "active"
-  //         );
-  //         setSortActive(activeList);
-  //     } else {
-  //         setSortActive([]);
-  //     }
-  //     // console.log(sortAllListing);
-  //     // console.log(sortActive);
-  //     // console.log(sortInactive);
-  //     handleSort();
-  //     // console.log("combined active effect");
-  // }, [
-  //     sortEligibleLastMinuteSalesActive,
-  //     sortActiveActive,
-  //     sortInactiveActive,
-  //     sortAllListingActive,
-  //     // concerts,
-  // ]);
+  }, [sortAllListingActive]); //handles the search
   // useEffect(() => {
-  //     console.log(sort);
-  // }, [sort]);
-  // const handleSort = () => {
-  //     var al;
-  //     var merged;
-  //     var merged2;
-  //     if (sortActiveActive) {
-  //         al = new Set(sort.map((x) => x.ConcertID));
-  //         merged = [
-  //             ...sort,
-  //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
-  //         ];
-  //         // console.log(merged);
-  //         setSort(merged);
-  //     }
-  //     // var al = new Set(sortAllListing.map((x) => x.ConcertID));
-  //     // var merged = [
-  //     //     ...sortAllListing,
-  //     //     ...sortInactive.filter((x) => !al.has(x.ConcertID)),
-  //     // ];
-  //     if (sortInactiveActive) {
-  //         al = new Set(sort.map((x) => x.ConcertID));
-  //         merged2 = [
-  //             ...sort,
-  //             ...sortActive.filter((x) => !al.has(x.ConcertID)),
-  //         ];
-  //         // console.log(merged);
-  //         setSort(merged2);
-  //     }
-  //     if(sortAllListingActive) {
-  //         setSort(concerts);
-  //     }
-  //     // var al = new Set(merged.map((x) => x.ConcertID));
-  //     // var merged2 = [
-  //     //     ...merged,
-  //     //     ...sortActive.filter((x) => !al.has(x.ConcertID)),
-  //     // ];
-  //     // setSort(merged2);
-  // };
-  // useEffect(() => {
-  //   console.log(ticketEdit)
-  // }, [ticketEdit])
+  //   const search_result = concerts.map((concert)=>(concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
+  //   setConcerts(search_result);
+  // }, [search])
   // for sorting to active listing
 
   var handleSortActiveListing = /*#__PURE__*/function () {
@@ -8067,8 +8021,14 @@ var ListingTable = function ListingTable() {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("path", {
                     d: "M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
-                  children: "Error: ".concat(fetchError)
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
+                  children: ["Error: ".concat(fetchError), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("a", {
+                    href: "",
+                    onClick: function onClick() {
+                      return window.location.reload(false);
+                    },
+                    children: "Click to reload!"
+                  })]
                 })]
               })
             })
@@ -8092,11 +8052,14 @@ var ListingTable = function ListingTable() {
           setSortAllListingActive: setSortAllListingActive,
           setSortEligibleLastMinuteSalesActive: setSortEligibleLastMinuteSalesActive,
           setSortActiveActive: setSortActiveActive,
-          setSortInactiveActive: setSortInactiveActive
+          setSortInactiveActive: setSortInactiveActive,
+          search: search,
+          setSearch: setSearch
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
           className: "container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("table", {
             className: "table",
+            id: "myTable",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("thead", {
               className: "thead-lights bg-color sticky-top",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("tr", {
@@ -8135,7 +8098,7 @@ var ListingTable = function ListingTable() {
                 })
               }), concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
                 children: concerts.map(function (concert) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                  return concert.isVisible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_5__["default"], {
                     concert: concert,
                     tickets: tickets,
                     setTickets: setTickets,
@@ -8153,7 +8116,11 @@ var ListingTable = function ListingTable() {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Tools__WEBPACK_IMPORTED_MODULE_6__["default"], {
           visible: visible,
-          handleTicketDeleteSelected: handleTicketDeleteSelected
+          handleTicketDeleteSelected: handleTicketDeleteSelected,
+          handleTicketPublishSelected: handleTicketPublishSelected,
+          handleTicketUnpublishSelected: handleTicketUnpublishSelected,
+          handleTicketToPaperSelected: handleTicketToPaperSelected,
+          handleTicketToESelected: handleTicketToESelected
         })]
       }) : null, ticketEdit.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingEditTicket__WEBPACK_IMPORTED_MODULE_8__["default"], {
         ticketEdit: ticketEdit,
@@ -8719,7 +8686,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var Tools = function Tools(_ref) {
   var visible = _ref.visible,
-      handleTicketDeleteSelected = _ref.handleTicketDeleteSelected;
+      handleTicketDeleteSelected = _ref.handleTicketDeleteSelected,
+      handleTicketPublishSelected = _ref.handleTicketPublishSelected,
+      handleTicketUnpublishSelected = _ref.handleTicketUnpublishSelected,
+      handleTicketToPaperSelected = _ref.handleTicketToPaperSelected,
+      handleTicketToESelected = _ref.handleTicketToESelected;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: visible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "container-fluid position-fixed position-absolute bottom-0 start-50 translate-middle-x",
@@ -8733,7 +8704,8 @@ var Tools = function Tools(_ref) {
             className: "text-decoration-none col tools",
             href: "",
             onClick: function onClick(e) {
-              return e.preventDefault();
+              handleTicketPublishSelected();
+              e.preventDefault();
             },
             children: "Publish All Selected"
           })
@@ -8742,6 +8714,10 @@ var Tools = function Tools(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             className: "text-decoration-none col tools",
             href: "",
+            onClick: function onClick(e) {
+              handleTicketUnpublishSelected();
+              e.preventDefault();
+            },
             children: "Unpublish All Selected"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -8760,6 +8736,10 @@ var Tools = function Tools(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             className: "text-decoration-none col tools",
             href: "",
+            onClick: function onClick(e) {
+              handleTicketToPaperSelected();
+              e.preventDefault();
+            },
             children: "Change to Paper Tickets"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -8767,6 +8747,10 @@ var Tools = function Tools(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             className: "text-decoration-none col tools",
             href: "",
+            onClick: function onClick(e) {
+              handleTicketToESelected();
+              e.preventDefault();
+            },
             children: "Change to E-Tickets"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

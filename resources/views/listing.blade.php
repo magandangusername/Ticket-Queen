@@ -86,15 +86,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            $("#tableSearch").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-
-                $("#tabletickets tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 @endsection

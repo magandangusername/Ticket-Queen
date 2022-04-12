@@ -67,6 +67,7 @@ const ListingTable = () => {
         ConcertName: "",
         Location: "",
     });
+    const [search, setSearch] = useState("");
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -78,6 +79,7 @@ const ListingTable = () => {
             var result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
                 o.isSelected = false;
+                o.isVisible = true;
                 return o;
             });
             setConcerts(result);
@@ -162,7 +164,16 @@ const ListingTable = () => {
     // for logging only in the console
     useEffect(() => {
         console.log(sort);
+        // console.log(document.getElementById("tableSearch").value);
     }, [sort]);
+
+    // useEffect(() => {
+    //   console.log(document.getElementById("tableSearch").value);
+    // }, [(document.getElementById("tableSearch").value)]);
+
+    // const testfunc = () => {
+    //     console.log(document.getElementById("tableSearch").value);
+    // }
 
 
     // sorting options interaction
@@ -213,6 +224,7 @@ const ListingTable = () => {
         // sortAllListingActive,
     ]);
 
+
     // sorting options interaction
     useEffect(() => {
         if (sortAllListingActive) {
@@ -223,6 +235,12 @@ const ListingTable = () => {
             // console.log("all active effect");
         }
     }, [sortAllListingActive]);
+
+    //handles the search
+    // useEffect(() => {
+    //   const search_result = concerts.map((concert)=>(concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
+    //   setConcerts(search_result);
+    // }, [search])
 
 
 
@@ -252,6 +270,8 @@ const ListingTable = () => {
         setSort([]);
         // console.log(activeList);
     };
+
+
 
     // updating the which tickets are selected
     const handleCheck = async (id) => {
@@ -848,7 +868,7 @@ const ListingTable = () => {
                                         >
                                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                         </svg>
-                                        <div>{`Error: ${fetchError}`}</div>
+                                        <div>{`Error: ${fetchError}`} <a href="" onClick={() => window.location.reload(false)}>Click to reload!</a></div>
                                     </div>
                                 </td>
                             </tr>
@@ -887,9 +907,11 @@ const ListingTable = () => {
                             }
                             setSortActiveActive={setSortActiveActive}
                             setSortInactiveActive={setSortInactiveActive}
+                            search={search}
+                            setSearch={setSearch}
                         />
                         <div className="container-fluid overflow-auto table-heights position-absolute top-50 start-50 translate-middle mt-1">
-                            <table className="table">
+                            <table className="table" id="myTable">
                                 <thead className="thead-lights bg-color sticky-top">
                                     <tr>
                                         <th className="text-center"></th>
@@ -927,7 +949,7 @@ const ListingTable = () => {
                                     )}
                                     {concerts.length ? (
                                         <>
-                                            {concerts.map((concert) => (
+                                            {concerts.map((concert) => concert.isVisible && (
                                                 <ListingConcerts
                                                     key={concert.ConcertID}
                                                     concert={concert}
@@ -964,6 +986,10 @@ const ListingTable = () => {
                             handleTicketDeleteSelected={
                                 handleTicketDeleteSelected
                             }
+                            handleTicketPublishSelected={handleTicketPublishSelected}
+                            handleTicketUnpublishSelected={handleTicketUnpublishSelected}
+                            handleTicketToPaperSelected={handleTicketToPaperSelected}
+                            handleTicketToESelected={handleTicketToESelected}
                         />
                     </>
                 ) : null}

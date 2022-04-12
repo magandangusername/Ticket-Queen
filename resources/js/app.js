@@ -1,3 +1,3 @@
- require('./bootstrap');
- require('./components/ListingTable');
- require('./components/Tools');
+require("./bootstrap");
+require("./components/ListingTable");
+require("./components/Tools");

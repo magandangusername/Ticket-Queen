@@ -41,12 +41,7 @@
                         alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
-            <div class="w-50">
-                <form class="form-control d-flex w-100 m-auto justify-content-evenly" method="get" action="/search">
-                    <input id="tableSearch" class="w-100 d-flex justify-content-center" type="text" placeholder="Search.." name="search2">
-                    <button type="submit"><i class="fa fa-search d-flex justify-content-center"></i></button>
-                </form>
-            </div>
+
 
             <button id="nav-button" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -55,7 +50,7 @@
             </button>
 
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
+            <div class="collapse navbar-collapse position-absolute top-50 end-0 translate-middle-y" id="navbarNavDropdown" style="z-index: 2000">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
 

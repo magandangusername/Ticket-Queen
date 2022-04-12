@@ -1,7 +1,7 @@
 import React from "react";
 
 const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive, sortInactive, setSortAllListing, setSortEligibleLastMinuteSales, setSortActive, setSortInactive, handleSort,
-    sortAllListingActive, sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, setSortAllListingActive, setSortEligibleLastMinuteSalesActive, setSortActiveActive, setSortInactiveActive}) => {
+    sortAllListingActive, sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, setSortAllListingActive, setSortEligibleLastMinuteSalesActive, setSortActiveActive, setSortInactiveActive, setSearch, search}) => {
     return (
         <>
             <div className="container-fluid d-flex justify-content-center">
@@ -79,6 +79,14 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                             >
                                 Show Inactive Listings
                             </label>
+                        </div>
+                        <div className="form-check form-check-inline text-light col w-50">
+
+                            <form className="form-control d-flex w-100 m-auto justify-content-evenly" method="get" onSubmit={(e)=>e.preventDefault()}>
+                                <input id="tableSearch" value={search} onChange={(e)=>setSearch(e.target.value)} className="w-100 d-flex justify-content-center" type="text" placeholder="Search.." name="search2"/>
+                                <button type="submit"><i className="fa fa-search d-flex justify-content-center"></i></button>
+                            </form>
+
                         </div>
                     </div>
                     <div id="Tools" className="z-indexes"></div>

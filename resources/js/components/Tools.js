@@ -1,7 +1,13 @@
 import React from "react";
 
-const Tools = ({visible, handleTicketDeleteSelected}) => {
-
+const Tools = ({
+    visible,
+    handleTicketDeleteSelected,
+    handleTicketPublishSelected,
+    handleTicketUnpublishSelected,
+    handleTicketToPaperSelected,
+    handleTicketToESelected
+}) => {
     return (
         <>
             {visible && (
@@ -12,7 +18,7 @@ const Tools = ({visible, handleTicketDeleteSelected}) => {
                             <a
                                 className="text-decoration-none col tools"
                                 href=""
-                                onClick={(e) => e.preventDefault()}
+                                onClick={(e) => {handleTicketPublishSelected(); e.preventDefault()}}
                             >
                                 Publish All Selected
                             </a>
@@ -21,6 +27,7 @@ const Tools = ({visible, handleTicketDeleteSelected}) => {
                             <a
                                 className="text-decoration-none col tools"
                                 href=""
+                                onClick={(e) => {handleTicketUnpublishSelected(); e.preventDefault()}}
                             >
                                 Unpublish All Selected
                             </a>
@@ -29,7 +36,10 @@ const Tools = ({visible, handleTicketDeleteSelected}) => {
                             <a
                                 className="text-decoration-none col tools"
                                 href=""
-                                onClick={(e)=> {handleTicketDeleteSelected(); e.preventDefault()}}
+                                onClick={(e) => {
+                                    handleTicketDeleteSelected();
+                                    e.preventDefault();
+                                }}
                             >
                                 Delete All Selected
                             </a>
@@ -38,6 +48,7 @@ const Tools = ({visible, handleTicketDeleteSelected}) => {
                             <a
                                 className="text-decoration-none col tools"
                                 href=""
+                                onClick={(e) => {handleTicketToPaperSelected(); e.preventDefault()}}
                             >
                                 Change to Paper Tickets
                             </a>
@@ -46,6 +57,7 @@ const Tools = ({visible, handleTicketDeleteSelected}) => {
                             <a
                                 className="text-decoration-none col tools"
                                 href=""
+                                onClick={(e) => {handleTicketToESelected(); e.preventDefault()}}
                             >
                                 Change to E-Tickets
                             </a>
