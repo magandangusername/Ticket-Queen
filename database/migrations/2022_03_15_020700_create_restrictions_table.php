@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_restriction_listings', function (Blueprint $table) {
-            $table->integer("Listing_ID");
-            $table->integer("Restriction_ID")->nullable();
-            $table->integer("Listing_note_ID")->nullable();
+        Schema::create('restrictions', function (Blueprint $table) {
+            $table->id("restriction_id");
+            $table->string("restriction");
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ticket_restriction_listings');
+        Schema::dropIfExists('restrictions');
     }
 };

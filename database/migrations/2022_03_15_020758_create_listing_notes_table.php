@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('listing_notes', function (Blueprint $table) {
-            $table->id("Listing_note_ID");
-            $table->string("Listing_note");
+            $table->id("listing_note_id");
+            $table->string("listing_note");
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

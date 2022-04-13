@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VenueDetails extends Model
+class TicketRestrictionListingnote extends Model
 {
     use HasFactory;
-    protected $table = 'VenueInfo';
+    protected $fillable = ['listing_id', 'restriction_id', 'listing_note_id'];
 }
