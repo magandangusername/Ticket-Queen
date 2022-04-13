@@ -7,7 +7,7 @@ const ListingTicketTypes = () => {
                 <div className="modal-content text-center">
                     <div
                         className="modal-header p-2"
-                        style={{background: '#424549', color: '#edf6ff'}}
+                        style={{ background: "#424549", color: "#edf6ff" }}
                     >
                         <b>
                             <h4 className="modal-title">Select Ticket Type</h4>
@@ -29,8 +29,9 @@ const ListingTicketTypes = () => {
                         <button
                             type="button"
                             className="btn btn-secondary "
-                            data-bs-dismiss="modal"
-                            style={{float: 'left'}}
+                            data-bs-toggle="modal"
+                            data-bs-target="#ListingModal"
+                            style={{ float: "left" }}
                         >
                             Back
                         </button>

@@ -157,8 +157,6 @@ const ListingTable = () => {
 
         if (selected.length > 0) setVisible(true);
         else setVisible(false);
-
-        // console.log(tickets);
     }, [tickets]);
 
     // for logging only in the console
@@ -166,14 +164,6 @@ const ListingTable = () => {
         console.log(sort);
         // console.log(document.getElementById("tableSearch").value);
     }, [sort]);
-
-    // useEffect(() => {
-    //   console.log(document.getElementById("tableSearch").value);
-    // }, [(document.getElementById("tableSearch").value)]);
-
-    // const testfunc = () => {
-    //     console.log(document.getElementById("tableSearch").value);
-    // }
 
 
     // sorting options interaction
@@ -236,11 +226,11 @@ const ListingTable = () => {
         }
     }, [sortAllListingActive]);
 
-    //handles the search
-    // useEffect(() => {
-    //   const search_result = concerts.map((concert)=>(concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
-    //   setConcerts(search_result);
-    // }, [search])
+    // handles the search
+    useEffect(() => {
+      const search_result = concerts.map((concert)=>(concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
+      setConcerts(search_result);
+    }, [search])
 
 
 

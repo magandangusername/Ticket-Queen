@@ -6657,12 +6657,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListingNewListing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ListingNewListing */ "./resources/js/components/ListingNewListing.js");
 /* harmony import */ var postcss__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! postcss */ "./node_modules/postcss/lib/postcss.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6670,6 +6664,12 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -7010,18 +7010,12 @@ var ListingTable = function ListingTable() {
     var selected = tickets.filter(function (ticket) {
       return ticket.isSelected === true;
     });
-    if (selected.length > 0) setVisible(true);else setVisible(false); // console.log(tickets);
+    if (selected.length > 0) setVisible(true);else setVisible(false);
   }, [tickets]); // for logging only in the console
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     console.log(sort); // console.log(document.getElementById("tableSearch").value);
-  }, [sort]); // useEffect(() => {
-  //   console.log(document.getElementById("tableSearch").value);
-  // }, [(document.getElementById("tableSearch").value)]);
-  // const testfunc = () => {
-  //     console.log(document.getElementById("tableSearch").value);
-  // }
-  // sorting options interaction
+  }, [sort]); // sorting options interaction
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     var filter = [];
@@ -7057,12 +7051,18 @@ var ListingTable = function ListingTable() {
       setSortInactiveActive(false);
       handleAllListing(); // console.log("all active effect");
     }
-  }, [sortAllListingActive]); //handles the search
-  // useEffect(() => {
-  //   const search_result = concerts.map((concert)=>(concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
-  //   setConcerts(search_result);
-  // }, [search])
-  // for sorting to active listing
+  }, [sortAllListingActive]); // handles the search
+
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var search_result = concerts.map(function (concert) {
+      return concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search)) ? _objectSpread(_objectSpread({}, concert), {}, {
+        isVisible: true
+      }) : _objectSpread(_objectSpread({}, concert), {}, {
+        isVisible: false
+      });
+    });
+    setConcerts(search_result);
+  }, [search]); // for sorting to active listing
 
   var handleSortActiveListing = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(filter) {
@@ -8418,8 +8418,8 @@ var ListingTicketTypes = function ListingTicketTypes() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "modal-header p-2",
           style: {
-            background: '#424549',
-            color: '#edf6ff'
+            background: "#424549",
+            color: "#edf6ff"
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
@@ -8443,9 +8443,10 @@ var ListingTicketTypes = function ListingTicketTypes() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             type: "button",
             className: "btn btn-secondary ",
-            "data-bs-dismiss": "modal",
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#ListingModal",
             style: {
-              "float": 'left'
+              "float": "left"
             },
             children: "Back"
           })
