@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id('event_id');
             $table->string('event_name');
-            $table->dateTime('event_date_time');
+            $table->date('event_date');
+            $table->time('event_time');
             $table->string('event_venue')->nullable();
             $table->string('event_city')->nullable();
             $table->string('event_country')->nullable();

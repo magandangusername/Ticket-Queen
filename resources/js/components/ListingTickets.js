@@ -10,6 +10,7 @@ const ListingTickets = ({
     handleTicketEdit,
     concert,
     handleTicketPublishChange,
+    ticketTypes
 }) => {
     return (
         <tr>
@@ -20,7 +21,7 @@ const ListingTickets = ({
                             type="checkbox"
                             className="form-check-input"
                             id="ticketselection"
-                            onChange={() => handleCheck(ticket.Listing_ID)}
+                            onChange={() => handleCheck(ticket.listing_id)}
                             checked={ticket.isSelected}
                         />
                     </div>
@@ -28,15 +29,15 @@ const ListingTickets = ({
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
-                    <p className="me-2">{ticket.Section}</p>
+                    <p className="me-2">{ticket.section}</p>
                     <p>
-                        {ticket.Row} {ticket.Seats}
+                        {ticket.row} {ticket.seats_from} {ticket.seats_to}
                     </p>
                 </div>
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
-                    <p className="me-2">{ticket.Ticket_Type}</p>
+                    <p className="me-2">{ticketTypes.filter((type)=>type.ticket_type_id===ticket.ticket_type_id)[0].ticket_type}</p>
                     <a href="#" className="link-primary text-decoration-none">
                         <p>Upload Now</p>
                     </a>
@@ -55,18 +56,18 @@ const ListingTickets = ({
                         className="form-control d-inline me-2"
                         style={{ width: 75 + "px" }}
                         title="Double click to edit"
-                        value={ticket.Price}
+                        value={ticket.price}
                         readOnly={!ticket.isPriceSelected}
                         onDoubleClick={() =>
-                            handlePriceSelect(ticket.Listing_ID)
+                            handlePriceSelect(ticket.listing_id)
                         }
                         onBlur={() =>
                             ticket.isPriceSelected &&
-                            handlePriceSelect(ticket.Listing_ID)
+                            handlePriceSelect(ticket.listing_id)
                         }
                         onChange={(e) =>
                             handlePriceChange(
-                                ticket.Listing_ID,
+                                ticket.listing_id,
                                 e.target.value,
                                 e
                             )
@@ -89,18 +90,18 @@ const ListingTickets = ({
                         className="form-control d-inline me-2"
                         style={{ width: 75 + "px" }}
                         title="Double click to edit"
-                        value={ticket.Available_Tickets}
+                        value={ticket.tickets_available}
                         readOnly={!ticket.isAvailableTicketSelected}
                         onDoubleClick={() =>
-                            handleAvailableTicketSelect(ticket.Listing_ID)
+                            handleAvailableTicketSelect(ticket.listing_id)
                         }
                         onBlur={() =>
                             ticket.isAvailableTicketSelected &&
-                            handleAvailableTicketSelect(ticket.Listing_ID)
+                            handleAvailableTicketSelect(ticket.listing_id)
                         }
                         onChange={(e) =>
                             handleAvailableTicketChange(
-                                ticket.Listing_ID,
+                                ticket.listing_id,
                                 e.target.value,
                                 e
                             )
@@ -117,18 +118,18 @@ const ListingTickets = ({
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="d-flex justify-content-center">
-                    <p>{ticket.Ticket_Sold}</p>
+                    <p>{ticket.tickets_sold}</p>
                 </div>
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="form-check form-switch d-flex justify-content-center">
-                    {ticket.status === "active" ? (
+                    {ticket.is_published === 1 ? (
                         <input
                             className="form-check-input me-4"
                             type="checkbox"
                             id="flexSwitchCheckChecked"
                             checked
-                            onChange={() => handleTicketPublishChange(ticket.Listing_ID)}
+                            onChange={() => handleTicketPublishChange(ticket.listing_id)}
                         />
                     ) : (
                         <input
@@ -136,7 +137,7 @@ const ListingTickets = ({
                             type="checkbox"
                             id="flexSwitchCheckChecked"
                             checked={false}
-                            onChange={() => handleTicketPublishChange(ticket.Listing_ID)}
+                            onChange={() => handleTicketPublishChange(ticket.listing_id)}
                         />
                     )}
                     <img
@@ -153,7 +154,7 @@ const ListingTickets = ({
                     className="fas fa-edit"
                     data-bs-toggle="modal"
                     data-bs-target="#myModal"
-                    onClick={() => handleTicketEdit(ticket.Listing_ID, concert)}
+                    onClick={() => handleTicketEdit(ticket.listing_id, concert)}
                 ></a>
             </td>
         </tr>

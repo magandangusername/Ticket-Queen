@@ -1,3 +1,4 @@
+import { toInteger } from "lodash";
 import React from "react";
 import ListingTickets from "./ListingTickets";
 const ListingConcerts = ({
@@ -10,6 +11,8 @@ const ListingConcerts = ({
     handleAvailableTicketChange,
     handleTicketEdit,
     handleTicketPublishChange,
+    getRemainingDays,
+    ticketTypes
 }) => {
     return (
         <>
@@ -17,7 +20,7 @@ const ListingConcerts = ({
                 className="clickable js-tabularinfo-toggle"
                 data-toggle="collapse"
                 id="row2"
-                data-target={`.a${concert.ConcertID}`}
+                data-target={`.a${concert.event_id}`}
             >
                 <td>
                     <div className="col-sm-6 justify-content-center">
@@ -26,7 +29,7 @@ const ListingConcerts = ({
                                 <button
                                     type="button"
                                     name="edit"
-                                    id={concert.ConcertID}
+                                    id={concert.event_id}
                                     className="edit btn btn-xl btn-outline-danger my-0 mt-3"
                                 >
                                     <i className="fa fa-plus-circle"></i>
@@ -39,13 +42,13 @@ const ListingConcerts = ({
                     <div className="d-flex align-items-center">
                         <div className="ms-3 pe-5">
                             <p className="fw-bold mb-1" id="ticketinfocontent">
-                                {concert.ConcertName} [{concert.ConcertID}]
+                                {concert.event_name} [{concert.event_id}]
                             </p>
                             <p className="text-white-50 mb-0">
-                                {concert.ConcertDate}
+                                {concert.event_date}{" "}{concert.event_time}
                             </p>
                             <p className="text-white-50 mb-0">
-                                {concert.Location}
+                                {concert.event_venue}
                             </p>
                         </div>
                     </div>
@@ -60,12 +63,12 @@ const ListingConcerts = ({
                         Available Tickets
                     </p>
                     <p className="text-white-50 mb-0">
-                        {concert.Total_Available}
+                        {toInteger(tickets.filter((ticket)=>ticket.event_id === concert.event_id).reduce((accumulator, currentValue) =>  accumulator + currentValue.tickets_available, 0))}
                     </p>
                 </td>
                 <td className="justify-content-center">
                     <p className="fw-normal mb-1 text-light">Ticket Sold</p>
-                    <p className="text-white-50 mb-0">{concert.Total_Sold}</p>
+                    <p className="text-white-50 mb-0">{toInteger(tickets.filter((ticket)=>ticket.event_id===concert.event_id).reduce((accumulator, currentValue) =>  accumulator + currentValue.tickets_sold, 0))}</p>
                 </td>
                 <td>
                     <div className="border border-dark border-2 container-fluid h-auto bg-danger rounded justify-content-center">
@@ -76,7 +79,7 @@ const ListingConcerts = ({
                 </td>
                 <td>
                     <p className="text-muted mb-0">
-                        {concert.remaining_days} days
+                        {getRemainingDays(concert.event_date + " " + concert.event_time)} days
                     </p>
                 </td>
                 <td className="border-dark border-1 justify-content-center">
@@ -89,7 +92,7 @@ const ListingConcerts = ({
                 </td>
             </tr>
             <tr
-                className={`tabularinfo__subblock collapse a${concert.ConcertID}`}
+                className={`tabularinfo__subblock collapse a${concert.event_id}`}
             >
                 <td colSpan="8">
                     <table
@@ -127,7 +130,7 @@ const ListingConcerts = ({
                         {tickets.length ? (
                             <tbody id="ticket">
                                 {tickets.map((ticket, index) =>
-                                    ticket.ConcertID === concert.ConcertID ? (
+                                    ticket.event_id === concert.event_id ? (
                                         <ListingTickets
                                             key={index}
                                             ticket={ticket}
@@ -147,13 +150,14 @@ const ListingConcerts = ({
                                             }
                                             handleTicketEdit={handleTicketEdit}
                                             handleTicketPublishChange={handleTicketPublishChange}
+                                            ticketTypes={ticketTypes}
                                         />
                                     ) : null
                                 )}
                             </tbody>
                         ) : null}
                         {tickets.filter(
-                            (ticket) => ticket.ConcertID === concert.ConcertID
+                            (ticket) => ticket.event_id === concert.event_id
                         ).length ? null : (
                             <tbody>
                                 <tr>

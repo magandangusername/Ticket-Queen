@@ -58,19 +58,19 @@ const ListingNew = ({ concerts }) => {
                             {concerts.length ? (
                                 <tbody>
                                     {concerts.map((concert) => (
-                                        <tr key={concert.ConcertID} onClick={()=>console.log('test')} data-bs-toggle="modal" data-bs-target="#tiktypes">
+                                        <tr key={concert.event_id} onClick={()=>console.log('test')} data-bs-toggle="modal" data-bs-target="#tiktypes">
                                             <td>
                                             {/* dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy") to get Tuesday, April 30th, 2019. */}
-                                                {dateFormat(concert.ConcertDate, "dddd")}
+                                                {dateFormat(concert.event_date, "dddd")}
                                                 <br />
-                                                {dateFormat(concert.ConcertDate, "dd, mmmm yyyy")}
+                                                {dateFormat(concert.event_date, "dd, mmmm yyyy")}
                                                 <br />
                                                 {/* 19:00 */}
                                             </td>
                                             <td>
-                                                {concert.ConcertName}
+                                                {concert.event_name}
                                                 <br />
-                                                {concert.Location}
+                                                {concert.event_venue}
                                                 <br />
                                                 {/* Nanterre */}
                                             </td>

@@ -1,6 +1,5 @@
 import axios from "axios";
-import { constant, functionsIn, initial } from "lodash";
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ListingConcerts from "./ListingConcerts";
 import Tools from "./Tools";
@@ -11,7 +10,7 @@ import ListingTicketClone from "./ListingTicketClone";
 import ListingTicketTypes from "./ListingTicketTypes";
 import ListingDeletePrompt from "./ListingDeletePrompt";
 import ListingNewListing from "./ListingNewListing";
-import { list } from "postcss";
+import { toInteger } from "lodash";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -35,16 +34,15 @@ const ListingTable = () => {
     const [sort, setSort] = useState([]);
     const [ticketEdit, setTicketEdit] = useState([
         {
-            Available_Tickets: "",
-            ConcertID: "",
-            Expiration: "",
-            Listing_ID: "",
-            Price: "",
-            Row: "",
-            Seats: "",
-            Section: "",
-            Ticket_Sold: "",
-            Ticket_Type: "",
+            tickets_available: "",
+            event_id: "",
+            listing_id: "",
+            price: "",
+            row: "",
+            seats_from: "",
+            section: "",
+            tickets_sold: "",
+            ticket_type_id: "",
             created_at: "",
             isAvailableTicketSelected: "",
             isPriceSelected: "",
@@ -58,15 +56,14 @@ const ListingTable = () => {
     const [listingNotes, setListingNotes] = useState([]);
     const [isRestrictionsLoading, setIsRestrictionsLoading] = useState(true);
     const [isTicketEditLoading, setIsTicketEditLoading] = useState(true);
-    const [isTicketEditModalVisible, setIsTicketEditModalVisible] =
-        useState(false);
     const [isTicketSaving, setIsTicketSaving] = useState(false);
     const [successMsg, setSuccessMsg] = useState(null);
     const [ticketClone, setTicketClone] = useState([]);
     const [createConcert, setCreateConcert] = useState({
-        ConcertName: "",
-        Location: "",
+        event_name: "",
+        event_venue: "",
     });
+    const [ticketTypes, setTicketTypes] = useState([]);
     const [search, setSearch] = useState("");
 
     // gets the concert data from the database
@@ -84,7 +81,7 @@ const ListingTable = () => {
             });
             setConcerts(result);
 
-            // p.s. to myself: add a condition for active/expired concert in the future
+            // p.s. to myself: add a condition for active/inactive concert in the future
         } catch (error) {
             setFetchError(error.message);
         } finally {
@@ -124,6 +121,8 @@ const ListingTable = () => {
                 return o;
             });
             setListingNotes(result);
+            const ticket_types = await axios.get("/api/ticket_types");
+            setTicketTypes(ticket_types.data);
         } catch (error) {
             setFetchError(error.message);
         } finally {
@@ -139,7 +138,7 @@ const ListingTable = () => {
 
         // setSortAllListing(concerts);
         // const inactiveList = concerts.filter(
-        //     (concert) => concert.status === "expired"
+        //     (concert) => concert.status === "inactive"
         // );
         // setSortInactive(inactiveList);
         // const activeList = concerts.filter(
@@ -159,10 +158,9 @@ const ListingTable = () => {
         else setVisible(false);
     }, [tickets]);
 
-    // for logging only in the console
+    // for logging only in the console. testing purpose only
     useEffect(() => {
         console.log(sort);
-        // console.log(document.getElementById("tableSearch").value);
     }, [sort]);
 
 
@@ -187,7 +185,7 @@ const ListingTable = () => {
         //     filter = sort.filter((remove) => remove.status != "active")
         // }
         // if(!sortInactiveActive) {
-        //     filter = sort.filter((remove) => remove.status != "expired")
+        //     filter = sort.filter((remove) => remove.status != "inactive")
         // }
 
         // var activecombinedList = [];
@@ -200,7 +198,7 @@ const ListingTable = () => {
         // }
         // if (sortInactiveActive) {
         //     const inactiveList = concerts.filter(
-        //         (concert) => concert.status === "expired"
+        //         (concert) => concert.status === "inactive"
         //     );
         //     inactivecombinedList = [...new Set([...inactiveList ,...filter])];
 
@@ -222,13 +220,12 @@ const ListingTable = () => {
             setSortActiveActive(false);
             setSortInactiveActive(false);
             handleAllListing();
-            // console.log("all active effect");
         }
     }, [sortAllListingActive]);
 
     // handles the search
     useEffect(() => {
-      const search_result = concerts.map((concert)=>(concert.ConcertName.toLowerCase().includes(search.toLowerCase()) | String(concert.ConcertID).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
+      const search_result = concerts.map((concert)=>(concert.event_name.toLowerCase().includes(search.toLowerCase()) | String(concert.event_id).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
       setConcerts(search_result);
     }, [search])
 
@@ -247,7 +244,7 @@ const ListingTable = () => {
     // for sorting to inactive listing
     const handleSortInactiveListing = async (filter) => {
         const activeList = concerts.filter(
-            (concert) => concert.status === "expired"
+            (concert) => concert.status === "inactive"
         );
         const combinedList = [...new Set([...activeList ,...filter])];
         setSort(combinedList);
@@ -265,9 +262,8 @@ const ListingTable = () => {
 
     // updating the which tickets are selected
     const handleCheck = async (id) => {
-        //finds the set of data from the list and set its value
         const listTickets = tickets.map((ticket) =>
-            ticket.Listing_ID === id
+            ticket.listing_id === id
                 ? { ...ticket, isSelected: !ticket.isSelected }
                 : ticket
         );
@@ -279,18 +275,19 @@ const ListingTable = () => {
         try {
             setIsTicketEditLoading(true);
             setSuccessMsg(null);
-            var editList = tickets.filter((ticket) => ticket.Listing_ID === id);
+            var editList = tickets.filter((ticket) => ticket.listing_id === id);
             // editList = [{...editList, concert}];
 
             var arrOfObj = editList;
 
             var result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
-                o.ConcertID = concert.ConcertID;
-                o.ConcertName = concert.ConcertName;
-                o.ConcertDate = concert.ConcertDate;
-                o.Location = concert.Location;
-                o.Total_Available = concert.Total_Available;
+                o.event_id = concert.event_id;
+                o.event_name = concert.event_name;
+                o.event_date = concert.event_date;
+                o.event_time = concert.event_time;
+                o.event_venue = concert.event_venue;
+                // o.Total_Available = concert.Total_Available;
                 // o.status = concert.status;
                 return o;
             });
@@ -345,13 +342,13 @@ const ListingTable = () => {
         if (input_type === "restriction") {
             var len = ticketRestrictionEdit.filter(
                 (ticketrestriction) =>
-                    (ticketrestriction.Restriction_ID === input_id) &
-                    (ticketrestriction.Listing_ID === id)
+                    (ticketrestriction.restriction_id === input_id) &
+                    (ticketrestriction.listing_id === id)
             );
             if (len.length > 0) {
                 var ticketRestrictEdit = ticketRestrictionEdit.map(
                     (ticketrestrict) =>
-                        ticketrestrict.Restriction_ID === input_id
+                        ticketrestrict.restriction_id === input_id
                             ? {
                                   ...ticketrestrict,
                                   isChecked: !ticketrestrict.isChecked,
@@ -360,7 +357,7 @@ const ListingTable = () => {
                 );
                 setTicketRestrictionEdit(ticketRestrictEdit);
                 // var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
-                //     ticketrestrict.Restriction_ID === input_id
+                //     ticketrestrict.restriction_id === input_id
                 //         ? {
                 //               ...ticketrestrict,
                 //               isChecked: !ticketrestrict.isChecked,
@@ -370,7 +367,7 @@ const ListingTable = () => {
                 // setRestrictions(ticketRestrictEdit);
             } else if (len.length === 0) {
                 var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
-                    ticketrestrict.Restriction_ID === input_id
+                    ticketrestrict.restriction_id === input_id
                         ? {
                               ...ticketrestrict,
                               isChecked: !ticketrestrict.isChecked,
@@ -382,13 +379,13 @@ const ListingTable = () => {
         } else if (input_type === "listing_note") {
             var len = ticketListingNoteEdit.filter(
                 (ticketlistingnote) =>
-                    (ticketlistingnote.Listing_note_ID === input_id) &
-                    (ticketlistingnote.Listing_ID === id)
+                    (ticketlistingnote.listing_note_id === input_id) &
+                    (ticketlistingnote.listing_id === id)
             );
             if (len.length > 0) {
                 var ticketListNoteEdit = ticketListingNoteEdit.map(
                     (ticketlistnote) =>
-                        ticketlistnote.Listing_note_ID === input_id
+                        ticketlistnote.listing_note_id === input_id
                             ? {
                                   ...ticketlistnote,
                                   isChecked: !ticketlistnote.isChecked,
@@ -398,7 +395,7 @@ const ListingTable = () => {
                 setTicketListingNoteEdit(ticketListNoteEdit);
             } else if (len.length === 0) {
                 var ticketListNoteEdit = listingNotes.map((ticketlistnote) =>
-                    ticketlistnote.Listing_note_ID === input_id
+                    ticketlistnote.listing_note_id === input_id
                         ? {
                               ...ticketlistnote,
                               isChecked: !ticketlistnote.isChecked,
@@ -409,65 +406,78 @@ const ListingTable = () => {
             }
         } else if (input_type === "available_tickets") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.Listing_ID === id
-                    ? { ...ticket, Available_Tickets: val }
+                ticket.listing_id === id
+                    ? { ...ticket, tickets_available: val }
                     : ticket
             );
             setTicketEdit(ticketinput);
-        } else if (input_type === "Ticket_Sold") {
+        } else if (input_type === "ticket_separation") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.Listing_ID === id
-                    ? { ...ticket, Ticket_Sold: val }
+                ticket.listing_id === id
+                    ? { ...ticket, ticket_separation: val }
                     : ticket
             );
             setTicketEdit(ticketinput);
-        } else if (input_type === "Section") {
+        } else if (input_type === "tickets_sold") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.Listing_ID === id ? { ...ticket, Section: val } : ticket
+                ticket.listing_id === id
+                    ? { ...ticket, tickets_sold: val }
+                    : ticket
             );
             setTicketEdit(ticketinput);
-        } else if (input_type === "Row") {
+        } else if (input_type === "section") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.Listing_ID === id ? { ...ticket, Row: val } : ticket
+                ticket.listing_id === id ? { ...ticket, section: val } : ticket
             );
             setTicketEdit(ticketinput);
-        } else if (input_type === "Seats") {
+        } else if (input_type === "row") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.Listing_ID === id ? { ...ticket, Seats: val } : ticket
+                ticket.listing_id === id ? { ...ticket, row: val } : ticket
             );
             setTicketEdit(ticketinput);
-        } else if (input_type === "Price") {
+        } else if (input_type === "seats_from") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
+                ticket.listing_id === id ? { ...ticket, seats_from: val } : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "seats_to") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.listing_id === id ? { ...ticket, seats_to: val } : ticket
+            );
+            setTicketEdit(ticketinput);
+        } else if (input_type === "price") {
+            var ticketinput = ticketEdit.map((ticket) =>
+                ticket.listing_id === id ? { ...ticket, price: val } : ticket
             );
             setTicketEdit(ticketinput);
         } else if (input_type === "publish") {
-            if (ticketEdit[0].status === "active") {
+            if (ticketEdit[0].is_published === 1) {
                 var ticketinput = ticketEdit.map((ticket) =>
-                    ticket.Listing_ID === id
-                        ? { ...ticket, status: "disabled" }
+                    ticket.listing_id === id
+                        ? { ...ticket, is_published: 0 }
                         : ticket
                 );
-            } else if (ticketEdit[0].status === "disabled") {
+            } else if (ticketEdit[0].is_published === 0) {
                 var ticketinput = ticketEdit.map((ticket) =>
-                    ticket.Listing_ID === id
-                        ? { ...ticket, status: "active" }
+                    ticket.listing_id === id
+                        ? { ...ticket, is_published: 1 }
                         : ticket
                 );
             }
             setTicketEdit(ticketinput);
         }
     };
+
     // setting interaction for price input when focused
     const handlePriceSelect = async (id) => {
         const listTickets = tickets.map((ticket) =>
-            ticket.Listing_ID === id
+            ticket.listing_id === id
                 ? { ...ticket, isPriceSelected: !ticket.isPriceSelected }
                 : ticket
         );
         setTickets(listTickets);
 
-        const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
+        const ticket = tickets.filter((ticket) => ticket.listing_id === id);
 
         if (ticket[0].isPriceSelected === true) {
             ticketUpdate(ticket);
@@ -475,9 +485,9 @@ const ListingTable = () => {
     };
 
     // updating the price input value
-    const handlePriceChange = async (id, val, key) => {
+    const handlePriceChange = async (id, val) => {
         const listTickets = tickets.map((ticket) =>
-            ticket.Listing_ID === id ? { ...ticket, Price: val } : ticket
+            ticket.listing_id === id ? { ...ticket, price: val } : ticket
         );
 
         setTickets(listTickets);
@@ -486,7 +496,7 @@ const ListingTable = () => {
     // setting interaction for available ticket input when focused
     const handleAvailableTicketSelect = async (id) => {
         const listTickets = tickets.map((ticket) =>
-            ticket.Listing_ID === id
+            ticket.listing_id === id
                 ? {
                       ...ticket,
                       isAvailableTicketSelected:
@@ -496,7 +506,7 @@ const ListingTable = () => {
         );
         setTickets(listTickets);
 
-        const ticket = tickets.filter((ticket) => ticket.Listing_ID === id);
+        const ticket = tickets.filter((ticket) => ticket.listing_id === id);
 
         if (ticket[0].isAvailableTicketSelected !== false) {
             ticketUpdate(ticket);
@@ -504,10 +514,10 @@ const ListingTable = () => {
     };
 
     // updating the available ticket input value
-    const handleAvailableTicketChange = async (id, val, key) => {
+    const handleAvailableTicketChange = async (id, val) => {
         const listTickets = tickets.map((ticket) =>
-            ticket.Listing_ID === id
-                ? { ...ticket, Available_Tickets: val }
+            ticket.listing_id === id
+                ? { ...ticket, tickets_available: val }
                 : ticket
         );
         setTickets(listTickets);
@@ -516,41 +526,49 @@ const ListingTable = () => {
     // set publish status of ticket
     const handleTicketPublishChange = async (id) => {
         const listTickets = tickets.map((ticket) =>
-            (ticket.Listing_ID === id) & (ticket.status === "active")
-                ? { ...ticket, status: "disabled" }
-                : (ticket.Listing_ID === id) & (ticket.status === "disabled")
-                ? { ...ticket, status: "active" }
+            (ticket.listing_id === id) & (ticket.is_published === 1)
+                ? { ...ticket, is_published: 0 }
+                : (ticket.listing_id === id) & (ticket.is_published === 0)
+                ? { ...ticket, is_published: 1 }
                 : ticket
         );
         setTickets(listTickets);
 
-        const ticket = listTickets.filter((ticket) => ticket.Listing_ID === id);
+        const ticket = listTickets.filter((ticket) => ticket.listing_id === id);
         ticketUpdate(ticket);
     };
 
     // change the values of cloned tickets
     const handleTicketCloneEdit = async (val, index, input) => {
         var ticketclones = ticketClone;
-        if (input === "Section") {
+        if (input === "section") {
             ticketclones = ticketClone.map((clone, cloneindex) =>
-                cloneindex === index ? { ...clone, Section: val } : clone
+                cloneindex === index ? { ...clone, section: val } : clone
             );
-        } else if (input === "Row") {
+        } else if (input === "row") {
             ticketclones = ticketClone.map((clone, cloneindex) =>
-                cloneindex === index ? { ...clone, Row: val } : clone
+                cloneindex === index ? { ...clone, row: val } : clone
             );
-        } else if (input === "Seats") {
+        } else if (input === "seats_from") {
             ticketclones = ticketClone.map((clone, cloneindex) =>
-                cloneindex === index ? { ...clone, Seats: val } : clone
+                cloneindex === index ? { ...clone, seats_from: val } : clone
             );
-        } else if (input === "Price") {
+        } else if (input === "seats_to") {
             ticketclones = ticketClone.map((clone, cloneindex) =>
-                cloneindex === index ? { ...clone, Price: val } : clone
+                cloneindex === index ? { ...clone, seats_to: val } : clone
             );
-        } else if (input === "Available_Tickets") {
+        } else if (input === "price") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index ? { ...clone, price: val } : clone
+            );
+        } else if (input === "proceeds") {
+            ticketclones = ticketClone.map((clone, cloneindex) =>
+                cloneindex === index ? { ...clone, proceeds: val } : clone
+            );
+        } else if (input === "tickets_available") {
             ticketclones = ticketClone.map((clone, cloneindex) =>
                 cloneindex === index
-                    ? { ...clone, Available_Tickets: val }
+                    ? { ...clone, tickets_available: val }
                     : clone
             );
         }
@@ -567,17 +585,19 @@ const ListingTable = () => {
     ) => {
         setIsTicketSaving(true);
         const ticket = {
-            Listing_ID: ticketedit.Listing_ID,
-            ConcertID: ticketedit.ConcertID,
-            Section: ticketedit.Section,
-            Row: ticketedit.Row,
-            Seats: ticketedit.Seats,
-            Ticket_Type: ticketedit.Ticket_Type,
-            Price: ticketedit.Price,
-            Available_Tickets: ticketedit.Available_Tickets,
-            Ticket_Sold: ticketedit.Ticket_Sold,
-            Expiration: ticketedit.Expiration,
+            listing_id: ticketedit.listing_id,
+            ticket_type_id: ticketedit.ticket_type_id,
+            ticket_separation: ticketedit.ticket_separation,
+            tickets_available: ticketedit.tickets_available,
+            section: ticketedit.section,
+            row: ticketedit.row,
+            seats_from: ticketedit.seats_from,
+            seats_to: ticketedit.seats_to,
+            price: ticketedit.price,
+            currency: ticketedit.currency,
             status: ticketedit.status,
+            is_published: ticketedit.is_published,
+            event_id: ticketedit.event_id
         };
 
         restricts = restricts.filter((restrict) => restrict.isChecked === true);
@@ -605,7 +625,7 @@ const ListingTable = () => {
             .then((response) => {
                 console.log(response);
                 const ticketinfo = tickets.map((ticket) =>
-                    ticket.Listing_ID === ticketedit.Listing_ID
+                    ticket.listing_id === ticketedit.listing_id
                         ? { ...ticket, ...ticketedit }
                         : ticket
                 );
@@ -646,16 +666,19 @@ const ListingTable = () => {
     // update ticket to the database
     const ticketUpdate = async (ticket) => {
         const ticket_info = {
-            Listing_ID: ticket[0].Listing_ID,
-            ConcertID: ticket[0].ConcertID,
-            Section: ticket[0].Section,
-            Row: ticket[0].Row,
-            Seats: ticket[0].Seats,
-            Ticket_Type: ticket[0].Ticket_Type,
-            Price: ticket[0].Price,
-            Available_Tickets: ticket[0].Available_Tickets,
-            Expiration: ticket[0].Expiration,
+            listing_id: ticket[0].listing_id,
+            ticket_type_id: ticket[0].ticket_type_id,
+            ticket_separation: ticket[0].ticket_separation,
+            tickets_available: ticket[0].tickets_available,
+            section: ticket[0].section,
+            row: ticket[0].row,
+            seats_from: ticket[0].seats_from,
+            seats_to: ticket[0].seats_to,
+            price: ticket[0].price,
+            currency: ticket[0].currency,
             status: ticket[0].status,
+            is_published: ticket[0].is_published,
+            event_id: ticket[0].event_id
         };
 
         axios
@@ -672,16 +695,16 @@ const ListingTable = () => {
     // for deleting ticket
     const handleTicketDelete = async (ticket) => {
         const ticket_info = {
-            Listing_ID: ticket.Listing_ID,
-            ConcertID: ticket.ConcertID,
-            Section: ticket.Section,
-            Row: ticket.Row,
-            Seats: ticket.Seats,
-            Ticket_Type: ticket.Ticket_Type,
-            Price: ticket.Price,
-            Available_Tickets: ticket.Available_Tickets,
-            Expiration: ticket.Expiration,
-            status: ticket.status,
+            listing_id: ticket.listing_id,
+            event_id: ticket.event_id,
+            section: ticket.section,
+            row: ticket.row,
+            seats_from: ticket.seats_from,
+            seats_to: ticket.seats_to,
+            ticket_type_id: ticket.ticket_type_id,
+            price: ticket.price,
+            tickets_available: ticket.tickets_available,
+            is_published: ticket.is_published,
         };
         axios
             .post("/api/tickets/destroy", ticket_info)
@@ -694,7 +717,7 @@ const ListingTable = () => {
             });
 
         var newtickets = tickets.filter(
-            (ticket) => ticket.Listing_ID !== ticket_info.Listing_ID
+            (ticket) => ticket.listing_id !== ticket_info.listing_id
         );
 
         setTickets(newtickets);
@@ -729,7 +752,7 @@ const ListingTable = () => {
                 setTickets(
                     tickets.map((ticket) =>
                         ticket.isSelected === true
-                            ? { ...ticket, status: "active" }
+                            ? { ...ticket, is_published: 1 }
                             : ticket
                     )
                 );
@@ -751,7 +774,7 @@ const ListingTable = () => {
                 setTickets(
                     tickets.map((ticket) =>
                         ticket.isSelected === true
-                            ? { ...ticket, status: "disabled" }
+                            ? { ...ticket, is_published: 0 }
                             : ticket
                     )
                 );
@@ -773,7 +796,7 @@ const ListingTable = () => {
                 setTickets(
                     tickets.map((ticket) =>
                         ticket.isSelected === true
-                            ? { ...ticket, Ticket_Type: "Paper Ticket" }
+                            ? { ...ticket, ticket_type_id: 1 }
                             : ticket
                     )
                 );
@@ -795,7 +818,7 @@ const ListingTable = () => {
                 setTickets(
                     tickets.map((ticket) =>
                         ticket.isSelected === true
-                            ? { ...ticket, Ticket_Type: "E-Ticket" }
+                            ? { ...ticket, ticket_type_id: 2 }
                             : ticket
                     )
                 );
@@ -805,6 +828,16 @@ const ListingTable = () => {
                 setFetchError(error.message);
             });
     };
+
+    // get the ramaining day
+    const getRemainingDays = (targetdate) => {
+        var date1 = new Date();
+        var date2 = new Date(targetdate);
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+        return toInteger(Difference_In_Days);
+    }
 
     // This is the display code
     return (
@@ -941,7 +974,7 @@ const ListingTable = () => {
                                         <>
                                             {concerts.map((concert) => concert.isVisible && (
                                                 <ListingConcerts
-                                                    key={concert.ConcertID}
+                                                    key={concert.event_id}
                                                     concert={concert}
                                                     tickets={tickets}
                                                     setTickets={setTickets}
@@ -964,6 +997,8 @@ const ListingTable = () => {
                                                     handleTicketPublishChange={
                                                         handleTicketPublishChange
                                                     }
+                                                    getRemainingDays={getRemainingDays}
+                                                    ticketTypes={ticketTypes}
                                                 />
                                             ))}
                                         </>
@@ -998,11 +1033,11 @@ const ListingTable = () => {
                         setTicketRestrictionEdit={setTicketRestrictionEdit}
                         setTicketListingNoteEdit={setTicketListingNoteEdit}
                         handleTicketEditChange={handleTicketEditChange}
-                        isTicketEditModalVisible={isTicketEditModalVisible}
                         ticketEditUpdate={ticketEditUpdate}
                         isTicketSaving={isTicketSaving}
                         successMsg={successMsg}
                         setTicketClone={setTicketClone}
+                        ticketTypes={ticketTypes}
                     />
                 ) : null}
                 <ListingNew concerts={concerts} />

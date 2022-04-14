@@ -12,11 +12,11 @@ const ListingEditTicket = ({
     setTicketRestrictionEdit,
     setTicketListingNoteEdit,
     handleTicketEditChange,
-    isTicketEditModalVisible,
     ticketEditUpdate,
     isTicketSaving,
     successMsg,
     setTicketClone,
+    ticketTypes
 }) => {
     return (
         <div className="modal" id="myModal" aria-hidden="true">
@@ -31,9 +31,9 @@ const ListingEditTicket = ({
                         <>
                             {/* <!-- Modal Header --> */}
                             <div className="modal-header">
-                                <h4>{ticketEdit[0].ConcertName}</h4>
+                                <h4>{ticketEdit[0].event_name}</h4>
                                 <p>
-                                    <b>{ticketEdit[0].ConcertDate}</b>
+                                    <b>{ticketEdit[0].event_date}</b>
                                     <br />
                                 </p>
 
@@ -68,14 +68,14 @@ const ListingEditTicket = ({
                                                     id="exampleFormControlInput1"
                                                     value={
                                                         ticketEdit[0]
-                                                            .Available_Tickets
+                                                            .tickets_available
                                                     }
                                                     onChange={(e) =>
                                                         handleTicketEditChange(
                                                             ticketEdit[0]
-                                                                .Listing_ID,
+                                                                .listing_id,
                                                             ticketEdit[0]
-                                                                .Listing_ID,
+                                                                .listing_id,
                                                             "available_tickets",
                                                             e.target.value
                                                         )
@@ -91,17 +91,28 @@ const ListingEditTicket = ({
                                                 <select
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
+                                                    onChange={(e)=>handleTicketEditChange(
+                                                        ticketEdit[0]
+                                                            .listing_id,
+                                                        ticketEdit[0]
+                                                            .listing_id,
+                                                        "ticket_separation",
+                                                        e.target.value
+                                                    )}
+                                                    value={ticketEdit[0].ticket_separation === null ? "" : ticketEdit[0].ticket_separation}
                                                 >
-                                                    <option>Any</option>
-                                                    <option>None</option>
-                                                    <option defaultValue>
+                                                    <option value="any">Any</option>
+                                                    {ticketEdit[0].ticket_separation === null ? <option defaultValue>None</option> : <option>None</option>}
+
+                                                    <option value="Avoid leaving one ticket">
                                                         Avoid leaving one ticket
                                                     </option>
-                                                    <option>
+                                                    <option value="Avoid leaving one or
+                                                        three tickets">
                                                         Avoid leaving one or
                                                         three tickets
                                                     </option>
-                                                    <option>
+                                                    <option value="Avoid odd numbers">
                                                         Avoid odd numbers
                                                     </option>
                                                 </select>
@@ -111,20 +122,20 @@ const ListingEditTicket = ({
                                                     Quantity Sold
                                                 </label>
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
                                                         ticketEdit[0]
-                                                            .Ticket_Sold
+                                                            .tickets_sold
                                                     }
                                                     onChange={(e) =>
                                                         handleTicketEditChange(
                                                             ticketEdit[0]
-                                                                .Listing_ID,
+                                                                .listing_id,
                                                             ticketEdit[0]
-                                                                .Listing_ID,
-                                                            "Ticket_Sold",
+                                                                .listing_id,
+                                                            "tickets_sold",
                                                             e.target.value
                                                         )
                                                     }
@@ -138,19 +149,19 @@ const ListingEditTicket = ({
                                                     Section*
                                                 </label>
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
-                                                        ticketEdit[0].Section
+                                                        ticketEdit[0].section
                                                     }
                                                     onChange={(e) =>
                                                         handleTicketEditChange(
                                                             ticketEdit[0]
-                                                                .Listing_ID,
+                                                                .listing_id,
                                                             ticketEdit[0]
-                                                                .Listing_ID,
-                                                            "Section",
+                                                                .listing_id,
+                                                            "section",
                                                             e.target.value
                                                         )
                                                     }
@@ -162,17 +173,17 @@ const ListingEditTicket = ({
                                                     Row
                                                 </label>
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
-                                                    value={ticketEdit[0].Row}
+                                                    value={ticketEdit[0].row}
                                                     onChange={(e) =>
                                                         handleTicketEditChange(
                                                             ticketEdit[0]
-                                                                .Listing_ID,
+                                                                .listing_id,
                                                             ticketEdit[0]
-                                                                .Listing_ID,
-                                                            "Row",
+                                                                .listing_id,
+                                                            "row",
                                                             e.target.value
                                                         )
                                                     }
@@ -194,15 +205,15 @@ const ListingEditTicket = ({
                                                         className="form-control"
                                                         id="inlineFormInputGroupMinimum"
                                                         value={
-                                                            ticketEdit[0].Seats
+                                                            ticketEdit[0].seats_from
                                                         }
                                                         onChange={(e) =>
                                                             handleTicketEditChange(
                                                                 ticketEdit[0]
-                                                                    .Listing_ID,
+                                                                    .listing_id,
                                                                 ticketEdit[0]
-                                                                    .Listing_ID,
-                                                                "Seats",
+                                                                    .listing_id,
+                                                                "seats_from",
                                                                 e.target.value
                                                             )
                                                         }
@@ -216,14 +227,14 @@ const ListingEditTicket = ({
                                                         type="text"
                                                         className="form-control"
                                                         id="inlineFormInputGroupMaximum"
-                                                        // value={ticketEdit[0].Seats}
+                                                        value={ticketEdit[0].seats_to}
                                                         onChange={(e) =>
                                                             handleTicketEditChange(
                                                                 ticketEdit[0]
-                                                                    .Listing_ID,
+                                                                    .listing_id,
                                                                 ticketEdit[0]
-                                                                    .Listing_ID,
-                                                                "Seats",
+                                                                    .listing_id,
+                                                                "seats_to",
                                                                 e.target.value
                                                             )
                                                         }
@@ -251,15 +262,15 @@ const ListingEditTicket = ({
                                                         className="form-control"
                                                         id="inlineFormInputGroupUsername"
                                                         value={
-                                                            ticketEdit[0].Price
+                                                            ticketEdit[0].price
                                                         }
                                                         onChange={(e) =>
                                                             handleTicketEditChange(
                                                                 ticketEdit[0]
-                                                                    .Listing_ID,
+                                                                    .listing_id,
                                                                 ticketEdit[0]
-                                                                    .Listing_ID,
-                                                                "Price",
+                                                                    .listing_id,
+                                                                "price",
                                                                 e.target.value
                                                             )
                                                         }
@@ -309,7 +320,7 @@ const ListingEditTicket = ({
                                                                     className="form-check"
                                                                     key={
                                                                         "r" +
-                                                                        restriction.Restriction_ID
+                                                                        restriction.restriction_id
                                                                     }
                                                                 >
                                                                     {ticketRestrictionEdit.length &
@@ -317,31 +328,31 @@ const ListingEditTicket = ({
                                                                         (
                                                                             restrict
                                                                         ) =>
-                                                                            (restrict.Restriction_ID ===
-                                                                                restriction.Restriction_ID) &
+                                                                            (restrict.restriction_id ===
+                                                                                restriction.restriction_id) &
                                                                             restrict.isChecked
                                                                     ).length ? (
                                                                         <>
                                                                             <input
                                                                                 className="form-check-input"
                                                                                 type="checkbox"
-                                                                                id={`restriction${restriction.Restriction_ID}`}
+                                                                                id={`restriction${restriction.restriction_id}`}
                                                                                 checked
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
                                                                                         ticketEdit[0]
-                                                                                            .Listing_ID,
-                                                                                        restriction.Restriction_ID,
+                                                                                            .listing_id,
+                                                                                        restriction.restriction_id,
                                                                                         "restriction"
                                                                                     )
                                                                                 }
                                                                             />
                                                                             <label
                                                                                 className="form-check-label"
-                                                                                htmlFor={`restriction${restriction.Restriction_ID}`}
+                                                                                htmlFor={`restriction${restriction.restriction_id}`}
                                                                             >
                                                                                 {
-                                                                                    restriction.Restriction
+                                                                                    restriction.restriction
                                                                                 }
                                                                             </label>
                                                                         </>
@@ -350,15 +361,15 @@ const ListingEditTicket = ({
                                                                             <input
                                                                                 className="form-check-input"
                                                                                 type="checkbox"
-                                                                                id={`restriction${restriction.Restriction_ID}`}
+                                                                                id={`restriction${restriction.restriction_id}`}
                                                                                 checked={
                                                                                     restriction.isChecked |
                                                                                     ticketRestrictionEdit.filter(
                                                                                         (
                                                                                             restrict
                                                                                         ) =>
-                                                                                            (restrict.Restriction_ID ===
-                                                                                                restriction.Restriction_ID) &
+                                                                                            (restrict.restriction_id ===
+                                                                                                restriction.restriction_id) &
                                                                                             restrict.isChecked
                                                                                     )
                                                                                         .length
@@ -366,18 +377,18 @@ const ListingEditTicket = ({
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
                                                                                         ticketEdit[0]
-                                                                                            .Listing_ID,
-                                                                                        restriction.Restriction_ID,
+                                                                                            .listing_id,
+                                                                                        restriction.restriction_id,
                                                                                         "restriction"
                                                                                     )
                                                                                 }
                                                                             />
                                                                             <label
                                                                                 className="form-check-label"
-                                                                                htmlFor={`restriction${restriction.Restriction_ID}`}
+                                                                                htmlFor={`restriction${restriction.restriction_id}`}
                                                                             >
                                                                                 {
-                                                                                    restriction.Restriction
+                                                                                    restriction.restriction
                                                                                 }
                                                                             </label>
                                                                         </>
@@ -410,7 +421,7 @@ const ListingEditTicket = ({
                                                                     className="form-check"
                                                                     key={
                                                                         "l" +
-                                                                        listingNote.Listing_note_ID
+                                                                        listingNote.listing_note_id
                                                                     }
                                                                 >
                                                                     {ticketListingNoteEdit.length &
@@ -418,31 +429,31 @@ const ListingEditTicket = ({
                                                                         (
                                                                             listnote
                                                                         ) =>
-                                                                            (listnote.Listing_note_ID ===
-                                                                                listingNote.Listing_note_ID) &
+                                                                            (listnote.listing_note_id ===
+                                                                                listingNote.listing_note_id) &
                                                                             listnote.isChecked
                                                                     ).length ? (
                                                                         <>
                                                                             <input
                                                                                 className="form-check-input"
                                                                                 type="checkbox"
-                                                                                id={`listingnote${listingNote.Listing_note_ID}`}
+                                                                                id={`listingnote${listingNote.listing_note_id}`}
                                                                                 checked
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
                                                                                         ticketEdit[0]
-                                                                                            .Listing_ID,
-                                                                                        listingNote.Listing_note_ID,
+                                                                                            .listing_id,
+                                                                                        listingNote.listing_note_id,
                                                                                         "listing_note"
                                                                                     )
                                                                                 }
                                                                             />
                                                                             <label
                                                                                 className="form-check-label"
-                                                                                htmlFor={`listingnote${listingNote.Listing_note_ID}`}
+                                                                                htmlFor={`listingnote${listingNote.listing_note_id}`}
                                                                             >
                                                                                 {
-                                                                                    listingNote.Listing_note
+                                                                                    listingNote.listing_note
                                                                                 }
                                                                             </label>
                                                                         </>
@@ -450,21 +461,21 @@ const ListingEditTicket = ({
                                                                         <div
                                                                             key={
                                                                                 "l" +
-                                                                                listingNote.Listing_note_ID
+                                                                                listingNote.listing_note_id
                                                                             }
                                                                         >
                                                                             <input
                                                                                 className="form-check-input"
                                                                                 type="checkbox"
-                                                                                id={`listingnote${listingNote.Listing_note_ID}`}
+                                                                                id={`listingnote${listingNote.listing_note_id}`}
                                                                                 checked={
                                                                                     listingNote.isChecked |
                                                                                     ticketListingNoteEdit.filter(
                                                                                         (
                                                                                             listnote
                                                                                         ) =>
-                                                                                            (listnote.Listing_note_ID ===
-                                                                                                listingNote.Listing_note_ID) &
+                                                                                            (listnote.listing_note_id ===
+                                                                                                listingNote.listing_note_id) &
                                                                                             listnote.isChecked
                                                                                     )
                                                                                         .length
@@ -472,18 +483,18 @@ const ListingEditTicket = ({
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
                                                                                         ticketEdit[0]
-                                                                                            .Listing_ID,
-                                                                                        listingNote.Listing_note_ID,
+                                                                                            .listing_id,
+                                                                                        listingNote.listing_note_id,
                                                                                         "listing_note"
                                                                                     )
                                                                                 }
                                                                             />
                                                                             <label
                                                                                 className="form-check-label"
-                                                                                htmlFor={`listingnote${listingNote.Listing_note_ID}`}
+                                                                                htmlFor={`listingnote${listingNote.listing_note_id}`}
                                                                             >
                                                                                 {
-                                                                                    listingNote.Listing_note
+                                                                                    listingNote.listing_note
                                                                                 }
                                                                             </label>
                                                                         </div>
@@ -504,7 +515,7 @@ const ListingEditTicket = ({
                                 </div>
                                 <div className="col-3">
                                     <div className="form-check form-switch border p-1">
-                                        {ticketEdit[0].status === "active" ? (
+                                        {ticketEdit[0].is_published === 1 ? (
                                             <input
                                                 className="form-check-input ms-auto"
                                                 type="checkbox"
@@ -517,7 +528,7 @@ const ListingEditTicket = ({
                                                 onChange={() =>
                                                     handleTicketEditChange(
                                                         ticketEdit[0]
-                                                            .Listing_ID,
+                                                            .listing_id,
                                                         "",
                                                         "publish"
                                                     )
@@ -530,13 +541,13 @@ const ListingEditTicket = ({
                                                 role="switch"
                                                 id={
                                                     "flexSwitchCheckDefault " +
-                                                    ticketEdit[0].status
+                                                    ticketEdit[0].is_published
                                                 }
                                                 checked={false}
                                                 onChange={() =>
                                                     handleTicketEditChange(
                                                         ticketEdit[0]
-                                                            .Listing_ID,
+                                                            .listing_id,
                                                         "",
                                                         "publish"
                                                     )
@@ -558,10 +569,10 @@ const ListingEditTicket = ({
                                             Sold Status
                                         </label>
                                         <input
-                                            type="email"
+                                            type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketEdit[0].status}
+                                            value={ticketEdit[0].tickets_available===0 ? 'Fully Sold' : ""}
                                             readOnly
                                         />
                                         <br />
@@ -574,10 +585,10 @@ const ListingEditTicket = ({
                                             Listing ID
                                         </label>
                                         <input
-                                            type="email"
+                                            type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketEdit[0].Listing_ID}
+                                            value={ticketEdit[0].listing_id}
                                             readOnly
                                         />
                                         <br />
@@ -591,10 +602,10 @@ const ListingEditTicket = ({
                                         </label>
                                         <br />
                                         <input
-                                            type="email"
+                                            type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketEdit[0].Ticket_Type}
+                                            value={ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit[0].ticket_type_id)[0].ticket_type | ""}
                                             readOnly
                                         />
                                     </div>

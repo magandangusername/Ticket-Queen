@@ -49,12 +49,12 @@ const ListingTicketClone = ({
                                 <p>
                                     <b>
                                         {dateFormat(
-                                            ticketClone[0].ConcertDate,
+                                            ticketClone[0].event_date,
                                             "dddd, dd mmmm yyyy"
                                         )}
                                     </b>
                                     <br />
-                                    {ticketClone[0].Location}
+                                    {ticketClone[0].event_venue}
                                 </p>
                                 <table className="container form bg-light text-dark border">
                                     <thead>
@@ -92,12 +92,12 @@ const ListingTicketClone = ({
                                                     <input
                                                         className="form-control"
                                                         type="text"
-                                                        value={clone.Section}
+                                                        value={clone.section | ""}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Section"
+                                                                "section"
                                                             )
                                                         }
                                                     />
@@ -118,12 +118,12 @@ const ListingTicketClone = ({
                                                     <input
                                                         className="form-control"
                                                         type="text"
-                                                        value={clone.Row}
+                                                        value={clone.row | ""}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Row"
+                                                                "row"
                                                             )
                                                         }
                                                     />
@@ -134,12 +134,12 @@ const ListingTicketClone = ({
                                                         type="seatfrom"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
-                                                        value={clone.Seats}
+                                                        value={clone.seats_from}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Seats"
+                                                                "seats_from"
                                                             )
                                                         }
                                                     />
@@ -149,12 +149,12 @@ const ListingTicketClone = ({
                                                         type="seatto"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
-                                                        value={clone.Seats}
+                                                        value={clone.seats_to}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Seats"
+                                                                "seats_to"
                                                             )
                                                         }
                                                     />
@@ -164,12 +164,12 @@ const ListingTicketClone = ({
                                                         type="webprice"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
-                                                        value={clone.Price}
+                                                        value={clone.price}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Price"
+                                                                "price"
                                                             )
                                                         }
                                                     />
@@ -179,12 +179,12 @@ const ListingTicketClone = ({
                                                         type="proceeds"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
-                                                        value={clone.Price}
+                                                        value={clone.proceeds | ""}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Price"
+                                                                "proceeds"
                                                             )
                                                         }
                                                     />
@@ -195,13 +195,13 @@ const ListingTicketClone = ({
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
                                                         value={
-                                                            clone.Available_Tickets
+                                                            clone.tickets_available | ""
                                                         }
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
                                                                 index,
-                                                                "Available_Tickets"
+                                                                "tickets_available"
                                                             )
                                                         }
                                                     />
