@@ -10,7 +10,7 @@ import ListingTicketClone from "./ListingTicketClone";
 import ListingTicketTypes from "./ListingTicketTypes";
 import ListingDeletePrompt from "./ListingDeletePrompt";
 import ListingNewListing from "./ListingNewListing";
-import { toInteger } from "lodash";
+import { sortedLastIndex, toInteger } from "lodash";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -149,7 +149,6 @@ const ListingTable = () => {
         // handleSort();
     }, []);
 
-
     // displays the tool when one or more tickets are selected
     useEffect(() => {
         const selected = tickets.filter((ticket) => ticket.isSelected === true);
@@ -163,10 +162,11 @@ const ListingTable = () => {
         console.log(sort);
     }, [sort]);
 
-
     // sorting options interaction
     useEffect(() => {
         var filter = [];
+        var activecombinedList = [];
+        var inactivecombinedList = [];
         if (
             sortEligibleLastMinuteSalesActive ||
             sortActiveActive ||
@@ -181,37 +181,33 @@ const ListingTable = () => {
             setSortAllListingActive(true);
 
         // prevents duplicates but idk if it works
-        // if(!sortActiveActive) {
-        //     filter = sort.filter((remove) => remove.status != "active")
-        // }
-        // if(!sortInactiveActive) {
-        //     filter = sort.filter((remove) => remove.status != "inactive")
-        // }
+        if (!sortActiveActive) {
+            filter = sort.filter((remove) => remove.event_status != "active");
+        }
+        if (!sortInactiveActive) {
+            filter = sort.filter((remove) => remove.event_status != "inactive");
+        }
 
-        // var activecombinedList = [];
-        // var inactivecombinedList = [];
-        // if (sortActiveActive) {
-        //     const activeList = concerts.filter(
-        //         (concert) => concert.status === "active"
-        //     );
-        //     activecombinedList = [...new Set([...activeList ,...filter])];
-        // }
-        // if (sortInactiveActive) {
-        //     const inactiveList = concerts.filter(
-        //         (concert) => concert.status === "inactive"
-        //     );
-        //     inactivecombinedList = [...new Set([...inactiveList ,...filter])];
+        if (sortActiveActive) {
+            const activeList = concerts.filter(
+                (concert) => concert.event_status === "active"
+            );
+            activecombinedList = [...new Set([...activeList, ...filter])];
+        }
+        if (sortInactiveActive) {
+            const inactiveList = concerts.filter(
+                (concert) => concert.event_status === "inactive"
+            );
+            inactivecombinedList = [...new Set([...inactiveList, ...filter])];
+        }
 
-        // }
-
-        // setSort([...new Set([...activecombinedList, ...inactivecombinedList])]);
+        setSort([...new Set([...activecombinedList, ...inactivecombinedList])]);
     }, [
         sortEligibleLastMinuteSalesActive,
         sortActiveActive,
         sortInactiveActive,
         // sortAllListingActive,
     ]);
-
 
     // sorting options interaction
     useEffect(() => {
@@ -225,31 +221,14 @@ const ListingTable = () => {
 
     // handles the search
     useEffect(() => {
-      const search_result = concerts.map((concert)=>(concert.event_name.toLowerCase().includes(search.toLowerCase()) | String(concert.event_id).includes(String(search))) ?{...concert, isVisible: true}:{...concert, isVisible: false});
-      setConcerts(search_result);
-    }, [search])
-
-
-
-    // for sorting to active listing
-    const handleSortActiveListing = async (filter) => {
-        const activeList = concerts.filter(
-            (concert) => concert.status === "active"
+        const search_result = concerts.map((concert) =>
+            concert.event_name.toLowerCase().includes(search.toLowerCase()) |
+            String(concert.event_id).includes(String(search))
+                ? { ...concert, isVisible: true }
+                : { ...concert, isVisible: false }
         );
-        const combinedList = [...new Set([...activeList ,...filter])];
-        setSort(combinedList);
-        // console.log(combinedList);
-    };
-
-    // for sorting to inactive listing
-    const handleSortInactiveListing = async (filter) => {
-        const activeList = concerts.filter(
-            (concert) => concert.status === "inactive"
-        );
-        const combinedList = [...new Set([...activeList ,...filter])];
-        setSort(combinedList);
-        // console.log(combinedList);
-    };
+        setConcerts(search_result);
+    }, [search]);
 
     // for sorting to all listing
     const handleAllListing = async () => {
@@ -257,8 +236,6 @@ const ListingTable = () => {
         setSort([]);
         // console.log(activeList);
     };
-
-
 
     // updating the which tickets are selected
     const handleCheck = async (id) => {
@@ -437,7 +414,9 @@ const ListingTable = () => {
             setTicketEdit(ticketinput);
         } else if (input_type === "seats_from") {
             var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id ? { ...ticket, seats_from: val } : ticket
+                ticket.listing_id === id
+                    ? { ...ticket, seats_from: val }
+                    : ticket
             );
             setTicketEdit(ticketinput);
         } else if (input_type === "seats_to") {
@@ -597,7 +576,7 @@ const ListingTable = () => {
             currency: ticketedit.currency,
             status: ticketedit.status,
             is_published: ticketedit.is_published,
-            event_id: ticketedit.event_id
+            event_id: ticketedit.event_id,
         };
 
         restricts = restricts.filter((restrict) => restrict.isChecked === true);
@@ -678,7 +657,7 @@ const ListingTable = () => {
             currency: ticket[0].currency,
             status: ticket[0].status,
             is_published: ticket[0].is_published,
-            event_id: ticket[0].event_id
+            event_id: ticket[0].event_id,
         };
 
         axios
@@ -837,7 +816,7 @@ const ListingTable = () => {
         var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
         return toInteger(Difference_In_Days);
-    }
+    };
 
     // This is the display code
     return (
@@ -891,7 +870,19 @@ const ListingTable = () => {
                                         >
                                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                         </svg>
-                                        <div>{`Error: ${fetchError}`} <a href="" onClick={() => window.location.reload(false)}>Click to reload!</a></div>
+                                        <div>
+                                            {`Error: ${fetchError}`}{" "}
+                                            <a
+                                                href=""
+                                                onClick={() =>
+                                                    window.location.reload(
+                                                        false
+                                                    )
+                                                }
+                                            >
+                                                Click to reload!
+                                            </a>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -972,35 +963,99 @@ const ListingTable = () => {
                                     )}
                                     {concerts.length ? (
                                         <>
-                                            {concerts.map((concert) => concert.isVisible && (
-                                                <ListingConcerts
-                                                    key={concert.event_id}
-                                                    concert={concert}
-                                                    tickets={tickets}
-                                                    setTickets={setTickets}
-                                                    handleCheck={handleCheck}
-                                                    handlePriceSelect={
-                                                        handlePriceSelect
-                                                    }
-                                                    handlePriceChange={
-                                                        handlePriceChange
-                                                    }
-                                                    handleAvailableTicketSelect={
-                                                        handleAvailableTicketSelect
-                                                    }
-                                                    handleAvailableTicketChange={
-                                                        handleAvailableTicketChange
-                                                    }
-                                                    handleTicketEdit={
-                                                        handleTicketEdit
-                                                    }
-                                                    handleTicketPublishChange={
-                                                        handleTicketPublishChange
-                                                    }
-                                                    getRemainingDays={getRemainingDays}
-                                                    ticketTypes={ticketTypes}
-                                                />
-                                            ))}
+                                            {sort.length
+                                                ? sort.map(
+                                                      (concert) =>
+                                                          concert.isVisible && (
+                                                              <ListingConcerts
+                                                                  key={
+                                                                      concert.event_id
+                                                                  }
+                                                                  concert={
+                                                                      concert
+                                                                  }
+                                                                  tickets={
+                                                                      tickets
+                                                                  }
+                                                                  setTickets={
+                                                                      setTickets
+                                                                  }
+                                                                  handleCheck={
+                                                                      handleCheck
+                                                                  }
+                                                                  handlePriceSelect={
+                                                                      handlePriceSelect
+                                                                  }
+                                                                  handlePriceChange={
+                                                                      handlePriceChange
+                                                                  }
+                                                                  handleAvailableTicketSelect={
+                                                                      handleAvailableTicketSelect
+                                                                  }
+                                                                  handleAvailableTicketChange={
+                                                                      handleAvailableTicketChange
+                                                                  }
+                                                                  handleTicketEdit={
+                                                                      handleTicketEdit
+                                                                  }
+                                                                  handleTicketPublishChange={
+                                                                      handleTicketPublishChange
+                                                                  }
+                                                                  getRemainingDays={
+                                                                      getRemainingDays
+                                                                  }
+                                                                  ticketTypes={
+                                                                      ticketTypes
+                                                                  }
+                                                              />
+                                                          )
+                                                  )
+                                                : concerts.map(
+                                                      (concert) =>
+                                                          concert.isVisible && (
+                                                              <ListingConcerts
+                                                                  key={
+                                                                      concert.event_id
+                                                                  }
+                                                                  concert={
+                                                                      concert
+                                                                  }
+                                                                  tickets={
+                                                                      tickets
+                                                                  }
+                                                                  setTickets={
+                                                                      setTickets
+                                                                  }
+                                                                  handleCheck={
+                                                                      handleCheck
+                                                                  }
+                                                                  handlePriceSelect={
+                                                                      handlePriceSelect
+                                                                  }
+                                                                  handlePriceChange={
+                                                                      handlePriceChange
+                                                                  }
+                                                                  handleAvailableTicketSelect={
+                                                                      handleAvailableTicketSelect
+                                                                  }
+                                                                  handleAvailableTicketChange={
+                                                                      handleAvailableTicketChange
+                                                                  }
+                                                                  handleTicketEdit={
+                                                                      handleTicketEdit
+                                                                  }
+                                                                  handleTicketPublishChange={
+                                                                      handleTicketPublishChange
+                                                                  }
+                                                                  getRemainingDays={
+                                                                      getRemainingDays
+                                                                  }
+                                                                  ticketTypes={
+                                                                      ticketTypes
+                                                                  }
+                                                              />
+                                                          )
+                                                  )}
                                         </>
                                     ) : null}
                                 </tbody>
@@ -1011,9 +1066,15 @@ const ListingTable = () => {
                             handleTicketDeleteSelected={
                                 handleTicketDeleteSelected
                             }
-                            handleTicketPublishSelected={handleTicketPublishSelected}
-                            handleTicketUnpublishSelected={handleTicketUnpublishSelected}
-                            handleTicketToPaperSelected={handleTicketToPaperSelected}
+                            handleTicketPublishSelected={
+                                handleTicketPublishSelected
+                            }
+                            handleTicketUnpublishSelected={
+                                handleTicketUnpublishSelected
+                            }
+                            handleTicketToPaperSelected={
+                                handleTicketToPaperSelected
+                            }
                             handleTicketToESelected={handleTicketToESelected}
                         />
                     </>

@@ -39,7 +39,7 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 value=""
                                 id="EligibleLastMinuteSales"
                                 checked={sortEligibleLastMinuteSalesActive}
-                                onChange={() => setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive)}
+                                onChange={() => {setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive); alert('Eligible Last Minute Sales is temporarily unavailable')}}
                             />
                             <label
                                 className="form-check-label text-dark fw-bold"
