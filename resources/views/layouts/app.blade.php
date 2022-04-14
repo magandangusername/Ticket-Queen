@@ -41,6 +41,7 @@
                         alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
+            <div class="collapsewidth"></div>
 
 
             <button id="nav-button" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -50,7 +51,7 @@
             </button>
 
 
-            <div class="collapse navbar-collapse position-absolute top-50 end-0 translate-middle-y" id="navbarNavDropdown" style="z-index: 2000">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
 
