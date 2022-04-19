@@ -10,6 +10,7 @@ import ListingTicketClone from "./ListingTicketClone";
 import ListingTicketTypes from "./ListingTicketTypes";
 import ListingDeletePrompt from "./ListingDeletePrompt";
 import ListingNewListing from "./ListingNewListing";
+import ListingNewTicket from "./ListingNewTicket";
 import { sortedLastIndex, toInteger } from "lodash";
 
 const ListingTable = () => {
@@ -64,7 +65,12 @@ const ListingTable = () => {
         event_venue: "",
     });
     const [ticketTypes, setTicketTypes] = useState([]);
+    const [ticketTypeSelected, setTicketTypeSelected] = useState("");
     const [search, setSearch] = useState("");
+    const [newTicket, setNewTicket] = useState([]);
+    const [selectedTicketType, setSelectedTicketType] = useState("");
+    const [isTicketNewLoading, setIsTicketNewLoading] = useState(true);
+    // var ticketTypeSelected = "";
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -307,6 +313,116 @@ const ListingTable = () => {
             setIsTicketEditLoading(false);
         }
     };
+
+    // handles data to pass/update during creation of ticket
+    const handleTicketNew = async (concert) => {
+        try {
+            setIsTicketNewLoading(true);
+            setSuccessMsg(null);
+
+            var arrOfObj = {
+                tickets_available: 0,
+                ticket_separation: "Any",
+                tickets_sold: 0,
+                // ticket_type_id
+                section: "",
+                row: "",
+                seats_from: "",
+                seats_to: "",
+                price: "",
+                currency: "AUD",
+                is_published: 0,
+                event_id: concert.event_id,
+                event_name: concert.event_name,
+                event_date: concert.event_date,
+                event_time: concert.event_time,
+                event_venue: concert.event_venue,
+            };
+
+            setNewTicket(arrOfObj);
+
+            const restrictionset = restrictions.map((restriction) =>
+                true ? { ...restriction, isChecked: false } : restriction
+            );
+
+            setRestrictions(restrictionset);
+
+            const listingnoteset = listingNotes.map((listingnote) =>
+                true ? { ...listingnote, isChecked: false } : listingnote
+            );
+
+            setListingNotes(listingnoteset);
+        } catch (error) {
+            setFetchError(error.message);
+        } finally {
+            setIsTicketNewLoading(false);
+        }
+    };
+
+    // updating the ticket input values
+    // this function may not be the best, but its the best i could think of.
+    const handleTicketNewChange = async (
+        // id,
+        // input_id,
+        input_type,
+        val = ""
+    ) => {
+        if (input_type === "restriction") {
+            var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
+                ticketrestrict.restriction_id === val
+                    ? {
+                          ...ticketrestrict,
+                          isChecked: !ticketrestrict.isChecked,
+                      }
+                    : ticketrestrict
+            );
+            setRestrictions(ticketRestrictEdit);
+        } else if (input_type === "listing_note") {
+            var ticketListNoteEdit = listingNotes.map((ticketlistnote) =>
+                ticketlistnote.listing_note_id === val
+                    ? {
+                          ...ticketlistnote,
+                          isChecked: !ticketlistnote.isChecked,
+                      }
+                    : ticketlistnote
+            );
+            setListingNotes(ticketListNoteEdit);
+        } else if (input_type === "available_tickets") {
+            var ticketinput = { ...newTicket, tickets_available: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "ticket_separation") {
+            var ticketinput = { ...newTicket, ticket_separation: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "tickets_sold") {
+            var ticketinput = { ...newTicket, tickets_sold: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "section") {
+            var ticketinput = { ...newTicket, section: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "row") {
+            var ticketinput = { ...newTicket, row: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "seats_from") {
+            var ticketinput = { ...newTicket, seats_from: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "seats_to") {
+            var ticketinput = { ...newTicket, seats_to: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "price") {
+            var ticketinput = { ...newTicket, price: val };
+            setNewTicket(ticketinput);
+        } else if (input_type === "publish") {
+            if (newTicket.is_published === 1) {
+                var ticketinput = { ...newTicket, is_published: 0 };
+            } else if (newTicket.is_published === 0) {
+                var ticketinput = { ...newTicket, is_published: 1 };
+            }
+            setNewTicket(ticketinput);
+        }
+    };
+
+
+
 
     // updating the ticket input values
     // this function may not be the best, but its the best i could think of.
@@ -1101,7 +1217,10 @@ const ListingTable = () => {
                         ticketTypes={ticketTypes}
                     />
                 ) : null}
-                <ListingNew concerts={concerts} />
+                <ListingNew
+                    concerts={concerts}
+                    handleTicketNew={handleTicketNew}
+                />
                 <ListingTicketClone
                     ticketClone={ticketClone}
                     setTicketClone={setTicketClone}
@@ -1110,12 +1229,27 @@ const ListingTable = () => {
                     handleTicketCloneEdit={handleTicketCloneEdit}
                     handleTicketCloneUpdate={handleTicketCloneUpdate}
                 />
-                <ListingTicketTypes />
+                <ListingTicketTypes
+                    ticketTypes={ticketTypes}
+                    ticketTypeSelected={ticketTypeSelected}
+                    setTicketTypeSelected={setTicketTypeSelected}
+                />
                 <ListingDeletePrompt
                     handleTicketDelete={handleTicketDelete}
                     ticketEdit={ticketEdit}
                 />
                 <ListingNewListing />
+
+                <ListingNewTicket
+                    isTicketNewLoading={isTicketNewLoading}
+                    newTicket={newTicket}
+                    setNewTicket={setNewTicket}
+                    restrictions={restrictions}
+                    listingNotes={listingNotes}
+                    ticketTypes={ticketTypes}
+                    handleTicketNewChange={handleTicketNewChange}
+                    ticketTypeSelected={ticketTypeSelected}
+                />
             </React.StrictMode>
         </>
     );

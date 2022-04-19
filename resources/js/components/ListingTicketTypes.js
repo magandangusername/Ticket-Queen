@@ -1,6 +1,10 @@
 import React from "react";
 
-const ListingTicketTypes = () => {
+const ListingTicketTypes = ({
+    ticketTypes,
+    ticketTypeSelected,
+    setTicketTypeSelected,
+}) => {
     return (
         <div className="modal fade container-fluid" id="tiktypes">
             <div className="modal-dialog modal-sm">
@@ -20,11 +24,30 @@ const ListingTicketTypes = () => {
                         ></button>
                     </div>
 
-                    <div className="form-group modal-body m-1 p-3">
-                        <button type="button" className="btn btn-light p-2">
-                            Name of Ticket Type
-                        </button>
-                    </div>
+                    {ticketTypes.length ? (
+                        ticketTypes.map((ticketType) => (
+                            <div className="form-group modal-body m-1 p-1" key={"tt"+ticketType.ticket_type_id}>
+                                <button
+                                    type="button"
+                                    className="btn btn-light p-2"
+                                    onClick={()=>setTicketTypeSelected(ticketType.ticket_type_id)}
+                                    data-bs-toggle="modal" data-bs-target="#newTicket"
+                                >
+                                    {ticketType.ticket_type}
+                                </button>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="form-group modal-body m-1 p-3">
+                            <button
+                                type="button"
+                                className="btn btn-light p-2"
+                                disabled
+                            >
+                                No ticket types available
+                            </button>
+                        </div>
+                    )}
                     <div className="modal-footer m-1 p-2 justify-content-between">
                         <button
                             type="button"

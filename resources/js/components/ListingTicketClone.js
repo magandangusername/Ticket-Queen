@@ -45,7 +45,7 @@ const ListingTicketClone = ({
                                     listings you want to create, except the
                                     fields you explicitly change, are the same.
                                 </p>
-                                <h4>{ticketClone[0].ConcertName}</h4>
+                                <h4>{ticketClone[0].event_name}</h4>
                                 <p>
                                     <b>
                                         {dateFormat(

@@ -1,7 +1,7 @@
 import React from "react";
 import dateFormat from 'dateformat';
 
-const ListingNew = ({ concerts }) => {
+const ListingNew = ({ concerts, handleTicketNew }) => {
     return (
         <div className="modal w-100" id="ListingModal">
             <div className="modal-dialog">
@@ -58,7 +58,7 @@ const ListingNew = ({ concerts }) => {
                             {concerts.length ? (
                                 <tbody>
                                     {concerts.map((concert) => (
-                                        <tr key={concert.event_id} onClick={()=>console.log('test')} data-bs-toggle="modal" data-bs-target="#tiktypes">
+                                        <tr key={concert.event_id} data-bs-toggle="modal" data-bs-target="#tiktypes" onClick={()=>handleTicketNew(concert)}>
                                             <td>
                                             {/* dateFormat("2019-04-30T08:59:00.000Z", "dddd, mmmm dS, yyyy") to get Tuesday, April 30th, 2019. */}
                                                 {dateFormat(concert.event_date, "dddd")}

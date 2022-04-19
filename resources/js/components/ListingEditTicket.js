@@ -605,7 +605,7 @@ const ListingEditTicket = ({
                                             type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit[0].ticket_type_id)[0].ticket_type | ""}
+                                            value={ticketEdit[0].ticket_type_id ? ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit[0].ticket_type_id)[0].ticket_type : ""}
                                             readOnly
                                         />
                                     </div>
