@@ -164,9 +164,9 @@ const ListingTable = () => {
     }, [tickets]);
 
     // for logging only in the console. testing purpose only
-    useEffect(() => {
-        console.log(sort);
-    }, [sort]);
+    // useEffect(() => {
+    //     console.log(sort);
+    // }, [sort]);
 
     // sorting options interaction
     useEffect(() => {
@@ -421,7 +421,38 @@ const ListingTable = () => {
         }
     };
 
+    // passes the new ticket to the database
+    const ticketNewUpdate = async () => {
+        setIsTicketSaving(true);
+        const ticket = {
+            ...newTicket, ticket_type_id: ticketTypeSelected
+        };
 
+        var restricts = restrictions.filter((restrict) => restrict.isChecked === true);
+
+        var listingnotes = listingNotes.filter(
+            (listnote) => listnote.isChecked === true
+        );
+
+        // setTicketRestrictionEdit(restricts);
+        // setTicketListingNoteEdit(listingnotes);
+
+        const request = [ticket, restricts, listingnotes];
+        console.log(request);
+
+        axios
+            .post("/api/tickets/create", request)
+            .then((response) => {
+                console.log(response);
+                fetchTicket();
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+        setIsTicketSaving(false);
+        setSuccessMsg("Saved");
+    };
 
 
     // updating the ticket input values
@@ -1249,6 +1280,7 @@ const ListingTable = () => {
                     ticketTypes={ticketTypes}
                     handleTicketNewChange={handleTicketNewChange}
                     ticketTypeSelected={ticketTypeSelected}
+                    ticketNewUpdate={ticketNewUpdate}
                 />
             </React.StrictMode>
         </>

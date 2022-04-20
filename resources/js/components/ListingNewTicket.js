@@ -17,7 +17,8 @@ const ListingNewTicket = ({
     setNewTicket,
     ticketTypeSelected,
     isTicketNewLoading,
-    handleTicketNewChange
+    handleTicketNewChange,
+    ticketNewUpdate
 }) => {
     return (
         <div className="modal" id="newTicket" aria-hidden="true">
@@ -482,14 +483,9 @@ const ListingNewTicket = ({
                                         type="button"
                                         className="btn btn-success float-sm-end"
                                         onClick={() =>
-                                            ticketEditUpdate(
-                                                newTicket,
-                                                restrictions,
-                                                ticketRestrictionEdit,
-                                                listingNotes,
-                                                ticketListingNoteEdit
-                                            )
+                                            ticketNewUpdate()
                                         }
+                                        data-bs-dismiss="modal"
                                     >
                                         Save
                                     </button>

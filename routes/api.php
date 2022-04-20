@@ -27,7 +27,7 @@ Route::post('tickets/clone/create', [ListingController::class, 'clone']);
 Route::post('tickets/edit/update', [ListingController::class, 'ticketupdate']);
 Route::post('tickets/destroyselect', [ListingController::class, 'deletedSelected']);
 Route::post('tickets/destroy', [ListingController::class, 'destroy']);
-Route::post('tickets/create', [ListingController::class, 'create']);
+Route::post('tickets/create', [ListingController::class, 'createticket']);
 Route::post('tickets/publishselect', [ListingController::class, 'publishselect']);
 Route::post('tickets/unpublishselect', [ListingController::class, 'unpublishselect']);
 Route::post('tickets/topaperselect', [ListingController::class, 'topaperselect']);

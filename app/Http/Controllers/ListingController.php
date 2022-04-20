@@ -25,6 +25,61 @@ class ListingController extends Controller
         return view('listing', ['data' => $data, 'data2' => $data2]);
     }
 
+    // for creation of ticket
+    public function createticket(Request $request)
+    {
+        $validatedData = $request->validate([
+            '0.event_id' => 'required',
+            '0.section' => 'required',
+            '0.row' => 'nullable',
+            '0.seats_from' => 'nullable',
+            '0.seats_to' => 'nullable',
+            '0.ticket_type_id' => 'required',
+            '0.price' => 'required|numeric',
+            '0.tickets_available' => 'required',
+            '0.tickets_sold' => 'required|numeric',
+            '0.ticket_separation' => 'required',
+            '0.currency' => 'required',
+            '0.is_published' => 'required'
+        ]);
+
+
+
+        $ticket = EventTickets::create([
+            'ticket_type_id' => $validatedData[0]['ticket_type_id'],
+            'ticket_separation' => $validatedData[0]['ticket_separation'],
+            'tickets_available' => $validatedData[0]['tickets_available'],
+            'section' => $validatedData[0]['section'],
+            'row' => $validatedData[0]['row'],
+            'seats_from' => $validatedData[0]['seats_from'],
+            'seats_to' => $validatedData[0]['seats_from'],
+            'price' => $validatedData[0]['price'],
+            'currency' => $validatedData[0]['currency'],
+            // 'status' => $validatedData[0]['status'],
+            'is_published' => $validatedData[0]['is_published'],
+            'event_id' => $validatedData[0]['event_id']
+        ]);
+
+        $listingid = EventTickets::latest('created_at')->first();
+
+        foreach ($request[1] as $key => $value) {
+            $restrictionlistnotecreate = TicketRestrictionListingnote::create([
+                "listing_id" => $listingid->listing_id,
+                "restriction_id" => $value["restriction_id"]
+            ]);
+        }
+
+        foreach ($request[2] as $key => $value) {
+            // return $value;
+            $restrictionlistnotecreate = TicketRestrictionListingnote::create([
+                "listing_id" => $listingid->listing_id,
+                "listing_note_id" => $value["listing_note_id"]
+            ]);
+        }
+
+
+    }
+
     // for updating the ticket price, available tickets, and publish data
     public function update(Request $request)
     {

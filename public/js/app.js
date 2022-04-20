@@ -6534,7 +6534,8 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
       setNewTicket = _ref.setNewTicket,
       ticketTypeSelected = _ref.ticketTypeSelected,
       isTicketNewLoading = _ref.isTicketNewLoading,
-      handleTicketNewChange = _ref.handleTicketNewChange;
+      handleTicketNewChange = _ref.handleTicketNewChange,
+      ticketNewUpdate = _ref.ticketNewUpdate;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "modal",
     id: "newTicket",
@@ -6879,8 +6880,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
               type: "button",
               className: "btn btn-success float-sm-end",
               onClick: function onClick() {
-                return ticketEditUpdate(newTicket, restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit);
+                return ticketNewUpdate();
               },
+              "data-bs-dismiss": "modal",
               children: "Save"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "button",
@@ -6975,7 +6977,7 @@ var ListingSortBy = function ListingSortBy(_ref) {
               checked: sortEligibleLastMinuteSalesActive,
               onChange: function onChange() {
                 setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive);
-                alert('Eligible Last Minute Sales is temporarily unavailable');
+                alert("Eligible Last Minute Sales is temporarily unavailable");
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
               className: "form-check-label text-dark fw-bold",
@@ -7464,10 +7466,10 @@ var ListingTable = function ListingTable() {
     });
     if (selected.length > 0) setVisible(true);else setVisible(false);
   }, [tickets]); // for logging only in the console. testing purpose only
-
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    console.log(sort);
-  }, [sort]); // sorting options interaction
+  // useEffect(() => {
+  //     console.log(sort);
+  // }, [sort]);
+  // sorting options interaction
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     var filter = [];
@@ -7824,23 +7826,68 @@ var ListingTable = function ListingTable() {
     return function handleTicketNewChange(_x5) {
       return _ref7.apply(this, arguments);
     };
+  }(); // passes the new ticket to the database
+
+
+  var ticketNewUpdate = /*#__PURE__*/function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
+      var ticket, restricts, listingnotes, request;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              setIsTicketSaving(true);
+              ticket = _objectSpread(_objectSpread({}, newTicket), {}, {
+                ticket_type_id: ticketTypeSelected
+              });
+              restricts = restrictions.filter(function (restrict) {
+                return restrict.isChecked === true;
+              });
+              listingnotes = listingNotes.filter(function (listnote) {
+                return listnote.isChecked === true;
+              }); // setTicketRestrictionEdit(restricts);
+              // setTicketListingNoteEdit(listingnotes);
+
+              request = [ticket, restricts, listingnotes];
+              console.log(request);
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/create", request).then(function (response) {
+                console.log(response);
+                fetchTicket();
+              })["catch"](function (error) {
+                console.log(error.response);
+                setFetchError(error.message);
+              });
+              setIsTicketSaving(false);
+              setSuccessMsg("Saved");
+
+            case 9:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    return function ticketNewUpdate() {
+      return _ref8.apply(this, arguments);
+    };
   }(); // updating the ticket input values
   // this function may not be the best, but its the best i could think of.
 
 
   var handleTicketEditChange = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(id, input_id, input_type) {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(id, input_id, input_type) {
       var val,
           len,
           ticketRestrictEdit,
           ticketListNoteEdit,
           ticketinput,
-          _args8 = arguments;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+          _args9 = arguments;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
         while (1) {
-          switch (_context8.prev = _context8.next) {
+          switch (_context9.prev = _context9.next) {
             case 0:
-              val = _args8.length > 3 && _args8[3] !== undefined ? _args8[3] : "";
+              val = _args9.length > 3 && _args9[3] !== undefined ? _args9[3] : "";
 
               if (input_type === "restriction") {
                 len = ticketRestrictionEdit.filter(function (ticketrestriction) {
@@ -7966,24 +8013,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context8.stop();
+              return _context9.stop();
           }
         }
-      }, _callee8);
+      }, _callee9);
     }));
 
     return function handleTicketEditChange(_x6, _x7, _x8) {
-      return _ref8.apply(this, arguments);
+      return _ref9.apply(this, arguments);
     };
   }(); // setting interaction for price input when focused
 
 
   var handlePriceSelect = /*#__PURE__*/function () {
-    var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(id) {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
         while (1) {
-          switch (_context9.prev = _context9.next) {
+          switch (_context10.prev = _context10.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8001,24 +8048,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context9.stop();
+              return _context10.stop();
           }
         }
-      }, _callee9);
+      }, _callee10);
     }));
 
     return function handlePriceSelect(_x9) {
-      return _ref9.apply(this, arguments);
+      return _ref10.apply(this, arguments);
     };
   }(); // updating the price input value
 
 
   var handlePriceChange = /*#__PURE__*/function () {
-    var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(id, val) {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(id, val) {
       var listTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
         while (1) {
-          switch (_context10.prev = _context10.next) {
+          switch (_context11.prev = _context11.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8029,24 +8076,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context10.stop();
+              return _context11.stop();
           }
         }
-      }, _callee10);
+      }, _callee11);
     }));
 
     return function handlePriceChange(_x10, _x11) {
-      return _ref10.apply(this, arguments);
+      return _ref11.apply(this, arguments);
     };
   }(); // setting interaction for available ticket input when focused
 
 
   var handleAvailableTicketSelect = /*#__PURE__*/function () {
-    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(id) {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
         while (1) {
-          switch (_context11.prev = _context11.next) {
+          switch (_context12.prev = _context12.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8064,24 +8111,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context11.stop();
+              return _context12.stop();
           }
         }
-      }, _callee11);
+      }, _callee12);
     }));
 
     return function handleAvailableTicketSelect(_x12) {
-      return _ref11.apply(this, arguments);
+      return _ref12.apply(this, arguments);
     };
   }(); // updating the available ticket input value
 
 
   var handleAvailableTicketChange = /*#__PURE__*/function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(id, val) {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(id, val) {
       var listTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
         while (1) {
-          switch (_context12.prev = _context12.next) {
+          switch (_context13.prev = _context13.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8092,24 +8139,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context12.stop();
+              return _context13.stop();
           }
         }
-      }, _callee12);
+      }, _callee13);
     }));
 
     return function handleAvailableTicketChange(_x13, _x14) {
-      return _ref12.apply(this, arguments);
+      return _ref13.apply(this, arguments);
     };
   }(); // set publish status of ticket
 
 
   var handleTicketPublishChange = /*#__PURE__*/function () {
-    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(id) {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
         while (1) {
-          switch (_context13.prev = _context13.next) {
+          switch (_context14.prev = _context14.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id & ticket.is_published === 1 ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8126,24 +8173,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context13.stop();
+              return _context14.stop();
           }
         }
-      }, _callee13);
+      }, _callee14);
     }));
 
     return function handleTicketPublishChange(_x15) {
-      return _ref13.apply(this, arguments);
+      return _ref14.apply(this, arguments);
     };
   }(); // change the values of cloned tickets
 
 
   var handleTicketCloneEdit = /*#__PURE__*/function () {
-    var _ref14 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(val, index, input) {
+    var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15(val, index, input) {
       var ticketclones;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
         while (1) {
-          switch (_context14.prev = _context14.next) {
+          switch (_context15.prev = _context15.next) {
             case 0:
               ticketclones = ticketClone;
 
@@ -8195,24 +8242,24 @@ var ListingTable = function ListingTable() {
 
             case 3:
             case "end":
-              return _context14.stop();
+              return _context15.stop();
           }
         }
-      }, _callee14);
+      }, _callee15);
     }));
 
     return function handleTicketCloneEdit(_x16, _x17, _x18) {
-      return _ref14.apply(this, arguments);
+      return _ref15.apply(this, arguments);
     };
   }(); // updates data from ticket edit modal to the database
 
 
   var ticketEditUpdate = /*#__PURE__*/function () {
-    var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee16(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
       var ticket, request;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee16$(_context16) {
         while (1) {
-          switch (_context15.prev = _context15.next) {
+          switch (_context16.prev = _context16.next) {
             case 0:
               setIsTicketSaving(true);
               ticket = {
@@ -8263,23 +8310,23 @@ var ListingTable = function ListingTable() {
 
             case 15:
             case "end":
-              return _context15.stop();
+              return _context16.stop();
           }
         }
-      }, _callee15);
+      }, _callee16);
     }));
 
     return function ticketEditUpdate(_x19, _x20, _x21, _x22, _x23) {
-      return _ref15.apply(this, arguments);
+      return _ref16.apply(this, arguments);
     };
   }();
 
   var handleTicketCloneUpdate = /*#__PURE__*/function () {
-    var _ref16 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee16() {
+    var _ref17 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee17() {
       var request;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee16$(_context16) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee17$(_context17) {
         while (1) {
-          switch (_context16.prev = _context16.next) {
+          switch (_context17.prev = _context17.next) {
             case 0:
               setIsTicketSaving(true);
               request = [ticketClone, ticketRestrictionEdit, ticketListingNoteEdit];
@@ -8296,24 +8343,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context16.stop();
+              return _context17.stop();
           }
         }
-      }, _callee16);
+      }, _callee17);
     }));
 
     return function handleTicketCloneUpdate() {
-      return _ref16.apply(this, arguments);
+      return _ref17.apply(this, arguments);
     };
   }(); // update ticket to the database
 
 
   var ticketUpdate = /*#__PURE__*/function () {
-    var _ref17 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee17(ticket) {
+    var _ref18 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee18(ticket) {
       var ticket_info;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee17$(_context17) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee18$(_context18) {
         while (1) {
-          switch (_context17.prev = _context17.next) {
+          switch (_context18.prev = _context18.next) {
             case 0:
               ticket_info = {
                 listing_id: ticket[0].listing_id,
@@ -8339,24 +8386,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context17.stop();
+              return _context18.stop();
           }
         }
-      }, _callee17);
+      }, _callee18);
     }));
 
     return function ticketUpdate(_x24) {
-      return _ref17.apply(this, arguments);
+      return _ref18.apply(this, arguments);
     };
   }(); // for deleting ticket
 
 
   var handleTicketDelete = /*#__PURE__*/function () {
-    var _ref18 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee18(ticket) {
+    var _ref19 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee19(ticket) {
       var ticket_info, newtickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee18$(_context18) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee19$(_context19) {
         while (1) {
-          switch (_context18.prev = _context18.next) {
+          switch (_context19.prev = _context19.next) {
             case 0:
               ticket_info = {
                 listing_id: ticket.listing_id,
@@ -8383,23 +8430,23 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context18.stop();
+              return _context19.stop();
           }
         }
-      }, _callee18);
+      }, _callee19);
     }));
 
     return function handleTicketDelete(_x25) {
-      return _ref18.apply(this, arguments);
+      return _ref19.apply(this, arguments);
     };
   }();
 
   var handleTicketDeleteSelected = /*#__PURE__*/function () {
-    var _ref19 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee19() {
+    var _ref20 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee20() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee19$(_context19) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee20$(_context20) {
         while (1) {
-          switch (_context19.prev = _context19.next) {
+          switch (_context20.prev = _context20.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8416,23 +8463,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context19.stop();
+              return _context20.stop();
           }
         }
-      }, _callee19);
+      }, _callee20);
     }));
 
     return function handleTicketDeleteSelected() {
-      return _ref19.apply(this, arguments);
+      return _ref20.apply(this, arguments);
     };
   }();
 
   var handleTicketPublishSelected = /*#__PURE__*/function () {
-    var _ref20 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee20() {
+    var _ref21 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee21() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee20$(_context20) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee21$(_context21) {
         while (1) {
-          switch (_context20.prev = _context20.next) {
+          switch (_context21.prev = _context21.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8451,23 +8498,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context20.stop();
+              return _context21.stop();
           }
         }
-      }, _callee20);
+      }, _callee21);
     }));
 
     return function handleTicketPublishSelected() {
-      return _ref20.apply(this, arguments);
+      return _ref21.apply(this, arguments);
     };
   }();
 
   var handleTicketUnpublishSelected = /*#__PURE__*/function () {
-    var _ref21 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee21() {
+    var _ref22 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee22() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee21$(_context21) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee22$(_context22) {
         while (1) {
-          switch (_context21.prev = _context21.next) {
+          switch (_context22.prev = _context22.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8486,23 +8533,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context21.stop();
+              return _context22.stop();
           }
         }
-      }, _callee21);
+      }, _callee22);
     }));
 
     return function handleTicketUnpublishSelected() {
-      return _ref21.apply(this, arguments);
+      return _ref22.apply(this, arguments);
     };
   }();
 
   var handleTicketToPaperSelected = /*#__PURE__*/function () {
-    var _ref22 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee22() {
+    var _ref23 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee23() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee22$(_context22) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee23$(_context23) {
         while (1) {
-          switch (_context22.prev = _context22.next) {
+          switch (_context23.prev = _context23.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8521,23 +8568,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context22.stop();
+              return _context23.stop();
           }
         }
-      }, _callee22);
+      }, _callee23);
     }));
 
     return function handleTicketToPaperSelected() {
-      return _ref22.apply(this, arguments);
+      return _ref23.apply(this, arguments);
     };
   }();
 
   var handleTicketToESelected = /*#__PURE__*/function () {
-    var _ref23 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee23() {
+    var _ref24 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee24() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee23$(_context23) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee24$(_context24) {
         while (1) {
-          switch (_context23.prev = _context23.next) {
+          switch (_context24.prev = _context24.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8556,14 +8603,14 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context23.stop();
+              return _context24.stop();
           }
         }
-      }, _callee23);
+      }, _callee24);
     }));
 
     return function handleTicketToESelected() {
-      return _ref23.apply(this, arguments);
+      return _ref24.apply(this, arguments);
     };
   }(); // get the ramaining day
 
@@ -8787,7 +8834,8 @@ var ListingTable = function ListingTable() {
         listingNotes: listingNotes,
         ticketTypes: ticketTypes,
         handleTicketNewChange: handleTicketNewChange,
-        ticketTypeSelected: ticketTypeSelected
+        ticketTypeSelected: ticketTypeSelected,
+        ticketNewUpdate: ticketNewUpdate
       })]
     })
   });

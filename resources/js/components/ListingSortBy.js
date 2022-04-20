@@ -1,7 +1,26 @@
 import React from "react";
 
-const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive, sortInactive, setSortAllListing, setSortEligibleLastMinuteSales, setSortActive, setSortInactive, handleSort,
-    sortAllListingActive, sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive, setSortAllListingActive, setSortEligibleLastMinuteSalesActive, setSortActiveActive, setSortInactiveActive, setSearch, search}) => {
+const ListingSortBy = ({
+    sortAllListing,
+    sortEligibleLastMinuteSales,
+    sortActive,
+    sortInactive,
+    setSortAllListing,
+    setSortEligibleLastMinuteSales,
+    setSortActive,
+    setSortInactive,
+    handleSort,
+    sortAllListingActive,
+    sortEligibleLastMinuteSalesActive,
+    sortActiveActive,
+    sortInactiveActive,
+    setSortAllListingActive,
+    setSortEligibleLastMinuteSalesActive,
+    setSortActiveActive,
+    setSortInactiveActive,
+    setSearch,
+    search,
+}) => {
     return (
         <>
             <div className="container-fluid d-flex justify-content-center">
@@ -23,7 +42,14 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 type="checkbox"
                                 id="All Listing"
                                 checked={sortAllListingActive}
-                                onChange={() => (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) && setSortAllListingActive(!sortAllListingActive)}
+                                onChange={() =>
+                                    (sortEligibleLastMinuteSalesActive ||
+                                        sortActiveActive ||
+                                        sortInactiveActive) &&
+                                    setSortAllListingActive(
+                                        !sortAllListingActive
+                                    )
+                                }
                             />
                             <label
                                 className="form-check-label text-dark fw-bold"
@@ -39,7 +65,14 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 value=""
                                 id="EligibleLastMinuteSales"
                                 checked={sortEligibleLastMinuteSalesActive}
-                                onChange={() => {setSortEligibleLastMinuteSalesActive(!sortEligibleLastMinuteSalesActive); alert('Eligible Last Minute Sales is temporarily unavailable')}}
+                                onChange={() => {
+                                    setSortEligibleLastMinuteSalesActive(
+                                        !sortEligibleLastMinuteSalesActive
+                                    );
+                                    alert(
+                                        "Eligible Last Minute Sales is temporarily unavailable"
+                                    );
+                                }}
                             />
                             <label
                                 className="form-check-label text-dark fw-bold"
@@ -55,7 +88,9 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 value=""
                                 id="Active Listing"
                                 checked={sortActiveActive}
-                                onChange={() => setSortActiveActive(!sortActiveActive)}
+                                onChange={() =>
+                                    setSortActiveActive(!sortActiveActive)
+                                }
                             />
                             <label
                                 className="form-check-label text-dark fw-bold"
@@ -71,7 +106,9 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                                 value=""
                                 id="Inactive"
                                 checked={sortInactiveActive}
-                                onChange={() => setSortInactiveActive(!sortInactiveActive)}
+                                onChange={() =>
+                                    setSortInactiveActive(!sortInactiveActive)
+                                }
                             />
                             <label
                                 className="form-check-label text-dark fw-bold"
@@ -81,12 +118,40 @@ const ListingSortBy = ({sortAllListing, sortEligibleLastMinuteSales, sortActive,
                             </label>
                         </div>
                         <div className="form-check form-check-inline text-light col w-50 d-flex justify-content-center mt-1">
+                            <form
+                                className="form-control d-flex w-100 m-auto justify-content-evenly"
+                                method="get"
+                                onSubmit={(e) => e.preventDefault()}
+                            >
+                                <input
+                                    id="tableSearch"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className="w-100 d-flex justify-content-center"
+                                    type="text"
+                                    placeholder="Search.."
+                                    name="search2"
+                                />
+                                <button type="submit">
+                                    <i className="fa fa-search d-flex justify-content-center"></i>
+                                </button>
 
-                            <form className="form-control d-flex w-100 m-auto justify-content-evenly" method="get" onSubmit={(e)=>e.preventDefault()}>
-                                <input id="tableSearch" value={search} onChange={(e)=>setSearch(e.target.value)} className="w-100 d-flex justify-content-center" type="text" placeholder="Search.." name="search2"/>
-                                <button type="submit"><i className="fa fa-search d-flex justify-content-center"></i></button>
+                                {/* <span
+                                    className="input-group-text"
+                                    id="basic-addon1"
+                                >
+                                    Search
+                                </span>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Search"
+                                    aria-label="search"
+                                    aria-describedby="basic-addon1"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                /> */}
                             </form>
-
                         </div>
                     </div>
                     <div id="Tools" className="z-indexes"></div>
