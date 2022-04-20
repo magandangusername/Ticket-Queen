@@ -5762,6 +5762,10 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "modal-header",
+            style: {
+              background: "#424549",
+              color: "#edf6ff"
+            },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
               children: ticketEdit[0].event_name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
@@ -5825,7 +5829,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                        value: "Avoid leaving one or three tickets",
+                        value: "Avoid leaving one or\r three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6319,11 +6323,15 @@ var ListingNewListing = function ListingNewListing() {
     className: "modal container-fluid",
     id: "ReqEventModal",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "modal-dialog",
+      className: "modal-dialog modal-lg",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "modal-content",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-header m-1 p-2",
+          className: "modal-header p-2 ",
+          style: {
+            background: "#424549",
+            color: "#edf6ff"
+          },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
             className: "m-1 p-2",
             children: "Request an event"
@@ -6336,10 +6344,10 @@ var ListingNewListing = function ListingNewListing() {
             "data-bs-dismiss": "modal"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "form-group m-1 p-3",
+          className: "modal-body form-group mx-auto p-1",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Artist, Home Team, Tournament, Festival or Show*"
@@ -6350,7 +6358,7 @@ var ListingNewListing = function ListingNewListing() {
                 placeholder: "Search"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Event*"
@@ -6360,7 +6368,7 @@ var ListingNewListing = function ListingNewListing() {
                 id: "exampleFormControlInput1"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "date",
                 children: "Event Date/Time*"
@@ -6378,7 +6386,7 @@ var ListingNewListing = function ListingNewListing() {
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Venue*"
@@ -6388,7 +6396,7 @@ var ListingNewListing = function ListingNewListing() {
                 placeholder: "Search"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "City*"
@@ -6397,7 +6405,7 @@ var ListingNewListing = function ListingNewListing() {
                 className: " "
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Country*"
@@ -6418,7 +6426,7 @@ var ListingNewListing = function ListingNewListing() {
                 })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Onsale"
@@ -6436,7 +6444,7 @@ var ListingNewListing = function ListingNewListing() {
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Face Value"
@@ -6467,7 +6475,7 @@ var ListingNewListing = function ListingNewListing() {
                 placeholder: "Face Value Max"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "row",
+              className: "row mb-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Event Url and Notes*"
@@ -6479,9 +6487,10 @@ var ListingNewListing = function ListingNewListing() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-footer m-1 p-2",
+          className: "modal-footer m-1 p-2 justify-content-between",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             type: "button",
+            "data-bs-dismiss": "modal",
             className: "btn btn-secondary",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
               children: "Back"
@@ -6551,7 +6560,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
           children: "Loading data..."
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "modal-header",
+            className: "modal-header ",
+            style: {
+              background: "#424549",
+              color: "#edf6ff"
+            },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
               children: newTicket.event_name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
@@ -6615,7 +6628,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                        value: "Avoid leaving one or three tickets",
+                        value: "Avoid leaving one or\r three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6867,7 +6880,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "modal-footer",
+            className: "modal-footer justify-content-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
               className: "text-success",
               children: successMsg

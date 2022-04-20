@@ -30,7 +30,9 @@ const ListingEditTicket = ({
                     ) : (
                         <>
                             {/* <!-- Modal Header --> */}
-                            <div className="modal-header">
+                            <div className="modal-header"
+                            style={{ background: "#424549", color: "#edf6ff"}}
+                            >
                                 <h4>{ticketEdit[0].event_name}</h4>
                                 <p>
                                     <b>{ticketEdit[0].event_date}</b>

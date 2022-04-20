@@ -127,7 +127,9 @@
 </div>
 
 
-{{-- This is part is already imported in the js if im not mistaken --}}
+{{-- This is part is already imported in the js if im not mistaken
+    
+    I think no cause I still see it in the app.blade.php--}}
 {{--
 <div class="modal fade container-fluid" id="express">
     <div class="modal-dialog modal-auto">

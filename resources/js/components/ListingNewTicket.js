@@ -32,7 +32,9 @@ const ListingNewTicket = ({
                     ) : (
                         <>
                             {/* <!-- Modal Header --> */}
-                            <div className="modal-header">
+                            <div className="modal-header "
+                            style={{ background: "#424549", color: "#edf6ff"}}
+                            >
                                 <h4>{newTicket.event_name}</h4>
                                 <p>
                                     <b>{newTicket.event_date}</b>
@@ -467,7 +469,7 @@ const ListingNewTicket = ({
                                 </div>
                             </div>
                             {/* <!-- Modal footer --> */}
-                            <div className="modal-footer">
+                            <div className="modal-footer justify-content-center">
                                 <p className="text-success">{successMsg}</p>
 
                                 {isTicketSaving ? (

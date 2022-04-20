@@ -3,9 +3,11 @@ import React from "react";
 const ListingNewListing = () => {
     return (
         <div className="modal container-fluid" id="ReqEventModal">
-            <div className="modal-dialog">
+            <div className="modal-dialog modal-lg">
                 <div className="modal-content">
-                    <div className="modal-header m-1 p-2">
+                    <div className="modal-header p-2 "
+                    style={{ background: "#424549", color: "#edf6ff"}}
+                    >
                         <h4 className="m-1 p-2">Request an event</h4>
                         <p className="m-1 p-2">
                             Can't find the event you're looking for? Enter the
@@ -21,9 +23,9 @@ const ListingNewListing = () => {
                         ></button>
                     </div>
 
-                    <div className="form-group m-1 p-3">
+                    <div className="modal-body form-group mx-auto p-1">
                         <form>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Artist, Home Team, Tournament, Festival or
                                     Show*
@@ -35,7 +37,7 @@ const ListingNewListing = () => {
                                     placeholder="Search"
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlSelect1">
                                     Event*
                                 </label>
@@ -45,7 +47,7 @@ const ListingNewListing = () => {
                                     id="exampleFormControlInput1"
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="date">Event Date/Time*</label>
                                 <input
                                     type="date"
@@ -60,7 +62,7 @@ const ListingNewListing = () => {
                                     <option defaultValue>times</option>
                                 </select>
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Venue*
                                 </label>
@@ -70,13 +72,13 @@ const ListingNewListing = () => {
                                     placeholder="Search"
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     City*
                                 </label>
                                 <input type="city" className=" " />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlSelect1">
                                     Country*
                                 </label>
@@ -88,7 +90,7 @@ const ListingNewListing = () => {
                                     <option>Angola</option>
                                 </select>
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Onsale
                                 </label>
@@ -106,7 +108,7 @@ const ListingNewListing = () => {
                                     <option defaultValue>times</option>
                                 </select>
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Face Value
                                 </label>
@@ -133,7 +135,7 @@ const ListingNewListing = () => {
                                     placeholder="Face Value Max"
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Event Url and Notes*
                                 </label>
@@ -145,8 +147,10 @@ const ListingNewListing = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="modal-footer m-1 p-2">
-                        <button type="button" className="btn btn-secondary">
+                    <div className="modal-footer m-1 p-2 justify-content-between">
+                        <button type="button" 
+                        data-bs-dismiss="modal"
+                        className="btn btn-secondary">
                             <b>Back</b>
                         </button>
                         <button type="button" className="btn btn-success">

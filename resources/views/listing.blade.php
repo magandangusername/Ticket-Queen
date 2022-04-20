@@ -14,7 +14,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header m-1 p-2">
+                <div class="modal-header p-2 justify-content-between" style="background: #424549; color: #edf6ff">
 
                     <h4 class="modal-title m-2">Modal Heading</h4>
                     <p>
