@@ -3,12 +3,15 @@ import React from "react";
 const ListingNewListing = () => {
     return (
         <div className="modal container-fluid" id="ReqEventModal">
-            <div className="modal-dialog modal-lg">
+            <div className="modal-dialog">
                 <div className="modal-content">
-                    <div className="modal-header p-2 "
+                    <div className="modal-header "
                     style={{ background: "#424549", color: "#edf6ff"}}
                     >
-                        <h4 className="m-1 p-2">Request an event</h4>
+                        <div className="justify-content-between-center">
+
+                        <h4 className="m-1 p-2">Request an event </h4>
+                        
                         <p className="m-1 p-2">
                             Can't find the event you're looking for? Enter the
                             details below and you can start listing immediately.
@@ -16,14 +19,10 @@ const ListingNewListing = () => {
                             tickets will become active on our website.
                         </p>
 
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                        ></button>
+                        </div>
                     </div>
 
-                    <div className="modal-body form-group mx-auto p-1">
+                    <div className="modal-body form-group m-auto p-4">
                         <form>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
