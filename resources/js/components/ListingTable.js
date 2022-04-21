@@ -62,7 +62,17 @@ const ListingTable = () => {
     const [ticketClone, setTicketClone] = useState([]);
     const [createConcert, setCreateConcert] = useState({
         event_name: "",
+        event_date: "",
+        event_time: "",
         event_venue: "",
+        event_city: "",
+        event_country: "",
+        event_onsale_date_time: "",
+        // event_onsale_time: "",
+        event_face_value_currency: "",
+        event_face_value_min: "",
+        event_face_value_max: "",
+        event_url_notes: "",
     });
     const [ticketTypes, setTicketTypes] = useState([]);
     const [ticketTypeSelected, setTicketTypeSelected] = useState("");
@@ -234,6 +244,14 @@ const ListingTable = () => {
                 : { ...concert, isVisible: false }
         );
         setConcerts(search_result);
+
+        const sorted_search_result = sort.map((concert) =>
+            concert.event_name.toLowerCase().includes(search.toLowerCase()) |
+            String(concert.event_id).includes(String(search))
+                ? { ...concert, isVisible: true }
+                : { ...concert, isVisible: false }
+        );
+        setSort(sorted_search_result);
     }, [search]);
 
     // for sorting to all listing
@@ -425,10 +443,13 @@ const ListingTable = () => {
     const ticketNewUpdate = async () => {
         setIsTicketSaving(true);
         const ticket = {
-            ...newTicket, ticket_type_id: ticketTypeSelected
+            ...newTicket,
+            ticket_type_id: ticketTypeSelected,
         };
 
-        var restricts = restrictions.filter((restrict) => restrict.isChecked === true);
+        var restricts = restrictions.filter(
+            (restrict) => restrict.isChecked === true
+        );
 
         var listingnotes = listingNotes.filter(
             (listnote) => listnote.isChecked === true
@@ -454,6 +475,36 @@ const ListingTable = () => {
         setSuccessMsg("Saved");
     };
 
+    // passes the new event to the database
+    const eventNewUpdate = async () => {
+        // setIsTicketSaving(true);
+        console.log(createConcert);
+        axios
+            .post("/api/concerts/create", createConcert)
+            .then((response) => {
+                console.log(response);
+                setCreateConcert({
+                    event_name: "",
+                    event_date: "",
+                    event_time: "",
+                    event_venue: "",
+                    event_city: "",
+                    event_country: "",
+                    event_onsale_date_time: "",
+                    event_face_value_currency: "",
+                    event_face_value_min: "",
+                    event_face_value_max: "",
+                    event_url_notes: "",
+                });
+                fetchConcert();
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setFetchError(error.message);
+            });
+        // setIsTicketSaving(false);
+        // setSuccessMsg("Saved");
+    };
 
     // updating the ticket input values
     // this function may not be the best, but its the best i could think of.
@@ -1269,7 +1320,11 @@ const ListingTable = () => {
                     handleTicketDelete={handleTicketDelete}
                     ticketEdit={ticketEdit}
                 />
-                <ListingNewListing />
+                <ListingNewListing
+                    createConcert={createConcert}
+                    setCreateConcert={setCreateConcert}
+                    eventNewUpdate={eventNewUpdate}
+                />
 
                 <ListingNewTicket
                     isTicketNewLoading={isTicketNewLoading}

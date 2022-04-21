@@ -6308,187 +6308,272 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
-var ListingNewListing = function ListingNewListing() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+
+
+var ListingNewListing = function ListingNewListing(_ref) {
+  var createConcert = _ref.createConcert,
+      setCreateConcert = _ref.setCreateConcert,
+      eventNewUpdate = _ref.eventNewUpdate;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "modal container-fluid",
     id: "ReqEventModal",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "modal-dialog",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "modal-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "modal-header m-1 p-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
             className: "m-1 p-2",
             children: "Request an event"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
             className: "m-1 p-2",
             children: "Can't find the event you're looking for? Enter the details below and you can start listing immediately. Once our support team approves the event, your tickets will become active on our website."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn-close",
             "data-bs-dismiss": "modal"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "form-group m-1 p-3",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Artist, Home Team, Tournament, Festival or Show*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "show",
                 className: "",
                 id: "exampleFormControlInput1",
-                placeholder: "Search"
+                placeholder: "Search",
+                readOnly: true
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Event*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "event",
                 className: "",
-                id: "exampleFormControlInput1"
+                id: "exampleFormControlInput1",
+                value: createConcert.event_name,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_name: e.target.value
+                  }));
+                }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "date",
                 children: "Event Date/Time*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "date",
                 className: "col me-1",
                 id: "date",
-                name: "date"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
+                name: "date",
+                value: createConcert.event_date,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_date: e.target.value
+                  }));
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "time",
+                name: "time",
+                id: "time",
                 className: "col ms-1",
-                id: "exampleFormControlSelect1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                  defaultValue: true,
-                  children: "times"
-                })
+                value: createConcert.event_time,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_time: e.target.value
+                  }));
+                }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Venue*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "venue",
                 className: "",
-                placeholder: "Search"
+                placeholder: "Search",
+                value: createConcert.event_venue,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_venue: e.target.value
+                  }));
+                }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "City*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "city",
-                className: " "
+                className: " ",
+                value: createConcert.event_city,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_city: e.target.value
+                  }));
+                }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Country*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                 className: "",
                 id: "exampleFormControlSelect1",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                value: createConcert.event_country,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_country: e.target.value
+                  }));
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Albania",
                   defaultValue: true,
                   children: "Albania"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Algeria",
                   children: "Algeria"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "American Samoa",
                   children: "American Samoa"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Andorra",
                   children: "Andorra"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Angola",
                   children: "Angola"
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Onsale"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "date",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "datetime-local",
                 className: "col me-1",
                 id: "date",
-                name: "date"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-                className: "col ms-1",
-                id: "exampleFormControlSelect1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                  defaultValue: true,
-                  children: "times"
-                })
+                name: "date",
+                value: createConcert.event_onsale_date_time,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_onsale_date_time: e.target.value
+                  }));
+                }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Face Value"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                 className: "col me-1",
                 id: "exampleFormControlSelect1",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                value: createConcert.event_face_value_currency,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_currency: e.target.value
+                  }));
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Euro",
                   defaultValue: true,
                   children: "Euro"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Hong Kong Dollar",
                   children: "Hong Kong Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Croatian Kuna",
                   children: "Croatian Kuna"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "Japanese Yen",
                   children: "Japanese Yen"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "South Korean Won",
                   children: "South Korean Won"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "valmin",
                 className: "col mx-1",
                 id: "exampleFormControlInput1",
-                placeholder: "Face Value Min"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                placeholder: "Face Value Min",
+                value: createConcert.event_face_value_min,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_min: e.target.value
+                  }));
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "valmax",
                 className: "col ms-1",
                 id: "exampleFormControlInput1",
-                placeholder: "Face Value Max"
+                placeholder: "Face Value Max",
+                value: createConcert.event_face_value_max,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_max: e.target.value
+                  }));
+                }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Event Url and Notes*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "venue",
                 className: "",
-                id: "exampleFormControlInput1"
+                id: "exampleFormControlInput1",
+                value: createConcert.event_url_notes,
+                onChange: function onChange(e) {
+                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_url_notes: e.target.value
+                  }));
+                }
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "modal-footer m-1 p-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn btn-secondary",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#ListingModal",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("b", {
               children: "Back"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn btn-success",
+            onClick: function onClick() {
+              return eventNewUpdate();
+            },
             children: "Submit"
           })]
         })]
@@ -7278,7 +7363,17 @@ var ListingTable = function ListingTable() {
 
   var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
     event_name: "",
-    event_venue: ""
+    event_date: "",
+    event_time: "",
+    event_venue: "",
+    event_city: "",
+    event_country: "",
+    event_onsale_date_time: "",
+    // event_onsale_time: "",
+    event_face_value_currency: "",
+    event_face_value_min: "",
+    event_face_value_max: "",
+    event_url_notes: ""
   }),
       _useState52 = _slicedToArray(_useState51, 2),
       createConcert = _useState52[0],
@@ -7525,6 +7620,14 @@ var ListingTable = function ListingTable() {
       });
     });
     setConcerts(search_result);
+    var sorted_search_result = sort.map(function (concert) {
+      return concert.event_name.toLowerCase().includes(search.toLowerCase()) | String(concert.event_id).includes(String(search)) ? _objectSpread(_objectSpread({}, concert), {}, {
+        isVisible: true
+      }) : _objectSpread(_objectSpread({}, concert), {}, {
+        isVisible: false
+      });
+    });
+    setSort(sorted_search_result);
   }, [search]); // for sorting to all listing
 
   var handleAllListing = /*#__PURE__*/function () {
@@ -7871,23 +7974,67 @@ var ListingTable = function ListingTable() {
     return function ticketNewUpdate() {
       return _ref8.apply(this, arguments);
     };
+  }(); // passes the new event to the database
+
+
+  var eventNewUpdate = /*#__PURE__*/function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              // setIsTicketSaving(true);
+              console.log(createConcert);
+              axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/concerts/create", createConcert).then(function (response) {
+                console.log(response);
+                setCreateConcert({
+                  event_name: "",
+                  event_date: "",
+                  event_time: "",
+                  event_venue: "",
+                  event_city: "",
+                  event_country: "",
+                  event_onsale_date_time: "",
+                  event_face_value_currency: "",
+                  event_face_value_min: "",
+                  event_face_value_max: "",
+                  event_url_notes: ""
+                });
+                fetchConcert();
+              })["catch"](function (error) {
+                console.log(error.response);
+                setFetchError(error.message);
+              }); // setIsTicketSaving(false);
+              // setSuccessMsg("Saved");
+
+            case 2:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9);
+    }));
+
+    return function eventNewUpdate() {
+      return _ref9.apply(this, arguments);
+    };
   }(); // updating the ticket input values
   // this function may not be the best, but its the best i could think of.
 
 
   var handleTicketEditChange = /*#__PURE__*/function () {
-    var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(id, input_id, input_type) {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(id, input_id, input_type) {
       var val,
           len,
           ticketRestrictEdit,
           ticketListNoteEdit,
           ticketinput,
-          _args9 = arguments;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
+          _args10 = arguments;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
         while (1) {
-          switch (_context9.prev = _context9.next) {
+          switch (_context10.prev = _context10.next) {
             case 0:
-              val = _args9.length > 3 && _args9[3] !== undefined ? _args9[3] : "";
+              val = _args10.length > 3 && _args10[3] !== undefined ? _args10[3] : "";
 
               if (input_type === "restriction") {
                 len = ticketRestrictionEdit.filter(function (ticketrestriction) {
@@ -8013,24 +8160,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context9.stop();
+              return _context10.stop();
           }
         }
-      }, _callee9);
+      }, _callee10);
     }));
 
     return function handleTicketEditChange(_x6, _x7, _x8) {
-      return _ref9.apply(this, arguments);
+      return _ref10.apply(this, arguments);
     };
   }(); // setting interaction for price input when focused
 
 
   var handlePriceSelect = /*#__PURE__*/function () {
-    var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(id) {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
         while (1) {
-          switch (_context10.prev = _context10.next) {
+          switch (_context11.prev = _context11.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8048,24 +8195,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context10.stop();
+              return _context11.stop();
           }
         }
-      }, _callee10);
+      }, _callee11);
     }));
 
     return function handlePriceSelect(_x9) {
-      return _ref10.apply(this, arguments);
+      return _ref11.apply(this, arguments);
     };
   }(); // updating the price input value
 
 
   var handlePriceChange = /*#__PURE__*/function () {
-    var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(id, val) {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(id, val) {
       var listTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
         while (1) {
-          switch (_context11.prev = _context11.next) {
+          switch (_context12.prev = _context12.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8076,24 +8223,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context11.stop();
+              return _context12.stop();
           }
         }
-      }, _callee11);
+      }, _callee12);
     }));
 
     return function handlePriceChange(_x10, _x11) {
-      return _ref11.apply(this, arguments);
+      return _ref12.apply(this, arguments);
     };
   }(); // setting interaction for available ticket input when focused
 
 
   var handleAvailableTicketSelect = /*#__PURE__*/function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(id) {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
         while (1) {
-          switch (_context12.prev = _context12.next) {
+          switch (_context13.prev = _context13.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8111,24 +8258,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context12.stop();
+              return _context13.stop();
           }
         }
-      }, _callee12);
+      }, _callee13);
     }));
 
     return function handleAvailableTicketSelect(_x12) {
-      return _ref12.apply(this, arguments);
+      return _ref13.apply(this, arguments);
     };
   }(); // updating the available ticket input value
 
 
   var handleAvailableTicketChange = /*#__PURE__*/function () {
-    var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(id, val) {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(id, val) {
       var listTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
         while (1) {
-          switch (_context13.prev = _context13.next) {
+          switch (_context14.prev = _context14.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8139,24 +8286,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context13.stop();
+              return _context14.stop();
           }
         }
-      }, _callee13);
+      }, _callee14);
     }));
 
     return function handleAvailableTicketChange(_x13, _x14) {
-      return _ref13.apply(this, arguments);
+      return _ref14.apply(this, arguments);
     };
   }(); // set publish status of ticket
 
 
   var handleTicketPublishChange = /*#__PURE__*/function () {
-    var _ref14 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(id) {
+    var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15(id) {
       var listTickets, ticket;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
         while (1) {
-          switch (_context14.prev = _context14.next) {
+          switch (_context15.prev = _context15.next) {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id & ticket.is_published === 1 ? _objectSpread(_objectSpread({}, ticket), {}, {
@@ -8173,24 +8320,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context14.stop();
+              return _context15.stop();
           }
         }
-      }, _callee14);
+      }, _callee15);
     }));
 
     return function handleTicketPublishChange(_x15) {
-      return _ref14.apply(this, arguments);
+      return _ref15.apply(this, arguments);
     };
   }(); // change the values of cloned tickets
 
 
   var handleTicketCloneEdit = /*#__PURE__*/function () {
-    var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee15(val, index, input) {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee16(val, index, input) {
       var ticketclones;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee15$(_context15) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee16$(_context16) {
         while (1) {
-          switch (_context15.prev = _context15.next) {
+          switch (_context16.prev = _context16.next) {
             case 0:
               ticketclones = ticketClone;
 
@@ -8242,24 +8389,24 @@ var ListingTable = function ListingTable() {
 
             case 3:
             case "end":
-              return _context15.stop();
+              return _context16.stop();
           }
         }
-      }, _callee15);
+      }, _callee16);
     }));
 
     return function handleTicketCloneEdit(_x16, _x17, _x18) {
-      return _ref15.apply(this, arguments);
+      return _ref16.apply(this, arguments);
     };
   }(); // updates data from ticket edit modal to the database
 
 
   var ticketEditUpdate = /*#__PURE__*/function () {
-    var _ref16 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee16(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
+    var _ref17 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee17(ticketedit, restricts, ticketrestrictions, listingnotes, ticketlistingnotes) {
       var ticket, request;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee16$(_context16) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee17$(_context17) {
         while (1) {
-          switch (_context16.prev = _context16.next) {
+          switch (_context17.prev = _context17.next) {
             case 0:
               setIsTicketSaving(true);
               ticket = {
@@ -8310,23 +8457,23 @@ var ListingTable = function ListingTable() {
 
             case 15:
             case "end":
-              return _context16.stop();
+              return _context17.stop();
           }
         }
-      }, _callee16);
+      }, _callee17);
     }));
 
     return function ticketEditUpdate(_x19, _x20, _x21, _x22, _x23) {
-      return _ref16.apply(this, arguments);
+      return _ref17.apply(this, arguments);
     };
   }();
 
   var handleTicketCloneUpdate = /*#__PURE__*/function () {
-    var _ref17 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee17() {
+    var _ref18 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee18() {
       var request;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee17$(_context17) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee18$(_context18) {
         while (1) {
-          switch (_context17.prev = _context17.next) {
+          switch (_context18.prev = _context18.next) {
             case 0:
               setIsTicketSaving(true);
               request = [ticketClone, ticketRestrictionEdit, ticketListingNoteEdit];
@@ -8343,24 +8490,24 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context17.stop();
+              return _context18.stop();
           }
         }
-      }, _callee17);
+      }, _callee18);
     }));
 
     return function handleTicketCloneUpdate() {
-      return _ref17.apply(this, arguments);
+      return _ref18.apply(this, arguments);
     };
   }(); // update ticket to the database
 
 
   var ticketUpdate = /*#__PURE__*/function () {
-    var _ref18 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee18(ticket) {
+    var _ref19 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee19(ticket) {
       var ticket_info;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee18$(_context18) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee19$(_context19) {
         while (1) {
-          switch (_context18.prev = _context18.next) {
+          switch (_context19.prev = _context19.next) {
             case 0:
               ticket_info = {
                 listing_id: ticket[0].listing_id,
@@ -8386,24 +8533,24 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context18.stop();
+              return _context19.stop();
           }
         }
-      }, _callee18);
+      }, _callee19);
     }));
 
     return function ticketUpdate(_x24) {
-      return _ref18.apply(this, arguments);
+      return _ref19.apply(this, arguments);
     };
   }(); // for deleting ticket
 
 
   var handleTicketDelete = /*#__PURE__*/function () {
-    var _ref19 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee19(ticket) {
+    var _ref20 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee20(ticket) {
       var ticket_info, newtickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee19$(_context19) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee20$(_context20) {
         while (1) {
-          switch (_context19.prev = _context19.next) {
+          switch (_context20.prev = _context20.next) {
             case 0:
               ticket_info = {
                 listing_id: ticket.listing_id,
@@ -8430,23 +8577,23 @@ var ListingTable = function ListingTable() {
 
             case 4:
             case "end":
-              return _context19.stop();
+              return _context20.stop();
           }
         }
-      }, _callee19);
+      }, _callee20);
     }));
 
     return function handleTicketDelete(_x25) {
-      return _ref19.apply(this, arguments);
+      return _ref20.apply(this, arguments);
     };
   }();
 
   var handleTicketDeleteSelected = /*#__PURE__*/function () {
-    var _ref20 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee20() {
+    var _ref21 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee21() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee20$(_context20) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee21$(_context21) {
         while (1) {
-          switch (_context20.prev = _context20.next) {
+          switch (_context21.prev = _context21.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8463,23 +8610,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context20.stop();
+              return _context21.stop();
           }
         }
-      }, _callee20);
+      }, _callee21);
     }));
 
     return function handleTicketDeleteSelected() {
-      return _ref20.apply(this, arguments);
+      return _ref21.apply(this, arguments);
     };
   }();
 
   var handleTicketPublishSelected = /*#__PURE__*/function () {
-    var _ref21 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee21() {
+    var _ref22 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee22() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee21$(_context21) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee22$(_context22) {
         while (1) {
-          switch (_context21.prev = _context21.next) {
+          switch (_context22.prev = _context22.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8498,23 +8645,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context21.stop();
+              return _context22.stop();
           }
         }
-      }, _callee21);
+      }, _callee22);
     }));
 
     return function handleTicketPublishSelected() {
-      return _ref21.apply(this, arguments);
+      return _ref22.apply(this, arguments);
     };
   }();
 
   var handleTicketUnpublishSelected = /*#__PURE__*/function () {
-    var _ref22 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee22() {
+    var _ref23 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee23() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee22$(_context22) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee23$(_context23) {
         while (1) {
-          switch (_context22.prev = _context22.next) {
+          switch (_context23.prev = _context23.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8533,23 +8680,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context22.stop();
+              return _context23.stop();
           }
         }
-      }, _callee22);
+      }, _callee23);
     }));
 
     return function handleTicketUnpublishSelected() {
-      return _ref22.apply(this, arguments);
+      return _ref23.apply(this, arguments);
     };
   }();
 
   var handleTicketToPaperSelected = /*#__PURE__*/function () {
-    var _ref23 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee23() {
+    var _ref24 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee24() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee23$(_context23) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee24$(_context24) {
         while (1) {
-          switch (_context23.prev = _context23.next) {
+          switch (_context24.prev = _context24.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8568,23 +8715,23 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context23.stop();
+              return _context24.stop();
           }
         }
-      }, _callee23);
+      }, _callee24);
     }));
 
     return function handleTicketToPaperSelected() {
-      return _ref23.apply(this, arguments);
+      return _ref24.apply(this, arguments);
     };
   }();
 
   var handleTicketToESelected = /*#__PURE__*/function () {
-    var _ref24 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee24() {
+    var _ref25 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee25() {
       var selectedTickets;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee24$(_context24) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee25$(_context25) {
         while (1) {
-          switch (_context24.prev = _context24.next) {
+          switch (_context25.prev = _context25.next) {
             case 0:
               selectedTickets = tickets.filter(function (ticket) {
                 return ticket.isSelected === true;
@@ -8603,14 +8750,14 @@ var ListingTable = function ListingTable() {
 
             case 2:
             case "end":
-              return _context24.stop();
+              return _context25.stop();
           }
         }
-      }, _callee24);
+      }, _callee25);
     }));
 
     return function handleTicketToESelected() {
-      return _ref24.apply(this, arguments);
+      return _ref25.apply(this, arguments);
     };
   }(); // get the ramaining day
 
@@ -8826,7 +8973,11 @@ var ListingTable = function ListingTable() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingDeletePrompt__WEBPACK_IMPORTED_MODULE_11__["default"], {
         handleTicketDelete: handleTicketDelete,
         ticketEdit: ticketEdit
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNewListing__WEBPACK_IMPORTED_MODULE_12__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNewTicket__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNewListing__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        createConcert: createConcert,
+        setCreateConcert: setCreateConcert,
+        eventNewUpdate: eventNewUpdate
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNewTicket__WEBPACK_IMPORTED_MODULE_13__["default"], {
         isTicketNewLoading: isTicketNewLoading,
         newTicket: newTicket,
         setNewTicket: setNewTicket,

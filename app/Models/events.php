@@ -8,6 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class events extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'event_name',
+        'event_date',
+        'event_time',
+        'event_venue',
+        'event_city',
+        'event_country',
+        'event_onsale_date_time',
+        'event_face_value_currency',
+        'event_face_value_min',
+        'event_face_value_max',
+        'event_url_notes',
+        'event_status'
+    ];
     // protected $table = 'queenticketeventinfo';
 
 
