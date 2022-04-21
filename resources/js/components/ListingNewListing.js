@@ -12,7 +12,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                         <div className="justify-content-between-center">
 
                         <h4 className="m-1 p-2">Request an event </h4>
-                        
+
                         <p className="m-1 p-2">
                             Can't find the event you're looking for? Enter the
                             details below and you can start listing immediately.
@@ -188,15 +188,8 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                             </div>
                         </form>
                     </div>
-<<<<<<< HEAD
                     <div className="modal-footer m-1 p-2">
                         <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ListingModal">
-=======
-                    <div className="modal-footer m-1 p-2 justify-content-between">
-                        <button type="button" 
-                        data-bs-dismiss="modal"
-                        className="btn btn-secondary">
->>>>>>> c165173f17782faf307487b7affd845323dcd80e
                             <b>Back</b>
                         </button>
                         <button type="button" className="btn btn-success" onClick={()=>eventNewUpdate()}>
