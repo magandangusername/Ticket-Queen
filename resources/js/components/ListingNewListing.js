@@ -6,8 +6,13 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
         <div className="modal container-fluid" id="ReqEventModal">
             <div className="modal-dialog">
                 <div className="modal-content">
-                    <div className="modal-header m-1 p-2">
-                        <h4 className="m-1 p-2">Request an event</h4>
+                    <div className="modal-header "
+                    style={{ background: "#424549", color: "#edf6ff"}}
+                    >
+                        <div className="justify-content-between-center">
+
+                        <h4 className="m-1 p-2">Request an event </h4>
+                        
                         <p className="m-1 p-2">
                             Can't find the event you're looking for? Enter the
                             details below and you can start listing immediately.
@@ -15,16 +20,12 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                             tickets will become active on our website.
                         </p>
 
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                        ></button>
+                        </div>
                     </div>
 
-                    <div className="form-group m-1 p-3">
+                    <div className="modal-body form-group m-auto p-4">
                         <form>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Artist, Home Team, Tournament, Festival or
                                     Show*
@@ -37,7 +38,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     readOnly
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlSelect1">
                                     Event*
                                 </label>
@@ -54,7 +55,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     }
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="date">Event Date/Time*</label>
                                 <input
                                     type="date"
@@ -83,7 +84,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     }
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Venue*
                                 </label>
@@ -95,7 +96,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     onChange={(e)=>setCreateConcert({...createConcert, event_venue: e.target.value})}
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     City*
                                 </label>
@@ -105,7 +106,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
 
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlSelect1">
                                     Country*
                                 </label>
@@ -122,7 +123,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     <option value="Angola">Angola</option>
                                 </select>
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Onsale
                                 </label>
@@ -140,7 +141,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                 onChange={(e)=>setCreateConcert({...createConcert, event_onsale_time: e.target.value})}
                                 /> */}
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Face Value
                                 </label>
@@ -173,7 +174,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     onChange={(e)=>setCreateConcert({...createConcert, event_face_value_max: e.target.value})}
                                 />
                             </div>
-                            <div className="row">
+                            <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     Event Url and Notes*
                                 </label>
@@ -187,8 +188,15 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                             </div>
                         </form>
                     </div>
+<<<<<<< HEAD
                     <div className="modal-footer m-1 p-2">
                         <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ListingModal">
+=======
+                    <div className="modal-footer m-1 p-2 justify-content-between">
+                        <button type="button" 
+                        data-bs-dismiss="modal"
+                        className="btn btn-secondary">
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                             <b>Back</b>
                         </button>
                         <button type="button" className="btn btn-success" onClick={()=>eventNewUpdate()}>

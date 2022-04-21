@@ -5762,6 +5762,10 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
             className: "modal-header",
+            style: {
+              background: "#424549",
+              color: "#edf6ff"
+            },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
               children: ticketEdit[0].event_name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
@@ -5825,7 +5829,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                        value: "Avoid leaving one or three tickets",
+                        value: "Avoid leaving one or\r three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6334,6 +6338,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
       className: "modal-dialog",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "modal-content",
+<<<<<<< HEAD
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "modal-header m-1 p-2",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
@@ -6353,6 +6358,30 @@ var ListingNewListing = function ListingNewListing(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "modal-header ",
+          style: {
+            background: "#424549",
+            color: "#edf6ff"
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "justify-content-between-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+              className: "m-1 p-2",
+              children: "Request an event "
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              className: "m-1 p-2",
+              children: "Can't find the event you're looking for? Enter the details below and you can start listing immediately. Once our support team approves the event, your tickets will become active on our website."
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "modal-body form-group m-auto p-4",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlInput1",
                 children: "Artist, Home Team, Tournament, Festival or Show*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6362,9 +6391,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 placeholder: "Search",
                 readOnly: true
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlSelect1",
                 children: "Event*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6378,9 +6413,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 }
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "date",
                 children: "Event Date/Time*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6406,9 +6447,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 }
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlInput1",
                 children: "Venue*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6422,9 +6469,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 }
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlInput1",
                 children: "City*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6437,9 +6490,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 }
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlSelect1",
                 children: "Country*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
@@ -6469,9 +6528,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   children: "Angola"
                 })]
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlInput1",
                 children: "Onsale"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6486,9 +6551,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 }
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlInput1",
                 children: "Face Value"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
@@ -6540,9 +6611,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 }
               })]
+<<<<<<< HEAD
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+=======
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "row mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
                 htmlFor: "exampleFormControlInput1",
                 children: "Event Url and Notes*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -6558,10 +6635,17 @@ var ListingNewListing = function ListingNewListing(_ref) {
               })]
             })]
           })
+<<<<<<< HEAD
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "modal-footer m-1 p-2",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+=======
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "modal-footer m-1 p-2 justify-content-between",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+>>>>>>> c165173f17782faf307487b7affd845323dcd80e
             type: "button",
+            "data-bs-dismiss": "modal",
             className: "btn btn-secondary",
             "data-bs-toggle": "modal",
             "data-bs-target": "#ListingModal",
@@ -6636,7 +6720,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
           children: "Loading data..."
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "modal-header",
+            className: "modal-header ",
+            style: {
+              background: "#424549",
+              color: "#edf6ff"
+            },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
               children: newTicket.event_name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
@@ -6700,7 +6788,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                        value: "Avoid leaving one or three tickets",
+                        value: "Avoid leaving one or\r three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6952,7 +7040,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "modal-footer",
+            className: "modal-footer justify-content-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
               className: "text-success",
               children: successMsg
