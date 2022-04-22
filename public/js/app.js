@@ -8192,19 +8192,32 @@ var ListingTable = function ListingTable() {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                  isPriceSelected: !ticket.isPriceSelected
+                  isPriceSelected: !ticket.isPriceSelected,
+                  price: parseFloat(ticket.price).toFixed(2)
                 }) : ticket;
               });
-              setTickets(listTickets);
               ticket = tickets.filter(function (ticket) {
                 return ticket.listing_id === id;
-              });
+              }); //setting restriction to the input
+
+              if (ticket[0].price === "" | ticket[0].price < 0) {
+                ticket[0] = _objectSpread(_objectSpread({}, ticket[0]), {}, {
+                  price: 0
+                });
+                listTickets = listTickets.map(function (ticket) {
+                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                    price: 0
+                  }) : ticket;
+                });
+              }
+
+              setTickets(listTickets);
 
               if (ticket[0].isPriceSelected === true) {
                 ticketUpdate(ticket);
               }
 
-            case 4:
+            case 5:
             case "end":
               return _context11.stop();
           }
@@ -8255,19 +8268,32 @@ var ListingTable = function ListingTable() {
             case 0:
               listTickets = tickets.map(function (ticket) {
                 return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                  isAvailableTicketSelected: !ticket.isAvailableTicketSelected
+                  isAvailableTicketSelected: !ticket.isAvailableTicketSelected,
+                  tickets_available: parseFloat(ticket.tickets_available).toFixed(0)
                 }) : ticket;
               });
-              setTickets(listTickets);
               ticket = tickets.filter(function (ticket) {
                 return ticket.listing_id === id;
-              });
+              }); //setting restriction to the input
+
+              if (ticket[0].tickets_available === "" | ticket[0].tickets_available < 0) {
+                ticket[0] = _objectSpread(_objectSpread({}, ticket[0]), {}, {
+                  tickets_available: 0
+                });
+                listTickets = listTickets.map(function (ticket) {
+                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
+                    tickets_available: 0
+                  }) : ticket;
+                });
+              }
+
+              setTickets(listTickets); // call the function that updates the database
 
               if (ticket[0].isAvailableTicketSelected !== false) {
                 ticketUpdate(ticket);
               }
 
-            case 4:
+            case 5:
             case "end":
               return _context13.stop();
           }
@@ -9336,8 +9362,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -9353,14 +9382,14 @@ var ListingTickets = function ListingTickets(_ref) {
       concert = _ref.concert,
       handleTicketPublishChange = _ref.handleTicketPublishChange,
       ticketTypes = _ref.ticketTypes;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "container-fluid d-flex justify-content-center",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "form-check d-flex justify-content-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
             type: "checkbox",
             className: "form-check-input",
             id: "ticketselection",
@@ -9371,55 +9400,55 @@ var ListingTickets = function ListingTickets(_ref) {
           })
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "container-fluid d-flex justify-content-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "me-2",
           children: ticket.section
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
           children: [ticket.row, " ", ticket.seats_from, " ", ticket.seats_to]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "container-fluid d-flex justify-content-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "me-2",
           children: ticketTypes.filter(function (type) {
             return type.ticket_type_id === ticket.ticket_type_id;
           })[0].ticket_type
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: "#",
           className: "link-primary text-decoration-none",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
             children: "Upload Now"
           })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "container-fluid d-flex justify-content-center",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "text-success",
           children: "No. %"
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "container-fluid d-flex justify-content-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
           className: "form-control d-inline me-2",
           style: {
             width: 75 + "px"
           },
           title: "Double click to edit",
-          value: ticket.price,
+          value: Number(ticket.price).toString(),
           readOnly: !ticket.isPriceSelected,
           onDoubleClick: function onDoubleClick() {
             return handlePriceSelect(ticket.listing_id);
@@ -9432,8 +9461,9 @@ var ListingTickets = function ListingTickets(_ref) {
           },
           onKeyDown: function onKeyDown(e) {
             return e.key === "Enter" && e.target.blur();
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          },
+          required: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
           // src=""
           alt: "???",
           style: {
@@ -9443,18 +9473,18 @@ var ListingTickets = function ListingTickets(_ref) {
           className: "rounded-circle d-inline"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "container-fluid d-flex justify-content-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
           className: "form-control d-inline me-2",
           style: {
             width: 75 + "px"
           },
           title: "Double click to edit",
-          value: ticket.tickets_available,
+          value: Number(ticket.tickets_available).toString(),
           readOnly: !ticket.isAvailableTicketSelected,
           onDoubleClick: function onDoubleClick() {
             return handleAvailableTicketSelect(ticket.listing_id);
@@ -9463,12 +9493,14 @@ var ListingTickets = function ListingTickets(_ref) {
             return ticket.isAvailableTicketSelected && handleAvailableTicketSelect(ticket.listing_id);
           },
           onChange: function onChange(e) {
-            return handleAvailableTicketChange(ticket.listing_id, e.target.value, e);
+            return handleAvailableTicketChange(ticket.listing_id, e.target.value);
           },
           onKeyDown: function onKeyDown(e) {
             return e.key === "Enter" && e.target.blur();
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          },
+          pattern: "[0-9]*",
+          required: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
           // src=""
           alt: "???",
           style: {
@@ -9478,19 +9510,19 @@ var ListingTickets = function ListingTickets(_ref) {
           className: "rounded-circle d-inline"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "d-flex justify-content-center",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           children: ticket.tickets_sold
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "form-check form-switch d-flex justify-content-center",
-        children: [ticket.is_published === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        children: [ticket.is_published === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
           className: "form-check-input me-4",
           type: "checkbox",
           id: "flexSwitchCheckChecked",
@@ -9498,7 +9530,7 @@ var ListingTickets = function ListingTickets(_ref) {
           onChange: function onChange() {
             return handleTicketPublishChange(ticket.listing_id);
           }
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
           className: "form-check-input me-4",
           type: "checkbox",
           id: "flexSwitchCheckChecked",
@@ -9506,7 +9538,7 @@ var ListingTickets = function ListingTickets(_ref) {
           onChange: function onChange() {
             return handleTicketPublishChange(ticket.listing_id);
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
           // src=""
           alt: "???",
           style: {
@@ -9516,9 +9548,9 @@ var ListingTickets = function ListingTickets(_ref) {
           className: "rounded-circle d-inline"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center ",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
         href: "",
         className: "fas fa-edit",
         "data-bs-toggle": "modal",

@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('event_country')->nullable();
             $table->dateTime('event_onsale_date_time')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->string('event_face_value_currency');
-            $table->integer('event_face_value_min')->default(0);
-            $table->integer('event_face_value_max')->default(1);
+            $table->float('event_face_value_min')->default(0);
+            $table->float('event_face_value_max')->default(1);
             $table->string('event_url_notes')->nullable();
             $table->enum('event_status', ['active', 'inactive'])->default('inactive');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

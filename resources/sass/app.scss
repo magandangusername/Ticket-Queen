@@ -7,65 +7,76 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-a.tools{
+a.tools {
     color: lightcyan;
 }
 
 .tools:hover {
     color: yellow;
-  }
-.thead-lights{
-  border: solid 3px #1C1C1C;
-}
-.table-1{
-  border: solid 3px #1C1C1C;
-} 
-table{
-  border-style : hidden!important;
 }
 
-
-
-#Search{
-width:480px;height:49px; border:2px solid black;
-padding-left:48px;
-padding-top:1px;
-font-size:18px;color:black;
-background-repeat:no-repeat;
-background-position:center;outline:0;
-}
-h2{
-  margin-bottom: 0.3rem;
+.thead-lights {
+    border: solid 3px #1C1C1C;
 }
 
-#Search::-webkit-search-cancel-button{
-    position:absolute;
-    right:20px;    
+.table-1 {
+    border: solid 3px #1C1C1C;
 }
 
-#ticketinfotable{
-    background-color:#495371;
+table {
+    border-style: hidden !important;
 }
 
-#rowcontent{
-    border-color:#21325E;
+
+
+#Search {
+    width: 480px;
+    height: 49px;
+    border: 2px solid black;
+    padding-left: 48px;
+    padding-top: 1px;
+    font-size: 18px;
+    color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: 0;
 }
 
-#ticketinfocontent{
+h2 {
+    margin-bottom: 0.3rem;
+}
+
+#Search::-webkit-search-cancel-button {
+    position: absolute;
+    right: 20px;
+}
+
+#ticketinfotable {
+    background-color: #495371;
+}
+
+#rowcontent {
+    border-color: #21325E;
+}
+
+#ticketinfocontent {
     color: whitesmoke;
 }
 
-#tabletickets{
+#tabletickets {
     border: solid 2px #1C1C1C;
-    background-color:#424549;
+    background-color: #424549;
 }
-.text-center{
-  border: solid 2px #1C1C1C;
+
+.text-center {
+    border: solid 2px #1C1C1C;
 }
-img#search-icon{
+
+img#search-icon {
     height: 25px;
     width: 25px;
 }
+
 form.example input[type=text] {
     padding: 10px;
     font-size: 17px;
@@ -73,9 +84,9 @@ form.example input[type=text] {
     float: left;
     width: 80%;
     background: #f1f1f1;
-  }
-  
-  form.example button {
+}
+
+form.example button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -85,32 +96,44 @@ form.example input[type=text] {
     border: 1px solid grey;
     border-left: none;
     cursor: pointer;
-  }
-  
-  form.example button:hover {
+}
+
+form.example button:hover {
     background: #0b7dda;
-  }
-  
-  form.example::after {
+}
+
+form.example::after {
     content: "";
     clear: both;
     display: table;
-  }
-  .navz-index{
+}
+
+.navz-index {
     z-index: 600;
-  }
-  // body, html{
-  //   height: 100%;
-  // }
-  .table-heights{
+}
+
+// body, html{
+//   height: 100%;
+// }
+.table-heights {
     height: 65%
-  }
-    .bg-color{
-      background-color: #E4E4E4;
-    }
-  #navbarNavDropdown{
+}
+
+.bg-color {
+    background-color: #E4E4E4;
+}
+
+#navbarNavDropdown {
     z-index: 2000;
-  }
-  .collapsewidth{
+}
+
+.collapsewidth {
     width: 45%;
-  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('row')->nullable();
             $table->string('seats_from')->nullable();
             $table->string('seats_to')->nullable();
-            $table->integer('price');
-            $table->integer('proceeds')->nullable();
+            $table->float('price');
+            $table->float('proceeds')->nullable();
             $table->string('currency')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('ticket_location')->nullable();

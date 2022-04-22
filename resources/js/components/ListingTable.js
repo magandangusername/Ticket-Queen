@@ -11,7 +11,7 @@ import ListingTicketTypes from "./ListingTicketTypes";
 import ListingDeletePrompt from "./ListingDeletePrompt";
 import ListingNewListing from "./ListingNewListing";
 import ListingNewTicket from "./ListingNewTicket";
-import { sortedLastIndex, toInteger } from "lodash";
+import { sortedLastIndex, toInteger, toNumber, toSafeInteger } from "lodash";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -647,14 +647,31 @@ const ListingTable = () => {
 
     // setting interaction for price input when focused
     const handlePriceSelect = async (id) => {
-        const listTickets = tickets.map((ticket) =>
+        var listTickets = tickets.map((ticket) =>
             ticket.listing_id === id
-                ? { ...ticket, isPriceSelected: !ticket.isPriceSelected }
+                ? {
+                      ...ticket,
+                      isPriceSelected: !ticket.isPriceSelected,
+                      price: parseFloat(ticket.price).toFixed(2),
+                  }
                 : ticket
         );
-        setTickets(listTickets);
 
-        const ticket = tickets.filter((ticket) => ticket.listing_id === id);
+        var ticket = tickets.filter((ticket) => ticket.listing_id === id);
+
+        //setting restriction to the input
+        if ((ticket[0].price === "") | (ticket[0].price < 0)) {
+            ticket[0] = { ...ticket[0], price: 0 };
+            listTickets = listTickets.map((ticket) =>
+                ticket.listing_id === id
+                    ? {
+                          ...ticket,
+                          price: 0,
+                      }
+                    : ticket
+            );
+        }
+        setTickets(listTickets);
 
         if (ticket[0].isPriceSelected === true) {
             ticketUpdate(ticket);
@@ -672,19 +689,37 @@ const ListingTable = () => {
 
     // setting interaction for available ticket input when focused
     const handleAvailableTicketSelect = async (id) => {
-        const listTickets = tickets.map((ticket) =>
+        var listTickets = tickets.map((ticket) =>
             ticket.listing_id === id
                 ? {
                       ...ticket,
                       isAvailableTicketSelected:
                           !ticket.isAvailableTicketSelected,
+                      tickets_available: parseFloat(ticket.tickets_available).toFixed(0),
                   }
                 : ticket
         );
+
+        var ticket = tickets.filter((ticket) => ticket.listing_id === id);
+
+        //setting restriction to the input
+        if (
+            (ticket[0].tickets_available === "") |
+            (ticket[0].tickets_available < 0)
+        ) {
+            ticket[0] = { ...ticket[0], tickets_available: 0 };
+            listTickets = listTickets.map((ticket) =>
+                ticket.listing_id === id
+                    ? {
+                          ...ticket,
+                          tickets_available: 0,
+                      }
+                    : ticket
+            );
+        }
         setTickets(listTickets);
 
-        const ticket = tickets.filter((ticket) => ticket.listing_id === id);
-
+        // call the function that updates the database
         if (ticket[0].isAvailableTicketSelected !== false) {
             ticketUpdate(ticket);
         }
@@ -697,6 +732,7 @@ const ListingTable = () => {
                 ? { ...ticket, tickets_available: val }
                 : ticket
         );
+
         setTickets(listTickets);
     };
 

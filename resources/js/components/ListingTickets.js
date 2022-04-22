@@ -1,3 +1,4 @@
+import { toInteger } from "lodash";
 import React from "react";
 
 const ListingTickets = ({
@@ -10,7 +11,7 @@ const ListingTickets = ({
     handleTicketEdit,
     concert,
     handleTicketPublishChange,
-    ticketTypes
+    ticketTypes,
 }) => {
     return (
         <tr>
@@ -37,7 +38,15 @@ const ListingTickets = ({
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
-                    <p className="me-2">{ticketTypes.filter((type)=>type.ticket_type_id===ticket.ticket_type_id)[0].ticket_type}</p>
+                    <p className="me-2">
+                        {
+                            ticketTypes.filter(
+                                (type) =>
+                                    type.ticket_type_id ===
+                                    ticket.ticket_type_id
+                            )[0].ticket_type
+                        }
+                    </p>
                     <a href="#" className="link-primary text-decoration-none">
                         <p>Upload Now</p>
                     </a>
@@ -52,11 +61,11 @@ const ListingTickets = ({
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
                     <input
-                        type="text"
+                        type="number"
                         className="form-control d-inline me-2"
                         style={{ width: 75 + "px" }}
                         title="Double click to edit"
-                        value={ticket.price}
+                        value={Number(ticket.price).toString()}
                         readOnly={!ticket.isPriceSelected}
                         onDoubleClick={() =>
                             handlePriceSelect(ticket.listing_id)
@@ -73,6 +82,7 @@ const ListingTickets = ({
                             )
                         }
                         onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
+                        required
                     />
                     <img
                         // src=""
@@ -86,11 +96,11 @@ const ListingTickets = ({
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
                     <input
-                        type="text"
+                        type="number"
                         className="form-control d-inline me-2"
                         style={{ width: 75 + "px" }}
                         title="Double click to edit"
-                        value={ticket.tickets_available}
+                        value={Number(ticket.tickets_available).toString()}
                         readOnly={!ticket.isAvailableTicketSelected}
                         onDoubleClick={() =>
                             handleAvailableTicketSelect(ticket.listing_id)
@@ -102,11 +112,13 @@ const ListingTickets = ({
                         onChange={(e) =>
                             handleAvailableTicketChange(
                                 ticket.listing_id,
-                                e.target.value,
-                                e
+                                e.target.value
                             )
+
                         }
                         onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
+                        pattern="[0-9]*"
+                        required
                     />
                     <img
                         // src=""
@@ -129,7 +141,9 @@ const ListingTickets = ({
                             type="checkbox"
                             id="flexSwitchCheckChecked"
                             checked
-                            onChange={() => handleTicketPublishChange(ticket.listing_id)}
+                            onChange={() =>
+                                handleTicketPublishChange(ticket.listing_id)
+                            }
                         />
                     ) : (
                         <input
@@ -137,7 +151,9 @@ const ListingTickets = ({
                             type="checkbox"
                             id="flexSwitchCheckChecked"
                             checked={false}
-                            onChange={() => handleTicketPublishChange(ticket.listing_id)}
+                            onChange={() =>
+                                handleTicketPublishChange(ticket.listing_id)
+                            }
                         />
                     )}
                     <img
