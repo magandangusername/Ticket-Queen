@@ -2,6 +2,7 @@ import React from "react";
 
 const ListingEditTicket = ({
     ticketEdit,
+    setTicketEdit,
     restrictions,
     listingNotes,
     handleTicketDelete,
@@ -33,9 +34,9 @@ const ListingEditTicket = ({
                             <div className="modal-header"
                             style={{ background: "#424549", color: "#edf6ff"}}
                             >
-                                <h4>{ticketEdit[0].event_name}</h4>
+                                <h4>{ticketEdit.event_name}</h4>
                                 <p>
-                                    <b>{ticketEdit[0].event_date}</b>
+                                    <b>{ticketEdit.event_date}</b>
                                     <br />
                                 </p>
 
@@ -65,23 +66,17 @@ const ListingEditTicket = ({
                                                     Available Tickets*
                                                 </label>
                                                 <input
-                                                    type="text"
+                                                    type="number"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
-                                                        ticketEdit[0]
-                                                            .tickets_available
+                                                        Number(ticketEdit
+                                                            .tickets_available).toString()
                                                     }
                                                     onChange={(e) =>
-                                                        handleTicketEditChange(
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            "available_tickets",
-                                                            e.target.value
-                                                        )
+                                                        setTicketEdit({...ticketEdit, tickets_available: parseFloat(e.target.value).toFixed(0)})
                                                     }
+                                                    required
                                                 />
                                             </div>
 
@@ -93,18 +88,12 @@ const ListingEditTicket = ({
                                                 <select
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
-                                                    onChange={(e)=>handleTicketEditChange(
-                                                        ticketEdit[0]
-                                                            .listing_id,
-                                                        ticketEdit[0]
-                                                            .listing_id,
-                                                        "ticket_separation",
-                                                        e.target.value
-                                                    )}
-                                                    value={ticketEdit[0].ticket_separation === null ? "" : ticketEdit[0].ticket_separation}
+                                                    onChange={(e)=>setTicketEdit({...ticketEdit, ticket_separation: e.target.value})}
+                                                    value={ticketEdit.ticket_separation === null ? "" : ticketEdit.ticket_separation}
+                                                    required
                                                 >
                                                     <option value="any">Any</option>
-                                                    {ticketEdit[0].ticket_separation === null ? <option defaultValue>None</option> : <option>None</option>}
+                                                    {ticketEdit.ticket_separation === null ? <option defaultValue>None</option> : <option>None</option>}
 
                                                     <option value="Avoid leaving one ticket">
                                                         Avoid leaving one ticket
@@ -124,23 +113,14 @@ const ListingEditTicket = ({
                                                     Quantity Sold
                                                 </label>
                                                 <input
-                                                    type="text"
+                                                    type="number"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
-                                                        ticketEdit[0]
+                                                        ticketEdit
                                                             .tickets_sold
                                                     }
-                                                    onChange={(e) =>
-                                                        handleTicketEditChange(
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            "tickets_sold",
-                                                            e.target.value
-                                                        )
-                                                    }
+                                                    readOnly
                                                 />
                                             </div>
                                         </div>
@@ -155,18 +135,10 @@ const ListingEditTicket = ({
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
-                                                        ticketEdit[0].section
+                                                        ticketEdit.section
                                                     }
-                                                    onChange={(e) =>
-                                                        handleTicketEditChange(
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            "section",
-                                                            e.target.value
-                                                        )
-                                                    }
+                                                    onChange={(e)=>setTicketEdit({...ticketEdit, section: e.target.value})}
+                                                    required
                                                 />
                                             </div>
 
@@ -178,17 +150,8 @@ const ListingEditTicket = ({
                                                     type="text"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
-                                                    value={ticketEdit[0].row}
-                                                    onChange={(e) =>
-                                                        handleTicketEditChange(
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            ticketEdit[0]
-                                                                .listing_id,
-                                                            "row",
-                                                            e.target.value
-                                                        )
-                                                    }
+                                                    value={ticketEdit.row}
+                                                    onChange={(e)=>setTicketEdit({...ticketEdit, row: e.target.value})}
                                                 />
                                             </div>
                                         </div>
@@ -207,18 +170,10 @@ const ListingEditTicket = ({
                                                         className="form-control"
                                                         id="inlineFormInputGroupMinimum"
                                                         value={
-                                                            ticketEdit[0].seats_from
+                                                            ticketEdit.seats_from
                                                         }
-                                                        onChange={(e) =>
-                                                            handleTicketEditChange(
-                                                                ticketEdit[0]
-                                                                    .listing_id,
-                                                                ticketEdit[0]
-                                                                    .listing_id,
-                                                                "seats_from",
-                                                                e.target.value
-                                                            )
-                                                        }
+                                                        onChange={(e)=>setTicketEdit({...ticketEdit, seats_from: e.target.value})}
+                                                        required
                                                     />
                                                     <div className="input-group-prepend">
                                                         <div className="input-group-text">
@@ -229,17 +184,9 @@ const ListingEditTicket = ({
                                                         type="text"
                                                         className="form-control"
                                                         id="inlineFormInputGroupMaximum"
-                                                        value={ticketEdit[0].seats_to}
-                                                        onChange={(e) =>
-                                                            handleTicketEditChange(
-                                                                ticketEdit[0]
-                                                                    .listing_id,
-                                                                ticketEdit[0]
-                                                                    .listing_id,
-                                                                "seats_to",
-                                                                e.target.value
-                                                            )
-                                                        }
+                                                        value={ticketEdit.seats_to}
+                                                        onChange={(e)=>setTicketEdit({...ticketEdit, seats_to: e.target.value})}
+                                                        required
                                                     />
                                                 </div>
                                             </div>
@@ -260,22 +207,14 @@ const ListingEditTicket = ({
                                                         </div>
                                                     </div>
                                                     <input
-                                                        type="text"
+                                                        type="number"
                                                         className="form-control"
                                                         id="inlineFormInputGroupUsername"
                                                         value={
-                                                            ticketEdit[0].price
+                                                            ticketEdit.price === "NaN" ? 0 : Number(ticketEdit.price).toString()
                                                         }
-                                                        onChange={(e) =>
-                                                            handleTicketEditChange(
-                                                                ticketEdit[0]
-                                                                    .listing_id,
-                                                                ticketEdit[0]
-                                                                    .listing_id,
-                                                                "price",
-                                                                e.target.value
-                                                            )
-                                                        }
+                                                        onChange={(e)=>e.target.value === "" ? setTicketEdit({...ticketEdit, price: 0}) : setTicketEdit({...ticketEdit, price: parseFloat(e.target.value).toFixed(2)})}
+                                                        required
                                                     />
                                                 </div>
                                             </div>
@@ -288,6 +227,7 @@ const ListingEditTicket = ({
                                                 <select
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
+                                                    required
                                                 >
                                                     <option>AUD</option>
                                                     <option>AED</option>
@@ -342,7 +282,7 @@ const ListingEditTicket = ({
                                                                                 checked
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit[0]
+                                                                                        ticketEdit
                                                                                             .listing_id,
                                                                                         restriction.restriction_id,
                                                                                         "restriction"
@@ -378,7 +318,7 @@ const ListingEditTicket = ({
                                                                                 }
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit[0]
+                                                                                        ticketEdit
                                                                                             .listing_id,
                                                                                         restriction.restriction_id,
                                                                                         "restriction"
@@ -443,7 +383,7 @@ const ListingEditTicket = ({
                                                                                 checked
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit[0]
+                                                                                        ticketEdit
                                                                                             .listing_id,
                                                                                         listingNote.listing_note_id,
                                                                                         "listing_note"
@@ -484,7 +424,7 @@ const ListingEditTicket = ({
                                                                                 }
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit[0]
+                                                                                        ticketEdit
                                                                                             .listing_id,
                                                                                         listingNote.listing_note_id,
                                                                                         "listing_note"
@@ -517,24 +457,17 @@ const ListingEditTicket = ({
                                 </div>
                                 <div className="col-3">
                                     <div className="form-check form-switch border p-1">
-                                        {ticketEdit[0].is_published === 1 ? (
+                                        {ticketEdit.is_published === 1 ? (
                                             <input
                                                 className="form-check-input ms-auto"
                                                 type="checkbox"
                                                 role="switch"
                                                 id={
                                                     "flexSwitchCheckDefault " +
-                                                    ticketEdit[0].status
+                                                    ticketEdit.is_published
                                                 }
                                                 checked
-                                                onChange={() =>
-                                                    handleTicketEditChange(
-                                                        ticketEdit[0]
-                                                            .listing_id,
-                                                        "",
-                                                        "publish"
-                                                    )
-                                                }
+                                                onChange={()=>setTicketEdit({...ticketEdit, is_published: 0})}
                                             />
                                         ) : (
                                             <input
@@ -543,17 +476,10 @@ const ListingEditTicket = ({
                                                 role="switch"
                                                 id={
                                                     "flexSwitchCheckDefault " +
-                                                    ticketEdit[0].is_published
+                                                    ticketEdit.is_published
                                                 }
                                                 checked={false}
-                                                onChange={() =>
-                                                    handleTicketEditChange(
-                                                        ticketEdit[0]
-                                                            .listing_id,
-                                                        "",
-                                                        "publish"
-                                                    )
-                                                }
+                                                onChange={()=>setTicketEdit({...ticketEdit, is_published: 1})}
                                             />
                                         )}
                                         <label
@@ -574,7 +500,7 @@ const ListingEditTicket = ({
                                             type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketEdit[0].tickets_available===0 ? 'Fully Sold' : ""}
+                                            value={ticketEdit.tickets_available===0 ? 'Fully Sold' : ""}
                                             readOnly
                                         />
                                         <br />
@@ -590,7 +516,7 @@ const ListingEditTicket = ({
                                             type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketEdit[0].listing_id}
+                                            value={ticketEdit.listing_id}
                                             readOnly
                                         />
                                         <br />
@@ -607,7 +533,7 @@ const ListingEditTicket = ({
                                             type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketEdit[0].ticket_type_id ? ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit[0].ticket_type_id)[0].ticket_type : ""}
+                                            value={ticketEdit.ticket_type_id ? ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit.ticket_type_id)[0].ticket_type : ""}
                                             readOnly
                                         />
                                     </div>
@@ -647,7 +573,7 @@ const ListingEditTicket = ({
                                         className="btn btn-success float-sm-end"
                                         onClick={() =>
                                             ticketEditUpdate(
-                                                ticketEdit[0],
+                                                ticketEdit,
                                                 restrictions,
                                                 ticketRestrictionEdit,
                                                 listingNotes,

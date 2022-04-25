@@ -5697,7 +5697,7 @@ var ListingDeletePrompt = function ListingDeletePrompt(_ref) {
             className: "btn btn-danger",
             "data-bs-dismiss": "modal",
             onClick: function onClick() {
-              return handleTicketDelete(ticketEdit[0]);
+              return handleTicketDelete(ticketEdit);
             },
             children: "Delete"
           })]
@@ -5724,6 +5724,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5731,6 +5737,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ListingEditTicket = function ListingEditTicket(_ref) {
   var ticketEdit = _ref.ticketEdit,
+      setTicketEdit = _ref.setTicketEdit,
       restrictions = _ref.restrictions,
       listingNotes = _ref.listingNotes,
       handleTicketDelete = _ref.handleTicketDelete,
@@ -5767,10 +5774,10 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
               color: "#edf6ff"
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-              children: ticketEdit[0].event_name
+              children: ticketEdit.event_name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("b", {
-                children: ticketEdit[0].event_date
+                children: ticketEdit.event_date
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               type: "button",
@@ -5797,13 +5804,16 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       htmlFor: "exampleFormControlInput1",
                       children: "Available Tickets*"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
+                      type: "number",
                       className: "form-control",
                       id: "exampleFormControlInput1",
-                      value: ticketEdit[0].tickets_available,
+                      value: Number(ticketEdit.tickets_available).toString(),
                       onChange: function onChange(e) {
-                        return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "available_tickets", e.target.value);
-                      }
+                        return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                          tickets_available: parseFloat(e.target.value).toFixed(0)
+                        }));
+                      },
+                      required: true
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                     className: "form-group col",
@@ -5814,13 +5824,16 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       className: "form-control",
                       id: "exampleFormControlSelect1",
                       onChange: function onChange(e) {
-                        return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "ticket_separation", e.target.value);
+                        return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                          ticket_separation: e.target.value
+                        }));
                       },
-                      value: ticketEdit[0].ticket_separation === null ? "" : ticketEdit[0].ticket_separation,
+                      value: ticketEdit.ticket_separation === null ? "" : ticketEdit.ticket_separation,
+                      required: true,
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "any",
                         children: "Any"
-                      }), ticketEdit[0].ticket_separation === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                      }), ticketEdit.ticket_separation === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         defaultValue: true,
                         children: "None"
                       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
@@ -5829,7 +5842,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                        value: "Avoid leaving one or\r three tickets",
+                        value: "Avoid leaving one or three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -5842,13 +5855,11 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       htmlFor: "exampleFormControlInput1",
                       children: "Quantity Sold"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
+                      type: "number",
                       className: "form-control",
                       id: "exampleFormControlInput1",
-                      value: ticketEdit[0].tickets_sold,
-                      onChange: function onChange(e) {
-                        return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "tickets_sold", e.target.value);
-                      }
+                      value: ticketEdit.tickets_sold,
+                      readOnly: true
                     })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -5862,10 +5873,13 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       type: "text",
                       className: "form-control",
                       id: "exampleFormControlInput1",
-                      value: ticketEdit[0].section,
+                      value: ticketEdit.section,
                       onChange: function onChange(e) {
-                        return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "section", e.target.value);
-                      }
+                        return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                          section: e.target.value
+                        }));
+                      },
+                      required: true
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                     className: "form-group col",
@@ -5876,9 +5890,11 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       type: "text",
                       className: "form-control",
                       id: "exampleFormControlInput1",
-                      value: ticketEdit[0].row,
+                      value: ticketEdit.row,
                       onChange: function onChange(e) {
-                        return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "row", e.target.value);
+                        return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                          row: e.target.value
+                        }));
                       }
                     })]
                   })]
@@ -5896,10 +5912,13 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         type: "text",
                         className: "form-control",
                         id: "inlineFormInputGroupMinimum",
-                        value: ticketEdit[0].seats_from,
+                        value: ticketEdit.seats_from,
                         onChange: function onChange(e) {
-                          return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "seats_from", e.target.value);
-                        }
+                          return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                            seats_from: e.target.value
+                          }));
+                        },
+                        required: true
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                         className: "input-group-prepend",
                         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -5910,10 +5929,13 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         type: "text",
                         className: "form-control",
                         id: "inlineFormInputGroupMaximum",
-                        value: ticketEdit[0].seats_to,
+                        value: ticketEdit.seats_to,
                         onChange: function onChange(e) {
-                          return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "seats_to", e.target.value);
-                        }
+                          return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                            seats_to: e.target.value
+                          }));
+                        },
+                        required: true
                       })]
                     })]
                   })
@@ -5934,13 +5956,18 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                           children: "A$"
                         })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                        type: "text",
+                        type: "number",
                         className: "form-control",
                         id: "inlineFormInputGroupUsername",
-                        value: ticketEdit[0].price,
+                        value: ticketEdit.price === "NaN" ? 0 : Number(ticketEdit.price).toString(),
                         onChange: function onChange(e) {
-                          return handleTicketEditChange(ticketEdit[0].listing_id, ticketEdit[0].listing_id, "price", e.target.value);
-                        }
+                          return e.target.value === "" ? setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                            price: 0
+                          })) : setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                            price: parseFloat(e.target.value).toFixed(2)
+                          }));
+                        },
+                        required: true
                       })]
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -5951,6 +5978,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
                       className: "form-control",
                       id: "exampleFormControlSelect1",
+                      required: true,
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         children: "AUD"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
@@ -5984,7 +6012,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                               id: "restriction".concat(restriction.restriction_id),
                               checked: true,
                               onChange: function onChange() {
-                                return handleTicketEditChange(ticketEdit[0].listing_id, restriction.restriction_id, "restriction");
+                                return handleTicketEditChange(ticketEdit.listing_id, restriction.restriction_id, "restriction");
                               }
                             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                               className: "form-check-label",
@@ -6000,7 +6028,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                                 return restrict.restriction_id === restriction.restriction_id & restrict.isChecked;
                               }).length,
                               onChange: function onChange() {
-                                return handleTicketEditChange(ticketEdit[0].listing_id, restriction.restriction_id, "restriction");
+                                return handleTicketEditChange(ticketEdit.listing_id, restriction.restriction_id, "restriction");
                               }
                             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                               className: "form-check-label",
@@ -6037,7 +6065,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                               id: "listingnote".concat(listingNote.listing_note_id),
                               checked: true,
                               onChange: function onChange() {
-                                return handleTicketEditChange(ticketEdit[0].listing_id, listingNote.listing_note_id, "listing_note");
+                                return handleTicketEditChange(ticketEdit.listing_id, listingNote.listing_note_id, "listing_note");
                               }
                             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                               className: "form-check-label",
@@ -6053,7 +6081,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                                 return listnote.listing_note_id === listingNote.listing_note_id & listnote.isChecked;
                               }).length,
                               onChange: function onChange() {
-                                return handleTicketEditChange(ticketEdit[0].listing_id, listingNote.listing_note_id, "listing_note");
+                                return handleTicketEditChange(ticketEdit.listing_id, listingNote.listing_note_id, "listing_note");
                               }
                             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                               className: "form-check-label",
@@ -6073,23 +6101,27 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
               className: "col-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                 className: "form-check form-switch border p-1",
-                children: [ticketEdit[0].is_published === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                children: [ticketEdit.is_published === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                   className: "form-check-input ms-auto",
                   type: "checkbox",
                   role: "switch",
-                  id: "flexSwitchCheckDefault " + ticketEdit[0].status,
+                  id: "flexSwitchCheckDefault " + ticketEdit.is_published,
                   checked: true,
                   onChange: function onChange() {
-                    return handleTicketEditChange(ticketEdit[0].listing_id, "", "publish");
+                    return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                      is_published: 0
+                    }));
                   }
                 }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
                   className: "form-check-input ms-auto",
                   type: "checkbox",
                   role: "switch",
-                  id: "flexSwitchCheckDefault " + ticketEdit[0].is_published,
+                  id: "flexSwitchCheckDefault " + ticketEdit.is_published,
                   checked: false,
                   onChange: function onChange() {
-                    return handleTicketEditChange(ticketEdit[0].listing_id, "", "publish");
+                    return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                      is_published: 1
+                    }));
                   }
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                   className: "form-check-label ms-5",
@@ -6106,7 +6138,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   type: "text",
                   className: "form-control",
                   id: "exampleFormControlInput1",
-                  value: ticketEdit[0].tickets_available === 0 ? 'Fully Sold' : "",
+                  value: ticketEdit.tickets_available === 0 ? 'Fully Sold' : "",
                   readOnly: true
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -6119,7 +6151,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   type: "text",
                   className: "form-control",
                   id: "exampleFormControlInput1",
-                  value: ticketEdit[0].listing_id,
+                  value: ticketEdit.listing_id,
                   readOnly: true
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -6132,8 +6164,8 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   type: "text",
                   className: "form-control",
                   id: "exampleFormControlInput1",
-                  value: ticketEdit[0].ticket_type_id ? ticketTypes.filter(function (type) {
-                    return type.ticket_type_id === ticketEdit[0].ticket_type_id;
+                  value: ticketEdit.ticket_type_id ? ticketTypes.filter(function (type) {
+                    return type.ticket_type_id === ticketEdit.ticket_type_id;
                   })[0].ticket_type : "",
                   readOnly: true
                 })]
@@ -6165,7 +6197,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
               type: "button",
               className: "btn btn-success float-sm-end",
               onClick: function onClick() {
-                return ticketEditUpdate(ticketEdit[0], restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit);
+                return ticketEditUpdate(ticketEdit, restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit);
               },
               children: "Save"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
@@ -6581,6 +6613,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
             onClick: function onClick() {
               return eventNewUpdate();
             },
+            "data-bs-dismiss": "modal",
             children: "Submit"
           })]
         })]
@@ -6606,6 +6639,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -6679,13 +6718,16 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       htmlFor: "exampleFormControlInput1",
                       children: "Available Tickets*"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
+                      type: "number",
                       className: "form-control",
                       id: "exampleFormControlInput1",
-                      value: newTicket.tickets_available,
+                      value: Number(newTicket.tickets_available).toString(),
                       onChange: function onChange(e) {
-                        return handleTicketNewChange("available_tickets", e.target.value);
-                      }
+                        return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                          tickets_available: parseFloat(e.target.value).toFixed(0)
+                        }));
+                      },
+                      required: true
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                     className: "form-group col",
@@ -6696,13 +6738,17 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       className: "form-control",
                       id: "exampleFormControlSelect1",
                       onChange: function onChange(e) {
-                        return handleTicketNewChange("ticket_separation", e.target.value);
+                        return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                          ticket_separation: e.target.value
+                        }));
                       },
                       value: newTicket.ticket_separation === null ? "" : newTicket.ticket_separation,
+                      required: true,
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "any",
                         children: "Any"
                       }), newTicket.ticket_separation === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        value: "none",
                         defaultValue: true,
                         children: "None"
                       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
@@ -6711,7 +6757,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                        value: "Avoid leaving one or\r three tickets",
+                        value: "Avoid leaving one or three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6724,7 +6770,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       htmlFor: "exampleFormControlInput1",
                       children: "Quantity Sold"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                      type: "text",
+                      type: "number",
                       className: "form-control",
                       id: "exampleFormControlInput1",
                       value: newTicket.tickets_sold,
@@ -6744,8 +6790,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       id: "exampleFormControlInput1",
                       value: newTicket.section,
                       onChange: function onChange(e) {
-                        return handleTicketNewChange("section", e.target.value);
-                      }
+                        return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                          section: e.target.value
+                        }));
+                      },
+                      required: true
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                     className: "form-group col",
@@ -6758,8 +6807,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       id: "exampleFormControlInput1",
                       value: newTicket.row,
                       onChange: function onChange(e) {
-                        return handleTicketNewChange("row", e.target.value);
-                      }
+                        return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                          row: e.target.value
+                        }));
+                      },
+                      required: true
                     })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6778,8 +6830,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         id: "inlineFormInputGroupMinimum",
                         value: newTicket.seats_from,
                         onChange: function onChange(e) {
-                          return handleTicketNewChange("seats_from", e.target.value);
-                        }
+                          return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                            seats_from: e.target.value
+                          }));
+                        },
+                        required: true
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
                         className: "input-group-prepend",
                         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -6792,8 +6847,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         id: "inlineFormInputGroupMaximum",
                         value: newTicket.seats_to,
                         onChange: function onChange(e) {
-                          return handleTicketNewChange("seats_to", e.target.value);
-                        }
+                          return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                            seats_to: e.target.value
+                          }));
+                        },
+                        required: true
                       })]
                     })]
                   })
@@ -6814,13 +6872,18 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                           children: "A$"
                         })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                        type: "text",
+                        type: "number",
                         className: "form-control",
                         id: "inlineFormInputGroupUsername",
-                        value: newTicket.price,
+                        value: newTicket.price === "NaN" ? 0 : Number(newTicket.price).toString(),
                         onChange: function onChange(e) {
-                          return handleTicketNewChange("price", e.target.value);
-                        }
+                          return e.target.value === "" ? setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                            price: 0
+                          })) : setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
+                            price: parseFloat(e.target.value).toFixed(2)
+                          }));
+                        },
+                        required: true
                       })]
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -6836,6 +6899,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       // )}
                       // value={newTicket.ticket_separation === null ? "" : newTicket.ticket_separation}
                       ,
+                      required: true,
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
                         children: "AUD"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
@@ -7719,7 +7783,7 @@ var ListingTable = function ListingTable() {
 
                 return o;
               });
-              setTicketEdit(result);
+              setTicketEdit(_objectSpread({}, result[0]));
               setTicketClone(result);
               restrictionset = restrictions.map(function (restriction) {
                 return  true ? _objectSpread(_objectSpread({}, restriction), {}, {
@@ -7853,7 +7917,6 @@ var ListingTable = function ListingTable() {
       var val,
           ticketRestrictEdit,
           ticketListNoteEdit,
-          ticketinput,
           _args7 = arguments;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
@@ -7875,59 +7938,39 @@ var ListingTable = function ListingTable() {
                   }) : ticketlistnote;
                 });
                 setListingNotes(ticketListNoteEdit);
-              } else if (input_type === "available_tickets") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  tickets_available: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "ticket_separation") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  ticket_separation: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "tickets_sold") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  tickets_sold: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "section") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  section: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "row") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  row: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "seats_from") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  seats_from: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "seats_to") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  seats_to: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "price") {
-                ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                  price: val
-                });
-                setNewTicket(ticketinput);
-              } else if (input_type === "publish") {
-                if (newTicket.is_published === 1) {
-                  ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                    is_published: 0
-                  });
-                } else if (newTicket.is_published === 0) {
-                  ticketinput = _objectSpread(_objectSpread({}, newTicket), {}, {
-                    is_published: 1
-                  });
-                }
+              } // else if (input_type === "available_tickets") {
+              //     var ticketinput = { ...newTicket, tickets_available: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "ticket_separation") {
+              //     var ticketinput = { ...newTicket, ticket_separation: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "tickets_sold") {
+              //     var ticketinput = { ...newTicket, tickets_sold: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "section") {
+              //     var ticketinput = { ...newTicket, section: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "row") {
+              //     var ticketinput = { ...newTicket, row: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "seats_from") {
+              //     var ticketinput = { ...newTicket, seats_from: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "seats_to") {
+              //     var ticketinput = { ...newTicket, seats_to: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "price") {
+              //     var ticketinput = { ...newTicket, price: val };
+              //     setNewTicket(ticketinput);
+              // } else if (input_type === "publish") {
+              //     if (newTicket.is_published === 1) {
+              //         var ticketinput = { ...newTicket, is_published: 0 };
+              //     } else if (newTicket.is_published === 0) {
+              //         var ticketinput = { ...newTicket, is_published: 1 };
+              //     }
+              //     setNewTicket(ticketinput);
+              // }
 
-                setNewTicket(ticketinput);
-              }
 
             case 2:
             case "end":
@@ -8039,7 +8082,6 @@ var ListingTable = function ListingTable() {
           len,
           ticketRestrictEdit,
           ticketListNoteEdit,
-          ticketinput,
           _args10 = arguments;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
         while (1) {
@@ -8095,78 +8137,6 @@ var ListingTable = function ListingTable() {
                   });
                   setListingNotes(ticketListNoteEdit);
                 }
-              } else if (input_type === "available_tickets") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    tickets_available: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "ticket_separation") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    ticket_separation: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "tickets_sold") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    tickets_sold: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "section") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    section: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "row") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    row: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "seats_from") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    seats_from: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "seats_to") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    seats_to: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "price") {
-                ticketinput = ticketEdit.map(function (ticket) {
-                  return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                    price: val
-                  }) : ticket;
-                });
-                setTicketEdit(ticketinput);
-              } else if (input_type === "publish") {
-                if (ticketEdit[0].is_published === 1) {
-                  ticketinput = ticketEdit.map(function (ticket) {
-                    return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                      is_published: 0
-                    }) : ticket;
-                  });
-                } else if (ticketEdit[0].is_published === 0) {
-                  ticketinput = ticketEdit.map(function (ticket) {
-                    return ticket.listing_id === id ? _objectSpread(_objectSpread({}, ticket), {}, {
-                      is_published: 1
-                    }) : ticket;
-                  });
-                }
-
-                setTicketEdit(ticketinput);
               }
 
             case 2:
@@ -8180,7 +8150,7 @@ var ListingTable = function ListingTable() {
     return function handleTicketEditChange(_x6, _x7, _x8) {
       return _ref10.apply(this, arguments);
     };
-  }(); // setting interaction for price input when focused
+  }(); // // setting interaction for price input when focused
 
 
   var handlePriceSelect = /*#__PURE__*/function () {
@@ -8976,8 +8946,9 @@ var ListingTable = function ListingTable() {
           handleTicketToPaperSelected: handleTicketToPaperSelected,
           handleTicketToESelected: handleTicketToESelected
         })]
-      }) : null, ticketEdit.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingEditTicket__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingEditTicket__WEBPACK_IMPORTED_MODULE_7__["default"], {
         ticketEdit: ticketEdit,
+        setTicketEdit: setTicketEdit,
         restrictions: restrictions,
         listingNotes: listingNotes,
         handleTicketDelete: handleTicketDelete,
@@ -8993,7 +8964,7 @@ var ListingTable = function ListingTable() {
         successMsg: successMsg,
         setTicketClone: setTicketClone,
         ticketTypes: ticketTypes
-      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_8__["default"], {
         concerts: concerts,
         handleTicketNew: handleTicketNew
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingTicketClone__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -9142,19 +9113,21 @@ var ListingTicketClone = function ListingTicketClone(_ref) {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                         className: "form-control",
                         type: "text",
-                        value: clone.section | "",
+                        value: clone.section,
                         onChange: function onChange(e) {
                           return handleTicketCloneEdit(e.target.value, index, "section");
-                        }
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                         className: "form-control",
                         type: "text",
-                        value: clone.row | "",
+                        value: clone.row,
                         onChange: function onChange(e) {
                           return handleTicketCloneEdit(e.target.value, index, "row");
-                        }
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -9164,7 +9137,8 @@ var ListingTicketClone = function ListingTicketClone(_ref) {
                         value: clone.seats_from,
                         onChange: function onChange(e) {
                           return handleTicketCloneEdit(e.target.value, index, "seats_from");
-                        }
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -9174,37 +9148,41 @@ var ListingTicketClone = function ListingTicketClone(_ref) {
                         value: clone.seats_to,
                         onChange: function onChange(e) {
                           return handleTicketCloneEdit(e.target.value, index, "seats_to");
-                        }
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                        type: "webprice",
+                        type: "number",
                         className: "form-control",
                         id: "exampleFormControlInput1",
-                        value: clone.price,
+                        value: clone.price === "NaN" ? 0 : Number(clone.price).toString(),
                         onChange: function onChange(e) {
-                          return handleTicketCloneEdit(e.target.value, index, "price");
-                        }
+                          return e.target.value === "" ? handleTicketCloneEdit(0, index, "price") : handleTicketCloneEdit(parseFloat(e.target.value).toFixed(2), index, "price");
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                        type: "proceeds",
+                        type: "number",
                         className: "form-control",
                         id: "exampleFormControlInput1",
-                        value: clone.proceeds | "",
+                        value: clone.price === "NaN" ? 0 : Number(clone.proceeds).toString(),
                         onChange: function onChange(e) {
-                          return handleTicketCloneEdit(e.target.value, index, "proceeds");
-                        }
+                          return e.target.value === "" ? handleTicketCloneEdit(0, index, "proceeds") : handleTicketCloneEdit(parseFloat(e.target.value).toFixed(2), index, "proceeds");
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                        type: "availtick",
+                        type: "number",
                         className: "form-control",
                         id: "exampleFormControlInput1",
-                        value: clone.tickets_available | "",
+                        value: Number(clone.tickets_available).toString(),
                         onChange: function onChange(e) {
-                          return handleTicketCloneEdit(e.target.value, index, "tickets_available");
-                        }
+                          return handleTicketCloneEdit(parseFloat(e.target.value).toFixed(0), index, "tickets_available");
+                        },
+                        required: true
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                       className: "text-justify",

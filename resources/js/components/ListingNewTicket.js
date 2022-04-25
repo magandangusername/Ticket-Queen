@@ -67,18 +67,16 @@ const ListingNewTicket = ({
                                                     Available Tickets*
                                                 </label>
                                                 <input
-                                                    type="text"
+                                                    type="number"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
-                                                        newTicket.tickets_available
+                                                        Number(newTicket.tickets_available).toString()
                                                     }
                                                     onChange={(e) =>
-                                                        handleTicketNewChange(
-                                                            "available_tickets",
-                                                            e.target.value
-                                                        )
+                                                        setNewTicket({...newTicket, tickets_available: parseFloat(e.target.value).toFixed(0)})
                                                     }
+                                                    required
                                                 />
                                             </div>
 
@@ -91,10 +89,7 @@ const ListingNewTicket = ({
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
                                                     onChange={(e) =>
-                                                        handleTicketNewChange(
-                                                            "ticket_separation",
-                                                            e.target.value
-                                                        )
+                                                        setNewTicket({...newTicket, ticket_separation: e.target.value})
                                                     }
                                                     value={
                                                         newTicket.ticket_separation ===
@@ -102,13 +97,14 @@ const ListingNewTicket = ({
                                                             ? ""
                                                             : newTicket.ticket_separation
                                                     }
+                                                    required
                                                 >
                                                     <option value="any">
                                                         Any
                                                     </option>
                                                     {newTicket.ticket_separation ===
                                                     null ? (
-                                                        <option defaultValue>
+                                                        <option value="none" defaultValue>
                                                             None
                                                         </option>
                                                     ) : (
@@ -135,7 +131,7 @@ const ListingNewTicket = ({
                                                     Quantity Sold
                                                 </label>
                                                 <input
-                                                    type="text"
+                                                    type="number"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
@@ -157,11 +153,9 @@ const ListingNewTicket = ({
                                                     id="exampleFormControlInput1"
                                                     value={newTicket.section}
                                                     onChange={(e) =>
-                                                        handleTicketNewChange(
-                                                            "section",
-                                                            e.target.value
-                                                        )
+                                                        setNewTicket({...newTicket, section: e.target.value})
                                                     }
+                                                    required
                                                 />
                                             </div>
 
@@ -175,11 +169,9 @@ const ListingNewTicket = ({
                                                     id="exampleFormControlInput1"
                                                     value={newTicket.row}
                                                     onChange={(e) =>
-                                                        handleTicketNewChange(
-                                                            "row",
-                                                            e.target.value
-                                                        )
+                                                        setNewTicket({...newTicket, row: e.target.value})
                                                     }
+                                                    required
                                                 />
                                             </div>
                                         </div>
@@ -201,11 +193,9 @@ const ListingNewTicket = ({
                                                             newTicket.seats_from
                                                         }
                                                         onChange={(e) =>
-                                                            handleTicketNewChange(
-                                                                "seats_from",
-                                                                e.target.value
-                                                            )
+                                                            setNewTicket({...newTicket, seats_from: e.target.value})
                                                         }
+                                                        required
                                                     />
                                                     <div className="input-group-prepend">
                                                         <div className="input-group-text">
@@ -220,11 +210,9 @@ const ListingNewTicket = ({
                                                             newTicket.seats_to
                                                         }
                                                         onChange={(e) =>
-                                                            handleTicketNewChange(
-                                                                "seats_to",
-                                                                e.target.value
-                                                            )
+                                                            setNewTicket({...newTicket, seats_to: e.target.value})
                                                         }
+                                                        required
                                                     />
                                                 </div>
                                             </div>
@@ -245,16 +233,14 @@ const ListingNewTicket = ({
                                                         </div>
                                                     </div>
                                                     <input
-                                                        type="text"
+                                                        type="number"
                                                         className="form-control"
                                                         id="inlineFormInputGroupUsername"
-                                                        value={newTicket.price}
+                                                        value={newTicket.price === "NaN" ? 0 : Number(newTicket.price).toString()}
                                                         onChange={(e) =>
-                                                            handleTicketNewChange(
-                                                                "price",
-                                                                e.target.value
-                                                            )
+                                                            e.target.value === "" ? setNewTicket({...newTicket, price: 0}) : setNewTicket({...newTicket, price: parseFloat(e.target.value).toFixed(2)})
                                                         }
+                                                        required
                                                     />
                                                 </div>
                                             </div>
@@ -272,6 +258,7 @@ const ListingNewTicket = ({
                                                     //     e.target.value
                                                     // )}
                                                     // value={newTicket.ticket_separation === null ? "" : newTicket.ticket_separation}
+                                                    required
                                                 >
                                                     <option>AUD</option>
                                                     <option>AED</option>

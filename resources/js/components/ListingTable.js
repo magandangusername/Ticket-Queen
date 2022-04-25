@@ -293,7 +293,7 @@ const ListingTable = () => {
                 return o;
             });
 
-            setTicketEdit(result);
+            setTicketEdit({...result[0]});
             setTicketClone(result);
 
             const restrictionset = restrictions.map((restriction) =>
@@ -405,38 +405,39 @@ const ListingTable = () => {
                     : ticketlistnote
             );
             setListingNotes(ticketListNoteEdit);
-        } else if (input_type === "available_tickets") {
-            var ticketinput = { ...newTicket, tickets_available: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "ticket_separation") {
-            var ticketinput = { ...newTicket, ticket_separation: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "tickets_sold") {
-            var ticketinput = { ...newTicket, tickets_sold: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "section") {
-            var ticketinput = { ...newTicket, section: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "row") {
-            var ticketinput = { ...newTicket, row: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "seats_from") {
-            var ticketinput = { ...newTicket, seats_from: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "seats_to") {
-            var ticketinput = { ...newTicket, seats_to: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "price") {
-            var ticketinput = { ...newTicket, price: val };
-            setNewTicket(ticketinput);
-        } else if (input_type === "publish") {
-            if (newTicket.is_published === 1) {
-                var ticketinput = { ...newTicket, is_published: 0 };
-            } else if (newTicket.is_published === 0) {
-                var ticketinput = { ...newTicket, is_published: 1 };
-            }
-            setNewTicket(ticketinput);
         }
+        // else if (input_type === "available_tickets") {
+        //     var ticketinput = { ...newTicket, tickets_available: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "ticket_separation") {
+        //     var ticketinput = { ...newTicket, ticket_separation: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "tickets_sold") {
+        //     var ticketinput = { ...newTicket, tickets_sold: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "section") {
+        //     var ticketinput = { ...newTicket, section: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "row") {
+        //     var ticketinput = { ...newTicket, row: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "seats_from") {
+        //     var ticketinput = { ...newTicket, seats_from: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "seats_to") {
+        //     var ticketinput = { ...newTicket, seats_to: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "price") {
+        //     var ticketinput = { ...newTicket, price: val };
+        //     setNewTicket(ticketinput);
+        // } else if (input_type === "publish") {
+        //     if (newTicket.is_published === 1) {
+        //         var ticketinput = { ...newTicket, is_published: 0 };
+        //     } else if (newTicket.is_published === 0) {
+        //         var ticketinput = { ...newTicket, is_published: 1 };
+        //     }
+        //     setNewTicket(ticketinput);
+        // }
     };
 
     // passes the new ticket to the database
@@ -579,73 +580,11 @@ const ListingTable = () => {
                 );
                 setListingNotes(ticketListNoteEdit);
             }
-        } else if (input_type === "available_tickets") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id
-                    ? { ...ticket, tickets_available: val }
-                    : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "ticket_separation") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id
-                    ? { ...ticket, ticket_separation: val }
-                    : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "tickets_sold") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id
-                    ? { ...ticket, tickets_sold: val }
-                    : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "section") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id ? { ...ticket, section: val } : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "row") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id ? { ...ticket, row: val } : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "seats_from") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id
-                    ? { ...ticket, seats_from: val }
-                    : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "seats_to") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id ? { ...ticket, seats_to: val } : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "price") {
-            var ticketinput = ticketEdit.map((ticket) =>
-                ticket.listing_id === id ? { ...ticket, price: val } : ticket
-            );
-            setTicketEdit(ticketinput);
-        } else if (input_type === "publish") {
-            if (ticketEdit[0].is_published === 1) {
-                var ticketinput = ticketEdit.map((ticket) =>
-                    ticket.listing_id === id
-                        ? { ...ticket, is_published: 0 }
-                        : ticket
-                );
-            } else if (ticketEdit[0].is_published === 0) {
-                var ticketinput = ticketEdit.map((ticket) =>
-                    ticket.listing_id === id
-                        ? { ...ticket, is_published: 1 }
-                        : ticket
-                );
-            }
-            setTicketEdit(ticketinput);
         }
+
     };
 
-    // setting interaction for price input when focused
+    // // setting interaction for price input when focused
     const handlePriceSelect = async (id) => {
         var listTickets = tickets.map((ticket) =>
             ticket.listing_id === id
@@ -1315,26 +1254,26 @@ const ListingTable = () => {
                 ) : null}
 
                 {/* This thing still works but with errors */}
-                {ticketEdit.length ? (
-                    <ListingEditTicket
-                        ticketEdit={ticketEdit}
-                        restrictions={restrictions}
-                        listingNotes={listingNotes}
-                        handleTicketDelete={handleTicketDelete}
-                        isTicketEditLoading={isTicketEditLoading}
-                        setIsTicketEditLoading={setIsTicketEditLoading}
-                        ticketRestrictionEdit={ticketRestrictionEdit}
-                        ticketListingNoteEdit={ticketListingNoteEdit}
-                        setTicketRestrictionEdit={setTicketRestrictionEdit}
-                        setTicketListingNoteEdit={setTicketListingNoteEdit}
-                        handleTicketEditChange={handleTicketEditChange}
-                        ticketEditUpdate={ticketEditUpdate}
-                        isTicketSaving={isTicketSaving}
-                        successMsg={successMsg}
-                        setTicketClone={setTicketClone}
-                        ticketTypes={ticketTypes}
-                    />
-                ) : null}
+
+                <ListingEditTicket
+                    ticketEdit={ticketEdit}
+                    setTicketEdit={setTicketEdit}
+                    restrictions={restrictions}
+                    listingNotes={listingNotes}
+                    handleTicketDelete={handleTicketDelete}
+                    isTicketEditLoading={isTicketEditLoading}
+                    setIsTicketEditLoading={setIsTicketEditLoading}
+                    ticketRestrictionEdit={ticketRestrictionEdit}
+                    ticketListingNoteEdit={ticketListingNoteEdit}
+                    setTicketRestrictionEdit={setTicketRestrictionEdit}
+                    setTicketListingNoteEdit={setTicketListingNoteEdit}
+                    handleTicketEditChange={handleTicketEditChange}
+                    ticketEditUpdate={ticketEditUpdate}
+                    isTicketSaving={isTicketSaving}
+                    successMsg={successMsg}
+                    setTicketClone={setTicketClone}
+                    ticketTypes={ticketTypes}
+                />
                 <ListingNew
                     concerts={concerts}
                     handleTicketNew={handleTicketNew}

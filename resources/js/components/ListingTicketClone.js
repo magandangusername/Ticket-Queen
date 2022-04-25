@@ -92,7 +92,7 @@ const ListingTicketClone = ({
                                                     <input
                                                         className="form-control"
                                                         type="text"
-                                                        value={clone.section | ""}
+                                                        value={clone.section}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
@@ -100,6 +100,7 @@ const ListingTicketClone = ({
                                                                 "section"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
                                                 <td>
@@ -118,7 +119,7 @@ const ListingTicketClone = ({
                                                     <input
                                                         className="form-control"
                                                         type="text"
-                                                        value={clone.row | ""}
+                                                        value={clone.row}
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
                                                                 e.target.value,
@@ -126,6 +127,7 @@ const ListingTicketClone = ({
                                                                 "row"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
 
@@ -142,6 +144,7 @@ const ListingTicketClone = ({
                                                                 "seats_from"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
                                                 <td>
@@ -157,53 +160,71 @@ const ListingTicketClone = ({
                                                                 "seats_to"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
                                                 <td>
                                                     <input
-                                                        type="webprice"
+                                                        type="number"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
-                                                        value={clone.price}
+                                                        value={clone.price === "NaN" ? 0 : Number(clone.price).toString()}
                                                         onChange={(e) =>
+                                                            e.target.value === "" ?
                                                             handleTicketCloneEdit(
-                                                                e.target.value,
+                                                                0,
+                                                                index,
+                                                                "price"
+                                                            )
+                                                            :
+                                                            handleTicketCloneEdit(
+                                                                parseFloat(e.target.value).toFixed(2),
                                                                 index,
                                                                 "price"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
                                                 <td>
                                                     <input
-                                                        type="proceeds"
+                                                        type="number"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
-                                                        value={clone.proceeds | ""}
+                                                        value={clone.price === "NaN" ? 0 : Number(clone.proceeds).toString()}
                                                         onChange={(e) =>
+                                                            e.target.value === "" ?
                                                             handleTicketCloneEdit(
-                                                                e.target.value,
+                                                                0,
+                                                                index,
+                                                                "proceeds"
+                                                            )
+                                                            :
+                                                            handleTicketCloneEdit(
+                                                                parseFloat(e.target.value).toFixed(2),
                                                                 index,
                                                                 "proceeds"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
                                                 <td>
                                                     <input
-                                                        type="availtick"
+                                                        type="number"
                                                         className="form-control"
                                                         id="exampleFormControlInput1"
                                                         value={
-                                                            clone.tickets_available | ""
+                                                            Number(clone.tickets_available).toString()
                                                         }
                                                         onChange={(e) =>
                                                             handleTicketCloneEdit(
-                                                                e.target.value,
+                                                                parseFloat(e.target.value).toFixed(0),
                                                                 index,
                                                                 "tickets_available"
                                                             )
                                                         }
+                                                        required
                                                     />
                                                 </td>
                                                 <td className="text-justify">

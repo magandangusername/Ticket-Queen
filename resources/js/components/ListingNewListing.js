@@ -192,7 +192,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                         <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ListingModal">
                             <b>Back</b>
                         </button>
-                        <button type="button" className="btn btn-success" onClick={()=>eventNewUpdate()}>
+                        <button type="button" className="btn btn-success" onClick={()=>eventNewUpdate()} data-bs-dismiss="modal">
                             Submit
                         </button>
                     </div>

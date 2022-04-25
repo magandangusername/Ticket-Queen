@@ -37,7 +37,7 @@ const ListingDeletePrompt = ({ handleTicketDelete, ticketEdit }) => {
                             type="submit"
                             className="btn btn-danger"
                             data-bs-dismiss="modal"
-                            onClick={() => handleTicketDelete(ticketEdit[0])}
+                            onClick={() => handleTicketDelete(ticketEdit)}
                         >
                             Delete
                         </button>
