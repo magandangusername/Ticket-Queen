@@ -74,8 +74,9 @@ const ListingEditTicket = ({
                                                             .tickets_available).toString()
                                                     }
                                                     onChange={(e) =>
-                                                        setTicketEdit({...ticketEdit, tickets_available: parseFloat(e.target.value).toFixed(0)})
+                                                        setTicketEdit({...ticketEdit, tickets_available: e.target.value})
                                                     }
+                                                    pattern="[0-9]*"
                                                     required
                                                 />
                                             </div>
@@ -489,22 +490,26 @@ const ListingEditTicket = ({
                                             Publish
                                         </label>
                                     </div>
-                                    <div className="border p-1">
-                                        <label
-                                            className="form-label"
-                                            htmlFor=""
-                                        >
-                                            Sold Status
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            value={ticketEdit.tickets_available===0 ? 'Fully Sold' : ""}
-                                            readOnly
-                                        />
-                                        <br />
-                                    </div>
+
+                                        {Number(ticketEdit.tickets_available) === 0 ?
+                                        <div className="border p-1">
+                                            <label
+                                                className="form-label"
+                                                htmlFor=""
+                                            >
+                                                Sold Status
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="exampleFormControlInput1"
+                                                value={Number(ticketEdit.tickets_available)===0 ? 'Fully Sold' : ""}
+                                                readOnly
+                                            />
+                                            <br />
+                                        </div>
+                                        : null}
+
                                     <div className="border p-1">
                                         <label
                                             className="form-label"
@@ -529,13 +534,29 @@ const ListingEditTicket = ({
                                             Ticket Type
                                         </label>
                                         <br />
-                                        <input
+                                        {/* <input
                                             type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
                                             value={ticketEdit.ticket_type_id ? ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit.ticket_type_id)[0].ticket_type : ""}
                                             readOnly
-                                        />
+                                        /> */}
+                                        <select name="ticket_type" id="ticket_type"
+                                            className="form-control"
+                                            value={ticketEdit.ticket_type_id}
+                                            onChange={(e)=>setTicketEdit({...ticketEdit, ticket_type_id: Number(e.target.value)})}
+                                            required
+                                        >
+                                            {ticketTypes.length ?
+                                            ticketTypes.map((type)=>
+                                                <>
+                                                    {ticketEdit.ticket_type_id===type.ticket_type_id ?
+                                                    <option key={'tt'+type.ticket_type_id} value={type.ticket_type_id} defaultValue>{type.ticket_type}</option> : <option key={'tt'+type.ticket_type_id} value={type.ticket_type_id}>{type.ticket_type}</option>}
+                                                </>
+                                            )
+
+                                            : null}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
