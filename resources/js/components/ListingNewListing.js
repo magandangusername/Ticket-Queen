@@ -1,25 +1,29 @@
 import { create, set } from "lodash";
 import React from "react";
 
-const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) => {
+const ListingNewListing = ({
+    createConcert,
+    setCreateConcert,
+    eventNewUpdate,
+}) => {
     return (
         <div className="modal container-fluid" id="ReqEventModal">
             <div className="modal-dialog">
                 <div className="modal-content">
-                    <div className="modal-header "
-                    style={{ background: "#424549", color: "#edf6ff"}}
+                    <div
+                        className="modal-header "
+                        style={{ background: "#424549", color: "#edf6ff" }}
                     >
                         <div className="justify-content-between-center">
+                            <h4 className="m-1 p-2">Request an event </h4>
 
-                        <h4 className="m-1 p-2">Request an event </h4>
-
-                        <p className="m-1 p-2">
-                            Can't find the event you're looking for? Enter the
-                            details below and you can start listing immediately.
-                            Once our support team approves the event, your
-                            tickets will become active on our website.
-                        </p>
-
+                            <p className="m-1 p-2">
+                                Can't find the event you're looking for? Enter
+                                the details below and you can start listing
+                                immediately. Once our support team approves the
+                                event, your tickets will become active on our
+                                website.
+                            </p>
                         </div>
                     </div>
 
@@ -43,7 +47,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     Event*
                                 </label>
                                 <input
-                                    type="event"
+                                    type="text"
                                     className=""
                                     id="exampleFormControlInput1"
                                     value={createConcert.event_name}
@@ -53,6 +57,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                             event_name: e.target.value,
                                         })
                                     }
+                                    required
                                 />
                             </div>
                             <div className="row mb-2">
@@ -69,6 +74,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                             event_date: e.target.value,
                                         })
                                     }
+                                    required
                                 />
                                 <input
                                     type="time"
@@ -82,6 +88,7 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                             event_time: e.target.value,
                                         })
                                     }
+                                    required
                                 />
                             </div>
                             <div className="row mb-2">
@@ -89,21 +96,34 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     Venue*
                                 </label>
                                 <input
-                                    type="venue"
+                                    type="text"
                                     className=""
                                     placeholder="Search"
                                     value={createConcert.event_venue}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_venue: e.target.value})}
+                                    onChange={(e) =>
+                                        setCreateConcert({
+                                            ...createConcert,
+                                            event_venue: e.target.value,
+                                        })
+                                    }
+                                    required
                                 />
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
                                     City*
                                 </label>
-                                <input type="city" className=" "
-                                value={createConcert.event_city}
-                                onChange={(e)=>setCreateConcert({...createConcert, event_city: e.target.value})}
-
+                                <input
+                                    type="text"
+                                    className=" "
+                                    value={createConcert.event_city}
+                                    onChange={(e) =>
+                                        setCreateConcert({
+                                            ...createConcert,
+                                            event_city: e.target.value,
+                                        })
+                                    }
+                                    required
                                 />
                             </div>
                             <div className="row mb-2">
@@ -114,11 +134,21 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     className=""
                                     id="exampleFormControlSelect1"
                                     value={createConcert.event_country}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_country: e.target.value})}
+                                    onChange={(e) =>
+                                        setCreateConcert({
+                                            ...createConcert,
+                                            event_country: e.target.value,
+                                        })
+                                    }
+                                    required
                                 >
-                                    <option value="Albania" defaultValue>Albania</option>
+                                    <option value="Albania" defaultValue>
+                                        Albania
+                                    </option>
                                     <option value="Algeria">Algeria</option>
-                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="American Samoa">
+                                        American Samoa
+                                    </option>
                                     <option value="Andorra">Andorra</option>
                                     <option value="Angola">Angola</option>
                                 </select>
@@ -133,7 +163,14 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     id="date"
                                     name="date"
                                     value={createConcert.event_onsale_date_time}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_onsale_date_time: e.target.value})}
+                                    onChange={(e) =>
+                                        setCreateConcert({
+                                            ...createConcert,
+                                            event_onsale_date_time:
+                                                e.target.value,
+                                        })
+                                    }
+                                    required
                                 />
 
                                 {/* <input type="time" name="time" id="time"
@@ -148,30 +185,87 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                 <select
                                     className="col me-1"
                                     id="exampleFormControlSelect1"
-                                    value={createConcert.event_face_value_currency}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_face_value_currency: e.target.value})}
+                                    value={
+                                        createConcert.event_face_value_currency
+                                    }
+                                    onChange={(e) =>
+                                        setCreateConcert({
+                                            ...createConcert,
+                                            event_face_value_currency:
+                                                e.target.value,
+                                        })
+                                    }
+                                    required
                                 >
-                                    <option value="Euro" defaultValue>Euro</option>
-                                    <option value="Hong Kong Dollar">Hong Kong Dollar</option>
-                                    <option value="Croatian Kuna">Croatian Kuna</option>
-                                    <option value="Japanese Yen">Japanese Yen</option>
-                                    <option value="South Korean Won">South Korean Won</option>
+                                    <option value="Euro" defaultValue>
+                                        Euro
+                                    </option>
+                                    <option value="Hong Kong Dollar">
+                                        Hong Kong Dollar
+                                    </option>
+                                    <option value="Croatian Kuna">
+                                        Croatian Kuna
+                                    </option>
+                                    <option value="Japanese Yen">
+                                        Japanese Yen
+                                    </option>
+                                    <option value="South Korean Won">
+                                        South Korean Won
+                                    </option>
                                 </select>
                                 <input
-                                    type="valmin"
+                                    type="number"
                                     className="col mx-1"
                                     id="exampleFormControlInput1"
                                     placeholder="Face Value Min"
-                                    value={createConcert.event_face_value_min}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_face_value_min: e.target.value})}
+                                    value={
+                                        createConcert.event_face_value_min === "NaN"
+                                            ? 0
+                                            : Number(
+                                                createConcert.event_face_value_min
+                                              ).toString()
+                                    }
+                                    onChange={(e) =>
+                                        e.target.value === ""
+                                            ? setCreateConcert({
+                                                  ...createConcert,
+                                                  event_face_value_min: 0,
+                                              })
+                                            : setCreateConcert({
+                                                  ...createConcert,
+                                                  event_face_value_min: parseFloat(
+                                                      e.target.value
+                                                  ).toFixed(2),
+                                              })
+                                    }
+                                    required
                                 />
                                 <input
-                                    type="valmax"
+                                    type="number"
                                     className="col ms-1"
                                     id="exampleFormControlInput1"
                                     placeholder="Face Value Max"
-                                    value={createConcert.event_face_value_max}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_face_value_max: e.target.value})}
+                                    value={
+                                        createConcert.event_face_value_max === "NaN"
+                                            ? 0
+                                            : Number(
+                                                createConcert.event_face_value_max
+                                              ).toString()
+                                    }
+                                    onChange={(e) =>
+                                        e.target.value === ""
+                                            ? setCreateConcert({
+                                                  ...createConcert,
+                                                  event_face_value_max: 0,
+                                              })
+                                            : setCreateConcert({
+                                                  ...createConcert,
+                                                  event_face_value_max: parseFloat(
+                                                      e.target.value
+                                                  ).toFixed(2),
+                                              })
+                                    }
+                                    required
                                 />
                             </div>
                             <div className="row mb-2">
@@ -179,20 +273,35 @@ const ListingNewListing = ({ createConcert, setCreateConcert, eventNewUpdate }) 
                                     Event Url and Notes*
                                 </label>
                                 <input
-                                    type="venue"
+                                    type="text"
                                     className=""
                                     id="exampleFormControlInput1"
                                     value={createConcert.event_url_notes}
-                                    onChange={(e)=>setCreateConcert({...createConcert, event_url_notes: e.target.value})}
+                                    onChange={(e) =>
+                                        setCreateConcert({
+                                            ...createConcert,
+                                            event_url_notes: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
                         </form>
                     </div>
                     <div className="modal-footer m-1 p-2">
-                        <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ListingModal">
+                        <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#ListingModal"
+                        >
                             <b>Back</b>
                         </button>
-                        <button type="button" className="btn btn-success" onClick={()=>eventNewUpdate()} data-bs-dismiss="modal">
+                        <button
+                            type="button"
+                            className="btn btn-success"
+                            onClick={() => eventNewUpdate()}
+                            data-bs-dismiss="modal"
+                        >
                             Submit
                         </button>
                     </div>

@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('event_name');
             $table->date('event_date');
             $table->time('event_time');
-            $table->string('event_venue')->nullable();
-            $table->string('event_city')->nullable();
-            $table->string('event_country')->nullable();
+            $table->string('event_venue')->default("");
+            $table->string('event_city')->default("");
+            $table->string('event_country')->default("");
             $table->dateTime('event_onsale_date_time')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->string('event_face_value_currency');
             $table->float('event_face_value_min')->default(0);

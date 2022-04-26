@@ -5810,9 +5810,10 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                       value: Number(ticketEdit.tickets_available).toString(),
                       onChange: function onChange(e) {
                         return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
-                          tickets_available: parseFloat(e.target.value).toFixed(0)
+                          tickets_available: e.target.value
                         }));
                       },
+                      pattern: "[0-9]*",
                       required: true
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -6128,7 +6129,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   htmlFor: "flexSwitchCheckDefault",
                   children: "Publish"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              }), Number(ticketEdit.tickets_available) === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                 className: "border p-1",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                   className: "form-label",
@@ -6138,10 +6139,10 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   type: "text",
                   className: "form-control",
                   id: "exampleFormControlInput1",
-                  value: ticketEdit.tickets_available === 0 ? 'Fully Sold' : "",
+                  value: Number(ticketEdit.tickets_available) === 0 ? 'Fully Sold' : "",
                   readOnly: true
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
                 className: "border p-1",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
                   className: "form-label",
@@ -6160,14 +6161,29 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   className: "form-label",
                   htmlFor: "",
                   children: "Ticket Type"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                  type: "text",
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
+                  name: "ticket_type",
+                  id: "ticket_type",
                   className: "form-control",
-                  id: "exampleFormControlInput1",
-                  value: ticketEdit.ticket_type_id ? ticketTypes.filter(function (type) {
-                    return type.ticket_type_id === ticketEdit.ticket_type_id;
-                  })[0].ticket_type : "",
-                  readOnly: true
+                  value: ticketEdit.ticket_type_id,
+                  onChange: function onChange(e) {
+                    return setTicketEdit(_objectSpread(_objectSpread({}, ticketEdit), {}, {
+                      ticket_type_id: Number(e.target.value)
+                    }));
+                  },
+                  required: true,
+                  children: ticketTypes.length ? ticketTypes.map(function (type) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+                      children: ticketEdit.ticket_type_id === type.ticket_type_id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        value: type.ticket_type_id,
+                        defaultValue: true,
+                        children: type.ticket_type
+                      }, 'tt' + type.ticket_type_id) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                        value: type.ticket_type_id,
+                        children: type.ticket_type
+                      }, 'tt' + type.ticket_type_id)
+                    });
+                  }) : null
                 })]
               })]
             })]
@@ -6231,6 +6247,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dateformat */ "./node_modules/dateformat/lib/dateformat.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -6238,7 +6260,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var ListingNew = function ListingNew(_ref) {
   var concerts = _ref.concerts,
-      handleTicketNew = _ref.handleTicketNew;
+      handleTicketNew = _ref.handleTicketNew,
+      newListingSearch = _ref.newListingSearch,
+      setNewListingSearch = _ref.setNewListingSearch;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "modal w-100",
     id: "ListingModal",
@@ -6267,7 +6291,13 @@ var ListingNew = function ListingNew(_ref) {
               type: "text",
               className: "form-control",
               name: "",
-              placeholder: "Search by Event, Venue, City"
+              placeholder: "Search by Event, Venue, City",
+              value: newListingSearch.search,
+              onChange: function onChange(e) {
+                return setNewListingSearch(_objectSpread(_objectSpread({}, newListingSearch), {}, {
+                  search: e.target.value
+                }));
+              }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
             action: "",
@@ -6281,7 +6311,14 @@ var ListingNew = function ListingNew(_ref) {
                 className: "form-control",
                 type: "date",
                 id: "date",
-                name: "date"
+                name: "date",
+                value: newListingSearch.from,
+                onChange: function onChange(e) {
+                  return setNewListingSearch(_objectSpread(_objectSpread({}, newListingSearch), {}, {
+                    from: e.target.value
+                  }));
+                },
+                min: (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(), "yyyy-mm-dd")
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "col",
@@ -6292,14 +6329,21 @@ var ListingNew = function ListingNew(_ref) {
                 className: "form-control",
                 type: "date",
                 id: "date",
-                name: "date"
+                name: "date",
+                value: newListingSearch.to,
+                onChange: function onChange(e) {
+                  return setNewListingSearch(_objectSpread(_objectSpread({}, newListingSearch), {}, {
+                    to: e.target.value
+                  }));
+                },
+                min: (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(), "yyyy-mm-dd")
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
             className: "table",
             children: concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
               children: concerts.map(function (concert) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+                return (concert.event_name.toLowerCase().includes(newListingSearch.search.toLowerCase()) | concert.event_venue.toLowerCase().includes(newListingSearch.search.toLowerCase()) | concert.event_city.toLowerCase().includes(newListingSearch.search.toLowerCase())) & ((newListingSearch.from !== "" ? new Date(concert.event_date) >= new Date(newListingSearch.from) : true) & (newListingSearch.to !== "" ? new Date(concert.event_date) <= new Date(newListingSearch.to) : true)) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
                   "data-bs-toggle": "modal",
                   "data-bs-target": "#tiktypes",
                   onClick: function onClick() {
@@ -6308,9 +6352,20 @@ var ListingNew = function ListingNew(_ref) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
                     children: [(0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(concert.event_date, "dddd"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(concert.event_date, "dd, mmmm yyyy"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
-                    children: [concert.event_name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), concert.event_venue, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
+                    children: [concert.event_name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), concert.event_city, ",", " ", concert.event_venue, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
                   })]
-                }, concert.event_id);
+                }, concert.event_id) : newListingSearch.from === "" & newListingSearch.from === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+                  "data-bs-toggle": "modal",
+                  "data-bs-target": "#tiktypes",
+                  onClick: function onClick() {
+                    return handleTicketNew(concert);
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+                    children: [(0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(concert.event_date, "dddd"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(concert.event_date, "dd, mmmm yyyy"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+                    children: [concert.event_name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), concert.event_city, ",", " ", concert.event_venue, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
+                  })]
+                }, concert.event_id) : null;
               })
             }) : null
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {})]
@@ -6407,7 +6462,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Event*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "event",
+                type: "text",
                 className: "",
                 id: "exampleFormControlInput1",
                 value: createConcert.event_name,
@@ -6415,7 +6470,8 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
                     event_name: e.target.value
                   }));
-                }
+                },
+                required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
@@ -6432,7 +6488,8 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
                     event_date: e.target.value
                   }));
-                }
+                },
+                required: true
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "time",
                 name: "time",
@@ -6443,7 +6500,8 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
                     event_time: e.target.value
                   }));
-                }
+                },
+                required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
@@ -6451,7 +6509,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlInput1",
                 children: "Venue*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "venue",
+                type: "text",
                 className: "",
                 placeholder: "Search",
                 value: createConcert.event_venue,
@@ -6459,7 +6517,8 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
                     event_venue: e.target.value
                   }));
-                }
+                },
+                required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
@@ -6467,14 +6526,15 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlInput1",
                 children: "City*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "city",
+                type: "text",
                 className: " ",
                 value: createConcert.event_city,
                 onChange: function onChange(e) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
                     event_city: e.target.value
                   }));
-                }
+                },
+                required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
@@ -6490,6 +6550,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                     event_country: e.target.value
                   }));
                 },
+                required: true,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Albania",
                   defaultValue: true,
@@ -6523,7 +6584,8 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
                     event_onsale_date_time: e.target.value
                   }));
-                }
+                },
+                required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
@@ -6539,6 +6601,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                     event_face_value_currency: e.target.value
                   }));
                 },
+                required: true,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Euro",
                   defaultValue: true,
@@ -6557,27 +6620,33 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   children: "South Korean Won"
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "valmin",
+                type: "number",
                 className: "col mx-1",
                 id: "exampleFormControlInput1",
                 placeholder: "Face Value Min",
-                value: createConcert.event_face_value_min,
+                value: createConcert.event_face_value_min === "NaN" ? 0 : Number(createConcert.event_face_value_min).toString(),
                 onChange: function onChange(e) {
-                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
-                    event_face_value_min: e.target.value
+                  return e.target.value === "" ? setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_min: 0
+                  })) : setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_min: parseFloat(e.target.value).toFixed(2)
                   }));
-                }
+                },
+                required: true
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "valmax",
+                type: "number",
                 className: "col ms-1",
                 id: "exampleFormControlInput1",
                 placeholder: "Face Value Max",
-                value: createConcert.event_face_value_max,
+                value: createConcert.event_face_value_max === "NaN" ? 0 : Number(createConcert.event_face_value_max).toString(),
                 onChange: function onChange(e) {
-                  return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
-                    event_face_value_max: e.target.value
+                  return e.target.value === "" ? setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_max: 0
+                  })) : setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
+                    event_face_value_max: parseFloat(e.target.value).toFixed(2)
                   }));
-                }
+                },
+                required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
@@ -6585,7 +6654,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlInput1",
                 children: "Event Url and Notes*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "venue",
+                type: "text",
                 className: "",
                 id: "exampleFormControlInput1",
                 value: createConcert.event_url_notes,
@@ -7482,8 +7551,16 @@ var ListingTable = function ListingTable() {
   var _useState63 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState64 = _slicedToArray(_useState63, 2),
       isTicketNewLoading = _useState64[0],
-      setIsTicketNewLoading = _useState64[1]; // var ticketTypeSelected = "";
-  // gets the concert data from the database
+      setIsTicketNewLoading = _useState64[1];
+
+  var _useState65 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+    search: "",
+    from: "",
+    to: ""
+  }),
+      _useState66 = _slicedToArray(_useState65, 2),
+      newListingSearch = _useState66[0],
+      setNewListingSearch = _useState66[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -8966,7 +9043,9 @@ var ListingTable = function ListingTable() {
         ticketTypes: ticketTypes
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_8__["default"], {
         concerts: concerts,
-        handleTicketNew: handleTicketNew
+        handleTicketNew: handleTicketNew,
+        newListingSearch: newListingSearch,
+        setNewListingSearch: setNewListingSearch
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingTicketClone__WEBPACK_IMPORTED_MODULE_9__["default"], {
         ticketClone: ticketClone,
         setTicketClone: setTicketClone,
@@ -9500,7 +9579,13 @@ var ListingTickets = function ListingTickets(_ref) {
       className: "border-dark border-1 justify-content-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "form-check form-switch d-flex justify-content-center",
-        children: [ticket.is_published === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        children: [Number(ticket.tickets_available) === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          className: "form-check-input me-4",
+          type: "checkbox",
+          id: "flexSwitchCheckChecked",
+          checked: false,
+          disabled: true
+        }) : ticket.is_published === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
           className: "form-check-input me-4",
           type: "checkbox",
           id: "flexSwitchCheckChecked",
@@ -9516,15 +9601,13 @@ var ListingTickets = function ListingTickets(_ref) {
           onChange: function onChange() {
             return handleTicketPublishChange(ticket.listing_id);
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          // src=""
-          alt: "???",
+        }), Number(ticket.tickets_available) === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          className: "fas fa-money-bill-wave fa-lg pt-1",
+          title: "Sold out",
           style: {
-            width: 20 + "px",
-            height: 20 + "px"
-          },
-          className: "rounded-circle d-inline"
-        })]
+            color: "red"
+          }
+        }) : null]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
       className: "border-dark border-1 justify-content-center ",

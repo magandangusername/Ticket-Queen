@@ -80,7 +80,11 @@ const ListingTable = () => {
     const [newTicket, setNewTicket] = useState([]);
     const [selectedTicketType, setSelectedTicketType] = useState("");
     const [isTicketNewLoading, setIsTicketNewLoading] = useState(true);
-    // var ticketTypeSelected = "";
+    const [newListingSearch, setNewListingSearch] = useState({
+        search: "",
+        from: "",
+        to: "",
+    })
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -1277,6 +1281,8 @@ const ListingTable = () => {
                 <ListingNew
                     concerts={concerts}
                     handleTicketNew={handleTicketNew}
+                    newListingSearch={newListingSearch}
+                    setNewListingSearch={setNewListingSearch}
                 />
                 <ListingTicketClone
                     ticketClone={ticketClone}
