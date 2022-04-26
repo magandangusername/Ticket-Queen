@@ -1,4 +1,4 @@
-import { toInteger } from "lodash";
+import getSymbolFromCurrency from "currency-symbol-map";
 import React from "react";
 
 const ListingTickets = ({
@@ -60,6 +60,7 @@ const ListingTickets = ({
 
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
+                    <p style={{marginTop: "auto", marginBottom: "auto"}}>{getSymbolFromCurrency(ticket.currency)}</p>
                     <input
                         type="number"
                         className="form-control d-inline me-2"
@@ -84,12 +85,12 @@ const ListingTickets = ({
                         onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
                         required
                     />
-                    <img
+                    {/* <img
                         // src=""
                         alt="???"
                         style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
-                    />
+                    /> */}
                 </div>
             </td>
 
@@ -120,12 +121,12 @@ const ListingTickets = ({
                         pattern="[0-9]*"
                         required
                     />
-                    <img
+                    {/* <img
                         // src=""
                         alt="???"
                         style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
-                    />
+                    /> */}
                 </div>
             </td>
             <td className="border-dark border-1 justify-content-center">
