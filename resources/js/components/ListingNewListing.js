@@ -184,7 +184,7 @@ const ListingNewListing = ({
                                 </label>
                                 <select
                                     className="col me-1"
-                                    id="exampleFormControlSelect1"
+                                    id="FaceValueCurrencyCode"
                                     value={
                                         createConcert.event_face_value_currency
                                     }
@@ -195,22 +195,80 @@ const ListingNewListing = ({
                                                 e.target.value,
                                         })
                                     }
+                                    placeholder="Currency"
                                     required
                                 >
-                                    <option value="Euro" defaultValue>
-                                        Euro
+                                    <option value="AED">
+                                        United Arab Emirates Dirham
                                     </option>
-                                    <option value="Hong Kong Dollar">
+                                    <option value="ARS">Argentine Peso</option>
+                                    <option selected="selected" value="AUD">
+                                        Australian Dollar
+                                    </option>
+                                    <option value="BRL">Brazilian Real</option>
+                                    <option value="CAD">Canadian Dollar</option>
+                                    <option value="CHF">Swiss Franc</option>
+                                    <option value="CLP">Chilean Peso</option>
+                                    <option value="COP">Colombian Peso</option>
+                                    <option value="CZK">
+                                        Czech Republic Koruna
+                                    </option>
+                                    <option value="DKK">Danish Krone</option>
+                                    <option value="EUR">Euro</option>
+                                    <option value="GBP">
+                                        British Pound Sterling
+                                    </option>
+                                    <option value="HKD">
                                         Hong Kong Dollar
                                     </option>
-                                    <option value="Croatian Kuna">
-                                        Croatian Kuna
+                                    <option value="HRK">Croatian Kuna</option>
+                                    <option value="HUF">
+                                        Hungarian Forint
                                     </option>
-                                    <option value="Japanese Yen">
-                                        Japanese Yen
+                                    <option value="IDR">
+                                        Indonesian Rupiah
                                     </option>
-                                    <option value="South Korean Won">
+                                    <option value="ILS">
+                                        Israeli New Shekel
+                                    </option>
+                                    <option value="ISK">Icelandic Króna</option>
+                                    <option value="JPY">Japanese Yen</option>
+                                    <option value="KRW">
                                         South Korean Won
+                                    </option>
+                                    <option value="MUR">Mauritian Rupee</option>
+                                    <option value="MXN">Mexican Peso</option>
+                                    <option value="MYR">
+                                        Malaysian Ringgit
+                                    </option>
+                                    <option value="NOK">Norwegian Krone</option>
+                                    <option value="NZD">
+                                        New Zealand Dollar
+                                    </option>
+                                    <option value="PEN">
+                                        Peruvian Nuevo Sol
+                                    </option>
+                                    <option value="PHP">Philippine Peso</option>
+                                    <option value="PLN">Polish Zloty</option>
+                                    <option value="RON">Romanian Leu</option>
+                                    <option value="RUB">Russian Ruble</option>
+                                    <option value="SEK">Swedish Krona</option>
+                                    <option value="SGD">
+                                        Singapore Dollar
+                                    </option>
+                                    <option value="THB">Thai Baht</option>
+                                    <option value="TRY">Turkish Lira</option>
+                                    <option value="TWD">
+                                        New Taiwan Dollar
+                                    </option>
+                                    <option value="UAH">
+                                        Ukrainian Hryvnia
+                                    </option>
+                                    <option value="USD">
+                                        United States Dollar
+                                    </option>
+                                    <option value="ZAR">
+                                        South African Rand
                                     </option>
                                 </select>
                                 <input
@@ -219,10 +277,11 @@ const ListingNewListing = ({
                                     id="exampleFormControlInput1"
                                     placeholder="Face Value Min"
                                     value={
-                                        createConcert.event_face_value_min === "NaN"
+                                        createConcert.event_face_value_min ===
+                                        "NaN"
                                             ? 0
                                             : Number(
-                                                createConcert.event_face_value_min
+                                                  createConcert.event_face_value_min
                                               ).toString()
                                     }
                                     onChange={(e) =>
@@ -233,9 +292,10 @@ const ListingNewListing = ({
                                               })
                                             : setCreateConcert({
                                                   ...createConcert,
-                                                  event_face_value_min: parseFloat(
-                                                      e.target.value
-                                                  ).toFixed(2),
+                                                  event_face_value_min:
+                                                      parseFloat(
+                                                          e.target.value
+                                                      ).toFixed(2),
                                               })
                                     }
                                     required
@@ -246,10 +306,11 @@ const ListingNewListing = ({
                                     id="exampleFormControlInput1"
                                     placeholder="Face Value Max"
                                     value={
-                                        createConcert.event_face_value_max === "NaN"
+                                        createConcert.event_face_value_max ===
+                                        "NaN"
                                             ? 0
                                             : Number(
-                                                createConcert.event_face_value_max
+                                                  createConcert.event_face_value_max
                                               ).toString()
                                     }
                                     onChange={(e) =>
@@ -260,9 +321,10 @@ const ListingNewListing = ({
                                               })
                                             : setCreateConcert({
                                                   ...createConcert,
-                                                  event_face_value_max: parseFloat(
-                                                      e.target.value
-                                                  ).toFixed(2),
+                                                  event_face_value_max:
+                                                      parseFloat(
+                                                          e.target.value
+                                                      ).toFixed(2),
                                               })
                                     }
                                     required
