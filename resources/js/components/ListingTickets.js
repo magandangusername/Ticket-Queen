@@ -135,7 +135,15 @@ const ListingTickets = ({
             </td>
             <td className="border-dark border-1 justify-content-center">
                 <div className="form-check form-switch d-flex justify-content-center">
-                    {ticket.is_published === 1 ? (
+                    {Number(ticket.tickets_available) === 0 ?
+                    <input
+                        className="form-check-input me-4"
+                        type="checkbox"
+                        id="flexSwitchCheckChecked"
+                        checked={false}
+                        disabled
+                    />
+                    : ticket.is_published === 1 ? (
                         <input
                             className="form-check-input me-4"
                             type="checkbox"
@@ -156,12 +164,14 @@ const ListingTickets = ({
                             }
                         />
                     )}
-                    <img
+                    {/* <img
                         // src=""
                         alt="???"
                         style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
-                    />
+                    /> */}
+                    {Number(ticket.tickets_available) === 0 ? <i className="fas fa-money-bill-wave fa-lg pt-1" title="Sold out" style={{color: "red"}}></i>:null }
+
                 </div>
             </td>
             <td className="border-dark border-1 justify-content-center ">
