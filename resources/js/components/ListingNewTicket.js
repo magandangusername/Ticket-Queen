@@ -253,16 +253,133 @@ const ListingNewTicket = ({
                                                 <select
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
-                                                    // onChange={(e)=>handleTicketNewChange(
-                                                    //     "ticket_separation",
-                                                    //     e.target.value
-                                                    // )}
-                                                    // value={newTicket.ticket_separation === null ? "" : newTicket.ticket_separation}
+                                                    value={newTicket.currency}
+                                                    onChange={(e) =>
+                                                        setNewTicket({
+                                                            ...newTicket,
+                                                            currency:
+                                                                e.target.value,
+                                                        })
+                                                    }
+                                                    placeholder="Currency"
                                                     required
                                                 >
-                                                    <option>AUD</option>
-                                                    <option>AED</option>
-                                                    <option>ARS</option>
+                                                    <option value="AED">
+                                                        AED
+                                                    </option>
+                                                    <option value="ARS">
+                                                        ARS
+                                                    </option>
+                                                    <option
+                                                        value="AUD"
+                                                    >
+                                                        AUD
+                                                    </option>
+                                                    <option value="BRL">
+                                                        BRL
+                                                    </option>
+                                                    <option value="CAD">
+                                                        CAD
+                                                    </option>
+                                                    <option value="CHF">
+                                                        CHF
+                                                    </option>
+                                                    <option value="CLP">
+                                                        CLP
+                                                    </option>
+                                                    <option value="COP">
+                                                        COP
+                                                    </option>
+                                                    <option value="CZK">
+                                                        CZK
+                                                    </option>
+                                                    <option value="DKK">
+                                                        DKK
+                                                    </option>
+                                                    <option value="EUR">
+                                                        EUR
+                                                    </option>
+                                                    <option value="GBP">
+                                                        GBP
+                                                    </option>
+                                                    <option value="HKD">
+                                                        HKD
+                                                    </option>
+                                                    <option value="HRK">
+                                                        HRK
+                                                    </option>
+                                                    <option value="HUF">
+                                                        HUF
+                                                    </option>
+                                                    <option value="IDR">
+                                                        IDR
+                                                    </option>
+                                                    <option value="ILS">
+                                                        ILS
+                                                    </option>
+                                                    <option value="ISK">
+                                                        ISK
+                                                    </option>
+                                                    <option value="JPY">
+                                                        JPY
+                                                    </option>
+                                                    <option value="KRW">
+                                                        KRW
+                                                    </option>
+                                                    <option value="MUR">
+                                                        MUR
+                                                    </option>
+                                                    <option value="MXN">
+                                                        MXN
+                                                    </option>
+                                                    <option value="MYR">
+                                                        MYR
+                                                    </option>
+                                                    <option value="NOK">
+                                                        NOK
+                                                    </option>
+                                                    <option value="NZD">
+                                                        NZD
+                                                    </option>
+                                                    <option value="PEN">
+                                                        PEN
+                                                    </option>
+                                                    <option value="PHP">
+                                                        PHP
+                                                    </option>
+                                                    <option value="PLN">
+                                                        PLN
+                                                    </option>
+                                                    <option value="RON">
+                                                        RON
+                                                    </option>
+                                                    <option value="RUB">
+                                                        RUB
+                                                    </option>
+                                                    <option value="SEK">
+                                                        SEK
+                                                    </option>
+                                                    <option value="SGD">
+                                                        SGD
+                                                    </option>
+                                                    <option value="THB">
+                                                        THB
+                                                    </option>
+                                                    <option value="TRY">
+                                                        TRY
+                                                    </option>
+                                                    <option value="TWD">
+                                                        TWD
+                                                    </option>
+                                                    <option value="UAH">
+                                                        UAH
+                                                    </option>
+                                                    <option value="USD">
+                                                        USD
+                                                    </option>
+                                                    <option value="ZAR">
+                                                        ZAR
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>

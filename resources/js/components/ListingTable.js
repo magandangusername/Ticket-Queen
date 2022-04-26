@@ -69,7 +69,7 @@ const ListingTable = () => {
         event_country: "",
         event_onsale_date_time: "",
         // event_onsale_time: "",
-        event_face_value_currency: "",
+        event_face_value_currency: "AUD",
         event_face_value_min: "",
         event_face_value_max: "",
         event_url_notes: "",

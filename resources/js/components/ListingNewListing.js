@@ -202,7 +202,7 @@ const ListingNewListing = ({
                                         United Arab Emirates Dirham
                                     </option>
                                     <option value="ARS">Argentine Peso</option>
-                                    <option selected="selected" value="AUD">
+                                    <option value="AUD">
                                         Australian Dollar
                                     </option>
                                     <option value="BRL">Brazilian Real</option>

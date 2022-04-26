@@ -1,4 +1,5 @@
 import React from "react";
+import getSymbolFromCurrency, { currencySymbolMap } from "currency-symbol-map";
 
 const ListingEditTicket = ({
     ticketEdit,
@@ -17,7 +18,7 @@ const ListingEditTicket = ({
     isTicketSaving,
     successMsg,
     setTicketClone,
-    ticketTypes
+    ticketTypes,
 }) => {
     return (
         <div className="modal" id="myModal" aria-hidden="true">
@@ -31,8 +32,12 @@ const ListingEditTicket = ({
                     ) : (
                         <>
                             {/* <!-- Modal Header --> */}
-                            <div className="modal-header"
-                            style={{ background: "#424549", color: "#edf6ff"}}
+                            <div
+                                className="modal-header"
+                                style={{
+                                    background: "#424549",
+                                    color: "#edf6ff",
+                                }}
                             >
                                 <h4>{ticketEdit.event_name}</h4>
                                 <p>
@@ -69,12 +74,15 @@ const ListingEditTicket = ({
                                                     type="number"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
-                                                    value={
-                                                        Number(ticketEdit
-                                                            .tickets_available).toString()
-                                                    }
+                                                    value={Number(
+                                                        ticketEdit.tickets_available
+                                                    ).toString()}
                                                     onChange={(e) =>
-                                                        setTicketEdit({...ticketEdit, tickets_available: e.target.value})
+                                                        setTicketEdit({
+                                                            ...ticketEdit,
+                                                            tickets_available:
+                                                                e.target.value,
+                                                        })
                                                     }
                                                     pattern="[0-9]*"
                                                     required
@@ -89,18 +97,40 @@ const ListingEditTicket = ({
                                                 <select
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
-                                                    onChange={(e)=>setTicketEdit({...ticketEdit, ticket_separation: e.target.value})}
-                                                    value={ticketEdit.ticket_separation === null ? "" : ticketEdit.ticket_separation}
+                                                    onChange={(e) =>
+                                                        setTicketEdit({
+                                                            ...ticketEdit,
+                                                            ticket_separation:
+                                                                e.target.value,
+                                                        })
+                                                    }
+                                                    value={
+                                                        ticketEdit.ticket_separation ===
+                                                        null
+                                                            ? ""
+                                                            : ticketEdit.ticket_separation
+                                                    }
                                                     required
                                                 >
-                                                    <option value="any">Any</option>
-                                                    {ticketEdit.ticket_separation === null ? <option defaultValue>None</option> : <option>None</option>}
+                                                    <option value="any">
+                                                        Any
+                                                    </option>
+                                                    {ticketEdit.ticket_separation ===
+                                                    null ? (
+                                                        <option defaultValue>
+                                                            None
+                                                        </option>
+                                                    ) : (
+                                                        <option>None</option>
+                                                    )}
 
                                                     <option value="Avoid leaving one ticket">
                                                         Avoid leaving one ticket
                                                     </option>
-                                                    <option value="Avoid leaving one or
-                                                        three tickets">
+                                                    <option
+                                                        value="Avoid leaving one or
+                                                        three tickets"
+                                                    >
                                                         Avoid leaving one or
                                                         three tickets
                                                     </option>
@@ -118,8 +148,7 @@ const ListingEditTicket = ({
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={
-                                                        ticketEdit
-                                                            .tickets_sold
+                                                        ticketEdit.tickets_sold
                                                     }
                                                     readOnly
                                                 />
@@ -135,10 +164,14 @@ const ListingEditTicket = ({
                                                     type="text"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
-                                                    value={
-                                                        ticketEdit.section
+                                                    value={ticketEdit.section}
+                                                    onChange={(e) =>
+                                                        setTicketEdit({
+                                                            ...ticketEdit,
+                                                            section:
+                                                                e.target.value,
+                                                        })
                                                     }
-                                                    onChange={(e)=>setTicketEdit({...ticketEdit, section: e.target.value})}
                                                     required
                                                 />
                                             </div>
@@ -152,7 +185,12 @@ const ListingEditTicket = ({
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
                                                     value={ticketEdit.row}
-                                                    onChange={(e)=>setTicketEdit({...ticketEdit, row: e.target.value})}
+                                                    onChange={(e) =>
+                                                        setTicketEdit({
+                                                            ...ticketEdit,
+                                                            row: e.target.value,
+                                                        })
+                                                    }
                                                 />
                                             </div>
                                         </div>
@@ -173,7 +211,14 @@ const ListingEditTicket = ({
                                                         value={
                                                             ticketEdit.seats_from
                                                         }
-                                                        onChange={(e)=>setTicketEdit({...ticketEdit, seats_from: e.target.value})}
+                                                        onChange={(e) =>
+                                                            setTicketEdit({
+                                                                ...ticketEdit,
+                                                                seats_from:
+                                                                    e.target
+                                                                        .value,
+                                                            })
+                                                        }
                                                         required
                                                     />
                                                     <div className="input-group-prepend">
@@ -185,8 +230,17 @@ const ListingEditTicket = ({
                                                         type="text"
                                                         className="form-control"
                                                         id="inlineFormInputGroupMaximum"
-                                                        value={ticketEdit.seats_to}
-                                                        onChange={(e)=>setTicketEdit({...ticketEdit, seats_to: e.target.value})}
+                                                        value={
+                                                            ticketEdit.seats_to
+                                                        }
+                                                        onChange={(e) =>
+                                                            setTicketEdit({
+                                                                ...ticketEdit,
+                                                                seats_to:
+                                                                    e.target
+                                                                        .value,
+                                                            })
+                                                        }
                                                         required
                                                     />
                                                 </div>
@@ -204,7 +258,9 @@ const ListingEditTicket = ({
                                                 <div className="input-group">
                                                     <div className="input-group-prepend">
                                                         <div className="input-group-text">
-                                                            A$
+                                                            {getSymbolFromCurrency(
+                                                                ticketEdit.currency
+                                                            )}
                                                         </div>
                                                     </div>
                                                     <input
@@ -212,9 +268,35 @@ const ListingEditTicket = ({
                                                         className="form-control"
                                                         id="inlineFormInputGroupUsername"
                                                         value={
-                                                            ticketEdit.price === "NaN" ? 0 : Number(ticketEdit.price).toString()
+                                                            ticketEdit.price ===
+                                                            "NaN"
+                                                                ? 0
+                                                                : Number(
+                                                                      ticketEdit.price
+                                                                  ).toString()
                                                         }
-                                                        onChange={(e)=>e.target.value === "" ? setTicketEdit({...ticketEdit, price: 0}) : setTicketEdit({...ticketEdit, price: parseFloat(e.target.value).toFixed(2)})}
+                                                        onChange={(e) =>
+                                                            e.target.value ===
+                                                            ""
+                                                                ? setTicketEdit(
+                                                                      {
+                                                                          ...ticketEdit,
+                                                                          price: 0,
+                                                                      }
+                                                                  )
+                                                                : setTicketEdit(
+                                                                      {
+                                                                          ...ticketEdit,
+                                                                          price: parseFloat(
+                                                                              e
+                                                                                  .target
+                                                                                  .value
+                                                                          ).toFixed(
+                                                                              2
+                                                                          ),
+                                                                      }
+                                                                  )
+                                                        }
                                                         required
                                                     />
                                                 </div>
@@ -228,11 +310,134 @@ const ListingEditTicket = ({
                                                 <select
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
+                                                    value={ticketEdit.currency}
+                                                    onChange={(e) =>
+                                                        setTicketEdit({
+                                                            ...ticketEdit,
+                                                            currency:
+                                                                e.target.value,
+                                                        })
+                                                    }
+                                                    placeholder="Currency"
                                                     required
                                                 >
-                                                    <option>AUD</option>
-                                                    <option>AED</option>
-                                                    <option>ARS</option>
+                                                    <option value="AED">
+                                                        AED
+                                                    </option>
+                                                    <option value="ARS">
+                                                        ARS
+                                                    </option>
+                                                    <option
+                                                        value="AUD"
+                                                        // selected
+                                                    >
+                                                        AUD
+                                                    </option>
+                                                    <option value="BRL">
+                                                        BRL
+                                                    </option>
+                                                    <option value="CAD">
+                                                        CAD
+                                                    </option>
+                                                    <option value="CHF">
+                                                        CHF
+                                                    </option>
+                                                    <option value="CLP">
+                                                        CLP
+                                                    </option>
+                                                    <option value="COP">
+                                                        COP
+                                                    </option>
+                                                    <option value="CZK">
+                                                        CZK
+                                                    </option>
+                                                    <option value="DKK">
+                                                        DKK
+                                                    </option>
+                                                    <option value="EUR">
+                                                        EUR
+                                                    </option>
+                                                    <option value="GBP">
+                                                        GBP
+                                                    </option>
+                                                    <option value="HKD">
+                                                        HKD
+                                                    </option>
+                                                    <option value="HRK">
+                                                        HRK
+                                                    </option>
+                                                    <option value="HUF">
+                                                        HUF
+                                                    </option>
+                                                    <option value="IDR">
+                                                        IDR
+                                                    </option>
+                                                    <option value="ILS">
+                                                        ILS
+                                                    </option>
+                                                    <option value="ISK">
+                                                        ISK
+                                                    </option>
+                                                    <option value="JPY">
+                                                        JPY
+                                                    </option>
+                                                    <option value="KRW">
+                                                        KRW
+                                                    </option>
+                                                    <option value="MUR">
+                                                        MUR
+                                                    </option>
+                                                    <option value="MXN">
+                                                        MXN
+                                                    </option>
+                                                    <option value="MYR">
+                                                        MYR
+                                                    </option>
+                                                    <option value="NOK">
+                                                        NOK
+                                                    </option>
+                                                    <option value="NZD">
+                                                        NZD
+                                                    </option>
+                                                    <option value="PEN">
+                                                        PEN
+                                                    </option>
+                                                    <option value="PHP">
+                                                        PHP
+                                                    </option>
+                                                    <option value="PLN">
+                                                        PLN
+                                                    </option>
+                                                    <option value="RON">
+                                                        RON
+                                                    </option>
+                                                    <option value="RUB">
+                                                        RUB
+                                                    </option>
+                                                    <option value="SEK">
+                                                        SEK
+                                                    </option>
+                                                    <option value="SGD">
+                                                        SGD
+                                                    </option>
+                                                    <option value="THB">
+                                                        THB
+                                                    </option>
+                                                    <option value="TRY">
+                                                        TRY
+                                                    </option>
+                                                    <option value="TWD">
+                                                        TWD
+                                                    </option>
+                                                    <option value="UAH">
+                                                        UAH
+                                                    </option>
+                                                    <option value="USD">
+                                                        USD
+                                                    </option>
+                                                    <option value="ZAR">
+                                                        ZAR
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -283,8 +488,7 @@ const ListingEditTicket = ({
                                                                                 checked
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit
-                                                                                            .listing_id,
+                                                                                        ticketEdit.listing_id,
                                                                                         restriction.restriction_id,
                                                                                         "restriction"
                                                                                     )
@@ -319,8 +523,7 @@ const ListingEditTicket = ({
                                                                                 }
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit
-                                                                                            .listing_id,
+                                                                                        ticketEdit.listing_id,
                                                                                         restriction.restriction_id,
                                                                                         "restriction"
                                                                                     )
@@ -384,8 +587,7 @@ const ListingEditTicket = ({
                                                                                 checked
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit
-                                                                                            .listing_id,
+                                                                                        ticketEdit.listing_id,
                                                                                         listingNote.listing_note_id,
                                                                                         "listing_note"
                                                                                     )
@@ -425,8 +627,7 @@ const ListingEditTicket = ({
                                                                                 }
                                                                                 onChange={() =>
                                                                                     handleTicketEditChange(
-                                                                                        ticketEdit
-                                                                                            .listing_id,
+                                                                                        ticketEdit.listing_id,
                                                                                         listingNote.listing_note_id,
                                                                                         "listing_note"
                                                                                     )
@@ -468,7 +669,12 @@ const ListingEditTicket = ({
                                                     ticketEdit.is_published
                                                 }
                                                 checked
-                                                onChange={()=>setTicketEdit({...ticketEdit, is_published: 0})}
+                                                onChange={() =>
+                                                    setTicketEdit({
+                                                        ...ticketEdit,
+                                                        is_published: 0,
+                                                    })
+                                                }
                                             />
                                         ) : (
                                             <input
@@ -480,7 +686,12 @@ const ListingEditTicket = ({
                                                     ticketEdit.is_published
                                                 }
                                                 checked={false}
-                                                onChange={()=>setTicketEdit({...ticketEdit, is_published: 1})}
+                                                onChange={() =>
+                                                    setTicketEdit({
+                                                        ...ticketEdit,
+                                                        is_published: 1,
+                                                    })
+                                                }
                                             />
                                         )}
                                         <label
@@ -491,7 +702,8 @@ const ListingEditTicket = ({
                                         </label>
                                     </div>
 
-                                        {Number(ticketEdit.tickets_available) === 0 ?
+                                    {Number(ticketEdit.tickets_available) ===
+                                    0 ? (
                                         <div className="border p-1">
                                             <label
                                                 className="form-label"
@@ -503,12 +715,18 @@ const ListingEditTicket = ({
                                                 type="text"
                                                 className="form-control"
                                                 id="exampleFormControlInput1"
-                                                value={Number(ticketEdit.tickets_available)===0 ? 'Fully Sold' : ""}
+                                                value={
+                                                    Number(
+                                                        ticketEdit.tickets_available
+                                                    ) === 0
+                                                        ? "Fully Sold"
+                                                        : ""
+                                                }
                                                 readOnly
                                             />
                                             <br />
                                         </div>
-                                        : null}
+                                    ) : null}
 
                                     <div className="border p-1">
                                         <label
@@ -541,21 +759,40 @@ const ListingEditTicket = ({
                                             value={ticketEdit.ticket_type_id ? ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit.ticket_type_id)[0].ticket_type : ""}
                                             readOnly
                                         /> */}
-                                        <select name="ticket_type" id="ticket_type"
+                                        <select
+                                            name="ticket_type"
+                                            id="ticket_type"
                                             className="form-control"
                                             value={ticketEdit.ticket_type_id}
-                                            onChange={(e)=>setTicketEdit({...ticketEdit, ticket_type_id: Number(e.target.value)})}
+                                            onChange={(e) =>
+                                                setTicketEdit({
+                                                    ...ticketEdit,
+                                                    ticket_type_id: Number(
+                                                        e.target.value
+                                                    ),
+                                                })
+                                            }
                                             required
                                         >
-                                            {ticketTypes.length ?
-                                            ticketTypes.map((type)=>
-                                                <>
-                                                    {ticketEdit.ticket_type_id===type.ticket_type_id ?
-                                                    <option key={'tt'+type.ticket_type_id} value={type.ticket_type_id} defaultValue>{type.ticket_type}</option> : <option key={'tt'+type.ticket_type_id} value={type.ticket_type_id}>{type.ticket_type}</option>}
-                                                </>
-                                            )
-
-                                            : null}
+                                            {ticketTypes.length
+                                                ? ticketTypes.map((type) => (
+                                                      <option
+                                                          key={
+                                                              "tt" +
+                                                              type.ticket_type_id
+                                                          }
+                                                          value={
+                                                              type.ticket_type_id
+                                                          }
+                                                          defaultValue={
+                                                              ticketEdit.ticket_type_id ===
+                                                              type.ticket_type_id
+                                                          }
+                                                      >
+                                                          {type.ticket_type}
+                                                      </option>
+                                                  ))
+                                                : null}
                                         </select>
                                     </div>
                                 </div>
@@ -576,7 +813,6 @@ const ListingEditTicket = ({
                                     className="btn btn-danger float-sm-start"
                                     data-bs-toggle="modal"
                                     data-bs-target="#delete"
-
                                 >
                                     Delete
                                 </button>
