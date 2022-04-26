@@ -1,4 +1,5 @@
 import React from "react";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 const ListingNewTicket = ({
     // ticketEdit,
@@ -18,7 +19,7 @@ const ListingNewTicket = ({
     ticketTypeSelected,
     isTicketNewLoading,
     handleTicketNewChange,
-    ticketNewUpdate
+    ticketNewUpdate,
 }) => {
     return (
         <div className="modal" id="newTicket" aria-hidden="true">
@@ -32,8 +33,12 @@ const ListingNewTicket = ({
                     ) : (
                         <>
                             {/* <!-- Modal Header --> */}
-                            <div className="modal-header "
-                            style={{ background: "#424549", color: "#edf6ff"}}
+                            <div
+                                className="modal-header "
+                                style={{
+                                    background: "#424549",
+                                    color: "#edf6ff",
+                                }}
                             >
                                 <h4>{newTicket.event_name}</h4>
                                 <p>
@@ -70,11 +75,18 @@ const ListingNewTicket = ({
                                                     type="number"
                                                     className="form-control"
                                                     id="exampleFormControlInput1"
-                                                    value={
-                                                        Number(newTicket.tickets_available).toString()
-                                                    }
+                                                    value={Number(
+                                                        newTicket.tickets_available
+                                                    ).toString()}
                                                     onChange={(e) =>
-                                                        setNewTicket({...newTicket, tickets_available: parseFloat(e.target.value).toFixed(0)})
+                                                        setNewTicket({
+                                                            ...newTicket,
+                                                            tickets_available:
+                                                                parseFloat(
+                                                                    e.target
+                                                                        .value
+                                                                ).toFixed(0),
+                                                        })
                                                     }
                                                     required
                                                 />
@@ -89,7 +101,11 @@ const ListingNewTicket = ({
                                                     className="form-control"
                                                     id="exampleFormControlSelect1"
                                                     onChange={(e) =>
-                                                        setNewTicket({...newTicket, ticket_separation: e.target.value})
+                                                        setNewTicket({
+                                                            ...newTicket,
+                                                            ticket_separation:
+                                                                e.target.value,
+                                                        })
                                                     }
                                                     value={
                                                         newTicket.ticket_separation ===
@@ -104,7 +120,10 @@ const ListingNewTicket = ({
                                                     </option>
                                                     {newTicket.ticket_separation ===
                                                     null ? (
-                                                        <option value="none" defaultValue>
+                                                        <option
+                                                            value="none"
+                                                            defaultValue
+                                                        >
                                                             None
                                                         </option>
                                                     ) : (
@@ -153,7 +172,11 @@ const ListingNewTicket = ({
                                                     id="exampleFormControlInput1"
                                                     value={newTicket.section}
                                                     onChange={(e) =>
-                                                        setNewTicket({...newTicket, section: e.target.value})
+                                                        setNewTicket({
+                                                            ...newTicket,
+                                                            section:
+                                                                e.target.value,
+                                                        })
                                                     }
                                                     required
                                                 />
@@ -169,7 +192,10 @@ const ListingNewTicket = ({
                                                     id="exampleFormControlInput1"
                                                     value={newTicket.row}
                                                     onChange={(e) =>
-                                                        setNewTicket({...newTicket, row: e.target.value})
+                                                        setNewTicket({
+                                                            ...newTicket,
+                                                            row: e.target.value,
+                                                        })
                                                     }
                                                     required
                                                 />
@@ -193,7 +219,12 @@ const ListingNewTicket = ({
                                                             newTicket.seats_from
                                                         }
                                                         onChange={(e) =>
-                                                            setNewTicket({...newTicket, seats_from: e.target.value})
+                                                            setNewTicket({
+                                                                ...newTicket,
+                                                                seats_from:
+                                                                    e.target
+                                                                        .value,
+                                                            })
                                                         }
                                                         required
                                                     />
@@ -210,7 +241,12 @@ const ListingNewTicket = ({
                                                             newTicket.seats_to
                                                         }
                                                         onChange={(e) =>
-                                                            setNewTicket({...newTicket, seats_to: e.target.value})
+                                                            setNewTicket({
+                                                                ...newTicket,
+                                                                seats_to:
+                                                                    e.target
+                                                                        .value,
+                                                            })
                                                         }
                                                         required
                                                     />
@@ -229,16 +265,40 @@ const ListingNewTicket = ({
                                                 <div className="input-group">
                                                     <div className="input-group-prepend">
                                                         <div className="input-group-text">
-                                                            A$
+                                                            {getSymbolFromCurrency(
+                                                                newTicket.currency
+                                                            )}
                                                         </div>
                                                     </div>
                                                     <input
                                                         type="number"
                                                         className="form-control"
                                                         id="inlineFormInputGroupUsername"
-                                                        value={newTicket.price === "NaN" ? 0 : Number(newTicket.price).toString()}
+                                                        value={
+                                                            newTicket.price ===
+                                                            "NaN"
+                                                                ? 0
+                                                                : Number(
+                                                                      newTicket.price
+                                                                  ).toString()
+                                                        }
                                                         onChange={(e) =>
-                                                            e.target.value === "" ? setNewTicket({...newTicket, price: 0}) : setNewTicket({...newTicket, price: parseFloat(e.target.value).toFixed(2)})
+                                                            e.target.value ===
+                                                            ""
+                                                                ? setNewTicket({
+                                                                      ...newTicket,
+                                                                      price: 0,
+                                                                  })
+                                                                : setNewTicket({
+                                                                      ...newTicket,
+                                                                      price: parseFloat(
+                                                                          e
+                                                                              .target
+                                                                              .value
+                                                                      ).toFixed(
+                                                                          2
+                                                                      ),
+                                                                  })
                                                         }
                                                         required
                                                     />
@@ -270,9 +330,7 @@ const ListingNewTicket = ({
                                                     <option value="ARS">
                                                         ARS
                                                     </option>
-                                                    <option
-                                                        value="AUD"
-                                                    >
+                                                    <option value="AUD">
                                                         AUD
                                                     </option>
                                                     <option value="BRL">
@@ -485,7 +543,6 @@ const ListingNewTicket = ({
                                                                                 handleTicketNewChange(
                                                                                     "listing_note",
                                                                                     listingNote.listing_note_id
-
                                                                                 )
                                                                             }
                                                                         />
@@ -566,7 +623,15 @@ const ListingNewTicket = ({
                                             type="text"
                                             className="form-control"
                                             id="exampleFormControlInput1"
-                                            value={ticketTypeSelected ? ticketTypes.filter((type)=>type.ticket_type_id===ticketTypeSelected)[0].ticket_type : ""}
+                                            value={
+                                                ticketTypeSelected
+                                                    ? ticketTypes.filter(
+                                                          (type) =>
+                                                              type.ticket_type_id ===
+                                                              ticketTypeSelected
+                                                      )[0].ticket_type
+                                                    : ""
+                                            }
                                             readOnly
                                         />
                                     </div>
@@ -588,9 +653,7 @@ const ListingNewTicket = ({
                                     <button
                                         type="button"
                                         className="btn btn-success float-sm-end"
-                                        onClick={() =>
-                                            ticketNewUpdate()
-                                        }
+                                        onClick={() => ticketNewUpdate()}
                                         data-bs-dismiss="modal"
                                     >
                                         Save

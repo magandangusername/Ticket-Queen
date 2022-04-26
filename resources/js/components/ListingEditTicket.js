@@ -1,5 +1,5 @@
 import React from "react";
-import getSymbolFromCurrency, { currencySymbolMap } from "currency-symbol-map";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 const ListingEditTicket = ({
     ticketEdit,
