@@ -111,8 +111,7 @@ const ListingConcerts = ({
                     <p className="text-muted mb-0">
                         {getRemainingDays(
                             concert.event_date + " " + concert.event_time
-                        )}{" "}
-                        days
+                        )}
                     </p>
                 </td>
                 <td className="border-dark border-1 justify-content-center">

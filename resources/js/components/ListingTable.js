@@ -985,15 +985,36 @@ const ListingTable = () => {
             });
     };
 
-    // get the ramaining day
+    // get the ramaining days
     const getRemainingDays = (targetdate) => {
         var date1 = new Date();
         var date2 = new Date(targetdate);
         var Difference_In_Time = date2.getTime() - date1.getTime();
         var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        var weeks = 0;
+        var months = 0;
+        var years = 0;
+        if(Difference_In_Days >= 7) weeks=Difference_In_Days/7;
+        if(weeks >= 4) months=weeks/4;
+        if(months >= 12) years=months/12;
 
-        return toInteger(Difference_In_Days);
+        if(years>=1){
+            if (years>=2) return String(toInteger(years) + " Years")
+            else return String(toInteger(years) + " Year")
+        } else if(months>=1){
+            if (months>=2) return String(toInteger(months) + " Months")
+            else return String(toInteger(months) + " Month")
+        } else if(weeks>=1){
+            if (weeks>=2) return String(toInteger(weeks) + " Weeks")
+            else return String(toInteger(weeks) + " Week")
+        } else if(Difference_In_Days>=1){
+            if (Difference_In_Days>=2) return String(toInteger(Difference_In_Days) + " Days")
+            else return String(toInteger(Difference_In_Days) + " Day")
+        }
+
+        return "Expired";
     };
+
 
     // This is the display code
     return (

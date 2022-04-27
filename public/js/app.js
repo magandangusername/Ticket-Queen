@@ -5546,9 +5546,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
           className: "text-muted mb-0",
-          children: [getRemainingDays(concert.event_date + " " + concert.event_time), " ", "days"]
+          children: getRemainingDays(concert.event_date + " " + concert.event_time)
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
         className: "border-dark border-1 justify-content-center",
@@ -9175,7 +9175,7 @@ var ListingTable = function ListingTable() {
     return function handleTicketToESelected() {
       return _ref25.apply(this, arguments);
     };
-  }(); // get the ramaining day
+  }(); // get the ramaining days
 
 
   var getRemainingDays = function getRemainingDays(targetdate) {
@@ -9183,7 +9183,24 @@ var ListingTable = function ListingTable() {
     var date2 = new Date(targetdate);
     var Difference_In_Time = date2.getTime() - date1.getTime();
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    return (0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(Difference_In_Days);
+    var weeks = 0;
+    var months = 0;
+    var years = 0;
+    if (Difference_In_Days >= 7) weeks = Difference_In_Days / 7;
+    if (weeks >= 4) months = weeks / 4;
+    if (months >= 12) years = months / 12;
+
+    if (years >= 1) {
+      if (years >= 2) return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(years) + " Years");else return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(years) + " Year");
+    } else if (months >= 1) {
+      if (months >= 2) return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(months) + " Months");else return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(months) + " Month");
+    } else if (weeks >= 1) {
+      if (weeks >= 2) return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(weeks) + " Weeks");else return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(weeks) + " Week");
+    } else if (Difference_In_Days >= 1) {
+      if (Difference_In_Days >= 2) return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(Difference_In_Days) + " Days");else return String((0,lodash__WEBPACK_IMPORTED_MODULE_14__.toInteger)(Difference_In_Days) + " Day");
+    }
+
+    return "Expired";
   }; // This is the display code
 
 
