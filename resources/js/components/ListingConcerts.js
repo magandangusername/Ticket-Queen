@@ -1,6 +1,8 @@
 import { toInteger } from "lodash";
 import React from "react";
 import ListingTickets from "./ListingTickets";
+import dateFormat from "dateformat";
+
 const ListingConcerts = ({
     concert,
     tickets,
@@ -12,7 +14,7 @@ const ListingConcerts = ({
     handleTicketEdit,
     handleTicketPublishChange,
     getRemainingDays,
-    ticketTypes
+    ticketTypes,
 }) => {
     return (
         <>
@@ -45,10 +47,13 @@ const ListingConcerts = ({
                                 {concert.event_name} [{concert.event_id}]
                             </p>
                             <p className="text-white-50 mb-0">
-                                {concert.event_date}{" "}{concert.event_time}
+                                {dateFormat(
+                                    concert.event_date + " " + concert.event_time,
+                                    "ddd dd, mmmm yyyy hh:mm"
+                                )}
                             </p>
                             <p className="text-white-50 mb-0">
-                                {concert.event_venue}
+                                {concert.event_city}, {concert.event_venue}
                             </p>
                         </div>
                     </div>
@@ -63,12 +68,37 @@ const ListingConcerts = ({
                         Available Tickets
                     </p>
                     <p className="text-white-50 mb-0">
-                        {toInteger(tickets.filter((ticket)=>ticket.event_id === concert.event_id).reduce((accumulator, currentValue) =>  accumulator + currentValue.tickets_available, 0))}
+                        {toInteger(
+                            tickets
+                                .filter(
+                                    (ticket) =>
+                                        ticket.event_id === concert.event_id
+                                )
+                                .reduce(
+                                    (accumulator, currentValue) =>
+                                        accumulator +
+                                        currentValue.tickets_available,
+                                    0
+                                )
+                        )}
                     </p>
                 </td>
                 <td className="justify-content-center">
                     <p className="fw-normal mb-1 text-light">Ticket Sold</p>
-                    <p className="text-white-50 mb-0">{toInteger(tickets.filter((ticket)=>ticket.event_id===concert.event_id).reduce((accumulator, currentValue) =>  accumulator + currentValue.tickets_sold, 0))}</p>
+                    <p className="text-white-50 mb-0">
+                        {toInteger(
+                            tickets
+                                .filter(
+                                    (ticket) =>
+                                        ticket.event_id === concert.event_id
+                                )
+                                .reduce(
+                                    (accumulator, currentValue) =>
+                                        accumulator + currentValue.tickets_sold,
+                                    0
+                                )
+                        )}
+                    </p>
                 </td>
                 <td>
                     <div className="border border-dark border-2 container-fluid h-auto bg-danger rounded justify-content-center">
@@ -79,7 +109,10 @@ const ListingConcerts = ({
                 </td>
                 <td>
                     <p className="text-muted mb-0">
-                        {getRemainingDays(concert.event_date + " " + concert.event_time)} days
+                        {getRemainingDays(
+                            concert.event_date + " " + concert.event_time
+                        )}{" "}
+                        days
                     </p>
                 </td>
                 <td className="border-dark border-1 justify-content-center">
@@ -149,7 +182,9 @@ const ListingConcerts = ({
                                                 handleAvailableTicketChange
                                             }
                                             handleTicketEdit={handleTicketEdit}
-                                            handleTicketPublishChange={handleTicketPublishChange}
+                                            handleTicketPublishChange={
+                                                handleTicketPublishChange
+                                            }
                                             ticketTypes={ticketTypes}
                                         />
                                     ) : null

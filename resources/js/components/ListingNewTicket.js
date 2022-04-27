@@ -1,5 +1,6 @@
 import React from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
+import dateFormat from "dateformat";
 
 const ListingNewTicket = ({
     // ticketEdit,
@@ -42,7 +43,12 @@ const ListingNewTicket = ({
                             >
                                 <h4>{newTicket.event_name}</h4>
                                 <p>
-                                    <b>{newTicket.event_date}</b>
+                                    <b>{dateFormat(
+                                            newTicket.event_date +
+                                                " " +
+                                                newTicket.event_time,
+                                            "ddd dd, mmmm yyyy hh:mm"
+                                        )}</b>
                                     <br />
                                 </p>
 

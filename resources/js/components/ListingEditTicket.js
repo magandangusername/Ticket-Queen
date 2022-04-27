@@ -1,5 +1,6 @@
 import React from "react";
 import getSymbolFromCurrency from "currency-symbol-map";
+import dateFormat from "dateformat";
 
 const ListingEditTicket = ({
     ticketEdit,
@@ -41,7 +42,14 @@ const ListingEditTicket = ({
                             >
                                 <h4>{ticketEdit.event_name}</h4>
                                 <p>
-                                    <b>{ticketEdit.event_date}</b>
+                                    <b>
+                                        {dateFormat(
+                                            ticketEdit.event_date +
+                                                " " +
+                                                ticketEdit.event_time,
+                                            "ddd dd, mmmm yyyy hh:mm"
+                                        )}
+                                    </b>
                                     <br />
                                 </p>
 
@@ -702,8 +710,9 @@ const ListingEditTicket = ({
                                         </label>
                                     </div>
 
-                                    {Number(ticketEdit.tickets_available) ===
-                                    0 & Number(ticketEdit.tickets_sold) > 0 ? (
+                                    {(Number(ticketEdit.tickets_available) ===
+                                        0) &
+                                    (Number(ticketEdit.tickets_sold) > 0) ? (
                                         <div className="border p-1">
                                             <label
                                                 className="form-label"
