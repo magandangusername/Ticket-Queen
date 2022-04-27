@@ -34,6 +34,10 @@ Route::get('/testing', function () {
     return view('testing');
 });
 
+Route::get('/upload', function () {
+    return view('upload');
+});
+
 
 // Route::fallback(function() {
 //     return view('home');

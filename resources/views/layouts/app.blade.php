@@ -11,7 +11,7 @@
     @yield('head')
 
     <!-- Icons -->
-    <script src="https://kit.fontawesome.com/e4b74e1e72.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b06b2bedd1.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,6 +19,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
