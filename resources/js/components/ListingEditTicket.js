@@ -703,7 +703,7 @@ const ListingEditTicket = ({
                                     </div>
 
                                     {Number(ticketEdit.tickets_available) ===
-                                    0 ? (
+                                    0 & Number(ticketEdit.tickets_sold) > 0 ? (
                                         <div className="border p-1">
                                             <label
                                                 className="form-label"

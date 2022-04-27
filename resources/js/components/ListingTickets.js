@@ -171,7 +171,7 @@ const ListingTickets = ({
                         style={{ width: 20 + "px", height: 20 + "px" }}
                         className="rounded-circle d-inline"
                     /> */}
-                    {Number(ticket.tickets_available) === 0 ? <i className="fas fa-money-bill-wave fa-lg pt-1" title="Sold out" style={{color: "red"}}></i>:null }
+                    {Number(ticket.tickets_available) === 0  & Number(ticket.tickets_sold) > 0 ? <i className="fas fa-money-bill-wave fa-lg pt-1" title="Sold out" style={{color: "red"}}></i>:null }
 
                 </div>
             </td>

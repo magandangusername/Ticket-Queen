@@ -6248,7 +6248,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                   htmlFor: "flexSwitchCheckDefault",
                   children: "Publish"
                 })]
-              }), Number(ticketEdit.tickets_available) === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              }), Number(ticketEdit.tickets_available) === 0 & Number(ticketEdit.tickets_sold) > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                 className: "border p-1",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   className: "form-label",
@@ -9917,7 +9917,7 @@ var ListingTickets = function ListingTickets(_ref) {
           onChange: function onChange() {
             return handleTicketPublishChange(ticket.listing_id);
           }
-        }), Number(ticket.tickets_available) === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        }), Number(ticket.tickets_available) === 0 & Number(ticket.tickets_sold) > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
           className: "fas fa-money-bill-wave fa-lg pt-1",
           title: "Sold out",
           style: {
