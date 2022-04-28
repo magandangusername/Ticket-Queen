@@ -1,5 +1,6 @@
 import { create, set } from "lodash";
 import React from "react";
+import dateFormat from "dateformat";
 
 const ListingNewListing = ({
     createConcert,
@@ -39,7 +40,7 @@ const ListingNewListing = ({
                                     className=""
                                     id="exampleFormControlInput1"
                                     placeholder="Search"
-                                    readOnly
+                                    disabled
                                 />
                             </div>
                             <div className="row mb-2">
@@ -74,6 +75,10 @@ const ListingNewListing = ({
                                             event_date: e.target.value,
                                         })
                                     }
+                                    min={dateFormat(
+                                        new Date(),
+                                        "yyyy-mm-dd"
+                                    )}
                                     required
                                 />
                                 <input
@@ -170,6 +175,10 @@ const ListingNewListing = ({
                                                 e.target.value,
                                         })
                                     }
+                                    min={dateFormat(
+                                        new Date(),
+                                        'yyyy-mm-dd"T"hh:mm'
+                                    )}
                                     required
                                 />
 
@@ -290,13 +299,25 @@ const ListingNewListing = ({
                                                   ...createConcert,
                                                   event_face_value_min: 0,
                                               })
-                                            : setCreateConcert({
+                                            :
+                                            createConcert.event_face_value_max >= Number(e.target.value) ?
+                                            setCreateConcert({
                                                   ...createConcert,
                                                   event_face_value_min:
                                                       parseFloat(
                                                           e.target.value
                                                       ).toFixed(2),
-                                              })
+                                              }) : setCreateConcert({
+                                                ...createConcert,
+                                                event_face_value_min:
+                                                    parseFloat(
+                                                        e.target.value
+                                                    ).toFixed(2),
+                                                event_face_value_max:
+                                                    parseFloat(
+                                                        e.target.value
+                                                    ).toFixed(2),
+                                            })
                                     }
                                     required
                                 />
@@ -319,13 +340,24 @@ const ListingNewListing = ({
                                                   ...createConcert,
                                                   event_face_value_max: 0,
                                               })
-                                            : setCreateConcert({
+                                            : createConcert.event_face_value_min <= Number(e.target.value) ?
+                                            setCreateConcert({
                                                   ...createConcert,
                                                   event_face_value_max:
                                                       parseFloat(
                                                           e.target.value
                                                       ).toFixed(2),
-                                              })
+                                              }) : setCreateConcert({
+                                                ...createConcert,
+                                                event_face_value_min:
+                                                    parseFloat(
+                                                        e.target.value
+                                                    ).toFixed(2),
+                                                event_face_value_max:
+                                                    parseFloat(
+                                                        e.target.value
+                                                    ).toFixed(2),
+                                            })
                                     }
                                     required
                                 />

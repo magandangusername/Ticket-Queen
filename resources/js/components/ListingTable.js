@@ -1015,6 +1015,24 @@ const ListingTable = () => {
         return "Expired";
     };
 
+    // handle date from and to inputs for new listing search
+    const checkcalendarfrom = async(val) => {
+        if (new Date(val) >= new Date(newListingSearch.to)) {
+            var newDate = new Date(val);
+            newDate.setDate(newDate.getUTCDate() + 1);
+            var futureDate = newDate.getFullYear() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (newDate.getDate())).slice(-2);
+            setNewListingSearch({...newListingSearch, to: futureDate, from: val});
+        } else setNewListingSearch({...newListingSearch, from: val});
+    }
+
+    const checkcalendarto = async(val) => {
+        if (new Date(newListingSearch.from) >= new Date(val)) {
+            var newDate = new Date(val);
+            newDate.setDate(newDate.getUTCDate() - 1);
+            var futureDate = newDate.getFullYear() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (newDate.getDate())).slice(-2);
+            setNewListingSearch({...newListingSearch, from: futureDate, to: val});
+        } else setNewListingSearch({...newListingSearch, to: val});
+    }
 
     // This is the display code
     return (
@@ -1304,6 +1322,8 @@ const ListingTable = () => {
                     handleTicketNew={handleTicketNew}
                     newListingSearch={newListingSearch}
                     setNewListingSearch={setNewListingSearch}
+                    checkcalendarfrom={checkcalendarfrom}
+                    checkcalendarto={checkcalendarto}
                 />
                 <ListingTicketClone
                     ticketClone={ticketClone}

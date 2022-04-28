@@ -6,6 +6,8 @@ const ListingNew = ({
     handleTicketNew,
     newListingSearch,
     setNewListingSearch,
+    checkcalendarfrom,
+    checkcalendarto
 }) => {
     return (
         <div className="modal w-100" id="ListingModal">
@@ -49,14 +51,11 @@ const ListingNew = ({
                                 <input
                                     className="form-control"
                                     type="date"
-                                    id="date"
+                                    id="fromdate"
                                     name="date"
                                     value={newListingSearch.from}
                                     onChange={(e) =>
-                                        setNewListingSearch({
-                                            ...newListingSearch,
-                                            from: e.target.value,
-                                        })
+                                        checkcalendarfrom(e.target.value)
                                     }
                                     min={dateFormat(
                                         new Date(),
@@ -72,14 +71,11 @@ const ListingNew = ({
                                 <input
                                     className="form-control"
                                     type="date"
-                                    id="date"
+                                    id="todate"
                                     name="date"
                                     value={newListingSearch.to}
                                     onChange={(e) =>
-                                        setNewListingSearch({
-                                            ...newListingSearch,
-                                            to: e.target.value,
-                                        })
+                                        checkcalendarto(e.target.value)
                                     }
                                     min={dateFormat(
                                         new Date(),
