@@ -5454,7 +5454,8 @@ var ListingConcerts = function ListingConcerts(_ref) {
       handleTicketEdit = _ref.handleTicketEdit,
       handleTicketPublishChange = _ref.handleTicketPublishChange,
       getRemainingDays = _ref.getRemainingDays,
-      ticketTypes = _ref.ticketTypes;
+      ticketTypes = _ref.ticketTypes,
+      sort = _ref.sort;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
       className: "clickable js-tabularinfo-toggle",
@@ -5599,7 +5600,9 @@ var ListingConcerts = function ListingConcerts(_ref) {
           }), tickets.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
             id: "ticket",
             children: tickets.map(function (ticket, index) {
-              return ticket.event_id === concert.event_id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              return ticket.event_id === concert.event_id & (sort.length ? sort.some(function (x) {
+                return ticket.listing_id === x.listing_id;
+              }) : true) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListingTickets__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 ticket: ticket,
                 concert: concert,
                 handleCheck: handleCheck,
@@ -5612,9 +5615,11 @@ var ListingConcerts = function ListingConcerts(_ref) {
                 ticketTypes: ticketTypes
               }, index) : null;
             })
-          }) : null, tickets.filter(function (ticket) {
-            return ticket.event_id === concert.event_id;
-          }).length ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
+          }) : null, tickets.some(function (ticket) {
+            return ticket.event_id === concert.event_id & (sort.length ? sort.some(function (x) {
+              return ticket.listing_id === x.listing_id;
+            }) : true);
+          }) ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tr", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
                 colSpan: 10,
@@ -8066,26 +8071,26 @@ var ListingTable = function ListingTable() {
 
     if (!sortActiveActive) {
       filter = sort.filter(function (remove) {
-        return remove.event_status != "active";
+        return remove.is_published != 1;
       });
     }
 
     if (!sortInactiveActive) {
       filter = sort.filter(function (remove) {
-        return remove.event_status != "inactive";
+        return remove.is_published != 0;
       });
     }
 
     if (sortActiveActive) {
-      var activeList = concerts.filter(function (concert) {
-        return concert.event_status === "active";
+      var activeList = tickets.filter(function (ticket) {
+        return ticket.is_published === 1 & ticket.tickets_available >= 1;
       });
       activecombinedList = _toConsumableArray(new Set([].concat(_toConsumableArray(activeList), _toConsumableArray(filter))));
     }
 
     if (sortInactiveActive) {
-      var inactiveList = concerts.filter(function (concert) {
-        return concert.event_status === "inactive";
+      var inactiveList = tickets.filter(function (ticket) {
+        return ticket.is_published === 0;
       });
       inactivecombinedList = _toConsumableArray(new Set([].concat(_toConsumableArray(inactiveList), _toConsumableArray(filter))));
     }
@@ -8129,7 +8134,7 @@ var ListingTable = function ListingTable() {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              activeList = concerts;
+              activeList = tickets;
               setSort([]); // console.log(activeList);
 
             case 2:
@@ -9222,7 +9227,7 @@ var ListingTable = function ListingTable() {
               if (new Date(val) >= new Date(newListingSearch.to)) {
                 newDate = new Date(val);
                 newDate.setDate(newDate.getUTCDate() + 1);
-                futureDate = newDate.getFullYear() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + ('0' + newDate.getDate()).slice(-2);
+                futureDate = newDate.getFullYear() + "-" + ("0" + (newDate.getMonth() + 1)).slice(-2) + "-" + ("0" + newDate.getDate()).slice(-2);
                 setNewListingSearch(_objectSpread(_objectSpread({}, newListingSearch), {}, {
                   to: futureDate,
                   from: val
@@ -9254,7 +9259,7 @@ var ListingTable = function ListingTable() {
               if (new Date(newListingSearch.from) >= new Date(val)) {
                 newDate = new Date(val);
                 newDate.setDate(newDate.getUTCDate() - 1);
-                futureDate = newDate.getFullYear() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + ('0' + newDate.getDate()).slice(-2);
+                futureDate = newDate.getFullYear() + "-" + ("0" + (newDate.getMonth() + 1)).slice(-2) + "-" + ("0" + newDate.getDate()).slice(-2);
                 setNewListingSearch(_objectSpread(_objectSpread({}, newListingSearch), {}, {
                   from: futureDate,
                   to: val
@@ -9403,7 +9408,7 @@ var ListingTable = function ListingTable() {
                   children: "No data to show"
                 })
               }), concerts.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-                children: sort.length ? sort.map(function (concert) {
+                children: concerts.map(function (concert) {
                   return concert.isVisible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     concert: concert,
                     tickets: tickets,
@@ -9416,22 +9421,8 @@ var ListingTable = function ListingTable() {
                     handleTicketEdit: handleTicketEdit,
                     handleTicketPublishChange: handleTicketPublishChange,
                     getRemainingDays: getRemainingDays,
-                    ticketTypes: ticketTypes
-                  }, concert.event_id);
-                }) : concerts.map(function (concert) {
-                  return concert.isVisible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                    concert: concert,
-                    tickets: tickets,
-                    setTickets: setTickets,
-                    handleCheck: handleCheck,
-                    handlePriceSelect: handlePriceSelect,
-                    handlePriceChange: handlePriceChange,
-                    handleAvailableTicketSelect: handleAvailableTicketSelect,
-                    handleAvailableTicketChange: handleAvailableTicketChange,
-                    handleTicketEdit: handleTicketEdit,
-                    handleTicketPublishChange: handleTicketPublishChange,
-                    getRemainingDays: getRemainingDays,
-                    ticketTypes: ticketTypes
+                    ticketTypes: ticketTypes,
+                    sort: sort
                   }, concert.event_id);
                 })
               }) : null]

@@ -15,6 +15,7 @@ const ListingConcerts = ({
     handleTicketPublishChange,
     getRemainingDays,
     ticketTypes,
+    sort
 }) => {
     return (
         <>
@@ -48,7 +49,9 @@ const ListingConcerts = ({
                             </p>
                             <p className="text-white-50 mb-0">
                                 {dateFormat(
-                                    concert.event_date + " " + concert.event_time,
+                                    concert.event_date +
+                                        " " +
+                                        concert.event_time,
                                     "ddd dd, mmmm yyyy hh:mm"
                                 )}
                             </p>
@@ -159,54 +162,59 @@ const ListingConcerts = ({
                             </tr>
                         </thead>
 
-                        {tickets.length ? (
-                            <tbody id="ticket">
-                                {tickets.map((ticket, index) =>
-                                    ticket.event_id === concert.event_id ? (
-                                        <ListingTickets
-                                            key={index}
-                                            ticket={ticket}
-                                            concert={concert}
-                                            handleCheck={handleCheck}
-                                            handlePriceSelect={
-                                                handlePriceSelect
-                                            }
-                                            handlePriceChange={
-                                                handlePriceChange
-                                            }
-                                            handleAvailableTicketSelect={
-                                                handleAvailableTicketSelect
-                                            }
-                                            handleAvailableTicketChange={
-                                                handleAvailableTicketChange
-                                            }
-                                            handleTicketEdit={handleTicketEdit}
-                                            handleTicketPublishChange={
-                                                handleTicketPublishChange
-                                            }
-                                            ticketTypes={ticketTypes}
-                                        />
-                                    ) : null
+                                {tickets.length ? (
+                                    <tbody id="ticket">
+                                        {tickets.map((ticket, index) =>
+                                            ticket.event_id ===
+                                            concert.event_id & (sort.length ? sort.some(x=>ticket.listing_id === x.listing_id) : true) ? (
+                                                <ListingTickets
+                                                    key={index}
+                                                    ticket={ticket}
+                                                    concert={concert}
+                                                    handleCheck={handleCheck}
+                                                    handlePriceSelect={
+                                                        handlePriceSelect
+                                                    }
+                                                    handlePriceChange={
+                                                        handlePriceChange
+                                                    }
+                                                    handleAvailableTicketSelect={
+                                                        handleAvailableTicketSelect
+                                                    }
+                                                    handleAvailableTicketChange={
+                                                        handleAvailableTicketChange
+                                                    }
+                                                    handleTicketEdit={
+                                                        handleTicketEdit
+                                                    }
+                                                    handleTicketPublishChange={
+                                                        handleTicketPublishChange
+                                                    }
+                                                    ticketTypes={ticketTypes}
+                                                />
+                                            ) : null
+                                        )}
+                                    </tbody>
+                                ) : null}
+
+                                {tickets.some(
+                                    (ticket) =>
+                                        ticket.event_id === concert.event_id & (sort.length ? sort.some(x=>ticket.listing_id === x.listing_id) : true)
+                                ) ? null : (
+                                    <tbody>
+                                        <tr>
+                                            <td
+                                                colSpan={10}
+                                                style={{
+                                                    textAlign: "center",
+                                                    color: "black",
+                                                }}
+                                            >
+                                                No data to show
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 )}
-                            </tbody>
-                        ) : null}
-                        {tickets.filter(
-                            (ticket) => ticket.event_id === concert.event_id
-                        ).length ? null : (
-                            <tbody>
-                                <tr>
-                                    <td
-                                        colSpan={10}
-                                        style={{
-                                            textAlign: "center",
-                                            color: "black",
-                                        }}
-                                    >
-                                        No data to show
-                                    </td>
-                                </tr>
-                            </tbody>
-                        )}
                     </table>
                 </td>
             </tr>

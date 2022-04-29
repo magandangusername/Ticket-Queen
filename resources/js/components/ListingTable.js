@@ -84,7 +84,7 @@ const ListingTable = () => {
         search: "",
         from: "",
         to: "",
-    })
+    });
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -202,21 +202,21 @@ const ListingTable = () => {
 
         // prevents duplicates but idk if it works
         if (!sortActiveActive) {
-            filter = sort.filter((remove) => remove.event_status != "active");
+            filter = sort.filter((remove) => remove.is_published != 1);
         }
         if (!sortInactiveActive) {
-            filter = sort.filter((remove) => remove.event_status != "inactive");
+            filter = sort.filter((remove) => remove.is_published != 0);
         }
 
         if (sortActiveActive) {
-            const activeList = concerts.filter(
-                (concert) => concert.event_status === "active"
+            const activeList = tickets.filter(
+                (ticket) => ticket.is_published === 1 & ticket.tickets_available >= 1
             );
             activecombinedList = [...new Set([...activeList, ...filter])];
         }
         if (sortInactiveActive) {
-            const inactiveList = concerts.filter(
-                (concert) => concert.event_status === "inactive"
+            const inactiveList = tickets.filter(
+                (ticket) => ticket.is_published === 0
             );
             inactivecombinedList = [...new Set([...inactiveList, ...filter])];
         }
@@ -260,7 +260,7 @@ const ListingTable = () => {
 
     // for sorting to all listing
     const handleAllListing = async () => {
-        const activeList = concerts;
+        const activeList = tickets;
         setSort([]);
         // console.log(activeList);
     };
@@ -297,7 +297,7 @@ const ListingTable = () => {
                 return o;
             });
 
-            setTicketEdit({...result[0]});
+            setTicketEdit({ ...result[0] });
             setTicketClone(result);
 
             const restrictionset = restrictions.map((restriction) =>
@@ -585,7 +585,6 @@ const ListingTable = () => {
                 setListingNotes(ticketListNoteEdit);
             }
         }
-
     };
 
     // // setting interaction for price input when focused
@@ -638,7 +637,9 @@ const ListingTable = () => {
                       ...ticket,
                       isAvailableTicketSelected:
                           !ticket.isAvailableTicketSelected,
-                      tickets_available: parseFloat(ticket.tickets_available).toFixed(0),
+                      tickets_available: parseFloat(
+                          ticket.tickets_available
+                      ).toFixed(0),
                   }
                 : ticket
         );
@@ -994,45 +995,64 @@ const ListingTable = () => {
         var weeks = 0;
         var months = 0;
         var years = 0;
-        if(Difference_In_Days >= 7) weeks=Difference_In_Days/7;
-        if(weeks >= 4) months=weeks/4;
-        if(months >= 12) years=months/12;
+        if (Difference_In_Days >= 7) weeks = Difference_In_Days / 7;
+        if (weeks >= 4) months = weeks / 4;
+        if (months >= 12) years = months / 12;
 
-        if(years>=1){
-            if (years>=2) return String(toInteger(years) + " Years")
-            else return String(toInteger(years) + " Year")
-        } else if(months>=1){
-            if (months>=2) return String(toInteger(months) + " Months")
-            else return String(toInteger(months) + " Month")
-        } else if(weeks>=1){
-            if (weeks>=2) return String(toInteger(weeks) + " Weeks")
-            else return String(toInteger(weeks) + " Week")
-        } else if(Difference_In_Days>=1){
-            if (Difference_In_Days>=2) return String(toInteger(Difference_In_Days) + " Days")
-            else return String(toInteger(Difference_In_Days) + " Day")
+        if (years >= 1) {
+            if (years >= 2) return String(toInteger(years) + " Years");
+            else return String(toInteger(years) + " Year");
+        } else if (months >= 1) {
+            if (months >= 2) return String(toInteger(months) + " Months");
+            else return String(toInteger(months) + " Month");
+        } else if (weeks >= 1) {
+            if (weeks >= 2) return String(toInteger(weeks) + " Weeks");
+            else return String(toInteger(weeks) + " Week");
+        } else if (Difference_In_Days >= 1) {
+            if (Difference_In_Days >= 2)
+                return String(toInteger(Difference_In_Days) + " Days");
+            else return String(toInteger(Difference_In_Days) + " Day");
         }
 
         return "Expired";
     };
 
     // handle date from and to inputs for new listing search
-    const checkcalendarfrom = async(val) => {
+    const checkcalendarfrom = async (val) => {
         if (new Date(val) >= new Date(newListingSearch.to)) {
             var newDate = new Date(val);
             newDate.setDate(newDate.getUTCDate() + 1);
-            var futureDate = newDate.getFullYear() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (newDate.getDate())).slice(-2);
-            setNewListingSearch({...newListingSearch, to: futureDate, from: val});
-        } else setNewListingSearch({...newListingSearch, from: val});
-    }
+            var futureDate =
+                newDate.getFullYear() +
+                "-" +
+                ("0" + (newDate.getMonth() + 1)).slice(-2) +
+                "-" +
+                ("0" + newDate.getDate()).slice(-2);
+            setNewListingSearch({
+                ...newListingSearch,
+                to: futureDate,
+                from: val,
+            });
+        } else setNewListingSearch({ ...newListingSearch, from: val });
+    };
 
-    const checkcalendarto = async(val) => {
+    const checkcalendarto = async (val) => {
         if (new Date(newListingSearch.from) >= new Date(val)) {
             var newDate = new Date(val);
             newDate.setDate(newDate.getUTCDate() - 1);
-            var futureDate = newDate.getFullYear() + '-' + ('0' + (newDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (newDate.getDate())).slice(-2);
-            setNewListingSearch({...newListingSearch, from: futureDate, to: val});
-        } else setNewListingSearch({...newListingSearch, to: val});
-    }
+            var futureDate =
+                newDate.getFullYear() +
+                "-" +
+                ("0" + (newDate.getMonth() + 1)).slice(-2) +
+                "-" +
+                ("0" + newDate.getDate()).slice(-2);
+            setNewListingSearch({
+                ...newListingSearch,
+                from: futureDate,
+                to: val,
+            });
+        } else setNewListingSearch({ ...newListingSearch, to: val });
+    };
 
     // This is the display code
     return (
@@ -1179,99 +1199,49 @@ const ListingTable = () => {
                                     )}
                                     {concerts.length ? (
                                         <>
-                                            {sort.length
-                                                ? sort.map(
-                                                      (concert) =>
-                                                          concert.isVisible && (
-                                                              <ListingConcerts
-                                                                  key={
-                                                                      concert.event_id
-                                                                  }
-                                                                  concert={
-                                                                      concert
-                                                                  }
-                                                                  tickets={
-                                                                      tickets
-                                                                  }
-                                                                  setTickets={
-                                                                      setTickets
-                                                                  }
-                                                                  handleCheck={
-                                                                      handleCheck
-                                                                  }
-                                                                  handlePriceSelect={
-                                                                      handlePriceSelect
-                                                                  }
-                                                                  handlePriceChange={
-                                                                      handlePriceChange
-                                                                  }
-                                                                  handleAvailableTicketSelect={
-                                                                      handleAvailableTicketSelect
-                                                                  }
-                                                                  handleAvailableTicketChange={
-                                                                      handleAvailableTicketChange
-                                                                  }
-                                                                  handleTicketEdit={
-                                                                      handleTicketEdit
-                                                                  }
-                                                                  handleTicketPublishChange={
-                                                                      handleTicketPublishChange
-                                                                  }
-                                                                  getRemainingDays={
-                                                                      getRemainingDays
-                                                                  }
-                                                                  ticketTypes={
-                                                                      ticketTypes
-                                                                  }
-                                                              />
-                                                          )
-                                                  )
-                                                : concerts.map(
-                                                      (concert) =>
-                                                          concert.isVisible && (
-                                                              <ListingConcerts
-                                                                  key={
-                                                                      concert.event_id
-                                                                  }
-                                                                  concert={
-                                                                      concert
-                                                                  }
-                                                                  tickets={
-                                                                      tickets
-                                                                  }
-                                                                  setTickets={
-                                                                      setTickets
-                                                                  }
-                                                                  handleCheck={
-                                                                      handleCheck
-                                                                  }
-                                                                  handlePriceSelect={
-                                                                      handlePriceSelect
-                                                                  }
-                                                                  handlePriceChange={
-                                                                      handlePriceChange
-                                                                  }
-                                                                  handleAvailableTicketSelect={
-                                                                      handleAvailableTicketSelect
-                                                                  }
-                                                                  handleAvailableTicketChange={
-                                                                      handleAvailableTicketChange
-                                                                  }
-                                                                  handleTicketEdit={
-                                                                      handleTicketEdit
-                                                                  }
-                                                                  handleTicketPublishChange={
-                                                                      handleTicketPublishChange
-                                                                  }
-                                                                  getRemainingDays={
-                                                                      getRemainingDays
-                                                                  }
-                                                                  ticketTypes={
-                                                                      ticketTypes
-                                                                  }
-                                                              />
-                                                          )
-                                                  )}
+                                            {concerts.map(
+                                                (concert) =>
+                                                    concert.isVisible && (
+                                                        <ListingConcerts
+                                                            key={
+                                                                concert.event_id
+                                                            }
+                                                            concert={concert}
+                                                            tickets={tickets}
+                                                            setTickets={
+                                                                setTickets
+                                                            }
+                                                            handleCheck={
+                                                                handleCheck
+                                                            }
+                                                            handlePriceSelect={
+                                                                handlePriceSelect
+                                                            }
+                                                            handlePriceChange={
+                                                                handlePriceChange
+                                                            }
+                                                            handleAvailableTicketSelect={
+                                                                handleAvailableTicketSelect
+                                                            }
+                                                            handleAvailableTicketChange={
+                                                                handleAvailableTicketChange
+                                                            }
+                                                            handleTicketEdit={
+                                                                handleTicketEdit
+                                                            }
+                                                            handleTicketPublishChange={
+                                                                handleTicketPublishChange
+                                                            }
+                                                            getRemainingDays={
+                                                                getRemainingDays
+                                                            }
+                                                            ticketTypes={
+                                                                ticketTypes
+                                                            }
+                                                            sort={sort}
+                                                        />
+                                                    )
+                                            )}
                                         </>
                                     ) : null}
                                 </tbody>
