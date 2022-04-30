@@ -466,7 +466,7 @@ const ListingTable = () => {
         if (ticket.price === "") errors = [...errors, {input: "price", msg: "Website Price is required."}]
         if (ticket.currency === "") errors = [...errors, {input: "currency", msg: "Currency is required."}]
 
-        if (errors.length > 0) {console.log(errors); setInputError(errors); return}
+        if (errors.length > 0) {setInputError(errors); return}
 
         // inputRef.current.handleClick();
         document.getElementById("closemodal").click();

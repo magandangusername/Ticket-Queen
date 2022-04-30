@@ -45,12 +45,14 @@ const ListingNewTicket = ({
                             >
                                 <h4>{newTicket.event_name}</h4>
                                 <p>
-                                    <b>{dateFormat(
+                                    <b>
+                                        {dateFormat(
                                             newTicket.event_date +
                                                 " " +
                                                 newTicket.event_time,
                                             "ddd dd, mmmm yyyy hh:mm"
-                                        )}</b>
+                                        )}
+                                    </b>
                                     <br />
                                 </p>
 
@@ -75,7 +77,7 @@ const ListingNewTicket = ({
                                 >
                                     <form>
                                         <div className="row">
-                                            {inputError.map((error, index)=><p key={'er'+index} style={{color: "red"}}>{error.msg}</p>)}
+                                            {/* {inputError.map((error, index)=><p key={'er'+index} style={{color: "red"}}>{error.msg}</p>)} */}
 
                                             <div className="form-group col">
                                                 <label htmlFor="exampleFormControlInput1">
@@ -83,7 +85,15 @@ const ListingNewTicket = ({
                                                 </label>
                                                 <input
                                                     type="number"
-                                                    className="form-control"
+                                                    className={
+                                                        inputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "tickets_available"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlInput1"
                                                     value={Number(
                                                         newTicket.tickets_available
@@ -100,6 +110,11 @@ const ListingNewTicket = ({
                                                     }
                                                     required
                                                 />
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {inputError.map(e=>e.input==="tickets_available" ? e.msg : null)}
+                                                </p>
                                             </div>
 
                                             <div className="form-group col">
@@ -108,7 +123,15 @@ const ListingNewTicket = ({
                                                     Ticket Separation
                                                 </label>
                                                 <select
-                                                    className="form-control"
+                                                    className={
+                                                        inputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "ticket_separation"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlSelect1"
                                                     onChange={(e) =>
                                                         setNewTicket({
@@ -154,6 +177,11 @@ const ListingNewTicket = ({
                                                         Avoid odd numbers
                                                     </option>
                                                 </select>
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                   {inputError.map(e=>e.input==="ticket_separation" ? e.msg : null)}
+                                                </p>
                                             </div>
                                             <div className="form-group col">
                                                 <label htmlFor="exampleFormControlInput1">
@@ -178,7 +206,15 @@ const ListingNewTicket = ({
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    className="form-control"
+                                                    className={
+                                                        inputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "section"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlInput1"
                                                     value={newTicket.section}
                                                     onChange={(e) =>
@@ -190,6 +226,11 @@ const ListingNewTicket = ({
                                                     }
                                                     required
                                                 />
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {inputError.map(e=>e.input==="section" ? e.msg : null)}
+                                                </p>
                                             </div>
 
                                             <div className="form-group col">
@@ -198,7 +239,15 @@ const ListingNewTicket = ({
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    className="form-control"
+                                                    className={
+                                                        inputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "row"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlInput1"
                                                     value={newTicket.row}
                                                     onChange={(e) =>
@@ -209,6 +258,11 @@ const ListingNewTicket = ({
                                                     }
                                                     required
                                                 />
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                   {inputError.map(e=>e.input==="row" ? e.msg : null)}
+                                                </p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -220,10 +274,17 @@ const ListingNewTicket = ({
                                                     Seats
                                                 </label>
                                                 <div className="input-group">
-                                                    {/* this needs to be fixed in the database */}
                                                     <input
                                                         type="text"
-                                                        className="form-control"
+                                                        className={
+                                                            inputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "seats_from"
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="inlineFormInputGroupMinimum"
                                                         value={
                                                             newTicket.seats_from
@@ -245,7 +306,15 @@ const ListingNewTicket = ({
                                                     </div>
                                                     <input
                                                         type="text"
-                                                        className="form-control"
+                                                        className={
+                                                            inputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "seats_to"
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="inlineFormInputGroupMaximum"
                                                         value={
                                                             newTicket.seats_to
@@ -260,6 +329,11 @@ const ListingNewTicket = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                    {inputError.map(e=>e.input==="seats_from" ? e.msg + " " : null)}{inputError.map(e=>e.input==="seats_to" ? e.msg : null)}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -282,7 +356,15 @@ const ListingNewTicket = ({
                                                     </div>
                                                     <input
                                                         type="number"
-                                                        className="form-control"
+                                                        className={
+                                                            inputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "price"
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="inlineFormInputGroupUsername"
                                                         value={
                                                             newTicket.price ===
@@ -312,6 +394,11 @@ const ListingNewTicket = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {inputError.map(e=>e.input==="price" ? e.msg : null)}
+                                                    </p>
                                                 </div>
                                             </div>
 
@@ -321,7 +408,15 @@ const ListingNewTicket = ({
                                                     Currency
                                                 </label>
                                                 <select
-                                                    className="form-control"
+                                                    className={
+                                                        inputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "currency"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlSelect1"
                                                     value={newTicket.currency}
                                                     onChange={(e) =>
@@ -449,6 +544,11 @@ const ListingNewTicket = ({
                                                         ZAR
                                                     </option>
                                                 </select>
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                   {inputError.map(e=>e.input==="currency" ? e.msg : null)}
+                                                </p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -670,7 +770,11 @@ const ListingNewTicket = ({
                                     </button>
                                 )}
 
-                                <button id="closemodal" data-bs-dismiss="modal" hidden></button>
+                                <button
+                                    id="closemodal"
+                                    data-bs-dismiss="modal"
+                                    hidden
+                                ></button>
                                 <button
                                     type="button"
                                     className="btn btn-secondary float-sm-end"

@@ -7017,21 +7017,16 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "row",
-                  children: [inputError.map(function (error, index) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                      style: {
-                        color: "red"
-                      },
-                      children: error.msg
-                    }, 'er' + index);
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "form-group col",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
                       htmlFor: "exampleFormControlInput1",
                       children: "Available Tickets*"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                       type: "number",
-                      className: "form-control",
+                      className: inputError.some(function (e) {
+                        return e.input === "tickets_available";
+                      }) ? "form-control is-invalid" : "form-control",
                       id: "exampleFormControlInput1",
                       value: Number(newTicket.tickets_available).toString(),
                       onChange: function onChange(e) {
@@ -7040,6 +7035,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         }));
                       },
                       required: true
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      className: "invalid-feedback",
+                      children: inputError.map(function (e) {
+                        return e.input === "tickets_available" ? e.msg : null;
+                      })
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "form-group col",
@@ -7047,7 +7047,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       htmlFor: "exampleFormControlSelect1",
                       children: "Ticket Separation"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-                      className: "form-control",
+                      className: inputError.some(function (e) {
+                        return e.input === "ticket_separation";
+                      }) ? "form-control is-invalid" : "form-control",
                       id: "exampleFormControlSelect1",
                       onChange: function onChange(e) {
                         return setNewTicket(_objectSpread(_objectSpread({}, newTicket), {}, {
@@ -7075,6 +7077,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "Avoid odd numbers",
                         children: "Avoid odd numbers"
                       })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      className: "invalid-feedback",
+                      children: inputError.map(function (e) {
+                        return e.input === "ticket_separation" ? e.msg : null;
+                      })
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "form-group col",
@@ -7098,7 +7105,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       children: "Section*"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                       type: "text",
-                      className: "form-control",
+                      className: inputError.some(function (e) {
+                        return e.input === "section";
+                      }) ? "form-control is-invalid" : "form-control",
                       id: "exampleFormControlInput1",
                       value: newTicket.section,
                       onChange: function onChange(e) {
@@ -7107,6 +7116,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         }));
                       },
                       required: true
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      className: "invalid-feedback",
+                      children: inputError.map(function (e) {
+                        return e.input === "section" ? e.msg : null;
+                      })
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "form-group col",
@@ -7115,7 +7129,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       children: "Row"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                       type: "text",
-                      className: "form-control",
+                      className: inputError.some(function (e) {
+                        return e.input === "row";
+                      }) ? "form-control is-invalid" : "form-control",
                       id: "exampleFormControlInput1",
                       value: newTicket.row,
                       onChange: function onChange(e) {
@@ -7124,6 +7140,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         }));
                       },
                       required: true
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      className: "invalid-feedback",
+                      children: inputError.map(function (e) {
+                        return e.input === "row" ? e.msg : null;
+                      })
                     })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -7138,7 +7159,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       className: "input-group",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                         type: "text",
-                        className: "form-control",
+                        className: inputError.some(function (e) {
+                          return e.input === "seats_from";
+                        }) ? "form-control is-invalid" : "form-control",
                         id: "inlineFormInputGroupMinimum",
                         value: newTicket.seats_from,
                         onChange: function onChange(e) {
@@ -7155,7 +7178,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                         type: "text",
-                        className: "form-control",
+                        className: inputError.some(function (e) {
+                          return e.input === "seats_to";
+                        }) ? "form-control is-invalid" : "form-control",
                         id: "inlineFormInputGroupMaximum",
                         value: newTicket.seats_to,
                         onChange: function onChange(e) {
@@ -7164,6 +7189,13 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                           }));
                         },
                         required: true
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+                        className: "invalid-feedback",
+                        children: [inputError.map(function (e) {
+                          return e.input === "seats_from" ? e.msg + " " : null;
+                        }), inputError.map(function (e) {
+                          return e.input === "seats_to" ? e.msg : null;
+                        })]
                       })]
                     })]
                   })
@@ -7185,7 +7217,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                         type: "number",
-                        className: "form-control",
+                        className: inputError.some(function (e) {
+                          return e.input === "price";
+                        }) ? "form-control is-invalid" : "form-control",
                         id: "inlineFormInputGroupUsername",
                         value: newTicket.price === "NaN" ? 0 : Number(newTicket.price).toString(),
                         onChange: function onChange(e) {
@@ -7196,6 +7230,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                           }));
                         },
                         required: true
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                        className: "invalid-feedback",
+                        children: inputError.map(function (e) {
+                          return e.input === "price" ? e.msg : null;
+                        })
                       })]
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -7204,7 +7243,9 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                       htmlFor: "exampleFormControlSelect1",
                       children: "Currency"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-                      className: "form-control",
+                      className: inputError.some(function (e) {
+                        return e.input === "currency";
+                      }) ? "form-control is-invalid" : "form-control",
                       id: "exampleFormControlSelect1",
                       value: newTicket.currency,
                       onChange: function onChange(e) {
@@ -7329,6 +7370,11 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "ZAR",
                         children: "ZAR"
                       })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      className: "invalid-feedback",
+                      children: inputError.map(function (e) {
+                        return e.input === "currency" ? e.msg : null;
+                      })
                     })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -8472,15 +8518,14 @@ var ListingTable = function ListingTable() {
               }]);
 
               if (!(errors.length > 0)) {
-                _context8.next = 15;
+                _context8.next = 14;
                 break;
               }
 
-              console.log(errors);
               setInputError(errors);
               return _context8.abrupt("return");
 
-            case 15:
+            case 14:
               // inputRef.current.handleClick();
               document.getElementById("closemodal").click();
               restricts = restrictions.filter(function (restrict) {
@@ -8503,7 +8548,7 @@ var ListingTable = function ListingTable() {
               setIsTicketSaving(false);
               setSuccessMsg("Saved");
 
-            case 23:
+            case 22:
             case "end":
               return _context8.stop();
           }
