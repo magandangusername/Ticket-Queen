@@ -6970,7 +6970,8 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
       ticketTypeSelected = _ref.ticketTypeSelected,
       isTicketNewLoading = _ref.isTicketNewLoading,
       handleTicketNewChange = _ref.handleTicketNewChange,
-      ticketNewUpdate = _ref.ticketNewUpdate;
+      ticketNewUpdate = _ref.ticketNewUpdate,
+      inputError = _ref.inputError;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "modal",
     id: "newTicket",
@@ -7016,7 +7017,14 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "row",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  children: [inputError.map(function (error, index) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                      style: {
+                        color: "red"
+                      },
+                      children: error.msg
+                    }, 'er' + index);
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                     className: "form-group col",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
                       htmlFor: "exampleFormControlInput1",
@@ -7455,9 +7463,13 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
               className: "btn btn-success float-sm-end",
               onClick: function onClick() {
                 return ticketNewUpdate();
-              },
-              "data-bs-dismiss": "modal",
+              } // data-bs-dismiss="modal"
+              ,
               children: "Save"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              id: "closemodal",
+              "data-bs-dismiss": "modal",
+              hidden: true
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               type: "button",
               className: "btn btn-secondary float-sm-end",
@@ -7905,7 +7917,13 @@ var ListingTable = function ListingTable() {
   }),
       _useState66 = _slicedToArray(_useState65, 2),
       newListingSearch = _useState66[0],
-      setNewListingSearch = _useState66[1]; // gets the concert data from the database
+      setNewListingSearch = _useState66[1];
+
+  var _useState67 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState68 = _slicedToArray(_useState67, 2),
+      inputError = _useState68[0],
+      setInputError = _useState68[1]; // const inputRef = React.useRef();
+  // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -8410,7 +8428,7 @@ var ListingTable = function ListingTable() {
 
   var ticketNewUpdate = /*#__PURE__*/function () {
     var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
-      var ticket, restricts, listingnotes, request;
+      var ticket, errors, restricts, listingnotes, request;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
@@ -8419,6 +8437,52 @@ var ListingTable = function ListingTable() {
               ticket = _objectSpread(_objectSpread({}, newTicket), {}, {
                 ticket_type_id: ticketTypeSelected
               });
+              errors = [];
+              if (ticket.tickets_available === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "tickets_available",
+                msg: "Available Tickets is required."
+              }]);
+              if (ticket.ticket_separation === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "ticket_separation",
+                msg: "Ticket Separation is required."
+              }]);
+              if (ticket.section === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "section",
+                msg: "Section is required."
+              }]);
+              if (ticket.row === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "row",
+                msg: "Row Tickets is required."
+              }]);
+              if (ticket.seats_from === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "seats_from",
+                msg: "Seats from is required."
+              }]);
+              if (ticket.seats_to === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "seats_to",
+                msg: "Seats to is required."
+              }]);
+              if (ticket.price === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "price",
+                msg: "Website Price is required."
+              }]);
+              if (ticket.currency === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "currency",
+                msg: "Currency is required."
+              }]);
+
+              if (!(errors.length > 0)) {
+                _context8.next = 15;
+                break;
+              }
+
+              console.log(errors);
+              setInputError(errors);
+              return _context8.abrupt("return");
+
+            case 15:
+              // inputRef.current.handleClick();
+              document.getElementById("closemodal").click();
               restricts = restrictions.filter(function (restrict) {
                 return restrict.isChecked === true;
               });
@@ -8439,7 +8503,7 @@ var ListingTable = function ListingTable() {
               setIsTicketSaving(false);
               setSuccessMsg("Saved");
 
-            case 9:
+            case 23:
             case "end":
               return _context8.stop();
           }
@@ -9488,7 +9552,9 @@ var ListingTable = function ListingTable() {
         ticketTypes: ticketTypes,
         handleTicketNewChange: handleTicketNewChange,
         ticketTypeSelected: ticketTypeSelected,
-        ticketNewUpdate: ticketNewUpdate
+        ticketNewUpdate: ticketNewUpdate,
+        inputError: inputError // inputRef={inputRef}
+
       })]
     })
   });

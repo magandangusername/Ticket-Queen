@@ -21,6 +21,8 @@ const ListingNewTicket = ({
     isTicketNewLoading,
     handleTicketNewChange,
     ticketNewUpdate,
+    inputError,
+    // inputRef,
 }) => {
     return (
         <div className="modal" id="newTicket" aria-hidden="true">
@@ -73,6 +75,8 @@ const ListingNewTicket = ({
                                 >
                                     <form>
                                         <div className="row">
+                                            {inputError.map((error, index)=><p key={'er'+index} style={{color: "red"}}>{error.msg}</p>)}
+
                                             <div className="form-group col">
                                                 <label htmlFor="exampleFormControlInput1">
                                                     Available Tickets*
@@ -660,12 +664,13 @@ const ListingNewTicket = ({
                                         type="button"
                                         className="btn btn-success float-sm-end"
                                         onClick={() => ticketNewUpdate()}
-                                        data-bs-dismiss="modal"
+                                        // data-bs-dismiss="modal"
                                     >
                                         Save
                                     </button>
                                 )}
 
+                                <button id="closemodal" data-bs-dismiss="modal" hidden></button>
                                 <button
                                     type="button"
                                     className="btn btn-secondary float-sm-end"

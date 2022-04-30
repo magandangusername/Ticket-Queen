@@ -85,6 +85,9 @@ const ListingTable = () => {
         from: "",
         to: "",
     });
+    const [inputError, setInputError] = useState([]);
+
+    // const inputRef = React.useRef();
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -451,6 +454,22 @@ const ListingTable = () => {
             ...newTicket,
             ticket_type_id: ticketTypeSelected,
         };
+
+        var errors = [];
+
+        if (ticket.tickets_available === "") errors = [...errors, {input: "tickets_available", msg: "Available Tickets is required."}]
+        if (ticket.ticket_separation === "") errors = [...errors, {input: "ticket_separation", msg: "Ticket Separation is required."}]
+        if (ticket.section === "") errors = [...errors, {input: "section", msg: "Section is required."}]
+        if (ticket.row === "") errors = [...errors, {input: "row", msg: "Row Tickets is required."}]
+        if (ticket.seats_from === "") errors = [...errors, {input: "seats_from", msg: "Seats from is required."}]
+        if (ticket.seats_to === "") errors = [...errors, {input: "seats_to", msg: "Seats to is required."}]
+        if (ticket.price === "") errors = [...errors, {input: "price", msg: "Website Price is required."}]
+        if (ticket.currency === "") errors = [...errors, {input: "currency", msg: "Currency is required."}]
+
+        if (errors.length > 0) {console.log(errors); setInputError(errors); return}
+
+        // inputRef.current.handleClick();
+        document.getElementById("closemodal").click();
 
         var restricts = restrictions.filter(
             (restrict) => restrict.isChecked === true
@@ -1328,6 +1347,8 @@ const ListingTable = () => {
                     handleTicketNewChange={handleTicketNewChange}
                     ticketTypeSelected={ticketTypeSelected}
                     ticketNewUpdate={ticketNewUpdate}
+                    inputError={inputError}
+                    // inputRef={inputRef}
                 />
             </React.StrictMode>
         </>

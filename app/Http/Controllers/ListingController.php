@@ -52,7 +52,7 @@ class ListingController extends Controller
             'section' => $validatedData[0]['section'],
             'row' => $validatedData[0]['row'],
             'seats_from' => $validatedData[0]['seats_from'],
-            'seats_to' => $validatedData[0]['seats_from'],
+            'seats_to' => $validatedData[0]['seats_to'],
             'price' => $validatedData[0]['price'],
             'currency' => $validatedData[0]['currency'],
             // 'status' => $validatedData[0]['status'],
