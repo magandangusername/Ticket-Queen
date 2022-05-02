@@ -20,6 +20,7 @@ const ListingEditTicket = ({
     successMsg,
     setTicketClone,
     ticketTypes,
+    ticketEditInputError
 }) => {
     return (
         <div className="modal" id="myModal" aria-hidden="true">
@@ -80,7 +81,15 @@ const ListingEditTicket = ({
                                                 </label>
                                                 <input
                                                     type="number"
-                                                    className="form-control"
+                                                    className={
+                                                        ticketEditInputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "tickets_available"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlInput1"
                                                     value={Number(
                                                         ticketEdit.tickets_available
@@ -95,6 +104,11 @@ const ListingEditTicket = ({
                                                     pattern="[0-9]*"
                                                     required
                                                 />
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {ticketEditInputError.map(e=>e.input==="tickets_available" ? e.msg : null)}
+                                                </p>
                                             </div>
 
                                             <div className="form-group col">
@@ -103,7 +117,15 @@ const ListingEditTicket = ({
                                                     Ticket Separation
                                                 </label>
                                                 <select
-                                                    className="form-control"
+                                                    className={
+                                                        ticketEditInputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "ticket_separation"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlSelect1"
                                                     onChange={(e) =>
                                                         setTicketEdit({
@@ -146,6 +168,11 @@ const ListingEditTicket = ({
                                                         Avoid odd numbers
                                                     </option>
                                                 </select>
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {ticketEditInputError.map(e=>e.input==="ticket_separation" ? e.msg : null)}
+                                                </p>
                                             </div>
                                             <div className="form-group col">
                                                 <label htmlFor="exampleFormControlInput1">
@@ -170,7 +197,15 @@ const ListingEditTicket = ({
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    className="form-control"
+                                                    className={
+                                                        ticketEditInputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "section"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlInput1"
                                                     value={ticketEdit.section}
                                                     onChange={(e) =>
@@ -182,6 +217,11 @@ const ListingEditTicket = ({
                                                     }
                                                     required
                                                 />
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {ticketEditInputError.map(e=>e.input==="section" ? e.msg : null)}
+                                                </p>
                                             </div>
 
                                             <div className="form-group col">
@@ -190,7 +230,15 @@ const ListingEditTicket = ({
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    className="form-control"
+                                                    className={
+                                                        ticketEditInputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "row"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlInput1"
                                                     value={ticketEdit.row}
                                                     onChange={(e) =>
@@ -199,7 +247,13 @@ const ListingEditTicket = ({
                                                             row: e.target.value,
                                                         })
                                                     }
+                                                    required
                                                 />
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {ticketEditInputError.map(e=>e.input==="row" ? e.msg : null)}
+                                                </p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -214,7 +268,15 @@ const ListingEditTicket = ({
                                                     {/* this needs to be fixed in the database */}
                                                     <input
                                                         type="text"
-                                                        className="form-control"
+                                                        className={
+                                                            ticketEditInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "seats_from"
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="inlineFormInputGroupMinimum"
                                                         value={
                                                             ticketEdit.seats_from
@@ -236,7 +298,15 @@ const ListingEditTicket = ({
                                                     </div>
                                                     <input
                                                         type="text"
-                                                        className="form-control"
+                                                        className={
+                                                            ticketEditInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "seats_to"
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="inlineFormInputGroupMaximum"
                                                         value={
                                                             ticketEdit.seats_to
@@ -251,6 +321,11 @@ const ListingEditTicket = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                    {ticketEditInputError.map(e=>e.input==="seats_from" ? e.msg + " " : null)}{ticketEditInputError.map(e=>e.input==="seats_to" ? e.msg : null)}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,7 +348,15 @@ const ListingEditTicket = ({
                                                     </div>
                                                     <input
                                                         type="number"
-                                                        className="form-control"
+                                                        className={
+                                                            ticketEditInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "price"
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="inlineFormInputGroupUsername"
                                                         value={
                                                             ticketEdit.price ===
@@ -307,6 +390,11 @@ const ListingEditTicket = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketEditInputError.map(e=>e.input==="price" ? e.msg : null)}
+                                                    </p>
                                                 </div>
                                             </div>
 
@@ -316,7 +404,15 @@ const ListingEditTicket = ({
                                                     Currency
                                                 </label>
                                                 <select
-                                                    className="form-control"
+                                                    className={
+                                                        ticketEditInputError.some(
+                                                            (e) =>
+                                                                e.input ===
+                                                                "currency"
+                                                        )
+                                                            ? "form-control is-invalid"
+                                                            : "form-control"
+                                                    }
                                                     id="exampleFormControlSelect1"
                                                     value={ticketEdit.currency}
                                                     onChange={(e) =>
@@ -447,6 +543,11 @@ const ListingEditTicket = ({
                                                         ZAR
                                                     </option>
                                                 </select>
+                                                <p
+                                                    className="invalid-feedback"
+                                                >
+                                                    {ticketEditInputError.map(e=>e.input==="currency" ? e.msg : null)}
+                                                </p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -825,7 +926,7 @@ const ListingEditTicket = ({
                                 >
                                     Delete
                                 </button>
-                                {isTicketSaving ? (
+                                {/* {isTicketSaving ? (
                                     <button
                                         type="button"
                                         className="btn btn-success float-sm-end"
@@ -833,7 +934,7 @@ const ListingEditTicket = ({
                                     >
                                         Saving...
                                     </button>
-                                ) : (
+                                ) : ( */}
                                     <button
                                         type="button"
                                         className="btn btn-success float-sm-end"
@@ -849,7 +950,7 @@ const ListingEditTicket = ({
                                     >
                                         Save
                                     </button>
-                                )}
+                                {/* )} */}
 
                                 {/* <p className="float-sm-start">Saving...</p> */}
                                 <button

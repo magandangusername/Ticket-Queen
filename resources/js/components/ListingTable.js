@@ -86,6 +86,7 @@ const ListingTable = () => {
         to: "",
     });
     const [inputError, setInputError] = useState([]);
+    const [ticketEditInputError, setTicketEditInputError] = useState([]);
 
     // const inputRef = React.useRef();
 
@@ -490,6 +491,7 @@ const ListingTable = () => {
             .then((response) => {
                 console.log(response);
                 fetchTicket();
+                setInputError([]);
             })
             .catch((error) => {
                 console.log(error.response);
@@ -776,6 +778,19 @@ const ListingTable = () => {
             event_id: ticketedit.event_id,
         };
 
+        var errors = [];
+
+        if (ticket.tickets_available === "") errors = [...errors, {input: "tickets_available", msg: "Available Tickets is required."}]
+        if (ticket.ticket_separation === "") errors = [...errors, {input: "ticket_separation", msg: "Ticket Separation is required."}]
+        if (ticket.section === "") errors = [...errors, {input: "section", msg: "Section is required."}]
+        if (ticket.row === "") errors = [...errors, {input: "row", msg: "Row Tickets is required."}]
+        if (ticket.seats_from === "") errors = [...errors, {input: "seats_from", msg: "Seats from is required."}]
+        if (ticket.seats_to === "") errors = [...errors, {input: "seats_to", msg: "Seats to is required."}]
+        if (ticket.price === "") errors = [...errors, {input: "price", msg: "Website Price is required."}]
+        if (ticket.currency === "") errors = [...errors, {input: "currency", msg: "Currency is required."}]
+
+        if (errors.length > 0) {setTicketEditInputError(errors); return}
+
         restricts = restricts.filter((restrict) => restrict.isChecked === true);
         ticketrestrictions = ticketrestrictions.filter(
             (restrict) => restrict.isChecked === true
@@ -806,6 +821,7 @@ const ListingTable = () => {
                         : ticket
                 );
                 setTickets(ticketinfo);
+                setTicketEditInputError([]);
             })
             .catch((error) => {
                 console.log(error.response);
@@ -1305,6 +1321,7 @@ const ListingTable = () => {
                     successMsg={successMsg}
                     setTicketClone={setTicketClone}
                     ticketTypes={ticketTypes}
+                    ticketEditInputError={ticketEditInputError}
                 />
                 <ListingNew
                     concerts={concerts}
