@@ -7,7 +7,8 @@ const ListingTicketClone = ({
     isTicketEditLoading,
     handleTicketCloneEdit,
     isTicketSaving,
-    handleTicketCloneUpdate
+    handleTicketCloneUpdate,
+    ticketCloneInputError
 }) => {
     return (
         <div className="modal fade container-fluid" id="clone">
@@ -32,6 +33,7 @@ const ListingTicketClone = ({
 
                                 <button
                                     type="button"
+                                    id="modal-dismiss"
                                     className="btn-close"
                                     data-bs-dismiss="modal"
                                 ></button>
@@ -90,7 +92,15 @@ const ListingTicketClone = ({
                                                         </option>
                                                     </select> */}
                                                     <input
-                                                        className="form-control"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "section" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         type="text"
                                                         value={clone.section}
                                                         onChange={(e) =>
@@ -102,6 +112,11 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="section" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     {/* <select
@@ -117,7 +132,15 @@ const ListingTicketClone = ({
                                                         <option>D</option>
                                                     </select> */}
                                                     <input
-                                                        className="form-control"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "row" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         type="text"
                                                         value={clone.row}
                                                         onChange={(e) =>
@@ -129,12 +152,25 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="row" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
 
                                                 <td>
                                                     <input
-                                                        type="seatfrom"
-                                                        className="form-control"
+                                                        type="text"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "seats_from" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="exampleFormControlInput1"
                                                         value={clone.seats_from}
                                                         onChange={(e) =>
@@ -146,11 +182,24 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="seats_from" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <input
-                                                        type="seatto"
-                                                        className="form-control"
+                                                        type="text"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "seats_to" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="exampleFormControlInput1"
                                                         value={clone.seats_to}
                                                         onChange={(e) =>
@@ -162,11 +211,24 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="seats_to" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <input
                                                         type="number"
-                                                        className="form-control"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "price" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="exampleFormControlInput1"
                                                         value={clone.price === "NaN" ? 0 : Number(clone.price).toString()}
                                                         onChange={(e) =>
@@ -185,13 +247,26 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="price" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <input
                                                         type="number"
-                                                        className="form-control"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "proceeds" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="exampleFormControlInput1"
-                                                        value={clone.price === "NaN" ? 0 : Number(clone.proceeds).toString()}
+                                                        value={clone.proceeds === "NaN" ? 0 : Number(clone.proceeds).toString()}
                                                         onChange={(e) =>
                                                             e.target.value === "" ?
                                                             handleTicketCloneEdit(
@@ -208,13 +283,27 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="proceeds" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <input
                                                         type="number"
-                                                        className="form-control"
+                                                        className={
+                                                            ticketCloneInputError.some(
+                                                                (e) =>
+                                                                    e.input ===
+                                                                    "tickets_available" & e.index === index
+                                                            )
+                                                                ? "form-control is-invalid"
+                                                                : "form-control"
+                                                        }
                                                         id="exampleFormControlInput1"
                                                         value={
+                                                            clone.tickets_available === "NaN" ? 0 :
                                                             Number(clone.tickets_available).toString()
                                                         }
                                                         onChange={(e) =>
@@ -226,6 +315,11 @@ const ListingTicketClone = ({
                                                         }
                                                         required
                                                     />
+                                                    <p
+                                                        className="invalid-feedback"
+                                                    >
+                                                        {ticketCloneInputError.map(e=>e.input==="tickets_available" & e.index === index ? e.msg : null)}
+                                                    </p>
                                                 </td>
                                                 <td className="text-justify">
                                                     {index ? (
@@ -279,7 +373,6 @@ const ListingTicketClone = ({
                                         <button
                                             type="button"
                                             className="btn btn-success"
-                                            data-bs-dismiss="modal"
                                             onClick={() =>
                                                 handleTicketCloneUpdate(
 

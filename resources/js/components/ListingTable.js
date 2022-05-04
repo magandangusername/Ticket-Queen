@@ -87,6 +87,7 @@ const ListingTable = () => {
     });
     const [inputError, setInputError] = useState([]);
     const [ticketEditInputError, setTicketEditInputError] = useState([]);
+    const [ticketCloneInputError, setticketCloneInputError] = useState([]);
 
     // const inputRef = React.useRef();
 
@@ -832,7 +833,20 @@ const ListingTable = () => {
     };
 
     const handleTicketCloneUpdate = async () => {
-        setIsTicketSaving(true);
+        // setIsTicketSaving(true);
+
+        var errors = [];
+        ticketClone.map((ticket, index)=> {
+            if (ticket.tickets_available === "") errors = [...errors, {index: index, input: "tickets_available", msg: "Available Tickets is required."}]
+            if (ticket.ticket_separation === "") errors = [...errors, {index: index, input: "ticket_separation", msg: "Ticket Separation is required."}]
+            if (ticket.section === "") errors = [...errors, {index: index, input: "section", msg: "Section is required."}]
+            if (ticket.row === "") errors = [...errors, {index: index, input: "row", msg: "Row Tickets is required."}]
+            if (ticket.seats_from === "") errors = [...errors, {index: index, input: "seats_from", msg: "Seats from is required."}]
+            if (ticket.seats_to === "") errors = [...errors, {index: index, input: "seats_to", msg: "Seats to is required."}]
+            if (ticket.price === "") errors = [...errors, {index: index, input: "price", msg: "Website Price is required."}]
+            if (ticket.currency === "") errors = [...errors, {index: index, input: "currency", msg: "Currency is required."}]
+        })
+        if (errors.length > 0) {setticketCloneInputError(errors); return}
 
         const request = [
             ticketClone,
@@ -845,6 +859,7 @@ const ListingTable = () => {
                 console.log(response);
                 // console.log([...tickets, ...ticketClone]);
                 // setTickets([...tickets, ...ticketClone]);
+                document.getElementById("modal-dismiss").click();
                 fetchTicket();
             })
             .catch((error) => {
@@ -852,7 +867,7 @@ const ListingTable = () => {
                 setFetchError(error.message);
             });
 
-        setIsTicketSaving(false);
+        // setIsTicketSaving(false);
     };
 
     // update ticket to the database
@@ -1338,6 +1353,7 @@ const ListingTable = () => {
                     isTicketSaving={isTicketSaving}
                     handleTicketCloneEdit={handleTicketCloneEdit}
                     handleTicketCloneUpdate={handleTicketCloneUpdate}
+                    ticketCloneInputError={ticketCloneInputError}
                 />
                 <ListingTicketTypes
                     ticketTypes={ticketTypes}
