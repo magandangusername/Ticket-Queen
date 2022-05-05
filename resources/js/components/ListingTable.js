@@ -78,7 +78,6 @@ const ListingTable = () => {
     const [ticketTypeSelected, setTicketTypeSelected] = useState("");
     const [search, setSearch] = useState("");
     const [newTicket, setNewTicket] = useState([]);
-    const [selectedTicketType, setSelectedTicketType] = useState("");
     const [isTicketNewLoading, setIsTicketNewLoading] = useState(true);
     const [newListingSearch, setNewListingSearch] = useState({
         search: "",
@@ -205,7 +204,6 @@ const ListingTable = () => {
         )
             setSortAllListingActive(true);
 
-        // prevents duplicates but idk if it works
         if (!sortActiveActive) {
             filter = sort.filter((remove) => remove.is_published != 1);
         }
@@ -857,8 +855,6 @@ const ListingTable = () => {
             .post("/api/tickets/clone/create", request)
             .then((response) => {
                 console.log(response);
-                // console.log([...tickets, ...ticketClone]);
-                // setTickets([...tickets, ...ticketClone]);
                 document.getElementById("modal-dismiss").click();
                 fetchTicket();
             })
@@ -866,8 +862,6 @@ const ListingTable = () => {
                 console.log(error.response);
                 setFetchError(error.message);
             });
-
-        // setIsTicketSaving(false);
     };
 
     // update ticket to the database

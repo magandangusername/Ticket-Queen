@@ -7996,39 +7996,34 @@ var ListingTable = function ListingTable() {
       newTicket = _useState60[0],
       setNewTicket = _useState60[1];
 
-  var _useState61 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+  var _useState61 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState62 = _slicedToArray(_useState61, 2),
-      selectedTicketType = _useState62[0],
-      setSelectedTicketType = _useState62[1];
+      isTicketNewLoading = _useState62[0],
+      setIsTicketNewLoading = _useState62[1];
 
-  var _useState63 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
-      _useState64 = _slicedToArray(_useState63, 2),
-      isTicketNewLoading = _useState64[0],
-      setIsTicketNewLoading = _useState64[1];
-
-  var _useState65 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+  var _useState63 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
     search: "",
     from: "",
     to: ""
   }),
+      _useState64 = _slicedToArray(_useState63, 2),
+      newListingSearch = _useState64[0],
+      setNewListingSearch = _useState64[1];
+
+  var _useState65 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState66 = _slicedToArray(_useState65, 2),
-      newListingSearch = _useState66[0],
-      setNewListingSearch = _useState66[1];
+      inputError = _useState66[0],
+      setInputError = _useState66[1];
 
   var _useState67 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState68 = _slicedToArray(_useState67, 2),
-      inputError = _useState68[0],
-      setInputError = _useState68[1];
+      ticketEditInputError = _useState68[0],
+      setTicketEditInputError = _useState68[1];
 
   var _useState69 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState70 = _slicedToArray(_useState69, 2),
-      ticketEditInputError = _useState70[0],
-      setTicketEditInputError = _useState70[1];
-
-  var _useState71 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState72 = _slicedToArray(_useState71, 2),
-      ticketCloneInputError = _useState72[0],
-      setticketCloneInputError = _useState72[1]; // const inputRef = React.useRef();
+      ticketCloneInputError = _useState70[0],
+      setticketCloneInputError = _useState70[1]; // const inputRef = React.useRef();
   // gets the concert data from the database
 
 
@@ -8191,7 +8186,7 @@ var ListingTable = function ListingTable() {
     var filter = [];
     var activecombinedList = [];
     var inactivecombinedList = [];
-    if (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) setSortAllListingActive(false);else if (!sortEligibleLastMinuteSalesActive && !sortActiveActive && !sortInactiveActive) setSortAllListingActive(true); // prevents duplicates but idk if it works
+    if (sortEligibleLastMinuteSalesActive || sortActiveActive || sortInactiveActive) setSortAllListingActive(false);else if (!sortEligibleLastMinuteSalesActive && !sortActiveActive && !sortInactiveActive) setSortAllListingActive(true);
 
     if (!sortActiveActive) {
       filter = sort.filter(function (remove) {
@@ -9174,15 +9169,13 @@ var ListingTable = function ListingTable() {
             case 5:
               request = [ticketClone, ticketRestrictionEdit, ticketListingNoteEdit];
               axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/clone/create", request).then(function (response) {
-                console.log(response); // console.log([...tickets, ...ticketClone]);
-                // setTickets([...tickets, ...ticketClone]);
-
+                console.log(response);
                 document.getElementById("modal-dismiss").click();
                 fetchTicket();
               })["catch"](function (error) {
                 console.log(error.response);
                 setFetchError(error.message);
-              }); // setIsTicketSaving(false);
+              });
 
             case 7:
             case "end":
