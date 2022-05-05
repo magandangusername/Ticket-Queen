@@ -5865,7 +5865,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                        value: "Avoid leaving one or three tickets",
+                        value: "Avoid leaving one or\r three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6366,34 +6366,38 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "modal-footer",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              className: "text-success",
-              children: successMsg
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "button",
-              className: "btn btn-light float-sm-start",
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#clone",
-              children: "Clone"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "button",
-              className: "btn btn-danger float-sm-start",
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#delete",
-              children: "Delete"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "button",
-              className: "btn btn-success float-sm-end",
-              onClick: function onClick() {
-                return ticketEditUpdate(ticketEdit, restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit);
-              },
-              children: "Save"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "button",
-              className: "btn btn-secondary float-sm-end",
-              "data-bs-dismiss": "modal",
-              children: "Cancel"
+            className: "modal-footer content-justify-between",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "text-success",
+                children: successMsg
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                type: "button",
+                className: "btn btn-light float-sm-start",
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#clone",
+                children: "Clone"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                type: "button",
+                className: "btn btn-danger float-sm-start",
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#delete",
+                children: "Delete"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                type: "button",
+                className: "btn btn-success float-sm-end",
+                onClick: function onClick() {
+                  return ticketEditUpdate(ticketEdit, restrictions, ticketRestrictionEdit, listingNotes, ticketListingNoteEdit);
+                },
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                type: "button",
+                className: "btn btn-secondary float-sm-end",
+                "data-bs-dismiss": "modal",
+                children: "Cancel"
+              })]
             })]
           })]
         })
@@ -7121,7 +7125,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                        value: "Avoid leaving one or three tickets",
+                        value: "Avoid leaving one or\r three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                         value: "Avoid odd numbers",

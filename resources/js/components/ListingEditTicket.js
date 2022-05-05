@@ -908,7 +908,9 @@ const ListingEditTicket = ({
                                 </div>
                             </div>
                             {/* <!-- Modal footer --> */}
-                            <div className="modal-footer">
+                            <div className="modal-footer content-justify-between">
+                                <div>
+                                
                                 <p className="text-success">{successMsg}</p>
                                 <button
                                     type="button"
@@ -926,6 +928,8 @@ const ListingEditTicket = ({
                                 >
                                     Delete
                                 </button>
+                                </div>
+                                <div>
                                 {/* {isTicketSaving ? (
                                     <button
                                         type="button"
@@ -960,6 +964,7 @@ const ListingEditTicket = ({
                                 >
                                     Cancel
                                 </button>
+                                </div>
                             </div>
                         </>
                     )}
