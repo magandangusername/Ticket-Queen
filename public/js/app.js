@@ -10207,7 +10207,7 @@ var ListingTickets = function ListingTickets(_ref) {
             return type.ticket_type_id === ticket.ticket_type_id;
           })[0].ticket_type
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          href: "#",
+          href: "/UploadETickets/" + ticket.listing_id,
           className: "link-primary text-decoration-none",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
             children: "Upload Now"

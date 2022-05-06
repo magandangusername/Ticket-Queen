@@ -47,7 +47,7 @@ const ListingTickets = ({
                             )[0].ticket_type
                         }
                     </p>
-                    <a href="#" className="link-primary text-decoration-none">
+                    <a href={"/UploadETickets/"+ticket.listing_id} className="link-primary text-decoration-none">
                         <p>Upload Now</p>
                     </a>
                 </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\TicketUploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,8 @@ Route::get('/testing', function () {
 Route::get('/upload', function () {
     return view('upload');
 });
+
+Route::get('UploadETickets/{id}',[TicketUploadController::class, 'show'])->where('id', '[0-9]+');
 
 
 // Route::fallback(function() {

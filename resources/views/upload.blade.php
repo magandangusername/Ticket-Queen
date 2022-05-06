@@ -9,7 +9,7 @@
 
 <div class="container mt-3 pt-3 border bg-light">
     <div class="d-flex justify-content-between">
-        <div class="h 1 m0 pbxs"><b>Christina Aguilera</b>
+        <div class="h 1 m0 pbxs"><b>{{$event['event_name']}}</b>
             <h6 class="h s cGry2">Friday, 05 August 2022 18:30</h6>
             <p>
                 The O2, London, United Kingdom
@@ -50,17 +50,17 @@
                 <br>
                 <br>
                 <br>
-               
+
         <center>
         <i class="fa-solid fa-arrow-up-from-bracket fa-4x" style="color:#D3D3D3"></i>
         <br>
         <h4><b>Upload Your Tickets Now</b></h4>
         </center>
         <br>
-        
+
             <div class="justify-content">
-                
-                
+
+
                 <i class="fas fa-check" style="color:#F25278"></i>&nbsp Tickets are more likely to sell if ready for
                 'Instant Download'
                 <br>
@@ -70,7 +70,7 @@
                 <br>
                 <br>
                 <br>
-                
+
                 <br>
             </div>
             <center class="mb-3">
