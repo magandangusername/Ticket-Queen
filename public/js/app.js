@@ -6594,7 +6594,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var ListingNewListing = function ListingNewListing(_ref) {
   var createConcert = _ref.createConcert,
       setCreateConcert = _ref.setCreateConcert,
-      eventNewUpdate = _ref.eventNewUpdate;
+      eventNewUpdate = _ref.eventNewUpdate,
+      inputError = _ref.inputError;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "modal container-fluid",
     id: "ReqEventModal",
@@ -6627,7 +6628,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlInput1",
                 children: "Artist, Home Team, Tournament, Festival or Show*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                type: "show",
+                type: "text",
                 className: "",
                 id: "exampleFormControlInput1",
                 placeholder: "Search",
@@ -6640,7 +6641,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 children: "Event*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "text",
-                className: "",
+                className: inputError.some(function (e) {
+                  return e.input === "event_name";
+                }) ? "form-control is-invalid" : "form-control",
                 id: "exampleFormControlInput1",
                 value: createConcert.event_name,
                 onChange: function onChange(e) {
@@ -6649,6 +6652,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_name" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6657,7 +6665,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 children: "Event Date/Time*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "date",
-                className: "col me-1",
+                className: inputError.some(function (e) {
+                  return e.input === "event_date";
+                }) ? "form-control col me-1 is-invalid" : "form-control col me-1",
                 id: "date",
                 name: "date",
                 value: createConcert.event_date,
@@ -6668,11 +6678,18 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 },
                 min: (0,dateformat__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(), "yyyy-mm-dd"),
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_date" ? e.msg : null;
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "time",
                 name: "time",
                 id: "time",
-                className: "col ms-1",
+                className: inputError.some(function (e) {
+                  return e.input === "event_time";
+                }) ? "form-control col ms-1 is-invalid" : "form-control col ms-1",
                 value: createConcert.event_time,
                 onChange: function onChange(e) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
@@ -6680,6 +6697,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_time" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6688,7 +6710,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 children: "Venue*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "text",
-                className: "",
+                className: inputError.some(function (e) {
+                  return e.input === "event_venue";
+                }) ? "form-control is-invalid" : "form-control",
                 placeholder: "Search",
                 value: createConcert.event_venue,
                 onChange: function onChange(e) {
@@ -6697,6 +6721,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_venue" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6705,7 +6734,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 children: "City*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "text",
-                className: " ",
+                className: inputError.some(function (e) {
+                  return e.input === "event_city";
+                }) ? "form-control is-invalid" : "form-control",
                 value: createConcert.event_city,
                 onChange: function onChange(e) {
                   return setCreateConcert(_objectSpread(_objectSpread({}, createConcert), {}, {
@@ -6713,6 +6744,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_city" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6720,7 +6756,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Country*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-                className: "",
+                className: inputError.some(function (e) {
+                  return e.input === "event_country";
+                }) ? "form-control is-invalid" : "form-control",
                 id: "exampleFormControlSelect1",
                 value: createConcert.event_country,
                 onChange: function onChange(e) {
@@ -6746,6 +6784,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   value: "Angola",
                   children: "Angola"
                 })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_country" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6754,7 +6797,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 children: "Onsale"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "datetime-local",
-                className: "col me-1",
+                className: inputError.some(function (e) {
+                  return e.input === "event_onsale_date_time";
+                }) ? "form-control col me-1 is-invalid" : "form-control col me-1",
                 id: "date",
                 name: "date",
                 value: createConcert.event_onsale_date_time,
@@ -6765,6 +6810,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 },
                 min: (0,dateformat__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(), 'yyyy-mm-dd"T"hh:mm'),
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_event_onsale_date_timecountry" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6772,7 +6822,9 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 htmlFor: "exampleFormControlInput1",
                 children: "Face Value"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-                className: "col me-1",
+                className: inputError.some(function (e) {
+                  return e.input === "event_face_value_currency";
+                }) ? "form-control col me-1 is-invalid" : "form-control col me-1",
                 id: "FaceValueCurrencyCode",
                 value: createConcert.event_face_value_currency,
                 onChange: function onChange(e) {
@@ -6897,9 +6949,16 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   value: "ZAR",
                   children: "South African Rand"
                 })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_face_value_currency" ? e.msg : null;
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "number",
-                className: "col mx-1",
+                className: inputError.some(function (e) {
+                  return e.input === "event_face_value_min";
+                }) ? "form-control col mx-1 is-invalid" : "form-control col mx-1",
                 id: "exampleFormControlInput1",
                 placeholder: "Face Value Min",
                 value: createConcert.event_face_value_min === "NaN" ? 0 : Number(createConcert.event_face_value_min).toString(),
@@ -6914,9 +6973,16 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_face_value_min" ? e.msg : null;
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "number",
-                className: "col ms-1",
+                className: inputError.some(function (e) {
+                  return e.input === "event_face_value_max";
+                }) ? "form-control col ms-1 is-invalid" : "form-control col ms-1",
                 id: "exampleFormControlInput1",
                 placeholder: "Face Value Max",
                 value: createConcert.event_face_value_max === "NaN" ? 0 : Number(createConcert.event_face_value_max).toString(),
@@ -6931,6 +6997,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "invalid-feedback",
+                children: inputError.map(function (e) {
+                  return e.input === "event_face_value_max" ? e.msg : null;
+                })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "row mb-2",
@@ -6939,7 +7010,7 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 children: "Event Url and Notes*"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "text",
-                className: "",
+                className: "form-controrl",
                 id: "exampleFormControlInput1",
                 value: createConcert.event_url_notes,
                 onChange: function onChange(e) {
@@ -6966,8 +7037,11 @@ var ListingNewListing = function ListingNewListing(_ref) {
             onClick: function onClick() {
               return eventNewUpdate();
             },
-            "data-bs-dismiss": "modal",
             children: "Submit"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            id: "closenewlistingmodal",
+            "data-bs-dismiss": "modal",
+            hidden: true
           })]
         })]
       })
@@ -8595,8 +8669,8 @@ var ListingTable = function ListingTable() {
               }); // setTicketRestrictionEdit(restricts);
               // setTicketListingNoteEdit(listingnotes);
 
-              request = [ticket, restricts, listingnotes];
-              console.log(request);
+              request = [ticket, restricts, listingnotes]; // console.log(request);
+
               axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/create", request).then(function (response) {
                 console.log(response);
                 fetchTicket();
@@ -8608,7 +8682,7 @@ var ListingTable = function ListingTable() {
               setIsTicketSaving(false);
               setSuccessMsg("Saved");
 
-            case 22:
+            case 21:
             case "end":
               return _context8.stop();
           }
@@ -8624,12 +8698,65 @@ var ListingTable = function ListingTable() {
 
   var eventNewUpdate = /*#__PURE__*/function () {
     var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
+      var errors;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
               // setIsTicketSaving(true);
-              console.log(createConcert);
+              // console.log(createConcert);
+              errors = [];
+              if (createConcert.event_name === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_name",
+                msg: "Event name is required."
+              }]);
+              if (createConcert.event_date === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_date",
+                msg: "Event date is required."
+              }]);
+              if (createConcert.event_time === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_time",
+                msg: "Event time is required."
+              }]);
+              if (createConcert.event_venue === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_venue",
+                msg: "Venue is required."
+              }]);
+              if (createConcert.event_city === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_city",
+                msg: "City is required."
+              }]);
+              if (createConcert.event_country === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_country",
+                msg: "Country is required."
+              }]);
+              if (createConcert.event_onsale_date_time === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_onsale_date_time",
+                msg: "Onsale date and time is required."
+              }]);
+              if (createConcert.event_face_value_currency === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_face_value_currency",
+                msg: "Face value currency is required."
+              }]);
+              if (createConcert.event_face_value_min === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_face_value_min",
+                msg: "Minumum face value is required."
+              }]);
+              if (createConcert.event_face_value_max === "") errors = [].concat(_toConsumableArray(errors), [{
+                input: "event_face_value_max",
+                msg: "Max face value is required."
+              }]);
+
+              if (!(errors.length > 0)) {
+                _context9.next = 14;
+                break;
+              }
+
+              setInputError(errors);
+              return _context9.abrupt("return");
+
+            case 14:
+              document.getElementById("closenewlistingmodal").click();
               axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/concerts/create", createConcert).then(function (response) {
                 console.log(response);
                 setCreateConcert({
@@ -8652,7 +8779,7 @@ var ListingTable = function ListingTable() {
               }); // setIsTicketSaving(false);
               // setSuccessMsg("Saved");
 
-            case 2:
+            case 16:
             case "end":
               return _context9.stop();
           }
@@ -9744,7 +9871,8 @@ var ListingTable = function ListingTable() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNewListing__WEBPACK_IMPORTED_MODULE_12__["default"], {
         createConcert: createConcert,
         setCreateConcert: setCreateConcert,
-        eventNewUpdate: eventNewUpdate
+        eventNewUpdate: eventNewUpdate,
+        inputError: inputError
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNewTicket__WEBPACK_IMPORTED_MODULE_13__["default"], {
         isTicketNewLoading: isTicketNewLoading,
         newTicket: newTicket,

@@ -483,7 +483,7 @@ const ListingTable = () => {
         // setTicketListingNoteEdit(listingnotes);
 
         const request = [ticket, restricts, listingnotes];
-        console.log(request);
+        // console.log(request);
 
         axios
             .post("/api/tickets/create", request)
@@ -503,7 +503,23 @@ const ListingTable = () => {
     // passes the new event to the database
     const eventNewUpdate = async () => {
         // setIsTicketSaving(true);
-        console.log(createConcert);
+        // console.log(createConcert);
+        var errors = [];
+
+        if (createConcert.event_name === "") errors = [...errors, {input: "event_name", msg: "Event name is required."}]
+        if (createConcert.event_date === "") errors = [...errors, {input: "event_date", msg: "Event date is required."}]
+        if (createConcert.event_time === "") errors = [...errors, {input: "event_time", msg: "Event time is required."}]
+        if (createConcert.event_venue === "") errors = [...errors, {input: "event_venue", msg: "Venue is required."}]
+        if (createConcert.event_city === "") errors = [...errors, {input: "event_city", msg: "City is required."}]
+        if (createConcert.event_country === "") errors = [...errors, {input: "event_country", msg: "Country is required."}]
+        if (createConcert.event_onsale_date_time === "") errors = [...errors, {input: "event_onsale_date_time", msg: "Onsale date and time is required."}]
+        if (createConcert.event_face_value_currency === "") errors = [...errors, {input: "event_face_value_currency", msg: "Face value currency is required."}]
+        if (createConcert.event_face_value_min === "") errors = [...errors, {input: "event_face_value_min", msg: "Minumum face value is required."}]
+        if (createConcert.event_face_value_max === "") errors = [...errors, {input: "event_face_value_max", msg: "Max face value is required."}]
+
+        if (errors.length > 0) {setInputError(errors); return}
+        document.getElementById("closenewlistingmodal").click();
+
         axios
             .post("/api/concerts/create", createConcert)
             .then((response) => {
@@ -1362,6 +1378,7 @@ const ListingTable = () => {
                     createConcert={createConcert}
                     setCreateConcert={setCreateConcert}
                     eventNewUpdate={eventNewUpdate}
+                    inputError={inputError}
                 />
 
                 <ListingNewTicket
