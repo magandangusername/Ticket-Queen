@@ -49,6 +49,7 @@ class TicketUploadController extends Controller
     {
         $ticketinfo = EventTickets::where('listing_id', $id)->first();
         $event = events::where('event_id', $ticketinfo['event_id'])->first();
+
         return view('upload')->with(compact('event', 'ticketinfo'));
     }
 

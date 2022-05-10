@@ -7125,7 +7125,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                        value: "Avoid leaving one or\r three tickets",
+                        value: "Avoid leaving one or three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                         value: "Avoid odd numbers",

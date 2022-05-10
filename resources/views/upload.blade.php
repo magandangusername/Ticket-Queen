@@ -10,9 +10,11 @@
 <div class="container mt-3 pt-3 border bg-light">
     <div class="d-flex justify-content-between">
         <div class="h 1 m0 pbxs"><b>{{$event['event_name']}}</b>
-            <h6 class="h s cGry2">Friday, 05 August 2022 18:30</h6>
+            <h6 class="h s cGry2">{{ \Carbon\Carbon::parse($event['event_date']." ".$event['event_time'])->isoFormat('dddd, D MMMM YYYY h:mm a')}}</h6>
+            {{-- Friday, 05 August 2022 18:30 --}}
             <p>
-                The O2, London, United Kingdom
+                {{$event['event_venue'].", ".$event['event_city'].", ".$event['event_country']}}
+                {{-- The O2, London, United Kingdom --}}
             </p>
         </div>
 
@@ -20,27 +22,28 @@
 
             <p>Listing ID
                 <br>
-                5030903763
+                {{$ticketinfo['listing_id']}}
+                {{-- 5030903763 --}}
             </p>
 
         </div>
     </div>
     <div class="d-flex">
 
-        <p>6 tickets</p>
+        <p>{{$ticketinfo['tickets_available']}} tickets</p>
 
         &nbsp;
         &nbsp;
 
-        <div class="mb-2 bg-light text-dark"><b>Section: </b>406</div>
+        <div class="mb-2 bg-light text-dark"><b>Section: </b>{{$ticketinfo['section']}}</div>
         &nbsp;
         &nbsp;
 
-        <div class=" mb-2 bg-light text-dark"><b>Row: </b>U</div>
+        <div class=" mb-2 bg-light text-dark"><b>Row: </b>{{$ticketinfo['row']}}</div>
         &nbsp;
         &nbsp;
 
-        <div class=" mb-2 bg-light text-dark"><b>Seat: </b>581-586</div>
+        <div class=" mb-2 bg-light text-dark"><b>Seat: </b>{{$ticketinfo['seats_from']." - ".$ticketinfo['seats_to']}}</div>
     </div>
 </div>
 <br>
