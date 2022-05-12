@@ -8042,7 +8042,7 @@ var ListingTable = function ListingTable() {
     event_time: "",
     event_venue: "",
     event_city: "",
-    event_country: "",
+    event_country: "Albania",
     event_onsale_date_time: "",
     // event_onsale_time: "",
     event_face_value_currency: "AUD",
