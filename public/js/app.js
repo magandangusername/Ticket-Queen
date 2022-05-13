@@ -8101,8 +8101,7 @@ var ListingTable = function ListingTable() {
   var _useState69 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState70 = _slicedToArray(_useState69, 2),
       ticketCloneInputError = _useState70[0],
-      setticketCloneInputError = _useState70[1]; // const inputRef = React.useRef();
-  // gets the concert data from the database
+      setticketCloneInputError = _useState70[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -8481,7 +8480,6 @@ var ListingTable = function ListingTable() {
                   tickets_available: 0,
                   ticket_separation: "Any",
                   tickets_sold: 0,
-                  // ticket_type_id
                   section: "",
                   row: "",
                   seats_from: "",
@@ -8666,11 +8664,8 @@ var ListingTable = function ListingTable() {
               });
               listingnotes = listingNotes.filter(function (listnote) {
                 return listnote.isChecked === true;
-              }); // setTicketRestrictionEdit(restricts);
-              // setTicketListingNoteEdit(listingnotes);
-
-              request = [ticket, restricts, listingnotes]; // console.log(request);
-
+              });
+              request = [ticket, restricts, listingnotes];
               axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tickets/create", request).then(function (response) {
                 console.log(response);
                 fetchTicket();
@@ -8703,8 +8698,6 @@ var ListingTable = function ListingTable() {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
-              // setIsTicketSaving(true);
-              // console.log(createConcert);
               errors = [];
               if (createConcert.event_name === "") errors = [].concat(_toConsumableArray(errors), [{
                 input: "event_name",
@@ -8776,8 +8769,7 @@ var ListingTable = function ListingTable() {
               })["catch"](function (error) {
                 console.log(error.response);
                 setFetchError(error.message);
-              }); // setIsTicketSaving(false);
-              // setSuccessMsg("Saved");
+              });
 
             case 16:
             case "end":

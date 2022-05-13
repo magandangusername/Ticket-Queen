@@ -11,7 +11,7 @@ import ListingTicketTypes from "./ListingTicketTypes";
 import ListingDeletePrompt from "./ListingDeletePrompt";
 import ListingNewListing from "./ListingNewListing";
 import ListingNewTicket from "./ListingNewTicket";
-import { sortedLastIndex, toInteger, toNumber, toSafeInteger } from "lodash";
+import {toInteger} from "lodash";
 
 const ListingTable = () => {
     const [concerts, setConcerts] = useState([]);
@@ -68,7 +68,6 @@ const ListingTable = () => {
         event_city: "",
         event_country: "Albania",
         event_onsale_date_time: "",
-        // event_onsale_time: "",
         event_face_value_currency: "AUD",
         event_face_value_min: "",
         event_face_value_max: "",
@@ -87,8 +86,6 @@ const ListingTable = () => {
     const [inputError, setInputError] = useState([]);
     const [ticketEditInputError, setTicketEditInputError] = useState([]);
     const [ticketCloneInputError, setticketCloneInputError] = useState([]);
-
-    // const inputRef = React.useRef();
 
     // gets the concert data from the database
     const fetchConcert = async () => {
@@ -159,18 +156,6 @@ const ListingTable = () => {
     useEffect(() => {
         fetchConcert();
         fetchTicket();
-
-        // setSortAllListing(concerts);
-        // const inactiveList = concerts.filter(
-        //     (concert) => concert.status === "inactive"
-        // );
-        // setSortInactive(inactiveList);
-        // const activeList = concerts.filter(
-        //     (concert) => concert.status === "active"
-        // );
-        // setSortActive(activeList);
-
-        // handleSort();
     }, []);
 
     // displays the tool when one or more tickets are selected
@@ -229,7 +214,6 @@ const ListingTable = () => {
         sortEligibleLastMinuteSalesActive,
         sortActiveActive,
         sortInactiveActive,
-        // sortAllListingActive,
     ]);
 
     // sorting options interaction
@@ -265,7 +249,6 @@ const ListingTable = () => {
     const handleAllListing = async () => {
         const activeList = tickets;
         setSort([]);
-        // console.log(activeList);
     };
 
     // updating the which tickets are selected
@@ -284,7 +267,6 @@ const ListingTable = () => {
             setIsTicketEditLoading(true);
             setSuccessMsg(null);
             var editList = tickets.filter((ticket) => ticket.listing_id === id);
-            // editList = [{...editList, concert}];
 
             var arrOfObj = editList;
 
@@ -295,8 +277,6 @@ const ListingTable = () => {
                 o.event_date = concert.event_date;
                 o.event_time = concert.event_time;
                 o.event_venue = concert.event_venue;
-                // o.Total_Available = concert.Total_Available;
-                // o.status = concert.status;
                 return o;
             });
 
@@ -349,7 +329,6 @@ const ListingTable = () => {
                 tickets_available: 0,
                 ticket_separation: "Any",
                 tickets_sold: 0,
-                // ticket_type_id
                 section: "",
                 row: "",
                 seats_from: "",
@@ -387,8 +366,6 @@ const ListingTable = () => {
     // updating the ticket input values
     // this function may not be the best, but its the best i could think of.
     const handleTicketNewChange = async (
-        // id,
-        // input_id,
         input_type,
         val = ""
     ) => {
@@ -413,38 +390,6 @@ const ListingTable = () => {
             );
             setListingNotes(ticketListNoteEdit);
         }
-        // else if (input_type === "available_tickets") {
-        //     var ticketinput = { ...newTicket, tickets_available: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "ticket_separation") {
-        //     var ticketinput = { ...newTicket, ticket_separation: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "tickets_sold") {
-        //     var ticketinput = { ...newTicket, tickets_sold: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "section") {
-        //     var ticketinput = { ...newTicket, section: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "row") {
-        //     var ticketinput = { ...newTicket, row: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "seats_from") {
-        //     var ticketinput = { ...newTicket, seats_from: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "seats_to") {
-        //     var ticketinput = { ...newTicket, seats_to: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "price") {
-        //     var ticketinput = { ...newTicket, price: val };
-        //     setNewTicket(ticketinput);
-        // } else if (input_type === "publish") {
-        //     if (newTicket.is_published === 1) {
-        //         var ticketinput = { ...newTicket, is_published: 0 };
-        //     } else if (newTicket.is_published === 0) {
-        //         var ticketinput = { ...newTicket, is_published: 1 };
-        //     }
-        //     setNewTicket(ticketinput);
-        // }
     };
 
     // passes the new ticket to the database
@@ -468,7 +413,6 @@ const ListingTable = () => {
 
         if (errors.length > 0) {setInputError(errors); return}
 
-        // inputRef.current.handleClick();
         document.getElementById("closemodal").click();
 
         var restricts = restrictions.filter(
@@ -479,11 +423,7 @@ const ListingTable = () => {
             (listnote) => listnote.isChecked === true
         );
 
-        // setTicketRestrictionEdit(restricts);
-        // setTicketListingNoteEdit(listingnotes);
-
         const request = [ticket, restricts, listingnotes];
-        // console.log(request);
 
         axios
             .post("/api/tickets/create", request)
@@ -502,8 +442,6 @@ const ListingTable = () => {
 
     // passes the new event to the database
     const eventNewUpdate = async () => {
-        // setIsTicketSaving(true);
-        // console.log(createConcert);
         var errors = [];
 
         if (createConcert.event_name === "") errors = [...errors, {input: "event_name", msg: "Event name is required."}]
@@ -543,8 +481,6 @@ const ListingTable = () => {
                 console.log(error.response);
                 setFetchError(error.message);
             });
-        // setIsTicketSaving(false);
-        // setSuccessMsg("Saved");
     };
 
     // updating the ticket input values
@@ -572,15 +508,6 @@ const ListingTable = () => {
                             : ticketrestrict
                 );
                 setTicketRestrictionEdit(ticketRestrictEdit);
-                // var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
-                //     ticketrestrict.restriction_id === input_id
-                //         ? {
-                //               ...ticketrestrict,
-                //               isChecked: !ticketrestrict.isChecked,
-                //           }
-                //         : ticketrestrict
-                // );
-                // setRestrictions(ticketRestrictEdit);
             } else if (len.length === 0) {
                 var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
                     ticketrestrict.restriction_id === input_id
