@@ -8044,7 +8044,6 @@ var ListingTable = function ListingTable() {
     event_city: "",
     event_country: "Albania",
     event_onsale_date_time: "",
-    // event_onsale_time: "",
     event_face_value_currency: "AUD",
     event_face_value_min: "",
     event_face_value_max: "",
@@ -8236,16 +8235,7 @@ var ListingTable = function ListingTable() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     fetchConcert();
-    fetchTicket(); // setSortAllListing(concerts);
-    // const inactiveList = concerts.filter(
-    //     (concert) => concert.status === "inactive"
-    // );
-    // setSortInactive(inactiveList);
-    // const activeList = concerts.filter(
-    //     (concert) => concert.status === "active"
-    // );
-    // setSortActive(activeList);
-    // handleSort();
+    fetchTicket();
   }, []); // displays the tool when one or more tickets are selected
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
@@ -8292,8 +8282,7 @@ var ListingTable = function ListingTable() {
     }
 
     setSort(_toConsumableArray(new Set([].concat(_toConsumableArray(activecombinedList), _toConsumableArray(inactivecombinedList)))));
-  }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive // sortAllListingActive,
-  ]); // sorting options interaction
+  }, [sortEligibleLastMinuteSalesActive, sortActiveActive, sortInactiveActive]); // sorting options interaction
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     if (sortAllListingActive) {
@@ -8331,7 +8320,7 @@ var ListingTable = function ListingTable() {
           switch (_context3.prev = _context3.next) {
             case 0:
               activeList = tickets;
-              setSort([]); // console.log(activeList);
+              setSort([]);
 
             case 2:
             case "end":
@@ -8387,8 +8376,7 @@ var ListingTable = function ListingTable() {
               setSuccessMsg(null);
               editList = tickets.filter(function (ticket) {
                 return ticket.listing_id === id;
-              }); // editList = [{...editList, concert}];
-
+              });
               arrOfObj = editList;
               result = arrOfObj.map(function (el) {
                 var o = Object.assign({}, el);
@@ -8396,9 +8384,7 @@ var ListingTable = function ListingTable() {
                 o.event_name = concert.event_name;
                 o.event_date = concert.event_date;
                 o.event_time = concert.event_time;
-                o.event_venue = concert.event_venue; // o.Total_Available = concert.Total_Available;
-                // o.status = concert.status;
-
+                o.event_venue = concert.event_venue;
                 return o;
               });
               setTicketEdit(_objectSpread({}, result[0]));
@@ -8528,9 +8514,7 @@ var ListingTable = function ListingTable() {
 
 
   var handleTicketNewChange = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7( // id,
-    // input_id,
-    input_type) {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(input_type) {
       var val,
           ticketRestrictEdit,
           ticketListNoteEdit,
@@ -8555,39 +8539,7 @@ var ListingTable = function ListingTable() {
                   }) : ticketlistnote;
                 });
                 setListingNotes(ticketListNoteEdit);
-              } // else if (input_type === "available_tickets") {
-              //     var ticketinput = { ...newTicket, tickets_available: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "ticket_separation") {
-              //     var ticketinput = { ...newTicket, ticket_separation: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "tickets_sold") {
-              //     var ticketinput = { ...newTicket, tickets_sold: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "section") {
-              //     var ticketinput = { ...newTicket, section: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "row") {
-              //     var ticketinput = { ...newTicket, row: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "seats_from") {
-              //     var ticketinput = { ...newTicket, seats_from: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "seats_to") {
-              //     var ticketinput = { ...newTicket, seats_to: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "price") {
-              //     var ticketinput = { ...newTicket, price: val };
-              //     setNewTicket(ticketinput);
-              // } else if (input_type === "publish") {
-              //     if (newTicket.is_published === 1) {
-              //         var ticketinput = { ...newTicket, is_published: 0 };
-              //     } else if (newTicket.is_published === 0) {
-              //         var ticketinput = { ...newTicket, is_published: 1 };
-              //     }
-              //     setNewTicket(ticketinput);
-              // }
-
+              }
 
             case 2:
             case "end":
@@ -8657,7 +8609,6 @@ var ListingTable = function ListingTable() {
               return _context8.abrupt("return");
 
             case 14:
-              // inputRef.current.handleClick();
               document.getElementById("closemodal").click();
               restricts = restrictions.filter(function (restrict) {
                 return restrict.isChecked === true;
@@ -8810,15 +8761,7 @@ var ListingTable = function ListingTable() {
                       isChecked: !ticketrestrict.isChecked
                     }) : ticketrestrict;
                   });
-                  setTicketRestrictionEdit(ticketRestrictEdit); // var ticketRestrictEdit = restrictions.map((ticketrestrict) =>
-                  //     ticketrestrict.restriction_id === input_id
-                  //         ? {
-                  //               ...ticketrestrict,
-                  //               isChecked: !ticketrestrict.isChecked,
-                  //           }
-                  //         : ticketrestrict
-                  // );
-                  // setRestrictions(ticketRestrictEdit);
+                  setTicketRestrictionEdit(ticketRestrictEdit);
                 } else if (len.length === 0) {
                   ticketRestrictEdit = restrictions.map(function (ticketrestrict) {
                     return ticketrestrict.restriction_id === input_id ? _objectSpread(_objectSpread({}, ticketrestrict), {}, {
@@ -10359,7 +10302,8 @@ var ListingTickets = function ListingTickets(_ref) {
           children: currency_symbol_map__WEBPACK_IMPORTED_MODULE_0___default()(ticket.currency)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
           type: "number",
-          className: "form-control d-inline me-2",
+          className: "form-control d-inline me-2" // aria-describedby={"ticket_current"+ticket.listing_id}
+          ,
           style: {
             width: 75 + "px"
           },

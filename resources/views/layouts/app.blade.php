@@ -20,7 +20,6 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -65,27 +64,12 @@
                         <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#ListingModal" href="">+
                             New Listing</a>
                     </li>
-                    {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            Tools
-                          </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> --}}
                     @guest
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        {{-- @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="#">Sign-Up</a>
-                            </li>
-                        @endif --}}
                     @else
-                        <li class="nav-item">
+                        <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
