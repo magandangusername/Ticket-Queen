@@ -100,18 +100,9 @@ class ListingController extends Controller
         ]);
 
         $ticket = EventTickets::where('listing_id', $validatedData['listing_id'])->update([
-            // 'ticket_type_id' => $validatedData['ticket_type_id'],
-            // 'ticket_separation' => $validatedData['ticket_separation'],
             'tickets_available' => $validatedData['tickets_available'],
-            // 'section' => $validatedData['section'],
-            // 'row' => $validatedData['row'],
-            // 'seats_from' => $validatedData['seats_from'],
-            // 'seats_to' => $validatedData['seats_from'],
             'price' => $validatedData['price'],
-            // 'currency' => $validatedData['currency'],
-            // 'status' => $validatedData['status'],
             'is_published' => $validatedData['is_published']
-            // 'event_id' => $validatedData['event_id']
         ]);
 
     }
@@ -181,7 +172,6 @@ class ListingController extends Controller
         ]);
 
         $ticket = EventTickets::where('listing_id', $validatedData['listing_id'])->delete();
-        // TicketRestrictionListingnote::where('listing_id', $validatedData['listing_id'])->delete();
 
     }
 
@@ -203,21 +193,9 @@ class ListingController extends Controller
 
         foreach ($request->all() as $key => $value) {
             $ticket = EventTickets::where('listing_id', $value['listing_id'])->delete();
-            // TicketRestrictionListingnote::where('listing_id', $value['listing_id'])->delete();
         }
 
     }
-
-    // public function deleteTicket(Request $request)
-    // {
-    //     try {
-    //         $ids = array_column($request->id, "id");
-    //         ConcertListing::whereIn('id', $ids)->delete();
-    //         return response()->json('Enquiry deleted');
-    //     } catch (Exception $e) {
-    //         return response()->json($e->getMessage(), 500);
-    //     }
-    // }
 
 
     public function search(Request $request)
@@ -435,11 +413,10 @@ class ListingController extends Controller
             'event_city' => 'required',
             'event_country' => 'required',
             'event_onsale_date_time' => 'required',
-            // 'event_onsale_time' => 'required',
             'event_face_value_currency' => 'required',
             'event_face_value_min' => 'required',
             'event_face_value_max' => 'required',
-            'event_url_notes' => 'required'
+            'event_url_notes' => 'nullable'
         ]);
 
         events::create([
@@ -449,7 +426,6 @@ class ListingController extends Controller
             'event_venue' => $validatedData['event_venue'],
             'event_city' => $validatedData['event_city'],
             'event_country' => $validatedData['event_country'],
-            // 'event_onsale_date_time' => $validatedData['event_onsale_date'] + " " + $validatedData['event_onsale_time'],
             'event_onsale_date_time' => $validatedData['event_onsale_date_time'],
             'event_face_value_currency' => $validatedData['event_face_value_currency'],
             'event_face_value_min' => $validatedData['event_face_value_min'],

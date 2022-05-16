@@ -61,9 +61,11 @@ const ListingTickets = ({
             <td className="border-dark border-1 justify-content-center">
                 <div className="container-fluid d-flex justify-content-center">
                     <p style={{marginTop: "auto", marginBottom: "auto"}}>{getSymbolFromCurrency(ticket.currency)}</p>
+                    {/* <span style={{marginTop: "auto", marginBottom: "auto"}} class="input-group-text" id={"ticket_current"+ticket.listing_id}>@</span> */}
                     <input
                         type="number"
                         className="form-control d-inline me-2"
+                        // aria-describedby={"ticket_current"+ticket.listing_id}
                         style={{ width: 75 + "px" }}
                         title="Double click to edit"
                         value={Number(ticket.price).toString()}

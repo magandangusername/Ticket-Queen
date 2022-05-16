@@ -6,6 +6,7 @@ const ListingNewListing = ({
     createConcert,
     setCreateConcert,
     eventNewUpdate,
+    inputError
 }) => {
     return (
         <div className="modal container-fluid" id="ReqEventModal">
@@ -36,7 +37,7 @@ const ListingNewListing = ({
                                     Show*
                                 </label>
                                 <input
-                                    type="show"
+                                    type="text"
                                     className=""
                                     id="exampleFormControlInput1"
                                     placeholder="Search"
@@ -49,7 +50,15 @@ const ListingNewListing = ({
                                 </label>
                                 <input
                                     type="text"
-                                    className=""
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_name"
+                                        )
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
                                     id="exampleFormControlInput1"
                                     value={createConcert.event_name}
                                     onChange={(e) =>
@@ -60,12 +69,25 @@ const ListingNewListing = ({
                                     }
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_name" ? e.msg : null)}
+                                </p>
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="date">Event Date/Time*</label>
                                 <input
                                     type="date"
-                                    className="col me-1"
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_date"
+                                        )
+                                            ? "form-control col me-1 is-invalid"
+                                            : "form-control col me-1"
+                                    }
                                     id="date"
                                     name="date"
                                     value={createConcert.event_date}
@@ -81,11 +103,24 @@ const ListingNewListing = ({
                                     )}
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_date" ? e.msg : null)}
+                                </p>
                                 <input
                                     type="time"
                                     name="time"
                                     id="time"
-                                    className="col ms-1"
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_time"
+                                        )
+                                            ? "form-control col ms-1 is-invalid"
+                                            : "form-control col ms-1"
+                                    }
                                     value={createConcert.event_time}
                                     onChange={(e) =>
                                         setCreateConcert({
@@ -95,6 +130,11 @@ const ListingNewListing = ({
                                     }
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_time" ? e.msg : null)}
+                                </p>
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
@@ -102,7 +142,15 @@ const ListingNewListing = ({
                                 </label>
                                 <input
                                     type="text"
-                                    className=""
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_venue"
+                                        )
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
                                     placeholder="Search"
                                     value={createConcert.event_venue}
                                     onChange={(e) =>
@@ -113,6 +161,11 @@ const ListingNewListing = ({
                                     }
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_venue" ? e.msg : null)}
+                                </p>
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
@@ -120,7 +173,15 @@ const ListingNewListing = ({
                                 </label>
                                 <input
                                     type="text"
-                                    className=" "
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_city"
+                                        )
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
                                     value={createConcert.event_city}
                                     onChange={(e) =>
                                         setCreateConcert({
@@ -130,13 +191,26 @@ const ListingNewListing = ({
                                     }
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_city" ? e.msg : null)}
+                                </p>
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlSelect1">
                                     Country*
                                 </label>
                                 <select
-                                    className=""
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_country"
+                                        )
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
                                     id="exampleFormControlSelect1"
                                     value={createConcert.event_country}
                                     onChange={(e) =>
@@ -157,6 +231,11 @@ const ListingNewListing = ({
                                     <option value="Andorra">Andorra</option>
                                     <option value="Angola">Angola</option>
                                 </select>
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_country" ? e.msg : null)}
+                                </p>
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
@@ -164,7 +243,15 @@ const ListingNewListing = ({
                                 </label>
                                 <input
                                     type="datetime-local"
-                                    className="col me-1"
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_onsale_date_time"
+                                        )
+                                            ? "form-control col me-1 is-invalid"
+                                            : "form-control col me-1"
+                                    }
                                     id="date"
                                     name="date"
                                     value={createConcert.event_onsale_date_time}
@@ -181,6 +268,11 @@ const ListingNewListing = ({
                                     )}
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_event_onsale_date_timecountry" ? e.msg : null)}
+                                </p>
 
                                 {/* <input type="time" name="time" id="time"
                                 value={createConcert.event_time}
@@ -192,7 +284,15 @@ const ListingNewListing = ({
                                     Face Value
                                 </label>
                                 <select
-                                    className="col me-1"
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_face_value_currency"
+                                        )
+                                            ? "form-control col me-1 is-invalid"
+                                            : "form-control col me-1"
+                                    }
                                     id="FaceValueCurrencyCode"
                                     value={
                                         createConcert.event_face_value_currency
@@ -280,9 +380,22 @@ const ListingNewListing = ({
                                         South African Rand
                                     </option>
                                 </select>
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_face_value_currency" ? e.msg : null)}
+                                </p>
                                 <input
                                     type="number"
-                                    className="col mx-1"
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_face_value_min"
+                                        )
+                                            ? "form-control col mx-1 is-invalid"
+                                            : "form-control col mx-1"
+                                    }
                                     id="exampleFormControlInput1"
                                     placeholder="Face Value Min"
                                     value={
@@ -321,9 +434,22 @@ const ListingNewListing = ({
                                     }
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_face_value_min" ? e.msg : null)}
+                                </p>
                                 <input
                                     type="number"
-                                    className="col ms-1"
+                                    className={
+                                        inputError.some(
+                                            (e) =>
+                                                e.input ===
+                                                "event_face_value_max"
+                                        )
+                                            ? "form-control col ms-1 is-invalid"
+                                            : "form-control col ms-1"
+                                    }
                                     id="exampleFormControlInput1"
                                     placeholder="Face Value Max"
                                     value={
@@ -361,6 +487,11 @@ const ListingNewListing = ({
                                     }
                                     required
                                 />
+                                <p
+                                    className="invalid-feedback"
+                                >
+                                    {inputError.map(e=>e.input==="event_face_value_max" ? e.msg : null)}
+                                </p>
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">
@@ -368,7 +499,7 @@ const ListingNewListing = ({
                                 </label>
                                 <input
                                     type="text"
-                                    className=""
+                                    className="form-controrl"
                                     id="exampleFormControlInput1"
                                     value={createConcert.event_url_notes}
                                     onChange={(e) =>
@@ -394,10 +525,14 @@ const ListingNewListing = ({
                             type="button"
                             className="btn btn-success"
                             onClick={() => eventNewUpdate()}
-                            data-bs-dismiss="modal"
                         >
                             Submit
                         </button>
+                        <button
+                            id="closenewlistingmodal"
+                            data-bs-dismiss="modal"
+                            hidden
+                        ></button>
                     </div>
                 </div>
             </div>
