@@ -72,18 +72,18 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="/listing">Listings</a></li>
-                                <li><a class="dropdown-item" href="#">Sales</a></li>
-                                <li><a class="dropdown-item" href="#">Last Minute Sales</a></li>
-                                <li><a class="dropdown-item" href="#">Reports</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Messages</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                                <li><a class="dropdown-item" href="/listing"><i class="fas fa-tag"></i> Listings</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="far fa-money-bill-alt"></i> Sales</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-clock"></i> Last Minute Sales</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker"></i> Reports</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Messages</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li class="nav-item dropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
+                                        <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
