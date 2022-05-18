@@ -1,15 +1,6 @@
 import React from "react";
 
 const ListingSortBy = ({
-    sortAllListing,
-    sortEligibleLastMinuteSales,
-    sortActive,
-    sortInactive,
-    setSortAllListing,
-    setSortEligibleLastMinuteSales,
-    setSortActive,
-    setSortInactive,
-    handleSort,
     sortAllListingActive,
     sortEligibleLastMinuteSalesActive,
     sortActiveActive,
@@ -135,22 +126,6 @@ const ListingSortBy = ({
                                 <button type="submit">
                                     <i className="fa fa-search d-flex justify-content-center"></i>
                                 </button>
-
-                                {/* <span
-                                    className="input-group-text"
-                                    id="basic-addon1"
-                                >
-                                    Search
-                                </span>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Search"
-                                    aria-label="search"
-                                    aria-describedby="basic-addon1"
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                /> */}
                             </form>
                         </div>
                     </div>

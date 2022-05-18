@@ -1,4 +1,3 @@
-import { create, set } from "lodash";
 import React from "react";
 import dateFormat from "dateformat";
 
@@ -273,11 +272,6 @@ const ListingNewListing = ({
                                 >
                                     {inputError.map(e=>e.input==="event_event_onsale_date_timecountry" ? e.msg : null)}
                                 </p>
-
-                                {/* <input type="time" name="time" id="time"
-                                value={createConcert.event_time}
-                                onChange={(e)=>setCreateConcert({...createConcert, event_onsale_time: e.target.value})}
-                                /> */}
                             </div>
                             <div className="row mb-2">
                                 <label htmlFor="exampleFormControlInput1">

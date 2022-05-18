@@ -7,18 +7,12 @@ const ListingEditTicket = ({
     setTicketEdit,
     restrictions,
     listingNotes,
-    handleTicketDelete,
     isTicketEditLoading,
-    setIsTicketEditLoading,
     ticketRestrictionEdit,
     ticketListingNoteEdit,
-    setTicketRestrictionEdit,
-    setTicketListingNoteEdit,
     handleTicketEditChange,
     ticketEditUpdate,
-    isTicketSaving,
     successMsg,
-    setTicketClone,
     ticketTypes,
     ticketEditInputError
 }) => {
@@ -265,7 +259,6 @@ const ListingEditTicket = ({
                                                     Seats
                                                 </label>
                                                 <div className="input-group">
-                                                    {/* this needs to be fixed in the database */}
                                                     <input
                                                         type="text"
                                                         className={
@@ -399,7 +392,6 @@ const ListingEditTicket = ({
                                             </div>
 
                                             <div className="col">
-                                                {/* i dont see this in the database, so i wont code this */}
                                                 <label htmlFor="exampleFormControlSelect1">
                                                     Currency
                                                 </label>
@@ -433,7 +425,6 @@ const ListingEditTicket = ({
                                                     </option>
                                                     <option
                                                         value="AUD"
-                                                        // selected
                                                     >
                                                         AUD
                                                     </option>
@@ -649,8 +640,6 @@ const ListingEditTicket = ({
                                                                         </>
                                                                     )}
                                                                 </div>
-
-                                                                // && index % 9 === 0 && </div><div className="listboxes col">
                                                             )
                                                         )}
                                                     </>
@@ -862,13 +851,6 @@ const ListingEditTicket = ({
                                             Ticket Type
                                         </label>
                                         <br />
-                                        {/* <input
-                                            type="text"
-                                            className="form-control"
-                                            id="exampleFormControlInput1"
-                                            value={ticketEdit.ticket_type_id ? ticketTypes.filter((type)=>type.ticket_type_id===ticketEdit.ticket_type_id)[0].ticket_type : ""}
-                                            readOnly
-                                        /> */}
                                         <select
                                             name="ticket_type"
                                             id="ticket_type"
@@ -910,7 +892,7 @@ const ListingEditTicket = ({
                             {/* <!-- Modal footer --> */}
                             <div className="modal-footer content-justify-between">
                                 <div>
-                                
+
                                 <p className="text-success">{successMsg}</p>
                                 <button
                                     type="button"
@@ -930,15 +912,6 @@ const ListingEditTicket = ({
                                 </button>
                                 </div>
                                 <div>
-                                {/* {isTicketSaving ? (
-                                    <button
-                                        type="button"
-                                        className="btn btn-success float-sm-end"
-                                        disabled
-                                    >
-                                        Saving...
-                                    </button>
-                                ) : ( */}
                                     <button
                                         type="button"
                                         className="btn btn-success float-sm-end"
@@ -954,9 +927,6 @@ const ListingEditTicket = ({
                                     >
                                         Save
                                     </button>
-                                {/* )} */}
-
-                                {/* <p className="float-sm-start">Saving...</p> */}
                                 <button
                                     type="button"
                                     className="btn btn-secondary float-sm-end"

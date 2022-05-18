@@ -223,7 +223,3 @@ const ListingConcerts = ({
 };
 
 export default ListingConcerts;
-
-// if (document.getElementById("ListingConcerts")) {
-//     ReactDOM.render(<ListingConcerts />, document.getElementById("ListingConcerts"));
-// }

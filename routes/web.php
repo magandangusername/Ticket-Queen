@@ -42,16 +42,6 @@ Route::get('/upload', function () {
 Route::get('UploadETickets/{id}',[TicketUploadController::class, 'show'])->where('id', '[0-9]+');
 
 
-// Route::fallback(function() {
-//     return view('home');
-// });
-
-//Route::get('/search','ListingController@search');
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/listing', [App\Http\Controllers\ListingController::class, 'show'])->name('listing')->middleware('auth');
-// Route::get('eventdetails',[joinEventDetails::class,'show']);
-// Route::get('/search',[App\Http\Controllers\ListingController::class, 'search']);

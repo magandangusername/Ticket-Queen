@@ -86,7 +86,3 @@ const Tools = ({
 };
 
 export default Tools;
-
-// if (document.getElementById("Tools")) {
-//     ReactDOM.render(<Tools />, document.getElementById("Tools"));
-// }

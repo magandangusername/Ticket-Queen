@@ -20,11 +20,6 @@ const ListingTable = () => {
     const [isConcertsLoading, setIsConcertsLoading] = useState(true);
     const [isTicketsLoading, setIsTicketsLoading] = useState(true);
     const [visible, setVisible] = useState(false);
-    const [sortAllListing, setSortAllListing] = useState([]);
-    const [sortEligibleLastMinuteSales, setSortEligibleLastMinuteSales] =
-        useState([]);
-    const [sortActive, setSortActive] = useState([]);
-    const [sortInactive, setSortInactive] = useState([]);
     const [sortAllListingActive, setSortAllListingActive] = useState(true);
     const [
         sortEligibleLastMinuteSalesActive,
@@ -1119,19 +1114,6 @@ const ListingTable = () => {
                 !isRestrictionsLoading ? (
                     <>
                         <ListingSortBy
-                            sortAllListing={sortAllListing}
-                            sortEligibleLastMinuteSales={
-                                sortEligibleLastMinuteSales
-                            }
-                            sortActive={sortActive}
-                            sortInactive={sortInactive}
-                            setSortAllListing={setSortAllListing}
-                            setSortEligibleLastMinuteSales={
-                                setSortEligibleLastMinuteSales
-                            }
-                            setSortActive={setSortActive}
-                            setSortInactive={setSortInactive}
-                            // handleSort={handleSort}
                             sortAllListingActive={sortAllListingActive}
                             sortEligibleLastMinuteSalesActive={
                                 sortEligibleLastMinuteSalesActive
@@ -1195,9 +1177,6 @@ const ListingTable = () => {
                                                             }
                                                             concert={concert}
                                                             tickets={tickets}
-                                                            setTickets={
-                                                                setTickets
-                                                            }
                                                             handleCheck={
                                                                 handleCheck
                                                             }
@@ -1260,18 +1239,13 @@ const ListingTable = () => {
                     setTicketEdit={setTicketEdit}
                     restrictions={restrictions}
                     listingNotes={listingNotes}
-                    handleTicketDelete={handleTicketDelete}
                     isTicketEditLoading={isTicketEditLoading}
-                    setIsTicketEditLoading={setIsTicketEditLoading}
                     ticketRestrictionEdit={ticketRestrictionEdit}
                     ticketListingNoteEdit={ticketListingNoteEdit}
-                    setTicketRestrictionEdit={setTicketRestrictionEdit}
                     setTicketListingNoteEdit={setTicketListingNoteEdit}
                     handleTicketEditChange={handleTicketEditChange}
                     ticketEditUpdate={ticketEditUpdate}
-                    isTicketSaving={isTicketSaving}
                     successMsg={successMsg}
-                    setTicketClone={setTicketClone}
                     ticketTypes={ticketTypes}
                     ticketEditInputError={ticketEditInputError}
                 />
@@ -1294,7 +1268,6 @@ const ListingTable = () => {
                 />
                 <ListingTicketTypes
                     ticketTypes={ticketTypes}
-                    ticketTypeSelected={ticketTypeSelected}
                     setTicketTypeSelected={setTicketTypeSelected}
                 />
                 <ListingDeletePrompt
@@ -1319,7 +1292,6 @@ const ListingTable = () => {
                     ticketTypeSelected={ticketTypeSelected}
                     ticketNewUpdate={ticketNewUpdate}
                     inputError={inputError}
-                    // inputRef={inputRef}
                 />
             </React.StrictMode>
         </>

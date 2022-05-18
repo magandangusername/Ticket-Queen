@@ -5637,9 +5637,7 @@ var ListingConcerts = function ListingConcerts(_ref) {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingConcerts); // if (document.getElementById("ListingConcerts")) {
-//     ReactDOM.render(<ListingConcerts />, document.getElementById("ListingConcerts"));
-// }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingConcerts);
 
 /***/ }),
 
@@ -5752,18 +5750,12 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
       setTicketEdit = _ref.setTicketEdit,
       restrictions = _ref.restrictions,
       listingNotes = _ref.listingNotes,
-      handleTicketDelete = _ref.handleTicketDelete,
       isTicketEditLoading = _ref.isTicketEditLoading,
-      setIsTicketEditLoading = _ref.setIsTicketEditLoading,
       ticketRestrictionEdit = _ref.ticketRestrictionEdit,
       ticketListingNoteEdit = _ref.ticketListingNoteEdit,
-      setTicketRestrictionEdit = _ref.setTicketRestrictionEdit,
-      setTicketListingNoteEdit = _ref.setTicketListingNoteEdit,
       handleTicketEditChange = _ref.handleTicketEditChange,
       ticketEditUpdate = _ref.ticketEditUpdate,
-      isTicketSaving = _ref.isTicketSaving,
       successMsg = _ref.successMsg,
-      setTicketClone = _ref.setTicketClone,
       ticketTypes = _ref.ticketTypes,
       ticketEditInputError = _ref.ticketEditInputError;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -5865,7 +5857,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         value: "Avoid leaving one ticket",
                         children: "Avoid leaving one ticket"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                        value: "Avoid leaving one or\r three tickets",
+                        value: "Avoid leaving one or three tickets",
                         children: "Avoid leaving one or three tickets"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                         value: "Avoid odd numbers",
@@ -6056,8 +6048,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                         value: "ARS",
                         children: "ARS"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                        value: "AUD" // selected
-                        ,
+                        value: "AUD",
                         children: "AUD"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                         value: "BRL",
@@ -6220,8 +6211,7 @@ var ListingEditTicket = function ListingEditTicket(_ref) {
                               children: restriction.restriction
                             })]
                           })
-                        }, "r" + restriction.restriction_id) // && index % 9 === 0 && </div><div className="listboxes col">
-                        ;
+                        }, "r" + restriction.restriction_id);
                       })
                     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                       children: "No restriction options available"
@@ -6574,11 +6564,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dateformat */ "./node_modules/dateformat/lib/dateformat.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dateformat */ "./node_modules/dateformat/lib/dateformat.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -6590,56 +6578,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var ListingNewListing = function ListingNewListing(_ref) {
   var createConcert = _ref.createConcert,
       setCreateConcert = _ref.setCreateConcert,
       eventNewUpdate = _ref.eventNewUpdate,
       inputError = _ref.inputError;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "modal container-fluid",
     id: "ReqEventModal",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "modal-dialog",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "modal-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "modal-header ",
           style: {
             background: "#424549",
             color: "#edf6ff"
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "justify-content-between-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h4", {
               className: "m-1 p-2",
               children: "Request an event "
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
               className: "m-1 p-2",
               children: "Can't find the event you're looking for? Enter the details below and you can start listing immediately. Once our support team approves the event, your tickets will become active on our website."
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "modal-body form-group m-auto p-4",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Artist, Home Team, Tournament, Festival or Show*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 className: "",
                 id: "exampleFormControlInput1",
                 placeholder: "Search",
                 disabled: true
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Event*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 className: inputError.some(function (e) {
                   return e.input === "event_name";
@@ -6652,18 +6639,18 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_name" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "date",
                 children: "Event Date/Time*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "date",
                 className: inputError.some(function (e) {
                   return e.input === "event_date";
@@ -6676,14 +6663,14 @@ var ListingNewListing = function ListingNewListing(_ref) {
                     event_date: e.target.value
                   }));
                 },
-                min: (0,dateformat__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(), "yyyy-mm-dd"),
+                min: (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(), "yyyy-mm-dd"),
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_date" ? e.msg : null;
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "time",
                 name: "time",
                 id: "time",
@@ -6697,18 +6684,18 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_time" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Venue*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 className: inputError.some(function (e) {
                   return e.input === "event_venue";
@@ -6721,18 +6708,18 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_venue" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "City*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 className: inputError.some(function (e) {
                   return e.input === "event_city";
@@ -6744,18 +6731,18 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_city" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlSelect1",
                 children: "Country*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                 className: inputError.some(function (e) {
                   return e.input === "event_country";
                 }) ? "form-control is-invalid" : "form-control",
@@ -6767,35 +6754,35 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Albania",
                   defaultValue: true,
                   children: "Albania"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Algeria",
                   children: "Algeria"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "American Samoa",
                   children: "American Samoa"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Andorra",
                   children: "Andorra"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Angola",
                   children: "Angola"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_country" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Onsale"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "datetime-local",
                 className: inputError.some(function (e) {
                   return e.input === "event_onsale_date_time";
@@ -6808,20 +6795,20 @@ var ListingNewListing = function ListingNewListing(_ref) {
                     event_onsale_date_time: e.target.value
                   }));
                 },
-                min: (0,dateformat__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(), 'yyyy-mm-dd"T"hh:mm'),
+                min: (0,dateformat__WEBPACK_IMPORTED_MODULE_1__["default"])(new Date(), 'yyyy-mm-dd"T"hh:mm'),
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_event_onsale_date_timecountry" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Face Value"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
                 className: inputError.some(function (e) {
                   return e.input === "event_face_value_currency";
                 }) ? "form-control col me-1 is-invalid" : "form-control col me-1",
@@ -6834,127 +6821,127 @@ var ListingNewListing = function ListingNewListing(_ref) {
                 },
                 placeholder: "Currency",
                 required: true,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "AED",
                   children: "United Arab Emirates Dirham"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "ARS",
                   children: "Argentine Peso"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "AUD",
                   children: "Australian Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "BRL",
                   children: "Brazilian Real"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "CAD",
                   children: "Canadian Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "CHF",
                   children: "Swiss Franc"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "CLP",
                   children: "Chilean Peso"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "COP",
                   children: "Colombian Peso"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "CZK",
                   children: "Czech Republic Koruna"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "DKK",
                   children: "Danish Krone"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "EUR",
                   children: "Euro"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "GBP",
                   children: "British Pound Sterling"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "HKD",
                   children: "Hong Kong Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "HRK",
                   children: "Croatian Kuna"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "HUF",
                   children: "Hungarian Forint"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "IDR",
                   children: "Indonesian Rupiah"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "ILS",
                   children: "Israeli New Shekel"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "ISK",
                   children: "Icelandic Kr\xF3na"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "JPY",
                   children: "Japanese Yen"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "KRW",
                   children: "South Korean Won"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "MUR",
                   children: "Mauritian Rupee"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "MXN",
                   children: "Mexican Peso"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "MYR",
                   children: "Malaysian Ringgit"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "NOK",
                   children: "Norwegian Krone"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "NZD",
                   children: "New Zealand Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "PEN",
                   children: "Peruvian Nuevo Sol"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "PHP",
                   children: "Philippine Peso"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "PLN",
                   children: "Polish Zloty"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "RON",
                   children: "Romanian Leu"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "RUB",
                   children: "Russian Ruble"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "SEK",
                   children: "Swedish Krona"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "SGD",
                   children: "Singapore Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "THB",
                   children: "Thai Baht"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "TRY",
                   children: "Turkish Lira"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "TWD",
                   children: "New Taiwan Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "UAH",
                   children: "Ukrainian Hryvnia"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "USD",
                   children: "United States Dollar"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "ZAR",
                   children: "South African Rand"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_face_value_currency" ? e.msg : null;
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "number",
                 className: inputError.some(function (e) {
                   return e.input === "event_face_value_min";
@@ -6973,12 +6960,12 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_face_value_min" ? e.msg : null;
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "number",
                 className: inputError.some(function (e) {
                   return e.input === "event_face_value_max";
@@ -6997,18 +6984,18 @@ var ListingNewListing = function ListingNewListing(_ref) {
                   }));
                 },
                 required: true
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
                 className: "invalid-feedback",
                 children: inputError.map(function (e) {
                   return e.input === "event_face_value_max" ? e.msg : null;
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "row mb-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "exampleFormControlInput1",
                 children: "Event Url and Notes*"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 className: "form-controrl",
                 id: "exampleFormControlInput1",
@@ -7021,24 +7008,24 @@ var ListingNewListing = function ListingNewListing(_ref) {
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "modal-footer m-1 p-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn btn-secondary",
             "data-bs-toggle": "modal",
             "data-bs-target": "#ListingModal",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("b", {
               children: "Back"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn btn-success",
             onClick: function onClick() {
               return eventNewUpdate();
             },
             children: "Submit"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             id: "closenewlistingmodal",
             "data-bs-dismiss": "modal",
             hidden: true
@@ -7085,13 +7072,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var ListingNewTicket = function ListingNewTicket(_ref) {
   var restrictions = _ref.restrictions,
       listingNotes = _ref.listingNotes,
-      isTicketEditLoading = _ref.isTicketEditLoading,
-      ticketRestrictionEdit = _ref.ticketRestrictionEdit,
-      ticketListingNoteEdit = _ref.ticketListingNoteEdit,
-      handleTicketEditChange = _ref.handleTicketEditChange,
-      ticketEditUpdate = _ref.ticketEditUpdate,
-      isTicketSaving = _ref.isTicketSaving,
-      successMsg = _ref.successMsg,
       ticketTypes = _ref.ticketTypes,
       newTicket = _ref.newTicket,
       setNewTicket = _ref.setNewTicket,
@@ -7535,8 +7515,7 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
                               children: restriction.restriction
                             })]
                           })
-                        }, "r" + restriction.restriction_id) // && index % 9 === 0 && </div><div className="listboxes col">
-                        ;
+                        }, "r" + restriction.restriction_id);
                       })
                     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                       children: "No restriction options available"
@@ -7624,21 +7603,12 @@ var ListingNewTicket = function ListingNewTicket(_ref) {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "modal-footer justify-content-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              className: "text-success",
-              children: successMsg
-            }), isTicketSaving ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "button",
-              className: "btn btn-success float-sm-end",
-              disabled: true,
-              children: "Saving..."
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               type: "button",
               className: "btn btn-success float-sm-end",
               onClick: function onClick() {
                 return ticketNewUpdate();
-              } // data-bs-dismiss="modal"
-              ,
+              },
               children: "Save"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               id: "closemodal",
@@ -7680,16 +7650,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ListingSortBy = function ListingSortBy(_ref) {
-  var sortAllListing = _ref.sortAllListing,
-      sortEligibleLastMinuteSales = _ref.sortEligibleLastMinuteSales,
-      sortActive = _ref.sortActive,
-      sortInactive = _ref.sortInactive,
-      setSortAllListing = _ref.setSortAllListing,
-      setSortEligibleLastMinuteSales = _ref.setSortEligibleLastMinuteSales,
-      setSortActive = _ref.setSortActive,
-      setSortInactive = _ref.setSortInactive,
-      handleSort = _ref.handleSort,
-      sortAllListingActive = _ref.sortAllListingActive,
+  var sortAllListingActive = _ref.sortAllListingActive,
       sortEligibleLastMinuteSalesActive = _ref.sortEligibleLastMinuteSalesActive,
       sortActiveActive = _ref.sortActiveActive,
       sortInactiveActive = _ref.sortInactiveActive,
@@ -7926,52 +7887,32 @@ var ListingTable = function ListingTable() {
       visible = _useState12[0],
       setVisible = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState14 = _slicedToArray(_useState13, 2),
-      sortAllListing = _useState14[0],
-      setSortAllListing = _useState14[1];
+      sortAllListingActive = _useState14[0],
+      setSortAllListingActive = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState16 = _slicedToArray(_useState15, 2),
-      sortEligibleLastMinuteSales = _useState16[0],
-      setSortEligibleLastMinuteSales = _useState16[1];
+      sortEligibleLastMinuteSalesActive = _useState16[0],
+      setSortEligibleLastMinuteSalesActive = _useState16[1];
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState18 = _slicedToArray(_useState17, 2),
-      sortActive = _useState18[0],
-      setSortActive = _useState18[1];
+      sortActiveActive = _useState18[0],
+      setSortActiveActive = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState20 = _slicedToArray(_useState19, 2),
-      sortInactive = _useState20[0],
-      setSortInactive = _useState20[1];
+      sortInactiveActive = _useState20[0],
+      setSortInactiveActive = _useState20[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState22 = _slicedToArray(_useState21, 2),
-      sortAllListingActive = _useState22[0],
-      setSortAllListingActive = _useState22[1];
+      sort = _useState22[0],
+      setSort = _useState22[1];
 
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-      _useState24 = _slicedToArray(_useState23, 2),
-      sortEligibleLastMinuteSalesActive = _useState24[0],
-      setSortEligibleLastMinuteSalesActive = _useState24[1];
-
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-      _useState26 = _slicedToArray(_useState25, 2),
-      sortActiveActive = _useState26[0],
-      setSortActiveActive = _useState26[1];
-
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-      _useState28 = _slicedToArray(_useState27, 2),
-      sortInactiveActive = _useState28[0],
-      setSortInactiveActive = _useState28[1];
-
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState30 = _slicedToArray(_useState29, 2),
-      sort = _useState30[0],
-      setSort = _useState30[1];
-
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([{
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([{
     tickets_available: "",
     event_id: "",
     listing_id: "",
@@ -7987,56 +7928,56 @@ var ListingTable = function ListingTable() {
     isSelected: "",
     status: ""
   }]),
+      _useState24 = _slicedToArray(_useState23, 2),
+      ticketEdit = _useState24[0],
+      setTicketEdit = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState26 = _slicedToArray(_useState25, 2),
+      ticketRestrictionEdit = _useState26[0],
+      setTicketRestrictionEdit = _useState26[1];
+
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState28 = _slicedToArray(_useState27, 2),
+      ticketListingNoteEdit = _useState28[0],
+      setTicketListingNoteEdit = _useState28[1];
+
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState30 = _slicedToArray(_useState29, 2),
+      restrictions = _useState30[0],
+      setRestrictions = _useState30[1];
+
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState32 = _slicedToArray(_useState31, 2),
-      ticketEdit = _useState32[0],
-      setTicketEdit = _useState32[1];
+      listingNotes = _useState32[0],
+      setListingNotes = _useState32[1];
 
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState34 = _slicedToArray(_useState33, 2),
-      ticketRestrictionEdit = _useState34[0],
-      setTicketRestrictionEdit = _useState34[1];
+      isRestrictionsLoading = _useState34[0],
+      setIsRestrictionsLoading = _useState34[1];
 
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState36 = _slicedToArray(_useState35, 2),
-      ticketListingNoteEdit = _useState36[0],
-      setTicketListingNoteEdit = _useState36[1];
+      isTicketEditLoading = _useState36[0],
+      setIsTicketEditLoading = _useState36[1];
 
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState38 = _slicedToArray(_useState37, 2),
-      restrictions = _useState38[0],
-      setRestrictions = _useState38[1];
+      isTicketSaving = _useState38[0],
+      setIsTicketSaving = _useState38[1];
 
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
       _useState40 = _slicedToArray(_useState39, 2),
-      listingNotes = _useState40[0],
-      setListingNotes = _useState40[1];
+      successMsg = _useState40[0],
+      setSuccessMsg = _useState40[1];
 
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState42 = _slicedToArray(_useState41, 2),
-      isRestrictionsLoading = _useState42[0],
-      setIsRestrictionsLoading = _useState42[1];
+      ticketClone = _useState42[0],
+      setTicketClone = _useState42[1];
 
-  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
-      _useState44 = _slicedToArray(_useState43, 2),
-      isTicketEditLoading = _useState44[0],
-      setIsTicketEditLoading = _useState44[1];
-
-  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
-      _useState46 = _slicedToArray(_useState45, 2),
-      isTicketSaving = _useState46[0],
-      setIsTicketSaving = _useState46[1];
-
-  var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
-      _useState48 = _slicedToArray(_useState47, 2),
-      successMsg = _useState48[0],
-      setSuccessMsg = _useState48[1];
-
-  var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState50 = _slicedToArray(_useState49, 2),
-      ticketClone = _useState50[0],
-      setTicketClone = _useState50[1];
-
-  var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
     event_name: "",
     event_date: "",
     event_time: "",
@@ -8049,58 +7990,58 @@ var ListingTable = function ListingTable() {
     event_face_value_max: "",
     event_url_notes: ""
   }),
+      _useState44 = _slicedToArray(_useState43, 2),
+      createConcert = _useState44[0],
+      setCreateConcert = _useState44[1];
+
+  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState46 = _slicedToArray(_useState45, 2),
+      ticketTypes = _useState46[0],
+      setTicketTypes = _useState46[1];
+
+  var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+      _useState48 = _slicedToArray(_useState47, 2),
+      ticketTypeSelected = _useState48[0],
+      setTicketTypeSelected = _useState48[1];
+
+  var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+      _useState50 = _slicedToArray(_useState49, 2),
+      search = _useState50[0],
+      setSearch = _useState50[1];
+
+  var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState52 = _slicedToArray(_useState51, 2),
-      createConcert = _useState52[0],
-      setCreateConcert = _useState52[1];
+      newTicket = _useState52[0],
+      setNewTicket = _useState52[1];
 
-  var _useState53 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState53 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState54 = _slicedToArray(_useState53, 2),
-      ticketTypes = _useState54[0],
-      setTicketTypes = _useState54[1];
+      isTicketNewLoading = _useState54[0],
+      setIsTicketNewLoading = _useState54[1];
 
-  var _useState55 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
-      _useState56 = _slicedToArray(_useState55, 2),
-      ticketTypeSelected = _useState56[0],
-      setTicketTypeSelected = _useState56[1];
-
-  var _useState57 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
-      _useState58 = _slicedToArray(_useState57, 2),
-      search = _useState58[0],
-      setSearch = _useState58[1];
-
-  var _useState59 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState60 = _slicedToArray(_useState59, 2),
-      newTicket = _useState60[0],
-      setNewTicket = _useState60[1];
-
-  var _useState61 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
-      _useState62 = _slicedToArray(_useState61, 2),
-      isTicketNewLoading = _useState62[0],
-      setIsTicketNewLoading = _useState62[1];
-
-  var _useState63 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+  var _useState55 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
     search: "",
     from: "",
     to: ""
   }),
-      _useState64 = _slicedToArray(_useState63, 2),
-      newListingSearch = _useState64[0],
-      setNewListingSearch = _useState64[1];
+      _useState56 = _slicedToArray(_useState55, 2),
+      newListingSearch = _useState56[0],
+      setNewListingSearch = _useState56[1];
 
-  var _useState65 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState66 = _slicedToArray(_useState65, 2),
-      inputError = _useState66[0],
-      setInputError = _useState66[1];
+  var _useState57 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState58 = _slicedToArray(_useState57, 2),
+      inputError = _useState58[0],
+      setInputError = _useState58[1];
 
-  var _useState67 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState68 = _slicedToArray(_useState67, 2),
-      ticketEditInputError = _useState68[0],
-      setTicketEditInputError = _useState68[1];
+  var _useState59 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState60 = _slicedToArray(_useState59, 2),
+      ticketEditInputError = _useState60[0],
+      setTicketEditInputError = _useState60[1];
 
-  var _useState69 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
-      _useState70 = _slicedToArray(_useState69, 2),
-      ticketCloneInputError = _useState70[0],
-      setticketCloneInputError = _useState70[1]; // gets the concert data from the database
+  var _useState61 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState62 = _slicedToArray(_useState61, 2),
+      ticketCloneInputError = _useState62[0],
+      setticketCloneInputError = _useState62[1]; // gets the concert data from the database
 
 
   var fetchConcert = /*#__PURE__*/function () {
@@ -9673,15 +9614,6 @@ var ListingTable = function ListingTable() {
         })
       }) : null, !fetchError & !isConcertsLoading & !isTicketsLoading & !isRestrictionsLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingSortBy__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          sortAllListing: sortAllListing,
-          sortEligibleLastMinuteSales: sortEligibleLastMinuteSales,
-          sortActive: sortActive,
-          sortInactive: sortInactive,
-          setSortAllListing: setSortAllListing,
-          setSortEligibleLastMinuteSales: setSortEligibleLastMinuteSales,
-          setSortActive: setSortActive,
-          setSortInactive: setSortInactive // handleSort={handleSort}
-          ,
           sortAllListingActive: sortAllListingActive,
           sortEligibleLastMinuteSalesActive: sortEligibleLastMinuteSalesActive,
           sortActiveActive: sortActiveActive,
@@ -9738,7 +9670,6 @@ var ListingTable = function ListingTable() {
                   return concert.isVisible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingConcerts__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     concert: concert,
                     tickets: tickets,
-                    setTickets: setTickets,
                     handleCheck: handleCheck,
                     handlePriceSelect: handlePriceSelect,
                     handlePriceChange: handlePriceChange,
@@ -9767,18 +9698,13 @@ var ListingTable = function ListingTable() {
         setTicketEdit: setTicketEdit,
         restrictions: restrictions,
         listingNotes: listingNotes,
-        handleTicketDelete: handleTicketDelete,
         isTicketEditLoading: isTicketEditLoading,
-        setIsTicketEditLoading: setIsTicketEditLoading,
         ticketRestrictionEdit: ticketRestrictionEdit,
         ticketListingNoteEdit: ticketListingNoteEdit,
-        setTicketRestrictionEdit: setTicketRestrictionEdit,
         setTicketListingNoteEdit: setTicketListingNoteEdit,
         handleTicketEditChange: handleTicketEditChange,
         ticketEditUpdate: ticketEditUpdate,
-        isTicketSaving: isTicketSaving,
         successMsg: successMsg,
-        setTicketClone: setTicketClone,
         ticketTypes: ticketTypes,
         ticketEditInputError: ticketEditInputError
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingNew__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -9798,7 +9724,6 @@ var ListingTable = function ListingTable() {
         ticketCloneInputError: ticketCloneInputError
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingTicketTypes__WEBPACK_IMPORTED_MODULE_10__["default"], {
         ticketTypes: ticketTypes,
-        ticketTypeSelected: ticketTypeSelected,
         setTicketTypeSelected: setTicketTypeSelected
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_ListingDeletePrompt__WEBPACK_IMPORTED_MODULE_11__["default"], {
         handleTicketDelete: handleTicketDelete,
@@ -9818,8 +9743,7 @@ var ListingTable = function ListingTable() {
         handleTicketNewChange: handleTicketNewChange,
         ticketTypeSelected: ticketTypeSelected,
         ticketNewUpdate: ticketNewUpdate,
-        inputError: inputError // inputRef={inputRef}
-
+        inputError: inputError
       })]
     })
   });
@@ -10135,7 +10059,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var ListingTicketTypes = function ListingTicketTypes(_ref) {
   var ticketTypes = _ref.ticketTypes,
-      ticketTypeSelected = _ref.ticketTypeSelected,
       setTicketTypeSelected = _ref.setTicketTypeSelected;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "modal fade container-fluid",
@@ -10302,8 +10225,7 @@ var ListingTickets = function ListingTickets(_ref) {
           children: currency_symbol_map__WEBPACK_IMPORTED_MODULE_0___default()(ticket.currency)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
           type: "number",
-          className: "form-control d-inline me-2" // aria-describedby={"ticket_current"+ticket.listing_id}
-          ,
+          className: "form-control d-inline me-2",
           style: {
             width: 75 + "px"
           },
@@ -10522,9 +10444,7 @@ var Tools = function Tools(_ref) {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tools); // if (document.getElementById("Tools")) {
-//     ReactDOM.render(<Tools />, document.getElementById("Tools"));
-// }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tools);
 
 /***/ }),
 

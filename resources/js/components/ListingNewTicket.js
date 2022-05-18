@@ -3,18 +3,9 @@ import getSymbolFromCurrency from "currency-symbol-map";
 import dateFormat from "dateformat";
 
 const ListingNewTicket = ({
-    // ticketEdit,
     restrictions,
     listingNotes,
-    isTicketEditLoading,
-    ticketRestrictionEdit,
-    ticketListingNoteEdit,
-    handleTicketEditChange,
-    ticketEditUpdate,
-    isTicketSaving,
-    successMsg,
     ticketTypes,
-
     newTicket,
     setNewTicket,
     ticketTypeSelected,
@@ -22,7 +13,6 @@ const ListingNewTicket = ({
     handleTicketNewChange,
     ticketNewUpdate,
     inputError,
-    // inputRef,
 }) => {
     return (
         <div className="modal" id="newTicket" aria-hidden="true">
@@ -77,8 +67,6 @@ const ListingNewTicket = ({
                                 >
                                     <form>
                                         <div className="row">
-                                            {/* {inputError.map((error, index)=><p key={'er'+index} style={{color: "red"}}>{error.msg}</p>)} */}
-
                                             <div className="form-group col">
                                                 <label htmlFor="exampleFormControlInput1">
                                                     Available Tickets*
@@ -403,7 +391,6 @@ const ListingNewTicket = ({
                                             </div>
 
                                             <div className="col">
-                                                {/* i dont see this in the database, so i wont code this */}
                                                 <label htmlFor="exampleFormControlSelect1">
                                                     Currency
                                                 </label>
@@ -606,8 +593,6 @@ const ListingNewTicket = ({
                                                                         </label>
                                                                     </>
                                                                 </div>
-
-                                                                // && index % 9 === 0 && </div><div className="listboxes col">
                                                             )
                                                         )}
                                                     </>
@@ -749,26 +734,13 @@ const ListingNewTicket = ({
                             </div>
                             {/* <!-- Modal footer --> */}
                             <div className="modal-footer justify-content-center">
-                                <p className="text-success">{successMsg}</p>
-
-                                {isTicketSaving ? (
-                                    <button
-                                        type="button"
-                                        className="btn btn-success float-sm-end"
-                                        disabled
-                                    >
-                                        Saving...
-                                    </button>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        className="btn btn-success float-sm-end"
-                                        onClick={() => ticketNewUpdate()}
-                                        // data-bs-dismiss="modal"
-                                    >
-                                        Save
-                                    </button>
-                                )}
+                                <button
+                                    type="button"
+                                    className="btn btn-success float-sm-end"
+                                    onClick={() => ticketNewUpdate()}
+                                >
+                                    Save
+                                </button>
 
                                 <button
                                     id="closemodal"

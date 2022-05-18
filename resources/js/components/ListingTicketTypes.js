@@ -2,7 +2,6 @@ import React from "react";
 
 const ListingTicketTypes = ({
     ticketTypes,
-    ticketTypeSelected,
     setTicketTypeSelected,
 }) => {
     return (

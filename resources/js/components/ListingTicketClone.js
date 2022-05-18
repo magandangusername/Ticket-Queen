@@ -75,22 +75,6 @@ const ListingTicketClone = ({
                                         {ticketClone.map((clone, index) => (
                                             <tr className="p-2" key={index}>
                                                 <td>
-                                                    {/* <select
-                                                        className="form-control"
-                                                        id="exampleFormControlSelect1"
-                                                    >
-                                                        <option defaultValue>
-                                                            Choose one
-                                                        </option>
-                                                        <option>Lounge</option>
-                                                        <option>417</option>
-                                                        <option>
-                                                            Lower Tier
-                                                        </option>
-                                                        <option>
-                                                            Upper Tier
-                                                        </option>
-                                                    </select> */}
                                                     <input
                                                         className={
                                                             ticketCloneInputError.some(
@@ -119,18 +103,6 @@ const ListingTicketClone = ({
                                                     </p>
                                                 </td>
                                                 <td>
-                                                    {/* <select
-                                                        className="form-control"
-                                                        id="exampleFormControlSelect1"
-                                                    >
-                                                        <option>A</option>
-                                                        <option>B</option>
-                                                        <option defaultValue>
-                                                            P
-                                                        </option>
-                                                        <option>C</option>
-                                                        <option>D</option>
-                                                    </select> */}
                                                     <input
                                                         className={
                                                             ticketCloneInputError.some(

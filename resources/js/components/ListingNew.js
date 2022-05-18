@@ -119,7 +119,6 @@ const ListingNew = ({
                                                         "dd, mmmm yyyy"
                                                     )}
                                                     <br />
-                                                    {/* 19:00 */}
                                                 </td>
                                                 <td>
                                                     {concert.event_name}
@@ -127,7 +126,6 @@ const ListingNew = ({
                                                     {concert.event_city},{" "}
                                                     {concert.event_venue}
                                                     <br />
-                                                    {/* Nanterre */}
                                                 </td>
                                             </tr>
                                         ) : newListingSearch.from === "" & newListingSearch.from === ""? (
@@ -150,7 +148,6 @@ const ListingNew = ({
                                                         "dd, mmmm yyyy"
                                                     )}
                                                     <br />
-                                                    {/* 19:00 */}
                                                 </td>
                                                 <td>
                                                     {concert.event_name}
@@ -158,31 +155,12 @@ const ListingNew = ({
                                                     {concert.event_city},{" "}
                                                     {concert.event_venue}
                                                     <br />
-                                                    {/* Nanterre */}
                                                 </td>
                                             </tr>
                                         ) : null
                                     )}
                                 </tbody>
                             ) : null}
-                            {/* <tbody>
-                                <tr>
-                                    <td>
-                                        Thu
-                                        <br />
-                                        17 Mar 2022
-                                        <br />
-                                        19:00
-                                    </td>
-                                    <td>
-                                        Genesis
-                                        <br />
-                                        Paris La Defense Arena
-                                        <br />
-                                        Nanterre
-                                    </td>
-                                </tr>
-                                </tbody> */}
                         </table>
                         <br />
                     </div>
