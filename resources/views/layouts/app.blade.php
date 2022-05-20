@@ -34,11 +34,11 @@
 </head>
 
 <body class="vh-100 bg-image " id="app"
-        style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
-    <div >
+    style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://queenoftickets.com/wp-content/uploads/2021/12/header-8.jpeg'); background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+    <div>
         <nav class="navbar navbar-expand-lg navbar-light navcolor px-5 py-1 bg-dark position-fixed w-100 navz-index">
-            <a class="navbar-brand fw-bold text-light" href="/listing">Queen of Tickets <span class=""><img src="#"
-                        alt="" width="30" height="24"></span>
+            <a class="navbar-brand fw-bold text-light" href="/listing">Queen of Tickets <span class=""><img
+                        src="#" alt="" width="30" height="24"></span>
                 <h6>Inventory Manager | Listing</h6>
             </a>
             <div class="collapsewidth"></div>
@@ -53,40 +53,50 @@
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 2000">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
+                    {{-- <li class="nav-item active">
 
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#persexpress"
-                            href="">Express Local Shipping</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#ListingModal" href="">+
-                            New Listing</a>
-                    </li>
+                    </li> --}}
+                    @if (Request::is('listing'))
+                        <li class="nav-item active">
+                            <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#persexpress"
+                                href="">Express Local Shipping</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#ListingModal" href="">+
+                                New Listing</a>
+                        </li>
+
+                    @endif
+
                     @guest
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
+                            <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                                <li><a class="dropdown-item" href="/listing"><i class="fas fa-tag"></i> Listings</a></li>
+                                <li><a class="dropdown-item" href="/listing"><i class="fas fa-tag"></i> Listings</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#"><i class="far fa-money-bill-alt"></i> Sales</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-clock"></i> Last Minute Sales</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-clock"></i> Last Minute Sales</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker"></i> Reports</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Messages</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li class="nav-item dropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>
@@ -264,8 +274,8 @@
                 <!-- Modal footer -->
                 <div class="modal-footer m-1 p-2">
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#persexpress"><B class="bold">
-                            </B>Back</button>
+                        data-bs-target="#persexpress"><B class="bold">
+                        </B>Back</button>
                 </div>
 
             </div>
