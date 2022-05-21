@@ -109,24 +109,15 @@ const ListingSortBy = ({
                             </label>
                         </div>
                         <div className="form-check form-check-inline text-light col w-50 d-flex justify-content-center mt-1">
-                            <form
-                                className="form-control d-flex w-100 m-auto justify-content-evenly"
-                                method="get"
-                                onSubmit={(e) => e.preventDefault()}
-                            >
-                                <input
-                                    id="tableSearch"
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    className="w-100 d-flex justify-content-center"
-                                    type="text"
-                                    placeholder="Search.."
-                                    name="search2"
-                                />
-                                <button type="submit">
-                                    <i className="fa fa-search d-flex justify-content-center"></i>
-                                </button>
-                            </form>
+                            <input
+                                type="text"
+                                className="form-control d-flex m-auto justify-content-evenly"
+                                placeholder="Search.."
+                                id="tableSearch"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                name="search2"
+                            />
                         </div>
                     </div>
                     <div id="Tools" className="z-indexes"></div>

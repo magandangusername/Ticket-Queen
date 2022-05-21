@@ -7739,28 +7739,16 @@ var ListingSortBy = function ListingSortBy(_ref) {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             className: "form-check form-check-inline text-light col w-50 d-flex justify-content-center mt-1",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-              className: "form-control d-flex w-100 m-auto justify-content-evenly",
-              method: "get",
-              onSubmit: function onSubmit(e) {
-                return e.preventDefault();
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              className: "form-control d-flex m-auto justify-content-evenly",
+              placeholder: "Search..",
+              id: "tableSearch",
+              value: search,
+              onChange: function onChange(e) {
+                return setSearch(e.target.value);
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                id: "tableSearch",
-                value: search,
-                onChange: function onChange(e) {
-                  return setSearch(e.target.value);
-                },
-                className: "w-100 d-flex justify-content-center",
-                type: "text",
-                placeholder: "Search..",
-                name: "search2"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-                type: "submit",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                  className: "fa fa-search d-flex justify-content-center"
-                })
-              })]
+              name: "search2"
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
