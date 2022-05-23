@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\events;
-use Exception;
 use App\Models\EventTickets;
 use App\Models\Restrictions;
 use App\Models\listing_notes;
 use App\Models\TicketRestrictionListingnote;
 use App\Models\TicketTypes;
-use ArrayObject;
+use Illuminate\Support\Carbon;
 
 class ListingController extends Controller
 {
@@ -209,7 +208,7 @@ class ListingController extends Controller
     // api: returning the events/concerts in a json format
     public function concerts()
     {
-        $concert_listing = events::all();
+        $concert_listing = events::where('event_date','>=',Carbon::createFromFormat('Y-m-d',date('Y-m-d'),'Asia/Manila')->toDateTimeString())->get();
 
         return $concert_listing->toJson();
     }
@@ -217,7 +216,7 @@ class ListingController extends Controller
     // api: returning the tickets in a json format
     public function tickets()
     {
-        $ticket_listing = EventTickets::all();
+        $ticket_listing = EventTickets::leftjoin('events','event_tickets.event_id','=','events.event_id')->where('events.event_date','>=',Carbon::createFromFormat('Y-m-d',date('Y-m-d'),'Asia/Manila'))->get();
 
         return $ticket_listing->toJson();
     }
